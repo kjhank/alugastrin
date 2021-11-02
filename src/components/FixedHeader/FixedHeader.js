@@ -15,12 +15,10 @@ const StyledHeader = styled.header`
   background-color: #fff;
 `;
 
-const FixedHeader = () => (
+export const FixedHeader = () => (
   <StyledHeader>
     <Container>
       This is a fixed header.
     </Container>
   </StyledHeader>
 );
-
-export default FixedHeader;

@@ -122,7 +122,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    font-family: 'Tahoma', sans-serif;
+    font-family: ${({ theme }) => theme.getFont()};
     line-height: 1.2;
   }
 

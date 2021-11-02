@@ -2,23 +2,22 @@ import styled from 'styled-components';
 
 import { mediaQueries } from '@utils';
 
-const Container = styled.div`
+export const Container = styled.div`
   position: relative;
-  max-width: 1440px;
+  width: 59.322917vw;
+  max-width: 1139px;
   height: 100%;
   margin: 0 auto;
 
   @media ${mediaQueries.mediumLarge} {
-    max-width: 80vw;
+    max-width: 70vw;
   }
 
   @media ${mediaQueries.medium} {
-    max-width: 87vw;
+    max-width: 85vw;
   }
 
   @media ${mediaQueries.xsmall} {
-    max-width: 90vw;
+    max-width: 95vw;
   }
 `;
-
-export default Container;

@@ -1,23 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import smoothscroll from 'smoothscroll-polyfill';
-import { Helmet } from 'react-helmet';
-
-import {
-  GlobalStyle,
-  isBrowser,
-} from '@utils';
-
-import Theme from '@theme/main';
 import {
   Container,
-  FixedHeader,
 } from '@components';
 
 const Wrapper = styled.main`
   margin-top: 115px;
-  color: ${({ theme }) => theme.colors.brand};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 const Text = styled.p`
@@ -29,34 +19,19 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
-const htmlAttributes = { lang: 'pl' };
-
-const IndexPage = () => {
-  if (isBrowser()) {
-    smoothscroll.polyfill();
-  }
-
-  return (
-    <Theme>
-      <Helmet htmlAttributes={htmlAttributes}>
-        <title>Untitled page - not found</title>
-      </Helmet>
-      <GlobalStyle />
-      <FixedHeader />
-      <Wrapper>
-        <Container>
-          <h1>Hello there</h1>
-          <Text>
-            This is a custom 404 page.
-            {' '}
-            <StyledLink to="/">Click here</StyledLink>
-            {' '}
-            to go home.
-          </Text>
-        </Container>
-      </Wrapper>
-    </Theme>
-  );
-};
+const IndexPage = () => (
+  <Wrapper>
+    <Container>
+      <h1>Hello there</h1>
+      <Text>
+        This is a custom 404 page.
+        {' '}
+        <StyledLink to="/">Click here</StyledLink>
+        {' '}
+        to go home.
+      </Text>
+    </Container>
+  </Wrapper>
+);
 
 export default IndexPage;
