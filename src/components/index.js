@@ -1,7 +1,2 @@
-import Container from './Container/Container';
-import FixedHeader from './FixedHeader/FixedHeader';
-
-export {
-  Container,
-  FixedHeader,
-};
+export { FixedHeader } from './FixedHeader/FixedHeader';
+export { Container } from './Container/Container';

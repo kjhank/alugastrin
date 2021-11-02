@@ -1,0 +1,300 @@
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Black'), local('Barlow-Black'),
+      url('/fonts/subset-Barlow-Black.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Bold'), local('Barlow-Bold'),
+      url('/fonts/subset-Barlow-Bold.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Black Italic'), local('Barlow-BlackItalic'),
+      url('/fonts/subset-Barlow-BlackItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-BlackItalic.woff') format('woff');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Bold Italic'), local('Barlow-BoldItalic'),
+      url('/fonts/subset-Barlow-BoldItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow ExtraLight Italic'), local('Barlow-ExtraLightItalic'),
+      url('/fonts/subset-Barlow-ExtraLightItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-ExtraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow ExtraBold Italic'), local('Barlow-ExtraBoldItalic'),
+      url('/fonts/subset-Barlow-ExtraBoldItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-ExtraBoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow ExtraLight'), local('Barlow-ExtraLight'),
+      url('/fonts/subset-Barlow-ExtraLight.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow ExtraBold'), local('Barlow-ExtraBold'),
+      url('/fonts/subset-Barlow-ExtraBold.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Italic'), local('Barlow-Italic'),
+      url('/fonts/subset-Barlow-Italic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Regular'), local('Barlow-Regular'),
+      url('/fonts/subset-Barlow-Regular.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Light Italic'), local('Barlow-LightItalic'),
+      url('/fonts/subset-Barlow-LightItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Medium Italic'), local('Barlow-MediumItalic'),
+      url('/fonts/subset-Barlow-MediumItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Thin Italic'), local('Barlow-ThinItalic'),
+      url('/fonts/subset-Barlow-ThinItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow SemiBold Italic'), local('Barlow-SemiBoldItalic'),
+      url('/fonts/subset-Barlow-SemiBoldItalic.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Medium'), local('Barlow-Medium'),
+      url('/fonts/subset-Barlow-Medium.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow SemiBold'), local('Barlow-SemiBold'),
+      url('/fonts/subset-Barlow-SemiBold.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Thin'), local('Barlow-Thin'),
+      url('/fonts/subset-Barlow-Thin.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: local('Barlow Light'), local('Barlow-Light'),
+      url('/fonts/subset-Barlow-Light.woff2') format('woff2'),
+      url('/fonts/subset-Barlow-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova It'), local('ProximaNova-RegularIt'),
+      url('/fonts/subset-ProximaNova-RegularIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-RegularIt.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Bold It'), local('ProximaNova-BoldIt'),
+      url('/fonts/subset-ProximaNova-BoldIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-BoldIt.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Medium'), local('ProximaNova-Medium'),
+      url('/fonts/subset-ProximaNova-Medium.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Semibold It'), local('ProximaNova-SemiboldIt'),
+      url('/fonts/subset-ProximaNova-SemiboldIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-SemiboldIt.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Medium It'), local('ProximaNova-MediumIt'),
+      url('/fonts/subset-ProximaNova-MediumIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-MediumIt.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova'), local('ProximaNova-Regular'),
+      url('/fonts/subset-ProximaNova-Regular.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Extrabold It'), local('ProximaNova-ExtrabldIt'),
+      url('/fonts/subset-ProximaNova-ExtrabldIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-ExtrabldIt.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Extrabold'), local('ProximaNova-Extrabld'),
+      url('/fonts/subset-ProximaNova-Extrabld.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Extrabld.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Light It'), local('ProximaNova-LightIt'),
+      url('/fonts/subset-ProximaNova-LightIt.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-LightIt.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Bold'), local('ProximaNova-Bold'),
+      url('/fonts/subset-ProximaNova-Bold.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Light'), local('ProximaNova-Light'),
+      url('/fonts/subset-ProximaNova-Light.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: local('Proxima Nova Semibold'), local('ProximaNova-Semibold'),
+      url('/fonts/subset-ProximaNova-Semibold.woff2') format('woff2'),
+      url('/fonts/subset-ProximaNova-Semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
