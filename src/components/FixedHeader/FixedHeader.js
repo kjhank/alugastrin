@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
   height: 115px;
   box-shadow: 0 0.5em 1em ${rgba('#333', 0.25)};
   background-color: #fff;
+  display: none;
 `;
 
 export const FixedHeader = () => (
