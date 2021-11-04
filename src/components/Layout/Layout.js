@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 
 import { Theme } from '@theme/main';
-import { FixedHeader } from '@components';
+import {
+  GlobalFooter, GlobalHeader,
+} from '@components';
 import { GlobalStyle } from '@utils';
 
 import { Seo } from './Seo';
@@ -13,7 +15,9 @@ import { Seo } from './Seo';
 import '@theme/fonts.css';
 
 const Layout = ({
-  children, pageContext: { seo }, path,
+  children, serverData: {
+    globals, pageData: { yoast_head_json: seo },
+  }, path,
 }) => {
   const [
     isNavigationOpen,
@@ -32,11 +36,14 @@ const Layout = ({
       }}
       />
       <GlobalStyle />
-      <FixedHeader
+      <GlobalHeader
         isNavigationOpen={isNavigationOpen}
         setNavigationOpen={setNavigationOpen}
       />
       {children}
+      <GlobalFooter
+        data={globals}
+      />
     </Theme>
   );
 };
@@ -46,10 +53,13 @@ Layout.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
-  pageContext: PropTypes.shape({
-    seo: PropTypes.shape({}),
-  }).isRequired,
   path: PropTypes.string.isRequired,
+  serverData: PropTypes.shape({
+    globals: PropTypes.shape({}),
+    pageData: PropTypes.shape({
+      yoast_head_json: PropTypes.shape({}),
+    }),
+  }).isRequired,
 };
 
 export default Layout;

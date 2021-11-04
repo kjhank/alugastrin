@@ -6,115 +6,136 @@
 
 // You can delete this file if you're not using it
 
-require('dotenv').config({ GATSBY_BACKEND_URL: `.env.${process.env.GATSBY_BACKEND_URL}` });
+// require('dotenv').config({ GATSBY_BACKEND_URL: `.env.${process.env.GATSBY_BACKEND_URL}` });
 
-const fetch = require('node-fetch');
-const path = require('path');
+// const fetch = require('node-fetch');
+// const path = require('path');
 
-const ENDPOINTS = require('./src/static/endpoints.json');
+// const ENDPOINTS = require('./src/static/endpoints.json');
 
-const templates = {
-  homePage: path.resolve('./src/containers/Homepage.js'),
-};
+// const templates = {
+//   homePage: path.resolve('./src/containers/Homepage.js'),
+// };
 
-exports.createPages = async ({
-  actions: { createPage },
-}) => {
-  const getCategories = async () => {
-    const categoriesResponse = await fetch(`${process.env.GATSBY_BACKEND_URL}/${ENDPOINTS.categories}`);
-    const categoriesData = await categoriesResponse.json();
-    const categories = categoriesData.reduce((result, current) => ({
-      ...result,
-      [current.id]: current.slug,
-    }), {});
+// exports.createPages = async ({
+//   actions: { createPage },
+// }) => {
+//   const getCategories = async () => {
+//     const categoriesResponse = await fetch(`${process.env.GATSBY_BACKEND_URL}/${ENDPOINTS.categories}`);
+//     const categoriesData = await categoriesResponse.json();
+//     const categories = categoriesData.reduce((result, current) => ({
+//       ...result,
+//       [current.id]: current.slug,
+//     }), {});
 
-    return categories;
-  };
+//     return categories;
+//   };
 
-  const categoriesById = await getCategories();
+//   const getGlobals = async () => {
+//     const response = await fetch(`${process.env.GATSBY_BACKEND_URL}/${ENDPOINTS.globals}`);
+//     const data = await response.json();
 
-  const getContext = page => {
-    const {
-      id, slug, type, yoast_head_json: seo,
-    } = page;
+//     return data;
+//   };
 
-    const global = {
-      id,
-      seo,
-      slug,
-      type,
-    };
+//   const categoriesById = await getCategories();
+//   const globals = await getGlobals();
 
-    return global;
-  };
+//   const getContext = page => {
+//     const {
+//       id, slug, type, yoast_head_json: seo,
+//     } = page;
 
-  const getTemplate = page => {
-    const {
-      slug, type,
-    } = page;
+//     const global = {
+//       globals,
+//       id,
+//       seo,
+//       slug,
+//       type,
+//     };
 
-    console.log(type, slug);
+//     return global;
+//   };
 
-    return templates.homePage;
-  };
+//   const getTemplate = page => {
+//     const {
+//       slug, type,
+//     } = page;
 
-  const getPath = page => {
-    const {
-      categories, slug, type,
-    } = page;
+//     console.log(type, slug);
 
-    if (slug === 'strona-glowna') {
-      const pageSlug = '/';
+//     return templates.homePage;
+//   };
 
-      return pageSlug;
-    }
+//   const getPath = page => {
+//     const {
+//       categories, slug, type,
+//     } = page;
 
-    if (type === 'products') {
-      const pageSlug = `/produkty/${slug}`;
+//     if (slug === 'strona-glowna') {
+//       const pageSlug = '/';
 
-      return pageSlug;
-    }
+//       return pageSlug;
+//     }
 
-    if (type === 'page') {
-      return slug;
-    }
+//     if (type === 'products') {
+//       const pageSlug = `/produkty/${slug}`;
 
-    if (type === 'post') {
-      const [category] = categories;
+//       return pageSlug;
+//     }
 
-      return `/baza-wiedzy/${categoriesById[category]}/slug`;
-    }
+//     if (type === 'page') {
+//       return slug;
+//     }
 
-    return '/';
-  };
+//     if (type === 'post') {
+//       const [category] = categories;
 
-  const getData = async endpoint => {
-    const url = `${process.env.GATSBY_BACKEND_URL}/${endpoint}?per_page=100`;
-    const response = await fetch(url);
-    const data = await response.json();
+//       return `/baza-wiedzy/${categoriesById[category]}/slug`;
+//     }
 
-    return data;
-  };
+//     return '/';
+//   };
 
-  const getPages = async endpoints => {
-    const data = await Promise.all(endpoints.map(async endpoint => getData(endpoint)));
+//   const getData = async endpoint => {
+//     const url = `${process.env.GATSBY_BACKEND_URL}/${endpoint}?per_page=100`;
+//     const response = await fetch(url);
+//     const data = await response.json();
 
-    return data.flat();
-  };
+//     return data;
+//   };
 
-  const pages = await getPages([
-    ENDPOINTS.pages,
-    ENDPOINTS.posts,
-    ENDPOINTS.products,
-  ]);
+//   const getPages = async endpoints => {
+//     const data = await Promise.all(endpoints.map(async endpoint => getData(endpoint)));
 
-  pages.forEach(page => {
-    const pageConfig = {
-      component: getTemplate(page),
-      context: getContext(page),
-      path: getPath(page),
-    };
+//     return data.flat();
+//   };
 
-    createPage(pageConfig);
+//   const pages = await getPages([
+//     ENDPOINTS.pages,
+//     ENDPOINTS.posts,
+//     ENDPOINTS.products,
+//   ]);
+
+//   pages.forEach(page => {
+//     const pageConfig = {
+//       component: getTemplate(page),
+//       context: getContext(page),
+//       path: getPath(page),
+//     };
+
+//     createPage(pageConfig);
+//   });
+// };
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: { process: 'process/browser' },
+      fallback: {
+        fs: false,
+        os: require.resolve('os-browserify/browser'),
+        path: require.resolve('path-browserify'),
+      },
+    },
   });
 };

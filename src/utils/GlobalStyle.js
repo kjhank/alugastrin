@@ -123,6 +123,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     font-family: ${({ theme }) => theme.getFont()};
+    color: ${({ theme }) => theme.getColor('main')};
     line-height: 1.2;
   }
 

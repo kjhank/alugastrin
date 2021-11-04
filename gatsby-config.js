@@ -24,8 +24,9 @@ module.exports = {
     {
       options: {
         alias: {
-          '@assets': 'src/assets',
           '@components': 'src/components',
+          '@containers': 'src/containers',
+          '@icons': 'src/icons',
           '@pages': 'src/pages',
           '@src': 'src',
           '@static': 'src/static',

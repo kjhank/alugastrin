@@ -67,7 +67,7 @@ export const Seo = ({ data }) => (
       property="twitter:image"
     />
     )}
-    {data.og_image.length > 0 && data.og_image.map(image => (
+    {data?.og_image?.length > 0 && data.og_image.map(image => (
       [
         <meta
           content={image.height}
