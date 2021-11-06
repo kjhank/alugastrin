@@ -1,0 +1,7 @@
+{
+  "categories": "wp/v2/categories",
+  "globals": "acf/v3/options/globals",
+  "pages": "wp/v2/pages",
+  "posts": "wp/v2/posts",
+  "products": "wp/v2/products"
+}
