@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Main } from '@components/styled';
 
-import { Carousel } from '@components/Home';
+import {
+  Carousel, HeroArticles, ProductDescriptions, Video,
+} from '@components/Home';
 
 export const Home = ({
   articles,
@@ -13,10 +15,16 @@ export const Home = ({
 }) => (
   <Main>
     <Carousel slides={carousel} />
+    <ProductDescriptions items={descriptions} />
+    <HeroArticles content={articles} />
+    <Video sources={video} />
   </Main>
 );
 
 Home.propTypes = {
-
+  articles: PropTypes.shape({}).isRequired,
+  carousel: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  descriptions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  video: PropTypes.shape({}).isRequired,
 };
 

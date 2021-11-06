@@ -36,10 +36,10 @@ const theme = {
       height: 2px;
       border-radius: 1px;
       background: linear-gradient(#fff, #fff);
-      transition: ${({ theme: { transitions } }) => `background-size ${transitions.duration}`};
-      background-repeat: no-repeat;
       background-position: center;
-      background-size: 0 100%
+      background-size: 0 100%;
+      background-repeat: no-repeat;
+      transition: ${({ theme: { transitions } }) => `background-size ${transitions.duration}`};
     }
 
     :hover {
@@ -49,6 +49,7 @@ const theme = {
     }
   `,
   getRadius: (variant = 'default') => theme.borderRadii[variant],
+  getTransitions: (properties, duration) => properties.map(property => `${property} ${theme.transitions[duration] || theme.transitions.duration}`).join(', '),
   transitions: {
     duration: '0.4s',
   },

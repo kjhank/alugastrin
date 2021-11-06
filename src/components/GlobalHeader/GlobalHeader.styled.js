@@ -25,8 +25,8 @@ export const Container = styled(GenericContainer)`
     right: 0;
     bottom: 0;
     z-index: -1;
-    border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     width: calc(100% + 21vw);
+    border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     background-image: ${({ theme }) => theme.getGradient()};
   }
 `;
@@ -41,9 +41,9 @@ export const Navigation = styled.nav`
 
 const linkStyle = css`
   ${({ theme }) => theme.getLinkStyles()};
-  font-family: ${({ theme }) => theme.getFont('heading')};
-  font-size: 18px;
   color: #fff;
+  font-size: 18px;
+  font-family: ${({ theme }) => theme.getFont('heading')};
 
 `;
 

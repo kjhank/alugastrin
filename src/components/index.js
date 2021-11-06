@@ -3,3 +3,4 @@ export { ExternalLink } from './ExternalLink/ExternalLink';
 export { GlobalHeader } from './GlobalHeader/GlobalHeader';
 export { GlobalFooter } from './GlobalFooter/GlobalFooter';
 export { SPImage } from './SPImage/SPImage';
+export { ButtonLink } from './ButtonLink/ButtonLink';

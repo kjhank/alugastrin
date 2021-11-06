@@ -13,19 +13,19 @@ export const Container = styled(GenericContainer)`
   justify-content: space-between;
   align-items: flex-start;
   padding: 2.6vw 0 2.6vw 6.14vw;
-  font-size: 16px;
   color: #fff;
+  font-size: 16px;
   line-height: 24px;
 
   ::after {
       content: '';
       position: absolute;
       top: 0;
-      left: 0;
       bottom: 0;
+      left: 0;
       z-index: -1;
-      border-radius: ${({ theme }) => `${theme.getRadius('large')} 0 0 0`};
       width: calc(100% + 21vw);
+      border-radius: ${({ theme }) => `${theme.getRadius('large')} 0 0 0`};
       background-image: ${({ theme }) => theme.getGradient('left')};
     }
 `;
@@ -85,8 +85,8 @@ export const ContactData = styled.address`
 
 export const SIL = styled.p`
   margin: 1.8vw 0 1.35vw;
-  padding-bottom: 1.8vw;
   border-bottom: 1px solid ${({ theme }) => theme.getColor('border')};
+  padding-bottom: 1.8vw;
   font-size: 11px;
   line-height: 14px;
 
@@ -96,11 +96,11 @@ export const SIL = styled.p`
 `;
 
 export const LeafletLegal = styled.p`
+  border-bottom: 1px solid ${({ theme }) => theme.getColor('border')};
+  padding-bottom: 1.35vw;
   font-size: 32px;
   line-height: 39px;
   text-align: center;
-  padding-bottom: 1.35vw;
-  border-bottom: 1px solid ${({ theme }) => theme.getColor('border')};
 `;
 
 export const Copyright = styled.p`
@@ -117,9 +117,9 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
   border: none;
   padding: 0;
+  background-color: transparent;
   font-weight: 300;
   font-size: 16px;
   font-family: ${({ theme }) => theme.getFont()};

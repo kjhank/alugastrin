@@ -119,11 +119,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    overflow: hidden;
     min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    font-family: ${({ theme }) => theme.getFont()};
     color: ${({ theme }) => theme.getColor('main')};
+    font-family: ${({ theme }) => theme.getFont()};
     line-height: 1.2;
   }
 

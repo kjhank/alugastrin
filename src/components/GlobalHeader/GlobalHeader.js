@@ -15,7 +15,7 @@ export const GlobalHeader = () => (
       </Link>
       <Navigation>
         {mainNav.map(({
-          target,
+          // target,
           text,
           to,
           type,
