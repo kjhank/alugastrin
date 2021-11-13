@@ -64,7 +64,7 @@ export const Link = styled(GenericLink)`
   align-items: center;
   margin-top: 1.05vw;
   font-weight: 700;
-  transition: ${({ theme }) => theme.getTransitions(['color'])};
+  transition: ${({ theme }) => theme.getTransitions(['color'], 'fastDuration')};
 
   ::before {
     content: '';
@@ -72,7 +72,7 @@ export const Link = styled(GenericLink)`
     height: 2px;
     margin-right: 0.52vw;
     background-color: ${({ theme }) => theme.getColor('main')};
-    transition: ${({ theme }) => theme.getTransitions(['background-color'])};
+    transition: ${({ theme }) => theme.getTransitions(['background-color'], 'fastDuration')};
   }
 
   :hover {

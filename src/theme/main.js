@@ -11,7 +11,6 @@ const theme = {
     small: '25px',
   },
   colors: {
-    // color declarations go here
     accent: '#bb181b',
     background: '#eeeeec',
     border: '#9e0e0d',
@@ -52,6 +51,7 @@ const theme = {
   getTransitions: (properties, duration) => properties.map(property => `${property} ${theme.transitions[duration] || theme.transitions.duration}`).join(', '),
   transitions: {
     duration: '0.4s',
+    fastDuration: '0.2s',
   },
 };
 

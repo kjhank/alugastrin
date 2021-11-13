@@ -7529,6 +7529,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-hooks@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "eslint-plugin-react-hooks@npm:4.3.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+  checksum: 0ba1566ba0780bbc75a5921f49188edf232db2085ab32c8d3889592f0db9d6fadc97fcf639775e0101dec6b5409ca3c803ec44213b90c8bacaf0bdf921871c2e
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react@npm:^7.26.1":
   version: 7.26.1
   resolution: "eslint-plugin-react@npm:7.26.1"
@@ -8963,7 +8972,7 @@ __metadata:
     eslint-plugin-import: ^2.25.2
     eslint-plugin-jsx-a11y: ^6.4.1
     eslint-plugin-react: ^7.26.1
-    eslint-plugin-react-hooks: ^4.2.0
+    eslint-plugin-react-hooks: ^4.3.0
     gatsby: ^4.1.0
     gatsby-plugin-alias-imports: ^1.0.5
     gatsby-plugin-image: ^2.0.0
@@ -8985,6 +8994,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-helmet: ^6.1.0
+    react-paginate: ^8.0.0
     sanitize-html: ^2.5.3
     smoothscroll-polyfill: ^0.4.4
     styled-components: ^5.3.3
@@ -14721,6 +14731,17 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-paginate@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "react-paginate@npm:8.0.0"
+  dependencies:
+    prop-types: ^15.6.1
+  peerDependencies:
+    react: ^16 || ^17
+  checksum: 2d2c39d32545ccc2a99f4b09fd509160205e1588e1ca5e659d59792fb1f8b839bb9973ca1312b9299ddbe9eda4a7173051fc09dd0eca38f7a2c80faa0c158279
   languageName: node
   linkType: hard
 
