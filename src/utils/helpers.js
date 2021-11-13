@@ -14,16 +14,25 @@ export const getApiData = async (endpoint, params = 'per_page=100') => {
 };
 
 export const getPageData = async pageSlug => {
-  const data = await getApiData(endpoints.pages, `slug=${pageSlug}`);
   const globalsData = await getApiData(endpoints.globals);
   const categories = await getApiData(endpoints.categories);
-  const [pageData] = data;
 
-  return {
+  const globals = {
     categories,
     globals: globalsData.acf,
-    pageData,
   };
+
+  if (pageSlug) {
+    const data = await getApiData(endpoints.pages, `slug=${pageSlug}`);
+    const [pageData] = data;
+
+    return {
+      ...globals,
+      pageData,
+    };
+  }
+
+  return globals;
 };
 
 export const getPosts = async (numberPerPage = 23, page = 1, category) => {
@@ -59,15 +68,23 @@ export const getProducts = async () => {
   ];
 };
 
+export const getProduct = async slug => {
+  const data = await getApiData(endpoints.products, `slug=${slug}`);
+
+  return data;
+};
+
 export const debounceFunction = (func, delay) => {
   let timer;
 
-  return function (...args) {
+  function debounced(...args) {
     const self = this;
 
     clearTimeout(timer);
     timer = setTimeout(() => {
       func.apply(self, args);
     }, delay);
-  };
+  }
+
+  return debounced;
 };

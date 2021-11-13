@@ -52,8 +52,10 @@ export const Link = styled(ButtonLink)`
   border-color: #fff;
   background: ${({ theme }) => theme.getGradient()};
   color: #fff;
+  transition: ${({ theme }) => theme.getTransitions(['filter'])};
 
   :hover {
+    filter: brightness(1.2);
     border-color: #fff;
     color: #fff;
   }

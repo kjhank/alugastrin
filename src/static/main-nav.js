@@ -1,7 +1,7 @@
 export const mainNav = [
   {
     text: 'Produkty',
-    to: '/products/',
+    to: '/produkty/',
     type: 'link',
   },
   {

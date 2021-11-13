@@ -9,6 +9,7 @@ const theme = {
     default: '50px',
     large: '200px',
     small: '25px',
+    tiny: '11px',
   },
   colors: {
     accent: '#bb181b',
@@ -22,7 +23,7 @@ const theme = {
   },
   getColor: variant => theme.colors[variant],
   getFont: (variant = 'default') => theme.fonts[variant],
-  getGradient: (direction = 'right') => `linear-gradient(to ${direction}, #930e0d, #d42027)`,
+  getGradient: (direction = 'right') => (direction === 'radial' ? 'radial-gradient(#d42027 5%, #930e0d)' : `linear-gradient(to ${direction}, #930e0d, #d42027)`),
   getLinkStyles: () => css`
     position: relative;
 
