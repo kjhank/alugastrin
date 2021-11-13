@@ -30,9 +30,7 @@ const sanitizeConfig = {
 };
 
 export const GlobalFooter = ({
-  data: {
-    address, contact, copyright, leafletLegal, links, sil,
-  },
+  data,
 }) => {
   const handleScrollUp = () => window.scrollTo({
     behavior: 'smooth',
@@ -47,7 +45,7 @@ export const GlobalFooter = ({
             <ManufacturerLogo />
           </LogoWrapper>
           <Links>
-            {links.map(({ link }) => (
+            {data?.links.map(({ link }) => (
               <ExternalLink
                 href={link.url}
                 key={link.title}
@@ -57,10 +55,10 @@ export const GlobalFooter = ({
               </ExternalLink>
             ))}
           </Links>
-          <ContactData dangerouslySetInnerHTML={{ __html: sanitize(address) }} />
+          <ContactData dangerouslySetInnerHTML={{ __html: sanitize(data?.address) }} />
         </LeftPart>
         <RightPart dangerouslySetInnerHTML={{
-          __html: sanitize(contact, {
+          __html: sanitize(data?.contact, {
             allowedTags: [
               'a',
               'br',
@@ -72,12 +70,12 @@ export const GlobalFooter = ({
         />
       </Container>
       <GlobalContainer>
-        <SIL dangerouslySetInnerHTML={{ __html: sanitize(sil, sanitizeConfig) }} />
+        <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
         <LeafletLegal
-          dangerouslySetInnerHTML={{ __html: sanitize(leafletLegal, sanitizeConfig) }}
+          dangerouslySetInnerHTML={{ __html: sanitize(data?.leafletLegal, sanitizeConfig) }}
         />
         <Copyright>
-          {copyright}
+          {data?.copyright}
         </Copyright>
         <ScrollButton onClick={handleScrollUp}>
           <DashUp />

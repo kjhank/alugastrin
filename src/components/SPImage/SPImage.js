@@ -12,7 +12,7 @@ export const SPImage = ({
       type={`${image.type}/${image.subtype}`}
     />
     <source
-      srcSet={`${image.url.substr(0, image.url.lastIndexOf('.'))}.webp`}
+      srcSet={`${image?.url?.substr(0, image.url.lastIndexOf('.'))}.webp`}
       type={`${image.type}/webp`}
     />
     <img

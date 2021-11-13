@@ -2,7 +2,22 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 export const Main = styled.main`
-  margin-top: 95px;
+  position: relative;
+  margin-top: ${({ hasNoMargin }) => !hasNoMargin && '95px'};
+
+  ::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: calc(100% - 21vw + 5.46875vw);
+    height: 95px;
+    border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
+    background-image: ${({ theme }) => theme.getGradient()};
+    mix-blend-mode: multiply;
+  }
 `;
 
 export const StyledButtonLink = styled(Link)`

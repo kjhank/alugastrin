@@ -1,15 +1,12 @@
-import GlobalStyle from './GlobalStyle';
-import {
+export { default as GlobalStyle } from './GlobalStyle';
+export {
   mediaQueries,
   mfQueries,
 } from './rwd';
-import {
+export {
+  debounceFunction,
+  getApiData,
+  getPageData,
+  getPosts,
   isBrowser,
 } from './helpers';
-
-export {
-  GlobalStyle,
-  isBrowser,
-  mediaQueries,
-  mfQueries,
-};
