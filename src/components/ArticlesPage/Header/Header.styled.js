@@ -86,7 +86,7 @@ export const FilterButton = styled.button.attrs({ type: 'button' })`
   ${common}
   background-color: #fff;
   color: ${({ theme }) => theme.getColor('main')};
-  text-decoration: ${({ isSelected }) => (isSelected ? 'underline' : 'none')}
+  text-decoration: ${({ isSelected }) => (isSelected ? 'underline' : 'none')};
   cursor: pointer;
 `;
 

@@ -43,6 +43,22 @@ export const getPosts = async (numberPerPage = 23, page = 1, category) => {
   return data;
 };
 
+export const getProducts = async () => {
+  const data = await getApiData(endpoints.products);
+  const [
+    firstGroup,
+    secondGroup,
+  ] = [
+    data.filter(item => !item.acf.isInSecondGroup),
+    data.filter(item => item.acf.isInSecondGroup),
+  ];
+
+  return [
+    firstGroup,
+    secondGroup,
+  ];
+};
+
 export const debounceFunction = (func, delay) => {
   let timer;
 
