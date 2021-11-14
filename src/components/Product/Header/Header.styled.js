@@ -5,6 +5,7 @@ import {
 } from '@components';
 
 export const StyledHeader = styled.header`
+  margin-top: 4.95vw;
   padding-top: 4vw;
   background-color: #fff;
 `;

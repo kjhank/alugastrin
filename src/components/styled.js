@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
 export const Main = styled.main`
   position: relative;
-  margin-top: ${({ hasNoMargin }) => !hasNoMargin && '95px'};
+  margin-top: ${({ hasNoMargin }) => !hasNoMargin && '4.95vw'};
 
   ::before {
     content: '';
@@ -20,7 +20,7 @@ export const Main = styled.main`
   }
 `;
 
-export const StyledButtonLink = styled(Link)`
+export const buttonLinkStyles = css`
   display: inline-flex;
   flex-grow: 0;
   flex-shrink: 0;
@@ -50,5 +50,25 @@ export const StyledButtonLink = styled(Link)`
     > svg {
       transform: ${({ $isFlipped }) => ($isFlipped ? 'translateX(-20%) rotateY(180deg)' : 'translateX(20%);')};
     }
+  }
+`;
+
+export const StyledButtonLink = styled(Link)`
+  ${buttonLinkStyles}
+`;
+
+export const LineHeading = styled.h2`
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.getColor('accent')};
+  font-weight: 600;
+  font-size: 46px;
+
+  ::before {
+    content: '';
+    width: 5.58vw;
+    height: 2px;
+    margin-right: 1.51vw;
+    background-color: ${({ theme }) => theme.getColor('accent')};
   }
 `;

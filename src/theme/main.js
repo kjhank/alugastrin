@@ -8,6 +8,7 @@ const theme = {
   borderRadii: {
     default: '50px',
     large: '200px',
+    medium: '33px',
     small: '25px',
     tiny: '11px',
   },
@@ -15,6 +16,7 @@ const theme = {
     accent: '#bb181b',
     background: '#eeeeec',
     border: '#9e0e0d',
+    gradientGray: '#e6e6e6',
     main: '#3b3b3b',
   },
   fonts: {

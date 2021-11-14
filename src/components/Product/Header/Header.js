@@ -24,7 +24,18 @@ export const Header = ({
   }, name, sections,
 }) => {
   const handleScroll = ({ current: sectionElement }) => {
-    console.log(sectionElement);
+    if (sectionElement) {
+      const HEADER_HEIGHT = 95; // TODO: calculate instead of hardcoding;
+
+      const elementOffset = sectionElement.getBoundingClientRect().top;
+      const scrollDistance = elementOffset + window.scrollY - HEADER_HEIGHT;
+      const scrollConfig = {
+        behavior: 'smooth',
+        top: scrollDistance,
+      };
+
+      window.scrollTo(scrollConfig);
+    }
   };
 
   return (
