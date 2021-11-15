@@ -57,6 +57,22 @@ export const StyledButtonLink = styled(Link)`
   ${buttonLinkStyles}
 `;
 
+export const PageHeading = styled.h1`
+  position: relative;
+  font-weight: 600;
+  font-size: 66px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vw;
+    left: 0;
+    width: 10.73vw;
+    height: 2px;
+    background-color: ${({ theme }) => theme.getColor('main')};
+  }
+`;
+
 export const LineHeading = styled.h2`
   display: flex;
   align-items: center;

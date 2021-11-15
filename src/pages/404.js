@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+
 import {
   Container,
 } from '@components';
 
-const Wrapper = styled.main`
-  margin-top: 115px;
-  color: ${({ theme }) => theme.colors.accent};
-`;
+import {
+  LineHeading, Main,
+} from '@components/styled';
 
 const Text = styled.p`
   font-size: 16px;
@@ -19,19 +19,23 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
-const IndexPage = () => (
-  <Wrapper>
+const NotFoundPage = ({ uri }) => (
+  <Main>
     <Container>
-      <h1>Hello there</h1>
+      <LineHeading as="h1">Error 404 - not found</LineHeading>
       <Text>
-        This is a custom 404 page.
+        The page at
+        {' '}
+        {uri}
+        {' '}
+        could not be found.
         {' '}
         <StyledLink to="/">Click here</StyledLink>
         {' '}
         to go home.
       </Text>
     </Container>
-  </Wrapper>
+  </Main>
 );
 
-export default IndexPage;
+export default NotFoundPage;

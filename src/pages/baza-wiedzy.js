@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
   getPageData, getPosts,
-} from '@utils/helpers';
+} from '@utils/api';
 
 import { ArticlesContainer } from '@containers';
 

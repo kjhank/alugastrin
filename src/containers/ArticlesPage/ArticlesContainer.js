@@ -48,8 +48,6 @@ export const ArticlesContainer = ({
 
     setPosts(initialPosts.slice(postsOffset, endOffset));
     setPageCount(Math.ceil(initialPosts.length / articlesPerPage));
-
-    filtersRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [
     postsOffset,
     articlesPerPage,
@@ -59,6 +57,8 @@ export const ArticlesContainer = ({
     const newOffset = (selected * articlesPerPage) % initialPosts.length;
 
     setPostsOffset(newOffset);
+
+    filtersRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {

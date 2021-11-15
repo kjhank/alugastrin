@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getPageData } from '@utils/helpers';
+import { getPageData } from '@utils/api';
 
 import { Home } from '@containers';
 

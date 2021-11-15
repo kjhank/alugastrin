@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import {
   getPageData, getProduct,
-} from '@utils/helpers';
+} from '@utils/api';
 
 import { ProductContainer } from '@containers';
 
-const ProductsPage = ({
+const ProductPage = ({
   serverData: {
     product,
   },
@@ -15,15 +15,15 @@ const ProductsPage = ({
   <ProductContainer product={product.acf} />
 );
 
-ProductsPage.propTypes = {
+ProductPage.propTypes = {
   serverData: PropTypes.shape({
     product: PropTypes.shape({
       acf: PropTypes.shape({}),
-    }).isRequired,
+    }),
   }).isRequired,
 };
 
-export default ProductsPage;
+export default ProductPage;
 
 export const getServerData = async ({ params: { slug } }) => {
   const pageData = await getPageData(null);
