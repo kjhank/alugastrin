@@ -18,30 +18,33 @@ export const Link = styled(ExternalLink)``;
 
 export const WidgetButton = styled.button.attrs({ type: 'button' })`
   ${buttonLinkStyles}
-  background-color: #fff;
+  background-color: ${({
+    isActive, theme,
+  }) => (isActive ? theme.getColor('accent') : '#fff')};
+  color: ${({
+    isActive, theme,
+  }) => (isActive ? '#fff' : theme.getColor('main'))};
+  transition: ${({ theme }) => theme.getTransitions([
+    'background-color',
+    'color',
+  ])};
   cursor: pointer;
 
   > svg {
     fill: currentColor;
-  }
-`;
-
-export const Online = styled.p`
-  ${buttonLinkStyles}
-  border-color: ${({ theme }) => theme.getColor('accent')};
-  background-color: ${({ theme }) => theme.getColor('accent')};
-  color: #fff;
-
-  > svg {
-    fill: currentColor;
-    transform: rotateZ(90deg);
+    transform: ${({ isActive }) => isActive && 'rotate(90deg)'}
   }
 
   :hover {
-    color: #fff;
+    background-color: ${({
+    isActive, theme,
+  }) => (isActive ? '#fff' : theme.getColor('accent'))};
+    color: ${({
+    isActive, theme,
+  }) => (isActive ? theme.getColor('accent') : '#fff')};
 
     > svg {
-      transform: rotateZ(90deg);
+      transform: ${({ isActive }) => (isActive ? 'rotate(90deg)' : 'none')};
     }
   }
 `;

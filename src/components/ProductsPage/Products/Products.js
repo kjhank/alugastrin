@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  createRef, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -22,28 +24,69 @@ export const renderName = name => {
   );
 };
 
-export const Products = ({ products }) => (
-  <Container>
-    {products.map(group => (
-      <List key={JSON.stringify(group)}>
-        {group.map(product => (
-          <Product key={product.acf.name}>
-            <Image image={product.acf.thumbnail} />
-            {renderName(product.acf.name)}
-            <Description>{product.acf.intro}</Description>
-            <Text>{product.acf.listingDescription}</Text>
-            <Link to={product.slug}>
-              Zobacz produkt
-            </Link>
-          </Product>
-        ))}
-      </List>
+export const Products = ({
+  headerRef, products, targetGroup,
+}) => {
+  /* eslint-disable sort-keys */
+  const sectionRefs = {
+    'zgaga-i-refluks': createRef(),
+    'specjalistyczna-probiotykoterapia': createRef(),
+  };
+  /* eslint-enable sort-keys */
 
-    ))}
-  </Container>
-);
+  const handleScroll = target => {
+    const { current: element } = sectionRefs[target];
 
-Products.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))).isRequired,
+    const { current: globalHeader } = headerRef;
+
+    const scrollOffset = element.getBoundingClientRect().top +
+        window.scrollY -
+        globalHeader.getBoundingClientRect().height;
+
+    const scrollConfig = {
+      behavior: 'smooth',
+      top: scrollOffset,
+    };
+
+    window.scrollTo(scrollConfig);
+  };
+
+  useEffect(() => {
+    if (targetGroup) {
+      handleScroll(targetGroup);
+    }
+  }, [targetGroup]);
+
+  return (
+    <Container>
+      {products.map((group, index) => (
+        <List
+          key={JSON.stringify(group)}
+          ref={Object.keys(sectionRefs).map(key => sectionRefs[key])[index]}
+        >
+          {group.map(product => (
+            <Product key={product.acf.name}>
+              <Image image={product.acf.thumbnail} />
+              {renderName(product.acf.name)}
+              <Description>{product.acf.intro}</Description>
+              <Text>{product.acf.listingDescription}</Text>
+              <Link to={product.slug}>
+                Zobacz produkt
+              </Link>
+            </Product>
+          ))}
+        </List>
+      ))}
+    </Container>
+  );
 };
 
+Products.propTypes = {
+  headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
+  products: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))).isRequired,
+  targetGroup: PropTypes.string,
+};
+
+Products.defaultProps = {
+  targetGroup: null,
+};

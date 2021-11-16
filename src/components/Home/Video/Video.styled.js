@@ -17,6 +17,11 @@ export const PlayButton = styled.button.attrs({ type: 'button' })`
     'filter',
   ])};
   transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  :hover {
+    filter: brightness(1.2);
+  }
 `;
 
 export const Player = styled.video.attrs({ controls: true })`

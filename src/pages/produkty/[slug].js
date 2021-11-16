@@ -11,8 +11,12 @@ const ProductPage = ({
   serverData: {
     product,
   },
+  ...props
 }) => (
-  <ProductContainer product={product.acf} />
+  <ProductContainer
+    product={product.acf}
+    {...props}
+  />
 );
 
 ProductPage.propTypes = {

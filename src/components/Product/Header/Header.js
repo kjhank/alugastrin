@@ -8,27 +8,28 @@ import {
 import {
   Container,
   Description,
-  ExternalLink,
   Image,
   Link, LinksWrapper,
   Name,
   ScrollButton,
   Scrollers,
+  ScrollToBuyButton,
   StyledHeader,
   Wrapper,
 } from './Header.styled';
 
 export const Header = ({
-  description, image, links: {
+  buyRef, cssClass, description, headerRef, image, links: {
     buyLink, leaflet,
   }, name, sections,
 }) => {
   const handleScroll = ({ current: sectionElement }) => {
     if (sectionElement) {
-      const HEADER_HEIGHT = 95; // TODO: calculate instead of hardcoding;
+      const { current: headerElement } = headerRef;
+      const headerHeight = headerElement.getBoundingClientRect().height;
 
       const elementOffset = sectionElement.getBoundingClientRect().top;
-      const scrollDistance = elementOffset + window.scrollY - HEADER_HEIGHT;
+      const scrollDistance = elementOffset + window.scrollY - headerHeight;
       const scrollConfig = {
         behavior: 'smooth',
         top: scrollDistance,
@@ -39,18 +40,21 @@ export const Header = ({
   };
 
   return (
-    <StyledHeader>
-      <Container>
-        <Image image={image} />
+    <StyledHeader className={cssClass}>
+      <Container className={cssClass}>
+        <Image
+          className={cssClass}
+          image={image}
+        />
         <Wrapper>
           <Name>{name}</Name>
           <Description>{description}</Description>
           <LinksWrapper>
-            <ExternalLink href={buyLink.url}>
-              {buyLink.text}
+            <ScrollToBuyButton onClick={() => handleScroll(buyRef)}>
+              {buyLink}
               {' '}
               <ShoppingCart />
-            </ExternalLink>
+            </ScrollToBuyButton>
             <Link href={leaflet.file.url}>
               {leaflet.text}
               {' '}
@@ -74,13 +78,15 @@ export const Header = ({
 };
 
 Header.propTypes = {
+  buyRef: PropTypes.shape({}).isRequired,
+  cssClass: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  headerRef: PropTypes.shape({
+    current: PropTypes.shape({}),
+  }).isRequired,
   image: PropTypes.shape({}).isRequired,
   links: PropTypes.shape({
-    buyLink: PropTypes.shape({
-      text: PropTypes.string,
-      url: PropTypes.string,
-    }),
+    buyLink: PropTypes.string,
     leaflet: PropTypes.shape({
       file: PropTypes.shape({
         url: PropTypes.string,

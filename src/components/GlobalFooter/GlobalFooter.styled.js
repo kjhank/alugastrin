@@ -5,7 +5,7 @@ import {
 } from '@components';
 
 export const Wrapper = styled.footer`
-  margin-top: 4vw;
+  margin: 4vw 0 2vw;
 `;
 
 export const Container = styled(GenericContainer)`

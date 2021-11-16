@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import { Container } from '@components';
 
@@ -14,7 +15,11 @@ export const Hero = ({
 }) => (
   <Wrapper>
     <Container>
-      <Heading>{heading}</Heading>
+      <Heading
+        dangerouslySetInnerHTML={{ __html: sanitize(heading) }}
+        isBold={!heading.includes('<strong>') || heading.includes('<br />')}
+        isLarger={heading.includes('<strong>')}
+      />
       <Image image={image} />
     </Container>
   </Wrapper>

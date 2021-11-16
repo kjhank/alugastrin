@@ -1,3 +1,4 @@
+export { Main } from './Main/Main';
 export { Container } from './Container/Container';
 export { ExternalLink } from './ExternalLink/ExternalLink';
 export { GlobalHeader } from './GlobalHeader/GlobalHeader';

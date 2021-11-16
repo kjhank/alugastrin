@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import {
-  ExternalLink as External, Container as GenericContainer, SPImage,
+  Container as GenericContainer, SPImage,
 } from '@components';
 
 export const StyledHeader = styled.header`
@@ -15,9 +15,20 @@ export const Container = styled(GenericContainer)`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+
+  &.alugastrin3forte--20 {
+    justify-content: flex-end;
+  }
 `;
 
-export const Image = styled(SPImage)``;
+export const Image = styled(SPImage)`
+  max-width: 50%;
+
+  &.alugastrin3forte--20 {
+    width: 35%;
+    margin-right: 5%;
+  }
+`;
 
 export const Wrapper = styled.div`
   width: 50%;
@@ -64,8 +75,9 @@ export const Link = styled.a`
   ${linkStyle}
 `;
 
-export const ExternalLink = styled(External)`
+export const ScrollToBuyButton = styled.button`
   ${linkStyle}
+  cursor: pointer
 `;
 
 export const Scrollers = styled.nav`

@@ -10,6 +10,21 @@ export const Wrapper = styled.header`
   left: 0;
   z-index: 5;
   background-color: transparent;
+
+  ::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    opacity: ${({ isOpaque }) => (isOpaque ? 1 : 0)};
+    width: calc(100% - 21vw + 5.46875vw);
+    height: 95px;
+    border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
+    background-image: ${({ theme }) => theme.getGradient()};
+    transition: ${({ theme }) => theme.getTransitions(['opacity'])};
+  }
 `;
 
 export const Container = styled(GenericContainer)`
@@ -46,4 +61,10 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
   padding: 0;
   background-color: transparent;
   cursor: pointer;
+`;
+
+export const NavToggle = styled.button.attrs({ type: 'button' })`
+  display: none;
+  background-color: transparent;
+  color: #fff;
 `;

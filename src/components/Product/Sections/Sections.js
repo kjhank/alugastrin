@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import {
   Container, Heading, Section, Text,
@@ -13,7 +14,7 @@ export const Sections = ({ sections }) => (
         ref={section.innerRef}
       >
         <Heading>{section.heading}</Heading>
-        <Text>{section.text}</Text>
+        <Text dangerouslySetInnerHTML={{ __html: sanitize(section.text) }} />
       </Section>
     ))}
   </Container>

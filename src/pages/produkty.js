@@ -8,17 +8,29 @@ import {
 import { ProductsContainer } from '@containers';
 
 const ProductsPage = ({
+  location,
   serverData: {
     pageData: { title: { rendered: renderedTitle } }, products,
   },
-}) => (
-  <ProductsContainer
-    products={products}
-    title={renderedTitle}
-  />
-);
+  ...props
+}) => {
+  const url = new URL(location.href);
+  const params = new URLSearchParams(url.search);
+
+  return (
+    <ProductsContainer
+      products={products}
+      targetGroup={params.get('typ')}
+      title={renderedTitle}
+      {...props}
+    />
+  );
+};
 
 ProductsPage.propTypes = {
+  location: PropTypes.shape({
+    href: PropTypes.string,
+  }).isRequired,
   serverData: PropTypes.shape({
     pageData: PropTypes.shape({
       title: PropTypes.shape({
@@ -34,8 +46,6 @@ export default ProductsPage;
 export const getServerData = async () => {
   const slug = 'produkty';
   const pageData = await getPageData(slug);
-
-  // const { pageData: { acf: { articlesPerPage } } } = pageData;
 
   const products = await getProducts();
 

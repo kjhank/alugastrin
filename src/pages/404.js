@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import {
-  Container,
+  Container, Main,
 } from '@components';
 
 import {
-  LineHeading, Main,
+  LineHeading,
 } from '@components/styled';
 
 const Text = styled.p`
@@ -19,8 +20,10 @@ const StyledLink = styled(Link)`
   text-decoration: underline;
 `;
 
-const NotFoundPage = ({ uri }) => (
-  <Main>
+const NotFoundPage = ({
+  uri, ...props
+}) => (
+  <Main {...props}>
     <Container>
       <LineHeading as="h1">Error 404 - not found</LineHeading>
       <Text>
@@ -39,3 +42,7 @@ const NotFoundPage = ({ uri }) => (
 );
 
 export default NotFoundPage;
+
+NotFoundPage.propTypes = {
+  uri: PropTypes.string.isRequired,
+};
