@@ -37,6 +37,7 @@ export const getServerData = async () => {
 
   return {
     props: pageData,
+    status: 200,
   };
 };
 
