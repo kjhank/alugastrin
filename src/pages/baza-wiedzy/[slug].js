@@ -24,15 +24,17 @@ const PostPage = ({
     return <NotFoundPage uri={uri} />;
   }
 
-  const sections = acf.sections?.map(section => {
-    const { notInNav } = section;
-    const innerRef = notInNav ? null : createRef();
+  const sections = acf?.sections ?
+    acf?.sections?.map(section => {
+      const { notInNav } = section;
+      const innerRef = notInNav ? null : createRef();
 
-    return {
-      ...section,
-      innerRef,
-    };
-  }) || null;
+      return {
+        ...section,
+        innerRef,
+      };
+    }) :
+    null;
 
   return (
     <ArticleContainer
@@ -85,15 +87,17 @@ export const getServerData = async ({ params: { slug } }) => {
     }
 
     const [post] = posts.length > 0 ? posts : [posts];
-    const { yoast_head_json = null } = post || null;
-    const productsGroups = await getProducts(post.acf.products.map(({ product }) => product));
+
+    const productsGroups = post.acf.products ?
+      await getProducts(post.acf.products.map(({ product }) => product)) :
+      [null];
     const [products] = productsGroups;
 
     return {
       props: {
         ...pageData,
         pageData: {
-          yoast_head_json,
+          yoast_head_json: post.yoast_head_json || null,
         },
         post,
         products,

@@ -55,7 +55,8 @@ export const ListWrapper = styled.div`
 export const TextWrapper = styled.div`
   margin-bottom: 4.166667vw;
 
-  h3 {
+  h3,
+  > p {
     color: ${({ theme }) => theme.getColor('accent')};
     font-weight: 600;
     font-size: 24px;

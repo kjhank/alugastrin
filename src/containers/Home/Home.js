@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Main } from '@components/styled';
+import { Main } from '@components';
 
 import {
   Carousel, HeroArticles, ProductDescriptions, Video,
@@ -12,8 +12,9 @@ export const Home = ({
   carousel,
   descriptions,
   video,
+  ...props
 }) => (
-  <Main>
+  <Main {...props}>
     <Carousel slides={carousel} />
     <ProductDescriptions items={descriptions} />
     <HeroArticles content={articles} />

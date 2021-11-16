@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import { Main } from '@components/styled';
+import { Main } from '@components';
 
 import {
   Header, Pagination, Posts,
@@ -16,6 +16,7 @@ export const ArticlesContainer = ({
   heading,
   initialPosts,
   intro,
+  ...props
 }) => {
   const [
     isPaginationVisible,
@@ -72,7 +73,10 @@ export const ArticlesContainer = ({
   }, [currentFilter]);
 
   return (
-    <Main hasNoMargin>
+    <Main
+      hasNoMargin
+      {...props}
+    >
       <Header
         articlesPerPage={articlesPerPage}
         currentFilter={currentFilter}

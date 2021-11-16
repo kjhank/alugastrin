@@ -28,7 +28,7 @@ export const Header = ({
         <PageHeading dangerouslySetInnerHTML={{ __html: sanitize(title) }} />
         <Wrapper>
           <TableOfContents>
-            {sections.map(section => (
+            {sections?.map(section => (
               <SectionItem key={section.heading}>
                 <SectionScrollButton onClick={() => handleScroll(section.innerRef)}>
                   {section.heading}

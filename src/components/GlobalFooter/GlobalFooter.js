@@ -30,6 +30,7 @@ const sanitizeConfig = {
 };
 
 export const GlobalFooter = ({
+  contactRef,
   data,
 }) => {
   const handleScrollUp = () => window.scrollTo({
@@ -38,7 +39,7 @@ export const GlobalFooter = ({
   });
 
   return (
-    <Wrapper>
+    <Wrapper ref={contactRef}>
       <Container>
         <LeftPart>
           <LogoWrapper>
@@ -87,6 +88,7 @@ export const GlobalFooter = ({
 };
 
 GlobalFooter.propTypes = {
+  contactRef: PropTypes.shape({}).isRequired,
   data: PropTypes.shape({
     address: PropTypes.string,
     contact: PropTypes.string,

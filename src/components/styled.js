@@ -4,6 +4,9 @@ import { Link } from 'gatsby';
 export const Main = styled.main`
   position: relative;
   margin-top: ${({ hasNoMargin }) => !hasNoMargin && '4.95vw'};
+  background-image: ${({
+    hasGradient, theme,
+  }) => hasGradient && `linear-gradient(to bottom, ${theme.getColor('gradientGray')}, #fff)`};
 
   ::before {
     content: '';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { LineHeading } from '@components/styled';
@@ -6,32 +6,46 @@ import { LineHeading } from '@components/styled';
 import { ArrowRight } from '@icons';
 
 import {
-  Container, Image, Item, Link, Links, Online, Section, WidgetButton, Wrapper,
+  Container, Image, Item, Link, Links, Section, WidgetButton, Wrapper,
 } from './WhereToBuy.styled';
 
 export const WhereToBuy = ({
   data: {
     heading, links, offline, online,
   },
+  innerRef,
 }) => {
-  const toggleWidget = () => {};
+  const [
+    openSection,
+    setOpenSection,
+  ] = useState(null);
+
+  const toggleSection = section => {
+    setOpenSection(openSection === section ? null : section);
+  };
 
   return (
-    <Section>
+    <Section ref={innerRef}>
       <Container>
         <LineHeading>{heading}</LineHeading>
         <Wrapper>
           <WidgetButton
             as="button"
-            onClick={toggleWidget}
+            isActive={openSection === 'offline'}
+            onClick={() => toggleSection('offline')}
           >
             {offline}
             <ArrowRight />
           </WidgetButton>
-          <Online>
+          <WidgetButton
+            as="button"
+            isActive={openSection === 'online'}
+            onClick={() => toggleSection('online')}
+          >
             {online}
             <ArrowRight />
-          </Online>
+          </WidgetButton>
+          {openSection === 'online' && (
           <Links>
             {links.map(link => (
               <Item key={link.link}>
@@ -41,6 +55,8 @@ export const WhereToBuy = ({
               </Item>
             ))}
           </Links>
+          )}
+          {openSection === 'offline' && 'tu będzie ktomalek'}
         </Wrapper>
       </Container>
     </Section>
@@ -54,5 +70,6 @@ WhereToBuy.propTypes = {
     offline: PropTypes.string,
     online: PropTypes.string,
   }).isRequired,
+  innerRef: PropTypes.shape({}).isRequired,
 };
 

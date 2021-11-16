@@ -16,7 +16,7 @@ export const RelatedArticles = ({
       <InnerContainer>
         <Heading>{heading}</Heading>
         <List>
-          {articles.map(({ post }) => (
+          {articles.length > 0 && articles?.map(({ post }) => (
             <Article key={post.ID}>
               <Link to={`/baza-wiedzy/${post.post_name}`}>
                 {post.post_title}

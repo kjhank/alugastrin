@@ -12,7 +12,7 @@ export const Products = ({ products }) => (
     <Container>
       <InnerContainer>
         <List>
-          {products.map(({
+          {products?.map(({
             acf: {
               articleThumb, intro, listingDescription: description, name,
             },
@@ -20,7 +20,7 @@ export const Products = ({ products }) => (
           }) => (
             <Product key={name}>
               <Image image={articleThumb} />
-              <Name>{name.split('|').map(part => <span>{part}</span>)}</Name>
+              <Name>{name.split('|').map(part => <span key={part}>{part}</span>)}</Name>
               <Intro>{intro}</Intro>
               <Description>{description}</Description>
               <Link to={`/produkty/${slug}`}>Zobacz produkty</Link>
