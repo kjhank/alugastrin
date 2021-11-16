@@ -19,10 +19,12 @@ import '@theme/fonts.css';
 const DEBOUNCE_TIMEOUT = 300;
 
 const Layout = ({
-  children, serverData: {
-    globals, pageData: { yoast_head_json: seo },
-  }, path,
+  children, serverData, path,
 }) => {
+  const {
+    globals, pageData: { yoast_head_json: seo },
+  } = serverData || { pageData: {} };
+
   const [
     isNavigationOpen,
     setNavigationOpen,
