@@ -8,18 +8,20 @@ export const SPImage = ({
 }) => (
   <Picture {...props}>
     <source
-      srcSet={image.url}
-      type={`${image.type}/${image.subtype}`}
+      srcSet={image?.url}
+      type={`${image?.type}/${image?.subtype}`}
     />
     <source
-      srcSet={`${image?.url?.substr(0, image.url.lastIndexOf('.'))}.webp`}
-      type={`${image.type}/webp`}
+      srcSet={`${image?.url?.substr(0, image?.url.lastIndexOf('.'))}.webp`}
+      type={`${image?.type}/webp`}
     />
+    {/* eslint-disable jsx-a11y/img-redundant-alt */}
     <img
-      alt={image.alt}
+      alt={image?.alt}
       loading={isLazy ? 'lazy' : 'eager'}
-      src={image.url}
+      src={image?.url}
     />
+    {/* eslint-enable jsx-a11y/img-redundant-alt */}
   </Picture>
 );
 

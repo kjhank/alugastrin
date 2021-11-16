@@ -37,7 +37,7 @@ const theme = {
       left: 0;
       height: 2px;
       border-radius: 1px;
-      background: linear-gradient(#fff, #fff);
+      background-image: linear-gradient(#fff, #fff);
       background-position: center;
       background-size: 0 100%;
       background-repeat: no-repeat;

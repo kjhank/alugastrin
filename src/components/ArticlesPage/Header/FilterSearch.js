@@ -26,7 +26,6 @@ export const FilterSearch = ({
   };
 
   const handleSearch = value => {
-    console.log(value);
     const filteredPosts = initialPosts
       .filter(post => post.title.rendered.toLowerCase().includes(value));
 

@@ -57,6 +57,22 @@ export const StyledButtonLink = styled(Link)`
   ${buttonLinkStyles}
 `;
 
+export const PageHeading = styled.h1`
+  position: relative;
+  font-weight: 600;
+  font-size: 66px;
+
+  ::after {
+    content: '';
+    position: absolute;
+    bottom: -1.2vw;
+    left: 0;
+    width: 10.73vw;
+    height: 2px;
+    background-color: ${({ theme }) => theme.getColor('main')};
+  }
+`;
+
 export const LineHeading = styled.h2`
   display: flex;
   align-items: center;
@@ -71,4 +87,10 @@ export const LineHeading = styled.h2`
     margin-right: 1.51vw;
     background-color: ${({ theme }) => theme.getColor('accent')};
   }
+`;
+
+export const InnerContainer = styled.div`
+  width: 93.637145%;
+  margin: auto;
+  padding: 0 1.064%;
 `;
