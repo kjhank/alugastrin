@@ -88,3 +88,9 @@ export const LineHeading = styled.h2`
     background-color: ${({ theme }) => theme.getColor('accent')};
   }
 `;
+
+export const InnerContainer = styled.div`
+  width: 93.637145%;
+  margin: auto;
+  padding: 0 1.064%;
+`;

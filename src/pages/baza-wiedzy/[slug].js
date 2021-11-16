@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import NotFoundPage from '@pages/404';
 
 import {
-  getPageData, getPost,
+  getPageData, getPost, getProducts,
 } from '@utils/api';
 
 import { ArticleContainer } from '@containers';
@@ -16,6 +16,7 @@ const PostPage = ({
       acf,
       title,
     },
+    products,
   },
   uri,
 }) => {
@@ -37,7 +38,7 @@ const PostPage = ({
     <ArticleContainer
       headerImage={acf.headerImage}
       intro={acf.intro}
-      products={acf.products}
+      products={products}
       relatedPosts={acf.relatedPosts}
       sections={sections}
       title={title.rendered}
@@ -52,15 +53,15 @@ PostPage.propTypes = {
       acf: PropTypes.shape({
         headerImage: PropTypes.shape({}),
         intro: PropTypes.string,
-        products: PropTypes.arrayOf(PropTypes.shape({})),
-        relatedPosts: PropTypes.arrayOf(PropTypes.shape({})),
+        relatedPosts: PropTypes.shape({}),
         sections: PropTypes.arrayOf(PropTypes.shape({})),
       }),
       sections: PropTypes.arrayOf(PropTypes.shape({})),
       title: PropTypes.shape({
         rendered: PropTypes.string,
       }),
-    }).isRequired,
+    }),
+    products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }).isRequired,
   uri: PropTypes.string.isRequired,
 };
@@ -85,6 +86,8 @@ export const getServerData = async ({ params: { slug } }) => {
 
     const [post] = posts.length > 0 ? posts : [posts];
     const { yoast_head_json = null } = post || null;
+    const productsGroups = await getProducts(post.acf.products.map(({ product }) => product));
+    const [products] = productsGroups;
 
     return {
       props: {
@@ -93,6 +96,7 @@ export const getServerData = async ({ params: { slug } }) => {
           yoast_head_json,
         },
         post,
+        products,
       },
     };
   } catch (error) {

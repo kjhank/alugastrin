@@ -59,20 +59,28 @@ export const getPosts = async (numberPerPage = 23, page = 1, category) => {
   return data;
 };
 
-export const getProducts = async () => {
-  const data = await getApiData(endpoints.products);
-  const [
-    firstGroup,
-    secondGroup,
-  ] = [
-    data.filter(item => !item.acf.isInSecondGroup),
-    data.filter(item => item.acf.isInSecondGroup),
-  ];
+export const getProducts = async (products = null) => {
+  const productsString = products ? new URLSearchParams({ include: products }).toString() : null;
 
-  return [
-    firstGroup,
-    secondGroup,
-  ];
+  try {
+    const data = products ?
+      await getApiData(endpoints.products, productsString) :
+      await getApiData(endpoints.products);
+    const [
+      firstGroup,
+      secondGroup,
+    ] = [
+      data.filter(item => !item.acf.isInSecondGroup),
+      data.filter(item => item.acf.isInSecondGroup),
+    ];
+
+    return [
+      firstGroup,
+      secondGroup,
+    ];
+  } catch (error) {
+    return error;
+  }
 };
 
 export const getProduct = async slug => {
@@ -87,7 +95,7 @@ export const getPost = async slug => {
 
     return data;
   } catch (error) {
-    // console.log({ error });
+    //
 
     return error;
   }

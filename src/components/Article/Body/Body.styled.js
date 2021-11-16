@@ -2,17 +2,9 @@ import styled from 'styled-components';
 
 import { SPImage } from '@components';
 
-export const ArticleBody = styled.article`
-  > div {
-    border-bottom: 1px solid ${({ theme }) => theme.getColor('accent')};
-    padding-bottom: 2.03125vw;
-  }
-`;
+import { InnerContainer as InnerCtr } from '@components/styled';
 
-export const Wrapper = styled.div`
-  width: 88.048151%;
-  margin: auto;
-`;
+export const ArticleBody = styled.article``;
 
 export const Intro = styled.p`
   margin-bottom: 1.5em;
@@ -45,7 +37,18 @@ export const Text = styled.div`
 
   ol,
   ul {
-    list-style-position: inside;
+    list-style-type: none;
+
+    > li {
+      position: inline-flex;
+      align-items: baseline;
+
+      ::before {
+        content: '·';
+        margin-right: 0.25em;
+        font-weight: 900;
+      }
+    }
   }
 
   p + p,
@@ -63,4 +66,9 @@ export const Text = styled.div`
 
 export const Image = styled(SPImage)`
   width: 50%;
+`;
+
+export const InnerContainer = styled(InnerCtr)`
+  border-bottom: 2px solid ${({ theme }) => theme.getColor('accent')};
+  padding-bottom: 1.875vw;
 `;

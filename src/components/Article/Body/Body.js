@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Container } from '@components';
 
 import {
-  ArticleBody, Heading, Image, Intro, Section, Text, Wrapper,
+  ArticleBody, Heading, Image, InnerContainer, Intro, Section, Text,
 } from './Body.styled';
 
 export const Body = ({
@@ -12,20 +12,21 @@ export const Body = ({
 }) => (
   <ArticleBody>
     <Container>
-      <Wrapper>
+      <InnerContainer>
         <Intro>{intro}</Intro>
         {sections.map(section => {
           const {
-            image, text, type,
+            heading, image, text, type,
           } = section;
 
           return (
             <Section
               as={type === 'footnotes' && 'footer'}
               hasSmallerText={type === 'footnotes'}
+              key={heading}
               ref={section.innerRef}
             >
-              <Heading isSmall={type === 'footnotes'}>{section.heading}</Heading>
+              {heading && <Heading isSmall={type === 'footnotes'}>{heading}</Heading>}
               <Text
                 dangerouslySetInnerHTML={{ __html: text }}
                 isNarrow={!!image}
@@ -34,7 +35,7 @@ export const Body = ({
             </Section>
           );
         })}
-      </Wrapper>
+      </InnerContainer>
     </Container>
   </ArticleBody>
 );
