@@ -85,6 +85,7 @@ export const getServerData = async ({ params: { slug } }) => {
           error: 404,
           pageData: {},
         },
+        status: 404,
       };
     }
 

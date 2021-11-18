@@ -9,6 +9,7 @@ import {
 } from './Hero.styled';
 
 import { Sibosgastrin } from './Sibosgastrin';
+import { Helicogastrin } from './Helicogastrin';
 
 export const Hero = ({
   cssClass,
@@ -30,6 +31,13 @@ export const Hero = ({
     </Container>
     {cssClass === 'sibosgastrin' && (
       <Sibosgastrin
+        copy={copy}
+        cssClass={cssClass}
+        images={images}
+      />
+    )}
+    {cssClass === 'helicogastrin' && (
+      <Helicogastrin
         copy={copy}
         cssClass={cssClass}
         images={images}
