@@ -8,27 +8,54 @@ import {
   Heading, Image, Wrapper,
 } from './Hero.styled';
 
+import { Sibosgastrin } from './Sibosgastrin';
+import { Helicogastrin } from './Helicogastrin';
+
 export const Hero = ({
+  cssClass,
   data: {
-    heading, image,
+    copy, heading, image, images,
   },
 }) => (
   <Wrapper>
-    <Container>
+    <Container className={cssClass}>
+      {heading && (
       <Heading
+        className={cssClass}
         dangerouslySetInnerHTML={{ __html: sanitize(heading) }}
         isBold={!heading.includes('<strong>') || heading.includes('<br />')}
         isLarger={heading.includes('<strong>')}
       />
-      <Image image={image} />
+      )}
+      {image && <Image image={image} />}
     </Container>
+    {cssClass === 'sibosgastrin' && (
+      <Sibosgastrin
+        copy={copy}
+        cssClass={cssClass}
+        images={images}
+      />
+    )}
+    {cssClass === 'helicogastrin' && (
+      <Helicogastrin
+        copy={copy}
+        cssClass={cssClass}
+        images={images}
+      />
+    )}
   </Wrapper>
 );
 
 Hero.propTypes = {
+  cssClass: PropTypes.string.isRequired,
   data: PropTypes.shape({
+    copy: PropTypes.arrayOf(PropTypes.shape({})),
     heading: PropTypes.string,
-    image: PropTypes.shape({}),
+    image: PropTypes.oneOfType([
+      PropTypes.shape({}),
+      PropTypes.bool,
+    ]),
+    images: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
 };
 

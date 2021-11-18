@@ -12,10 +12,7 @@ import { ArticleContainer } from '@containers';
 const PostPage = ({
   serverData: {
     error,
-    post: {
-      acf,
-      title,
-    },
+    post,
     products,
   },
   uri,
@@ -23,6 +20,11 @@ const PostPage = ({
   if (error === 404) {
     return <NotFoundPage uri={uri} />;
   }
+
+  const {
+    acf,
+    title,
+  } = post || {};
 
   const sections = acf?.sections ?
     acf?.sections?.map(section => {
@@ -74,19 +76,18 @@ export const getServerData = async ({ params: { slug } }) => {
   try {
     const pageData = await getPageData(null);
 
-    const posts = await getPost(slug);
+    const post = await getPost(slug);
 
-    if (Object.keys(posts).length < 1) {
+    if (Object.keys(post).length < 1) {
       return {
         props: {
           ...pageData,
           error: 404,
           pageData: {},
         },
+        status: 404,
       };
     }
-
-    const [post] = posts.length > 0 ? posts : [posts];
 
     const productsGroups = post.acf.products ?
       await getProducts(post.acf.products.map(({ product }) => product)) :

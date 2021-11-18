@@ -3,8 +3,6 @@ import endpoints from '@static/endpoints';
 export const getApiData = async (endpoint, params = 'per_page=100') => {
   const url = `${process.env.GATSBY_BACKEND_URL}/${endpoint}?${params}`;
 
-  console.log(url);
-
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -16,7 +14,12 @@ export const getApiData = async (endpoint, params = 'per_page=100') => {
       });
     }
 
-    return data;
+    return endpoint.includes('globals') ?
+      data :
+      data.map(item => ({
+        ...item,
+        yoast_head: null,
+      }));
   } catch (error) {
     return error;
   }
@@ -93,12 +96,10 @@ export const getProduct = async slug => {
 
 export const getPost = async slug => {
   try {
-    const data = await getApiData(endpoints.posts, `slug=${slug}`);
+    const [data] = await getApiData(endpoints.posts, `slug=${slug}`) || [];
 
     return data;
   } catch (error) {
-    //
-
     return error;
   }
 };

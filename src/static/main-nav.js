@@ -11,7 +11,7 @@ export const mainNav = [
   },
   {
     text: 'Dla profesjonalistów',
-    to: '/dla-profesjonalistów/',
+    to: '/dla-profesjonalistow/',
     type: 'link',
   },
   {
