@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
+import { SPImage } from '@components';
 import { LineHeading } from '@components/styled';
-
-export { Container } from '../Ingredients/Ingredients.styled';
 
 export const Section = styled.section`
   margin-top: 3.8vw;
@@ -17,6 +16,10 @@ export const Text = styled.div`
   font-size: 24px;
   line-height: 1.25;
 
+  strong {
+    font-weight: 600;
+  }
+
   ul {
     list-style-type: none;
 
@@ -25,8 +28,8 @@ export const Text = styled.div`
       align-items: baseline;
 
       ::before {
-        content: '-';
-        margin-right: 0.5em;
+        content: '–';
+        margin-right: 0.25em;
       }
     }
   }
@@ -41,5 +44,19 @@ export const Text = styled.div`
   ul + ol,
   p + ol {
     margin-top: 1em;
+  }
+`;
+
+export const Background = styled(SPImage)`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: auto;
+  height: 100%;
+  transform: translateX(-50%);
+
+  > img {
+    max-width: unset;
   }
 `;

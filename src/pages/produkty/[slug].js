@@ -9,11 +9,13 @@ import { ProductContainer } from '@containers';
 
 const ProductPage = ({
   serverData: {
+    hasLegalInFooter,
     product,
   },
   ...props
 }) => (
   <ProductContainer
+    hasLegalInFooter={hasLegalInFooter}
     product={product.acf}
     {...props}
   />
@@ -21,6 +23,7 @@ const ProductPage = ({
 
 ProductPage.propTypes = {
   serverData: PropTypes.shape({
+    hasLegalInFooter: PropTypes.bool.isRequired,
     product: PropTypes.shape({
       acf: PropTypes.shape({}),
     }),
@@ -40,6 +43,7 @@ export const getServerData = async ({ params: { slug } }) => {
   return {
     props: {
       ...pageData,
+      hasLegalInFooter: product.acf.hasLegalInFooter,
       pageData: {
         yoast_head_json,
       },

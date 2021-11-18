@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { Container } from '@components';
 import { LineHeading } from '@components/styled';
-
 import { ArrowRight } from '@icons';
 
 import {
-  Container, Image, Item, Link, Links, Section, WidgetButton, Wrapper,
+  Image, Item, Link, Links, Section, WidgetButton, Wrapper,
 } from './WhereToBuy.styled';
 
 export const WhereToBuy = ({

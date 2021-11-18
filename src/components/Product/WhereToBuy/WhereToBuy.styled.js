@@ -6,10 +6,6 @@ import {
 
 import { buttonLinkStyles } from '@components/styled';
 
-import {
-  Container as GenericContainer,
-} from '../Sections/Sections.styled';
-
 export const Section = styled.section`
   margin-top: 4.271vw;
 `;
@@ -70,7 +66,3 @@ export const Links = styled.ul`
 export const Item = styled.li``;
 
 export const Image = styled(SPImage)``;
-
-export const Container = styled(GenericContainer)`
-  padding-right: 0;
-`;

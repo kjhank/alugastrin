@@ -32,6 +32,7 @@ const sanitizeConfig = {
 export const GlobalFooter = ({
   contactRef,
   data,
+  hasLegal,
 }) => {
   const handleScrollUp = () => window.scrollTo({
     behavior: 'smooth',
@@ -71,10 +72,14 @@ export const GlobalFooter = ({
         />
       </Container>
       <GlobalContainer>
-        <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
-        <LeafletLegal
-          dangerouslySetInnerHTML={{ __html: sanitize(data?.leafletLegal, sanitizeConfig) }}
-        />
+        {hasLegal && (
+        <>
+          <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
+          <LeafletLegal
+            dangerouslySetInnerHTML={{ __html: sanitize(data?.leafletLegal, sanitizeConfig) }}
+          />
+        </>
+        )}
         <Copyright>
           {data?.copyright}
         </Copyright>

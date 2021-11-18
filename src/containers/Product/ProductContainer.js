@@ -38,17 +38,27 @@ export const ProductContainer = ({
         hasNoMargin
         {...props}
       >
-        {product?.hero?.heading && <Hero data={product.hero} />}
+        {product?.hero?.heading && (
+          <Hero
+            cssClass={product.cssClass}
+            data={product.hero}
+          />
+        )}
         {product?.secondHero?.heading && <Hero data={product.secondHero} />}
         {product?.ingredients?.heading && <Ingredients data={product.ingredients} />}
         {product?.preparation?.heading && (
-        <Preparation
-          heading={product.preparation.heading}
-          image={product.preparation.package}
-          steps={product.preparation.steps}
-        />
+          <Preparation
+            heading={product.preparation.heading}
+            image={product.preparation.package}
+            steps={product.preparation.steps}
+          />
         )}
-        {sections.length > 0 && <Sections sections={sections} />}
+        {sections.length > 0 && (
+          <Sections
+            background={product.sectionsBackground}
+            sections={sections}
+          />
+        )}
         <WhereToBuy
           data={product.whereToBuy}
           innerRef={buyRef}
@@ -80,6 +90,7 @@ ProductContainer.propTypes = {
       heading: PropTypes.string,
     }),
     sections: PropTypes.arrayOf(PropTypes.shape({})),
+    sectionsBackground: PropTypes.shape({}),
     whereToBuy: PropTypes.shape({}),
   }).isRequired,
   refs: PropTypes.shape({

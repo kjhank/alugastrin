@@ -10,6 +10,7 @@ const theme = {
     large: '200px',
     medium: '33px',
     small: '25px',
+    smaller: '20px',
     tiny: '11px',
   },
   colors: {
