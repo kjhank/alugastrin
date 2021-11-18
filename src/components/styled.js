@@ -4,9 +4,6 @@ import { Link } from 'gatsby';
 export const Main = styled.main`
   position: relative;
   margin-top: ${({ hasNoMargin }) => !hasNoMargin && '4.95vw'};
-  background-image: ${({
-    hasGradient, theme,
-  }) => hasGradient && `linear-gradient(to bottom, ${theme.getColor('gradientGray')}, #fff)`};
 
   ::before {
     content: '';
@@ -41,7 +38,7 @@ export const buttonLinkStyles = css`
   > svg {
     margin-right: ${({ $isFlipped }) => $isFlipped && '1.05vw'};
     margin-left: ${({ $isFlipped }) => !$isFlipped && '1.05vw'};
-    fill: ${({ theme }) => theme.getColor('accent')};
+    fill: currentColor;
     transition: ${({ theme }) => theme.getTransitions(['transform'])};
     transform: ${({ $isFlipped }) => $isFlipped && 'rotateY(180deg)'};
   }

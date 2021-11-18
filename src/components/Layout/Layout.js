@@ -19,7 +19,7 @@ import '@theme/fonts.css';
 const DEBOUNCE_TIMEOUT = 300;
 
 const Layout = ({
-  children, serverData, path,
+  children, hasLegalInFooter, serverData, path,
 }) => {
   const {
     globals, pageData: { yoast_head_json: seo },
@@ -68,6 +68,12 @@ const Layout = ({
     setNavigationOpen(false);
   }, [path]);
 
+  useEffect(() => {
+    if (window.scrollY > refs?.header?.current.getBoundingClientRect().height) {
+      setPageScrolled(true);
+    }
+  }, []);
+
   return (
     <Theme>
       <Seo data={{
@@ -86,6 +92,7 @@ const Layout = ({
       <GlobalFooter
         contactRef={refs.contact}
         data={globals}
+        hasLegal={hasLegalInFooter}
       />
     </Theme>
   );
@@ -96,6 +103,7 @@ Layout.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
+  hasLegalInFooter: PropTypes.bool,
   path: PropTypes.string.isRequired,
   serverData: PropTypes.shape({
     globals: PropTypes.shape({}),
@@ -103,6 +111,10 @@ Layout.propTypes = {
       yoast_head_json: PropTypes.shape({}),
     }),
   }).isRequired,
+};
+
+Layout.defaultProps = {
+  hasLegalInFooter: true,
 };
 
 export default Layout;
