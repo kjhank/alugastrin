@@ -40,13 +40,13 @@ module.exports = {
     },
     {
       options: {
-        background_color: '#663399',
+        background_color: '#bb181b',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-        name: 'Untitled Gatsby project',
-        short_name: 'foo',
+        icon: 'src/images/alu_www_favicon_512x512.png', // This path is relative to the root of the site.
+        name: 'Alugastrin',
+        short_name: 'alugastrin',
         start_url: '/',
-        theme_color: '#663399', // TODO: set these up
+        theme_color: '#bb181b', // TODO: set these up
       },
       resolve: 'gatsby-plugin-manifest',
     },

@@ -44,28 +44,28 @@ export const Seo = ({ data }) => (
       />
     )}
     {data.twitter_card && (
-    <meta
-      content={data.twitter_card}
-      property="twitter:card"
-    />
+      <meta
+        content={data.twitter_card}
+        property="twitter:card"
+      />
     )}
     {data.twitter_description && (
-    <meta
-      content={data.twitter_description}
-      property="twitter:description"
-    />
+      <meta
+        content={data.twitter_description}
+        property="twitter:description"
+      />
     )}
     {data.twitter_image && (
-    <meta
-      content={data.twitter_image}
-      property="twitter:image"
-    />
+      <meta
+        content={data.twitter_image}
+        property="twitter:image"
+      />
     )}
     {data.twitter_title && (
-    <meta
-      content={data.twitter_title}
-      property="twitter:image"
-    />
+      <meta
+        content={data.twitter_title}
+        property="twitter:image"
+      />
     )}
     {data?.og_image?.length > 0 && data.og_image.map(image => (
       [

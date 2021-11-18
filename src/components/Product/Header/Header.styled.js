@@ -16,7 +16,8 @@ export const Container = styled(GenericContainer)`
   justify-content: space-between;
   align-items: center;
 
-  &.alugastrin3forte--20 {
+  &.alugastrin3forte--20,
+  &.alugastrin--250 {
     justify-content: flex-end;
   }
 `;
@@ -27,6 +28,11 @@ export const Image = styled(SPImage)`
   &.alugastrin3forte--20 {
     width: 35%;
     margin-right: 5%;
+  }
+
+  &.alugastrin--250 {
+    width: 7.4vw;
+    margin-right: 10%;
   }
 `;
 
