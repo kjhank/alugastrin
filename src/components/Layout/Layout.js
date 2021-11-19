@@ -19,10 +19,10 @@ import '@theme/fonts.css';
 const DEBOUNCE_TIMEOUT = 300;
 
 const Layout = ({
-  children, hasLegalInFooter, serverData, path,
+  children, serverData, path,
 }) => {
   const {
-    globals, pageData: { yoast_head_json: seo },
+    globals, hasLegalInFooter, pageData: { yoast_head_json: seo },
   } = serverData || { pageData: {} };
 
   const [
@@ -103,18 +103,18 @@ Layout.propTypes = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
-  hasLegalInFooter: PropTypes.bool,
   path: PropTypes.string.isRequired,
   serverData: PropTypes.shape({
     globals: PropTypes.shape({}),
+    hasLegalInFooter: PropTypes.bool,
     pageData: PropTypes.shape({
       yoast_head_json: PropTypes.shape({}),
     }),
   }).isRequired,
 };
 
-Layout.defaultProps = {
-  hasLegalInFooter: true,
-};
+// Layout.defaultProps = {
+//   hasLegalInFooter: true,
+// };
 
 export default Layout;
