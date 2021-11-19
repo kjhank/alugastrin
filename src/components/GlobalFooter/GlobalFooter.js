@@ -102,5 +102,6 @@ GlobalFooter.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape({})),
     sil: PropTypes.string,
   }).isRequired,
+  hasLegal: PropTypes.bool.isRequired,
 };
 
