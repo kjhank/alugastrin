@@ -97,7 +97,7 @@ export const PageHeading = styled.h1`
     background-color: ${({ theme }) => theme.getColor('main')};
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 40px;
 
     ::after {

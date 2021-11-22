@@ -2,6 +2,7 @@ import React, {
   createRef, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import {
   Container, Description, Image, Link, List, Name, Pipe, Product, Text,
@@ -69,7 +70,9 @@ export const Products = ({
               <Image image={product.acf.thumbnail} />
               {renderName(product.acf.name)}
               <Description>{product.acf.intro}</Description>
-              <Text>{product.acf.listingDescription}</Text>
+              <Text
+                dangerouslySetInnerHTML={{ __html: sanitize(product.acf.listingDescription) }}
+              />
               <Link to={product.slug}>
                 Zobacz produkt
               </Link>

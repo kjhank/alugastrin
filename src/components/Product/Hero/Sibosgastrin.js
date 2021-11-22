@@ -259,16 +259,6 @@ const InBetween = styled.p`
 }
 `;
 
-const Guts = styled(Image)`
-  display: block;
-  width: 43.177083vw;
-  margin: 1.354167vw auto;
-
-  @media ${queries.xs} {
-    width: 90%;
-  }
-`;
-
 const GutsText = styled.p`
   padding: 0 13.28125vw;
   font-size: 24px;
@@ -312,7 +302,6 @@ export const Sibosgastrin = ({
   const { image: { file: germLeftImage } } = images.find(({ image }) => image.label === 'germLeft');
 
   const { item: { text: guts } } = copy.find(({ item }) => item.label === 'guts');
-  const { image: { file: gutsImage } } = images.find(({ image }) => image.label === 'guts');
 
   const { item: { text: frameHeading } } = copy.find(({ item }) => item.label === 'frameHeading');
   const { item: { text: frameContent } } = copy.find(({ item }) => item.label === 'frameContent');
@@ -322,7 +311,6 @@ export const Sibosgastrin = ({
   const { image: { file: no3Image } } = images.find(({ image }) => image.label === 'no3');
   const { image: { file: targetImage } } = images.find(({ image }) => image.label === 'target');
 
-  const imageRef = createRef();
   const germLeftRef = createRef();
   const germRightRef = createRef();
 
@@ -342,12 +330,7 @@ export const Sibosgastrin = ({
       germRightRef.current,
     ];
 
-    const allTargets = [
-      ...germs,
-      imageRef.current,
-    ];
-
-    animate(allTargets, {
+    animate(germs, {
       filter: 'brightness(1.1) saturate(1.3)',
     },
     {
@@ -416,10 +399,6 @@ export const Sibosgastrin = ({
         </GermList>
       </Wrapper>
       <Wrapper>
-        <Guts
-          image={gutsImage}
-          innerRef={imageRef}
-        />
         <GutsText dangerouslySetInnerHTML={{ __html: sanitize(guts, sanitizeConfig) }} />
       </Wrapper>
       <Wrapper>

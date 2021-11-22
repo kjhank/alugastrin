@@ -22,7 +22,7 @@ const Layout = ({
   children, serverData, path,
 }) => {
   const {
-    globals, hasLegalInFooter, pageData,
+    globals, globalFootnote, hasGlobalFootnote, hasLegalInFooter, pageData,
   } = serverData || { pageData: {} };
 
   const [
@@ -92,6 +92,7 @@ const Layout = ({
       <GlobalFooter
         contactRef={refs.contact}
         data={globals}
+        globalFootnote={hasGlobalFootnote ? globalFootnote : null}
         hasLegal={hasLegalInFooter}
       />
     </Theme>

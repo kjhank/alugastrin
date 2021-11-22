@@ -9,6 +9,7 @@ export const breakpoints = {
   m: 920,
   s: 800,
   xs: 700,
+  xxsplus: 512,
   xxs: 400,
   tiny: 360,
 };
