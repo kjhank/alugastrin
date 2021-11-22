@@ -40,7 +40,7 @@ export const Image = styled(SPImage)`
     width: 7.4vw;
     margin-right: 10%;
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       width: 33%;
     }
   }
@@ -59,7 +59,7 @@ export const Name = styled.h1`
     font-size: 32px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 28px;
   }
 `;
@@ -83,7 +83,7 @@ export const LinksWrapper = styled.div`
   gap: 1.15vw;
   margin-top: 2.552vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     flex-wrap: wrap;
     gap: 1em;
   }
@@ -134,7 +134,7 @@ const linkStyle = css`
     font-size: 12px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
   }
 `;
@@ -159,7 +159,7 @@ export const Scrollers = styled.nav`
     width: 100%;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
     margin-top: 1em;

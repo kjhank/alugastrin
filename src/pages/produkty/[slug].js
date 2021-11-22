@@ -43,6 +43,8 @@ export const getServerData = async ({ params: { slug } }) => {
   return {
     props: {
       ...pageData,
+      globalFootnote: product.acf.globalFootnote,
+      hasGlobalFootnote: product.acf.hasGlobalFootnote,
       hasLegalInFooter: product.acf.hasLegalInFooter,
       pageData: {
         yoast_head_json,

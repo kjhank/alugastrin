@@ -197,6 +197,12 @@ export const SIL = styled.p`
   }
 `;
 
+export const GlobalFooterText = styled(SIL)`
+  margin: 1.8vw 0 0;
+  border-bottom: none;
+  padding-bottom: 0;
+`;
+
 export const LeafletLegal = styled.p`
   border-bottom: 1px solid ${({ theme }) => theme.getColor('border')};
   padding-bottom: 1.35vw;
@@ -212,7 +218,7 @@ export const LeafletLegal = styled.p`
     font-size: 24px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 20px;
   }
 `;
@@ -226,7 +232,7 @@ export const Copyright = styled.p`
     font-size: 14px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     margin-top: 3em;
     font-size: 10px;
   }

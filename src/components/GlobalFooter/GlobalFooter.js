@@ -12,6 +12,7 @@ import {
   ContactData,
   Container,
   Copyright,
+  GlobalFooterText,
   LeafletLegal,
   LeftPart, Links,
   LogoWrapper,
@@ -32,6 +33,7 @@ const sanitizeConfig = {
 export const GlobalFooter = ({
   contactRef,
   data,
+  globalFootnote,
   hasLegal,
 }) => {
   const handleScrollUp = () => window.scrollTo({
@@ -72,6 +74,20 @@ export const GlobalFooter = ({
         />
       </Container>
       <GlobalContainer>
+        {globalFootnote && (
+        <GlobalFooterText dangerouslySetInnerHTML={{
+          __html: sanitize(globalFootnote, {
+            allowedTags: [
+              'br',
+              'i',
+              'strong',
+              'em',
+              'b',
+            ],
+          }),
+        }}
+        />
+        )}
         {hasLegal && (
         <>
           <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
@@ -102,9 +118,11 @@ GlobalFooter.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape({})),
     sil: PropTypes.string,
   }).isRequired,
+  globalFootnote: PropTypes.string,
   hasLegal: PropTypes.bool,
 };
 
 GlobalFooter.defaultProps = {
+  globalFootnote: null,
   hasLegal: true,
 };

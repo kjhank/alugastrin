@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger,
+  animate, stagger, timeline,
 } from 'motion';
 
 import {
@@ -67,7 +67,7 @@ const Wrapper = styled.div`
     margin-top: 3.776042vw;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     flex-direction: column;
   }
 `;
@@ -81,6 +81,7 @@ const List = styled.ul`
   font-size: 26px;
 
   > li {
+    opacity: 0;
     display: inline-flex;
     align-items: baseline;
     list-style-type: none;
@@ -89,6 +90,14 @@ const List = styled.ul`
       content: '▸';
       margin-right: 0.25em;
       color: ${({ theme }) => theme.getColor('accent')};
+    }
+
+    :first-child {
+      transform: translateX(-50vw);
+    }
+
+    :last-child {
+      transform: translateX(50vw);
     }
   }
 `;
@@ -110,10 +119,12 @@ const Left = styled.div`
 `;
 
 const Subheading = styled.h3`
+  opacity: 0;
   font-weight: 600;
   font-size: 46px;
   text-align: center;
   text-transform: uppercase;
+  transform: translateX(50vw);
 
   > strong {
     color: ${({ theme }) => theme.getColor('accent')};
@@ -139,8 +150,10 @@ const Subheading = styled.h3`
 const Image = styled(SPImage)``;
 
 const Package = styled(SPImage)`
+  opacity: 0;
   flex-shrink: 0;
   width: 17.552083vw;
+  transform: translateX(50%);
 
   @media ${queries.s} {
     width: 80%;
@@ -193,6 +206,10 @@ export const Helicogastrin = ({
 
   const germLeftRef = createRef();
   const germRightRef = createRef();
+  const packageRef = createRef();
+  const listRef = createRef();
+  const headingRef = createRef();
+  const observableRef = createRef();
 
   const sanitizeConfig = {
     allowedTags: [
@@ -228,13 +245,74 @@ export const Helicogastrin = ({
     animateItems();
   }, []);
 
+  useEffect(() => {
+    const { current: headingNode } = headingRef;
+    const { current: packageNode } = packageRef;
+    const { current: listNode } = listRef;
+    const { current: observableNode } = observableRef;
+    const observerConfig = { threshold: [0.8] };
+
+    const keyframes = {
+      opacity: 1,
+      transform: 'translateX(0)',
+    };
+
+    const animationOptions = {
+      delay: 0.5,
+      duration: 0.5,
+      easing: [
+        0.22,
+        1,
+        0.36,
+        1,
+      ],
+    };
+
+    let topObserver;
+
+    if (headingNode && packageNode && listNode && observableNode) {
+      topObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          const sequence = [
+            [
+              packageNode,
+              keyframes,
+              animationOptions,
+            ],
+            [
+              headingNode,
+              keyframes,
+              animationOptions,
+            ],
+            [
+              listNode.querySelectorAll('li'),
+              keyframes,
+              animationOptions,
+            ],
+          ];
+
+          timeline(sequence);
+
+          topObserver.unobserve(observableNode);
+        }
+      }, observerConfig);
+
+      topObserver.observe(observableNode);
+    }
+
+    return () => topObserver?.unobserve(observableNode);
+  }, []);
+
   return (
     <Container className={cssClass}>
       <Wrapper>
-        <Subheading dangerouslySetInnerHTML={{ __html: sanitize(subheading, sanitizeConfig) }} />
+        <Subheading
+          dangerouslySetInnerHTML={{ __html: sanitize(subheading, sanitizeConfig) }}
+          ref={headingRef}
+        />
       </Wrapper>
-      <Wrapper>
-        <List>
+      <Wrapper ref={observableRef}>
+        <List ref={listRef}>
           <li dangerouslySetInnerHTML={{ __html: sanitize(`<span>${listLeft}</span>`, sanitizeConfig) }} />
           <li dangerouslySetInnerHTML={{ __html: sanitize(`<span>${listRight}</span>`, sanitizeConfig) }} />
         </List>
@@ -254,7 +332,10 @@ export const Helicogastrin = ({
           }),
         }}
         />
-        <Package image={packageImage} />
+        <Package
+          image={packageImage}
+          innerRef={packageRef}
+        />
       </Wrapper>
       <Wrapper>
         <FramedText>

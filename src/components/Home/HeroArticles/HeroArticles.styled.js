@@ -39,7 +39,7 @@ export const List = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   gap: 3.333333vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     grid-template-columns: 1fr
   }
 `;

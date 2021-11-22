@@ -65,7 +65,7 @@ export const ListWrapper = styled.div`
     font-size: 18px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
       font-size: 16px;
     }
 `;
@@ -92,7 +92,7 @@ export const TextWrapper = styled.div`
       font-size: 18px;
     }
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       font-size: 16px;
     }
   }
@@ -104,7 +104,7 @@ export const IconsWrapper = styled.div`
   margin-top: 3.03vw;
   padding-left: 7.14vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     padding-left: 0;
   }
 `;
@@ -120,7 +120,7 @@ export const Icon = styled(SPImage)`
     height: 100%;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     height: ${({ size }) => `${size / 10}vw`}
   }
 `;
@@ -143,7 +143,7 @@ export const IconsList = styled.ul`
     font-size: 18px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 14px;
   }
 `;
@@ -180,7 +180,7 @@ export const FramedText = styled.h3`
     font-size: 18px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 16px;
   }
 `;
