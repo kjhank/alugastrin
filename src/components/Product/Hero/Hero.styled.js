@@ -57,7 +57,7 @@ export const Heading = styled.h2`
     font-size: ${({ isLarger }) => (isLarger ? '38px' : '28px')};
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: ${({ isLarger }) => (isLarger ? '32px' : '24px')};
   }
 `;
@@ -90,7 +90,7 @@ export const Image = styled(SPImage)`
     margin-bottom: 10%;
     margin-left: 19%;
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       width: 40vw;
       margin-left: 14%;
     }
@@ -103,7 +103,7 @@ export const Image = styled(SPImage)`
     margin-left: unset;
     transform: translateX(50vw);
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       width: 25vw;
     }
   }
@@ -171,7 +171,7 @@ export const FramedText = styled.section`
     font-size: 16px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 12px;
   }
 

@@ -118,9 +118,11 @@ GlobalFooter.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape({})),
     sil: PropTypes.string,
   }).isRequired,
+  globalFootnote: PropTypes.string,
   hasLegal: PropTypes.bool,
 };
 
 GlobalFooter.defaultProps = {
+  globalFootnote: null,
   hasLegal: true,
 };

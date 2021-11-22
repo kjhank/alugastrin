@@ -218,7 +218,7 @@ export const LeafletLegal = styled.p`
     font-size: 24px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 20px;
   }
 `;
@@ -232,7 +232,7 @@ export const Copyright = styled.p`
     font-size: 14px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     margin-top: 3em;
     font-size: 10px;
   }

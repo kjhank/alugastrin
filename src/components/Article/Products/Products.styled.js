@@ -21,7 +21,7 @@ export const List = styled.ul`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     grid-template-columns: 1fr;
   }
 `;

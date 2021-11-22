@@ -135,7 +135,7 @@ export const FilterButton = styled.button.attrs({ type: 'button' })`
     width: calc(50% - 0.5em);
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
   }
 `;
