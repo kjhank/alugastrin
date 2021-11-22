@@ -58,7 +58,7 @@ export const WidgetButton = styled.button.attrs({ type: 'button' })`
     font-size: 20px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 16px;
   }
 `;

@@ -68,7 +68,7 @@ export const buttonLinkStyles = css`
     }
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     padding: 0.5em 1em;
     font-size: 14px;
 
@@ -97,7 +97,7 @@ export const PageHeading = styled.h1`
     background-color: ${({ theme }) => theme.getColor('main')};
   }
 
-  @media ${queries.xxsplus} {
+  @media ${queries.xxsplusplus} {
     font-size: 40px;
 
     ::after {
@@ -130,7 +130,7 @@ export const LineHeading = styled.h2`
     font-size: 38px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 32px;
   }
 `;

@@ -143,7 +143,7 @@ const GermList = styled.ul`
     font-size: 18px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 14px;
   }
 `;
@@ -254,7 +254,7 @@ const InBetween = styled.p`
   font-size: 32px;
 }
 
-@media ${queries.xxs} {
+@media ${queries.xxsplus} {
   font-size: 28px;
 }
 `;
@@ -278,7 +278,7 @@ const GutsText = styled.p`
     font-size: 18px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 14px;
   }
 `;

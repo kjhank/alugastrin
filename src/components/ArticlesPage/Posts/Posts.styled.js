@@ -17,7 +17,7 @@ export const PostsList = styled.ul`
     padding-left: unset;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     grid-template-columns: 1fr;
     gap: 3em;
   }
@@ -40,7 +40,7 @@ export const Link = styled(GenericLink)`
     background-color: ${({ theme }) => theme.getColor('main')};
     transition: ${({ theme }) => theme.getTransitions(['background-color'], 'fastDuration')};
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       width: 3em;
     }
   }

@@ -27,7 +27,7 @@ export const Product = styled.li`
     align-items: center;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     display: block;
   }
 `;
@@ -64,7 +64,7 @@ export const Name = styled.h2`
     padding-left: 2.5%;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
     padding-left: 0;
   }
@@ -130,7 +130,7 @@ export const Link = styled(ButtonLink)`
 export const Container = styled(GenericContainer)`
   padding-left: 12.726%;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     padding: 0;
   }
 `;
