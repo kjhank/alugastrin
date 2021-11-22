@@ -6,6 +6,8 @@ import {
 
 import { InnerContainer as InnerCtr } from '@components/styled';
 
+import { queries } from '@utils';
+
 export const Section = styled.section`
   padding-top: 1.875vw;
 `;
@@ -14,6 +16,14 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.875vw;
+
+  @media ${queries.s} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${queries.xxs} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Product = styled.li``;
@@ -29,17 +39,37 @@ export const Name = styled.h3`
   font-weight: 600;
   font-size: 24px;
   line-height: 1.21;
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
 `;
 
 export const Description = styled.p`
   font-size: 16px;
   line-height: 1.5;
+
+  @media ${queries.xxl} {
+    font-size: 14px;
+  }
 `;
 
 export const Intro = styled.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
+
+  @media ${queries.huge} {
+    font-size: 18px;
+  }
+
+  @media ${queries.huge} {
+    font-size: 16px;
+  }
 `;
 
 export const Link = styled(ButtonLink)`

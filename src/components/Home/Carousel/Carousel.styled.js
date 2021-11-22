@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 import { SPImage } from '@components';
+import { queries } from '@utils';
 
 export const SlidesList = styled.ul`
   position: relative;
   height: 35.677083vw;
   margin-bottom: 1.35vw;
+
+  @media ${queries.xxs} {
+    height: 85vw;
+    margin-bottom: 2em;
+    padding-top: 2em;
+  }
 `;
 
 export const SingleSlideItem = styled.li`
@@ -58,18 +65,50 @@ export const TextPart = styled.div`
   width: 50%;
   padding-right: ${({ padded }) => padded === 'left' && '2vw'};
   padding-left: ${({ padded }) => padded === 'right' && '8vw'};
+
+  @media ${queries.xxs} {
+    width: 60%;
+  }
 `;
 
 export const ImagePart = styled.div`
   width: 50%;
   padding-left: ${({ isOffset }) => isOffset && '2vw'};
+
+  @media ${queries.s} {
+    width: 40%;
+  }
 `;
 
 export const Heading = styled.h2`
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: bold;
   font-size: 80px;
-  line-height: 85px;
+  line-height: 1.0625;
+
+  @media ${queries.xhuge} {
+    font-size: 72px;
+  }
+
+  @media ${queries.huge} {
+    font-size: 68px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 64px;
+  }
+
+  @media ${queries.m} {
+    font-size: 58px;
+  }
+
+  @media ${queries.s} {
+    font-size: 52px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 36px;
+  }
 `;
 
 export const SmallText = styled.span`
@@ -77,7 +116,30 @@ export const SmallText = styled.span`
   padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 10%' : '1.5vw 40% 2vw 0')};
   color: ${({ theme }) => theme.getColor('main')};
   font-size: 45px;
-  line-height: 45px;
+
+  @media ${queries.xhuge} {
+    font-size: 40px;
+  }
+
+  @media ${queries.huge} {
+    font-size: 36px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 32px;
+  }
+
+  @media ${queries.m} {
+    font-size: 28px;
+  }
+
+  @media ${queries.s} {
+    font-size: 24px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 18px;
+  }
 `;
 
 export const ProductImage = styled(SPImage)``;

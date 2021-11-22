@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Container } from '@components';
 
+import { PageHeading } from '@components/styled';
+
 import {
   Background, Heading, Intro, StyledHeader,
 } from './Header.styled';
@@ -25,7 +27,7 @@ export const Header = ({
   <StyledHeader>
     <Container>
       <Background image={image} />
-      <Heading>{heading}</Heading>
+      <PageHeading>{heading}</PageHeading>
       <Intro>{intro}</Intro>
       <FilterSearch
         articlesPerPage={articlesPerPage}

@@ -16,6 +16,7 @@ export const ArticlesContainer = ({
   heading,
   initialPosts,
   intro,
+  refs,
   ...props
 }) => {
   const [
@@ -75,6 +76,7 @@ export const ArticlesContainer = ({
   return (
     <Main
       hasNoMargin
+      refs={refs}
       {...props}
     >
       <Header

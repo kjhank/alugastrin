@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from '@components';
-import { LineHeading } from '@components/styled';
+import {
+  InnerContainer, LineHeading,
+} from '@components/styled';
 import { ArrowRight } from '@icons';
 
 import {
@@ -27,37 +29,39 @@ export const WhereToBuy = ({
   return (
     <Section ref={innerRef}>
       <Container>
-        <LineHeading>{heading}</LineHeading>
-        <Wrapper>
-          <WidgetButton
-            as="button"
-            isActive={openSection === 'offline'}
-            onClick={() => toggleSection('offline')}
-          >
-            {offline}
-            <ArrowRight />
-          </WidgetButton>
-          <WidgetButton
-            as="button"
-            isActive={openSection === 'online'}
-            onClick={() => toggleSection('online')}
-          >
-            {online}
-            <ArrowRight />
-          </WidgetButton>
-          {openSection === 'online' && (
-          <Links>
-            {links.map(link => (
-              <Item key={link.link}>
-                <Link href={link.link}>
-                  <Image image={link.image} />
-                </Link>
-              </Item>
-            ))}
-          </Links>
-          )}
-          {openSection === 'offline' && 'tu będzie ktomalek'}
-        </Wrapper>
+        <InnerContainer>
+          <LineHeading>{heading}</LineHeading>
+          <Wrapper>
+            <WidgetButton
+              as="button"
+              isActive={openSection === 'offline'}
+              onClick={() => toggleSection('offline')}
+            >
+              {offline}
+              <ArrowRight />
+            </WidgetButton>
+            <WidgetButton
+              as="button"
+              isActive={openSection === 'online'}
+              onClick={() => toggleSection('online')}
+            >
+              {online}
+              <ArrowRight />
+            </WidgetButton>
+            {openSection === 'online' && (
+            <Links>
+              {links.map(link => (
+                <Item key={link.link}>
+                  <Link href={link.link}>
+                    <Image image={link.image} />
+                  </Link>
+                </Item>
+              ))}
+            </Links>
+            )}
+            {openSection === 'offline' && 'tu będzie ktomalek'}
+          </Wrapper>
+        </InnerContainer>
       </Container>
     </Section>
   );

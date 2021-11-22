@@ -1,9 +1,13 @@
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 
+import { queries } from '@utils';
+
 export const Main = styled.main`
   position: relative;
-  margin-top: ${({ hasNoMargin }) => !hasNoMargin && '4.95vw'};
+  margin-top: ${({
+    hasNoMargin, headerHeight,
+  }) => !hasNoMargin && `${headerHeight}px`};
 
   ::before {
     content: '';
@@ -13,10 +17,22 @@ export const Main = styled.main`
     left: 0;
     z-index: 2;
     width: calc(100% - 21vw + 5.46875vw);
-    height: 95px;
+    height: ${({ headerHeight }) => `${headerHeight}px`};
     border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     background-image: ${({ theme }) => theme.getGradient()};
     mix-blend-mode: multiply;
+
+    @media ${queries.xl} {
+      width: calc(100% - 12.2vw);
+    }
+
+    @media ${queries.l} {
+      width: calc(100% - 5vw);
+    }
+
+    @media ${queries.s} {
+      width: calc(100% - 1em);
+    }
   }
 `;
 
@@ -51,6 +67,15 @@ export const buttonLinkStyles = css`
       transform: ${({ $isFlipped }) => ($isFlipped ? 'translateX(-20%) rotateY(180deg)' : 'translateX(20%);')};
     }
   }
+
+  @media ${queries.xxs} {
+    padding: 0.5em 1em;
+    font-size: 14px;
+
+    > svg {
+      height: 1em;
+    }
+  }
 `;
 
 export const StyledButtonLink = styled(Link)`
@@ -71,6 +96,15 @@ export const PageHeading = styled.h1`
     height: 2px;
     background-color: ${({ theme }) => theme.getColor('main')};
   }
+
+  @media ${queries.xxs} {
+    font-size: 40px;
+
+    ::after {
+      width: 33%;
+    }
+  }
+
 `;
 
 export const LineHeading = styled.h2`
@@ -86,6 +120,18 @@ export const LineHeading = styled.h2`
     height: 2px;
     margin-right: 1.51vw;
     background-color: ${({ theme }) => theme.getColor('accent')};
+  }
+
+  @media ${queries.huge} {
+    font-size: 42px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 38px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 32px;
   }
 `;
 
