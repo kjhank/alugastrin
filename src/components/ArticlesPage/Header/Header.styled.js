@@ -2,31 +2,30 @@ import styled, { css } from 'styled-components';
 
 import { SPImage } from '@components';
 
+import { queries } from '@utils';
+
 export const StyledHeader = styled.header`
+  overflow: hidden;
+
   > div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     height: 40.416667vw;
-  }
-`;
 
-export const Heading = styled.h1`
-  position: relative;
-  z-index: 1;
-  margin-bottom: 2.96875vw;
-  padding-top: 12.292vw;
-  font-weight: 600;
-  font-size: 66px;
+    h1 {
+      margin-bottom: 2.96875vw;
+      padding-top: 12.292vw;
+    }
 
-  ::after {
-    content: '';
-    position: absolute;
-    bottom: -23px;
-    left: 0;
-    width: 10.73vw;
-    height: 2px;
-    background-color: ${({ theme }) => theme.getColor('main')};
+    @media ${queries.l} {
+      height: 50vw;
+    }
+
+    @media ${queries.xs} {
+      height: unset;
+      min-height: 60vw;
+    }
   }
 `;
 
@@ -35,6 +34,18 @@ export const Intro = styled.p`
   z-index: 1;
   padding-right: 52%;
   font-size: 24px;
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 16px;
+  }
 `;
 
 export const Background = styled(SPImage)`
@@ -42,10 +53,19 @@ export const Background = styled(SPImage)`
   top: 0;
   right: -13.021vw;
   height: 100%;
+  /* flex-grow: 0;
+  flex-shrink: 0; */
 
   > img {
     width: auto;
-    height: 100%;
+    /* height: 100%; */
+    /* flex-grow: 0;
+    flex-shrink: 0; */
+  }
+
+  @media ${queries.xs} {
+    top: 2em;
+    right: -30vw;
   }
 `;
 
@@ -71,6 +91,14 @@ export const FiltersSearchWrapper = styled.nav`
     background-color: ${({ theme }) => theme.getColor('accent')};
     mix-blend-mode: multiply;
   }
+
+  @media ${queries.xs} {
+    flex-wrap: wrap;
+    gap: 1em;
+    width: 100%;
+    margin: unset;
+    padding: 2em;
+  }
 `;
 
 const common = css`
@@ -80,6 +108,20 @@ const common = css`
   border: 1px solid #fff;
   border-radius: ${({ theme }) => theme.getRadius()};
   padding: 0.78125vw 1.5625vw;
+
+  @media ${queries.huge} {
+    font-size: 14px;
+  }
+
+  @media ${queries.l} {
+    font-size: 16px;
+  }
+
+  @media ${queries.xs} {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0.5em 1em;
+  }
 `;
 
 export const FilterButton = styled.button.attrs({ type: 'button' })`
@@ -88,10 +130,20 @@ export const FilterButton = styled.button.attrs({ type: 'button' })`
   color: ${({ theme }) => theme.getColor('main')};
   text-decoration: ${({ isSelected }) => (isSelected ? 'underline' : 'none')};
   cursor: pointer;
+
+  @media ${queries.xs} {
+    width: calc(50% - 0.5em);
+  }
+
+  @media ${queries.xxs} {
+    width: 100%;
+  }
 `;
 
 export const SearchInput = styled.input.attrs({ type: 'text' })`
   ${common}
+  display: block;
+  width: 100%;
   background-color: transparent;
   color: #fff;
 
@@ -110,5 +162,10 @@ export const SearchWrapper = styled.div`
     z-index: 2;
     transform: translateY(-50%);
     pointer-events: none;
+  }
+
+  @media ${queries.xs} {
+    width: 100%;
+    margin-left: auto;
   }
 `;

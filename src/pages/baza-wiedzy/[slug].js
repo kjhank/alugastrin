@@ -16,6 +16,7 @@ const PostPage = ({
     products,
   },
   uri,
+  ...props
 }) => {
   if (error === 404) {
     return <NotFoundPage uri={uri} />;
@@ -46,6 +47,7 @@ const PostPage = ({
       relatedPosts={acf.relatedPosts}
       sections={sections}
       title={title.rendered}
+      {...props}
     />
   );
 };

@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import { Picture } from './SPImage.styled';
 
 export const SPImage = ({
-  image, isLazy, ...props
+  image, innerRef, isLazy, ...props
 }) => (
-  <Picture {...props}>
+  <Picture
+    ref={innerRef}
+    {...props}
+  >
     <source
       srcSet={image?.url}
       type={`${image?.type}/${image?.subtype}`}
@@ -32,9 +35,11 @@ SPImage.propTypes = {
     type: PropTypes.string,
     url: PropTypes.string,
   }).isRequired,
+  innerRef: PropTypes.shape({}),
   isLazy: PropTypes.bool,
 };
 
 SPImage.defaultProps = {
-  isLazy: false,
+  innerRef: null,
+  isLazy: true,
 };

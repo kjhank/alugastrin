@@ -1,7 +1,7 @@
 export { default as GlobalStyle } from './GlobalStyle';
 
 export {
-  mediaQueries,
+  queries,
   mfQueries,
 } from './rwd';
 

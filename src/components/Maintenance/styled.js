@@ -2,30 +2,17 @@ import styled from 'styled-components';
 
 import { SPImage } from '@components';
 
-export const Heading = styled.h1`
-  position: relative;
-  z-index: 1;
-  margin-bottom: 2.96875vw;
-  padding-top: 2.239583vw;
-  font-weight: 600;
-  font-size: 66px;
-
-  ::after {
-    content: '';
-    position: absolute;
-    bottom: -23px;
-    left: 0;
-    width: 10.73vw;
-    height: 2px;
-    background-color: ${({ theme }) => theme.getColor('main')};
-  }
-`;
+import { queries } from '@utils';
 
 export const Wrapper = styled.div`
   position: relative;
   width: 50%;
   margin: auto;
   padding: 10.729167vw 0;
+
+  @media ${queries.xs} {
+    width: 100%;
+  }
 `;
 
 export const Message = styled.p`
@@ -33,6 +20,10 @@ export const Message = styled.p`
   font-size: 51px;
   text-align: center;
   text-transform: uppercase;
+
+  @media ${queries.xs} {
+    font-size: 44px;
+  }
 `;
 
 export const Background = styled(SPImage)`
@@ -42,4 +33,8 @@ export const Background = styled(SPImage)`
   z-index: -1;
   width: 21.875vw;
   transform: translate(-50%, -50%);
+
+  @media ${queries.xs} {
+    width: 50vw;
+  }
 `;

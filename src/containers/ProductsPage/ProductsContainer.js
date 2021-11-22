@@ -10,7 +10,10 @@ import {
 export const ProductsContainer = ({
   targetGroup, products, refs, title, ...props
 }) => (
-  <Main {...props}>
+  <Main
+    refs={refs}
+    {...props}
+  >
     <Header title={title} />
     <Products
       headerRef={refs.header}

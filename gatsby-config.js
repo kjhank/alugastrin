@@ -2,6 +2,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-netlify',
+    'gatsby-plugin-sitemap',
     {
       options: {
         name: 'images',
@@ -57,7 +58,8 @@ module.exports = {
   ],
   siteMetadata: {
     author: '@kjhank',
-    description: 'Gatsby starter using Styled Components',
-    title: 'Gatsby Starter with Styled Components',
+    description: 'Strona produktów Alugastrin',
+    siteUrl: 'http://alugastrin.pl',
+    title: 'Alugastrin',
   },
 };

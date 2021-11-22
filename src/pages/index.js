@@ -6,13 +6,14 @@ import { getPageData } from '@utils/api';
 import { Home } from '@containers';
 
 const Homepage = ({
-  serverData: { pageData: { acf } },
+  serverData: { pageData: { acf } }, ...props
 }) => (
   <Home
     articles={acf.articles}
     carousel={acf.carousel}
     descriptions={acf.descriptions}
     video={acf.video}
+    {...props}
   />
 );
 
