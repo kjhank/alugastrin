@@ -6,6 +6,8 @@ import {
 
 import { buttonLinkStyles } from '@components/styled';
 
+import { queries } from '@utils';
+
 export const Section = styled.section`
   margin-top: 4.271vw;
 `;
@@ -43,16 +45,35 @@ export const WidgetButton = styled.button.attrs({ type: 'button' })`
       transform: ${({ isActive }) => (isActive ? 'rotate(90deg)' : 'none')};
     }
   }
+
+  @media ${queries.xxl} {
+    font-size: 14px;
+
+    > svg {
+      height: 1em;
+    }
+  }
+
+  @media ${queries.xs} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 16px;
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   gap: 2.083vw;
   margin-top: 1vw;
-  padding-left: 7.135417vw;
+
+  @media ${queries.xs} {
+    flex-direction: column;
+  }
 `;
 
 export const Links = styled.ul`

@@ -6,8 +6,10 @@ import {
   Container, Main,
 } from '@components';
 
+import { PageHeading } from '@components/styled';
+
 import {
-  Background, Heading, Message, Wrapper,
+  Background, Message, Wrapper,
 } from '@components/Maintenance/styled';
 
 export const MaintenanceContainer = ({
@@ -18,7 +20,7 @@ export const MaintenanceContainer = ({
 }) => (
   <Main {...props}>
     <Container>
-      <Heading>{title}</Heading>
+      <PageHeading>{title}</PageHeading>
       <Wrapper>
         <Background image={background} />
         <Message dangerouslySetInnerHTML={{ __html: sanitize(message) }} />

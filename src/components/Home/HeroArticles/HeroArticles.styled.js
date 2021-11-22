@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link as GenericLink } from 'gatsby';
 
 import { SPImage } from '@components';
+import { queries } from '@utils';
 
 export const Section = styled.section`
   margin-top: 6vw;
@@ -13,7 +14,7 @@ export const Heading = styled.h2`
   margin-bottom: 3vw;
   font-weight: 600;
   font-size: 46px;
-  line-height: 48px;
+  line-height: 1.043478;
 
   ::before {
     content: '';
@@ -21,6 +22,10 @@ export const Heading = styled.h2`
     height: 2px;
     margin-right: 0.52vw;
     background-color: ${({ theme }) => theme.getColor('main')};
+  }
+
+  @media ${queries.huge} {
+    font-size: 42px;
   }
 `;
 
@@ -33,6 +38,10 @@ export const List = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3.333333vw;
+
+  @media ${queries.xxs} {
+    grid-template-columns: 1fr
+  }
 `;
 
 export const SingleArticle = styled.li`
@@ -52,11 +61,19 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 700;
   font-size: 20px;
+
+  @media ${queries.huge} {
+    font-size: 18px;
+  }
 `;
 
 export const Intro = styled.p`
   font-size: 16px;
-  line-height: 20px;
+  line-height: 1.25;
+
+  @media ${queries.huge} {
+    font-size: 14px;
+  }
 `;
 
 export const Link = styled(GenericLink)`
@@ -108,5 +125,9 @@ export const AllArticlesLink = styled(GenericLink)`
     > svg {
       transform: translateX(20%);
     }
+  }
+
+  @media ${queries.huge} {
+    font-size: 14px;
   }
 `;

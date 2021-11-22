@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {
+  useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { mainNav } from '@static/main-nav';
 
-import { ProductLogo } from '@icons';
+import {
+  AlignRight, ProductLogo, X,
+} from '@icons';
 import {
   Container, Link, Navigation, NavToggle, ScrollButton, Wrapper,
 } from './GlobalHeader.styled';
@@ -14,8 +18,19 @@ export const GlobalHeader = ({
   refs,
   setNavigationOpen,
 }) => {
+  const [
+    headerHeight,
+    setHeaderHeight,
+  ] = useState(95);
+
+  useEffect(() => {
+    const { height } = refs?.header?.current?.getBoundingClientRect();
+
+    setHeaderHeight(height);
+  }, [refs]);
+
   const handleScroll = ({ current: targetElement }) => {
-    const scrollOffset = targetElement.getBoundingClientRect().top + window.scrollY - 95;
+    const scrollOffset = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
     const scrollConfig = {
       behavior: 'smooth',
       top: scrollOffset,
@@ -26,14 +41,21 @@ export const GlobalHeader = ({
 
   return (
     <Wrapper
+      headerHeight={headerHeight}
       isOpaque={isPageScrolled}
       ref={refs.header}
     >
       <Container>
-        <Link to="/">
+        <Link
+          className="header__link header__link--logo"
+          to="/"
+        >
           <ProductLogo />
         </Link>
-        <Navigation>
+        <Navigation
+          headerHeight={headerHeight}
+          isVisible={isNavigationOpen}
+        >
           {mainNav.map(({
             target,
             text,
@@ -56,10 +78,14 @@ export const GlobalHeader = ({
                 {text}
               </ScrollButton>
             )))}
-          <NavToggle onClick={() => setNavigationOpen(current => !current)}>
-            {isNavigationOpen ? 'lines' : 'burger'}
-          </NavToggle>
         </Navigation>
+        <NavToggle
+          isFlipped={isNavigationOpen}
+          onClick={() => setNavigationOpen(current => !current)}
+        >
+          <AlignRight className="icon icon--align-right" />
+          <X className="icon icon--x" />
+        </NavToggle>
       </Container>
     </Wrapper>
   );

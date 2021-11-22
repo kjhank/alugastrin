@@ -21,6 +21,7 @@ const ProfessionalsPage = ({
         background={maintenance.maintenanceBackground}
         message={maintenance.maintenanceMessage}
         title={title}
+        {...props}
       />
     );
   }

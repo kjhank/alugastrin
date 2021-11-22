@@ -17,9 +17,13 @@ export const SingleSlide = ({
     <BackgroundImage
       alignment={slide.variant === 'textRight' ? 'right' : 'left'}
       image={slide.background}
+      isLazy={false}
     />
     <ImagePart isOffset={slide.variant === 'textLeft'}>
-      <ProductImage image={slide.image} />
+      <ProductImage
+        image={slide.image}
+        isLazy={false}
+      />
     </ImagePart>
     <TextPart padded={slide.variant === 'textRight' ? 'right' : 'left'}>
       <Heading>

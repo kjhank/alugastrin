@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 import { SPImage } from '@components';
+import { queries } from '@utils';
 
 export const SingleDescription = styled.section`
   position: relative;
@@ -19,13 +20,40 @@ export const SingleDescription = styled.section`
     right: ${({ variant }) => (variant === 'textLeft' && '7.34375vw')};
     bottom: 3.28125vw;
     left: ${({ variant }) => (variant === 'textRight' && '7.34375vw')};
+
+    @media ${queries.l} {
+      bottom: 0;
+    }
+
+    @media ${queries.xxs} {
+      position: static;
+      order: 2;
+      margin: 2em 0;
+    }
   }
 `;
 
 export const Heading = styled.h2`
   font-weight: 700;
   font-size: 46px;
-  line-height: 48px;
+  line-height: 1.043478;
+
+  @media ${queries.xhuge}   {
+    font-size: 40px;
+  }
+
+  @media ${queries.huge}   {
+    font-size: 36px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 32px;
+  }
+
+  @media ${queries.xxs} {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const ProductsLink = styled(Link)`
@@ -58,6 +86,34 @@ export const ProductsLink = styled(Link)`
       transform: ${({ $isFlipped }) => ($isFlipped ? 'translateX(-20%) rotateY(180deg)' : 'translateX(20%)')};
     }
   }
+
+  @media ${queries.huge} {
+    font-size: 14px;
+  }
+
+  @media ${queries.s} {
+    padding: 1.5em;
+  }
+
+  @media ${queries.xxs} {
+    top: 100%;
+    right: ${({ $isFlipped }) => !$isFlipped && '0'};
+    left: ${({ $isFlipped }) => $isFlipped && '0'};
+    border-radius: ${({
+    $isFlipped, theme,
+  }) => ($isFlipped ? `0 0 0 ${theme.getRadius()}` : `0 0 0 ${theme.getRadius()}`)};
+
+    > svg {
+      margin-top: 1em;
+      transform: rotateZ(-90deg);
+    }
+
+    :hover {
+      > svg {
+        transform: rotateZ(-90deg) translateY(-20%);
+      }
+    }
+  }
 `;
 
 export const ProductsImage = styled(SPImage)`
@@ -74,11 +130,31 @@ export const BackgroundImage = styled(SPImage)`
   right: ${({ variant }) => (variant === 'textLeft' && 0)};
   left: ${({ variant }) => (variant === 'textRight' && 0)};
   width: 50%;
+
+  @media ${queries.s} {
+    top: 20%;
+  }
+
+  @media ${queries.xxs} {
+    position: relative;
+    top: unset;
+    right: unset;
+    left: unset;
+    order: 4;
+    width: 100%;
+  }
 `;
 
 export const ProductsLinkWrapper = styled.div`
   position: relative;
   width: 55%;
+
+  @media ${queries.xxs} {
+    z-index: 1;
+    order: 3;
+    width: 100%;
+    margin-bottom: 2em;
+  }
 `;
 
 export const HeadingWrapper = styled.div`
@@ -86,6 +162,12 @@ export const HeadingWrapper = styled.div`
   justify-content: ${({ variant }) => (variant === 'textLeft' ? 'flex-start' : 'flex-end')};
   width: 60%;
   padding: 0 3vw;
+
+  @media ${queries.xxs} {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -96,6 +178,12 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   padding-top: 2.4vw;
+
+  @media ${queries.xxs} {
+    flex-direction: column;
+    align-items: ${({ variant }) => (variant === 'textLeft' ? 'flex-start' : 'flex-end')};
+    order: 1;
+  }
 `;
 
 export const Intro = styled.p`
@@ -105,12 +193,42 @@ export const Intro = styled.p`
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: bold;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1.208333;
+
+  @media ${queries.xhuge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.huge} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xxs} {
+    order: unset;
+    width: 100%;
+    margin: 1em 0;
+    text-align: center;
+  }
 `;
 
 export const Description = styled.p`
   width: 40%;
   margin-bottom: 5.21vw;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 1.5;
+
+  @media ${queries.xhuge} {
+    font-size: 14px;
+  }
+
+  @media ${queries.huge} {
+    margin-bottom: 3vw;
+    font-size: 12px;
+  }
+
+  @media ${queries.xxs} {
+    width: 100%;
+    margin-bottom: unset;
+    font-size: 16px;
+  }
 `;
