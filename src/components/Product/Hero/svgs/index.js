@@ -1,6 +1,6 @@
 export { default as Mucosave } from './ForteMucos';
 export { default as E401 } from './ForteAlgi';
-export { default as E170 } from './forteca';
+export { default as E170 } from './ForteCa';
 export { default as MucosLine } from './ForteLineMuco';
 export { default as E401Line } from './ForteLineAlgi';
 export { default as E170Line } from './ForteLineCa';
