@@ -22,7 +22,7 @@ const Layout = ({
   children, serverData, path,
 }) => {
   const {
-    globals, hasLegalInFooter, pageData: { yoast_head_json: seo },
+    globals, hasLegalInFooter, pageData,
   } = serverData || { pageData: {} };
 
   const [
@@ -77,7 +77,7 @@ const Layout = ({
   return (
     <Theme>
       <Seo data={{
-        ...seo,
+        ...pageData?.yoast_head_json,
         path,
       }}
       />
