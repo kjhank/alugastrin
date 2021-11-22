@@ -36,6 +36,7 @@ export const ProductContainer = ({
       <Main
         hasGradient
         hasNoMargin
+        refs={refs}
         {...props}
       >
         {product?.hero?.heading && (
@@ -44,7 +45,13 @@ export const ProductContainer = ({
             data={product.hero}
           />
         )}
-        {product?.secondHero?.heading && <Hero data={product.secondHero} />}
+        {product?.secondHero?.heading && (
+        <Hero
+          cssClass={product.cssClass}
+          data={product.secondHero}
+          isSecond
+        />
+        )}
         {product?.ingredients?.heading && <Ingredients data={product.ingredients} />}
         {product?.preparation?.heading && (
           <Preparation
@@ -81,11 +88,14 @@ ProductContainer.propTypes = {
     }),
     links: PropTypes.shape({}),
     package: PropTypes.shape({}),
-    preparation: PropTypes.shape({
-      heading: PropTypes.string,
-      package: PropTypes.shape({}),
-      steps: PropTypes.shape({}),
-    }),
+    preparation: PropTypes.oneOfType([
+      PropTypes.shape({
+        heading: PropTypes.string,
+        package: PropTypes.shape({}),
+        steps: PropTypes.shape({}),
+      }),
+      PropTypes.bool,
+    ]),
     secondHero: PropTypes.shape({
       heading: PropTypes.string,
     }),

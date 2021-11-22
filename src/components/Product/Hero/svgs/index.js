@@ -1,0 +1,10 @@
+export { default as Mucosave } from './ForteMucos';
+export { default as E401 } from './ForteAlgi';
+export { default as E170 } from './forteca';
+export { default as MucosLine } from './ForteLineMuco';
+export { default as E401Line } from './ForteLineAlgi';
+export { default as E170Line } from './ForteLineCa';
+export { default as AluFast } from './AluFast';
+export { default as AluLineFast } from './AluLineFast';
+export { default as AluStomach } from './AluStomach';
+export { default as AluLineStomach } from './AluLineStomach';

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { SPImage } from '@components';
 import { LineHeading } from '@components/styled';
 
+import { queries } from '@utils';
+
 export const Section = styled.section`
   margin-top: 3.8vw;
 `;
@@ -44,6 +46,18 @@ export const Text = styled.div`
   ul + ol,
   p + ol {
     margin-top: 1em;
+  }
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.l} {
+    font-size: 18px;
   }
 `;
 

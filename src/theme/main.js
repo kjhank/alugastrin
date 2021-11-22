@@ -8,6 +8,7 @@ const theme = {
   borderRadii: {
     default: '50px',
     large: '200px',
+    larger: '100px',
     medium: '33px',
     small: '25px',
     smaller: '20px',

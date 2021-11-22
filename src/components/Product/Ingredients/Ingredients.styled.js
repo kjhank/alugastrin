@@ -4,6 +4,8 @@ import {
   Container as GenericContainer, SPImage,
 } from '@components';
 
+import { queries } from '@utils';
+
 export const Section = styled.section``;
 
 export const Container = styled(GenericContainer)`
@@ -49,7 +51,23 @@ export const ListWrapper = styled.div`
   .highlight {
     color: ${({ theme }) => theme.getColor('accent')};
     font-weight: 600;
-}
+  }
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xxs} {
+      font-size: 16px;
+    }
 `;
 
 export const TextWrapper = styled.div`
@@ -61,6 +79,22 @@ export const TextWrapper = styled.div`
     font-weight: 600;
     font-size: 24px;
     line-height: 1.21;
+
+    @media ${queries.huge} {
+      font-size: 22px;
+    }
+
+    @media ${queries.xxl} {
+      font-size: 20px;
+    }
+
+    @media ${queries.xs} {
+      font-size: 18px;
+    }
+
+    @media ${queries.xxs} {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -69,6 +103,10 @@ export const SmallHeading = styled.h3``;
 export const IconsWrapper = styled.div`
   margin-top: 3.03vw;
   padding-left: 7.14vw;
+
+  @media ${queries.xxs} {
+    padding-left: 0;
+  }
 `;
 
 export const Icon = styled(SPImage)`
@@ -81,6 +119,10 @@ export const Icon = styled(SPImage)`
     width: auto;
     height: 100%;
   }
+
+  @media ${queries.xxs} {
+    height: ${({ size }) => `${size / 10}vw`}
+  }
 `;
 
 export const IconsList = styled.ul`
@@ -88,6 +130,22 @@ export const IconsList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   gap: 2vw;
   font-size: 24px;
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 14px;
+  }
 `;
 
 export const IconItem = styled.li`
@@ -109,6 +167,22 @@ export const FramedText = styled.h3`
   font-size: 24px;
   text-align: center;
   text-transform: uppercase;
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 16px;
+  }
 `;
 
 export const StepsList = styled(IconsList)`

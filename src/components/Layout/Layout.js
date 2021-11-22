@@ -110,11 +110,11 @@ Layout.propTypes = {
     pageData: PropTypes.shape({
       yoast_head_json: PropTypes.shape({}),
     }),
-  }).isRequired,
+  }),
 };
 
-// Layout.defaultProps = {
-//   hasLegalInFooter: true,
-// };
+Layout.defaultProps = {
+  serverData: { hasLegalInFooter: true },
+};
 
 export default Layout;

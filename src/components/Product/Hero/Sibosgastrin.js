@@ -1,18 +1,34 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
+import React, {
+  createRef, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import sanitize from 'sanitize-html';
+import {
+  animate, stagger,
+} from 'motion';
 
 import {
   Container as GenericContainer, SPImage,
 } from '@components';
+
+import { queries } from '@utils';
 
 import { FramedText } from './Hero.styled';
 
 const Container = styled(GenericContainer)`
   width: 65.364583vw;
   max-width: 1255px;
+  margin: auto;
+
+  @media ${queries.l} {
+    width: 75vw;
+  }
+
+  @media ${queries.xs} {
+    width: 95vw;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -56,6 +72,31 @@ const List = styled.ul`
       color: ${({ theme }) => theme.getColor('accent')};
     }
   }
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xl} {
+    margin-left: 5%;
+  }
+
+  @media ${queries.l} {
+    margin-left: 0;
+  }
+
+  @media ${queries.s} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xs} {
+    width: 100%;
+    font-size: 14px;
+  }
 `;
 
 const Image = styled(SPImage)``;
@@ -63,6 +104,86 @@ const Image = styled(SPImage)``;
 const Package = styled(SPImage)`
   width: 23.385417vw;
   margin-right: 10%;
+
+  @media ${queries.xl} {
+    width: 20vw;
+  }
+
+  @media ${queries.xs} {
+    width: 100%;
+    margin-right: 0;
+  }
+`;
+
+const GermList = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: 2.96875vw;
+  color: ${({ theme }) => theme.getColor('accent')};
+  font-size: 24px;
+
+  > li {
+    display: flex;
+    align-items: center;
+
+    > picture {
+      margin-right: 1.09375vw;
+    }
+  }
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 14px;
+  }
+`;
+
+const IconsList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5.520833vw;
+  width: 46.5625vw;
+  margin: 3.776042vw auto 0;
+  font-size: 24px;
+
+  > li {
+    display: flex;
+    align-items: center;
+    min-width: 40%;
+
+    > picture {
+      flex-shrink: 0;
+      width: 5.833333vw;
+      margin-right: 1.02vw;
+    }
+  }
+
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
+
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
+
+  @media ${queries.m} {
+    font-size: 18px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 14px;
+  }
 `;
 
 const Red = styled.ul`
@@ -86,40 +207,66 @@ const Red = styled.ul`
   > li:last-of-type {
     width: 70%;
   }
+
+  @media ${queries.huge} {
+    font-size: 14px;
+  }
+
+  @media ${queries.xl} {
+    margin-left: 5%;
+  }
+
+  @media ${queries.l} {
+    margin-left: 0;
+  }
+
+  @media ${queries.s} {
+    width: 70%;
+    font-size: 12px;
+  }
+
+  @media ${queries.xs} {
+    width: 100%;
+    padding: 1em;
+    font-size: 10px;
+  }
 `;
 
 const InBetween = styled.p`
   margin: 4.6875vw 0 4.166667vw;
-  text-align: center;
-  font-size: 46px;
   font-weight: 600;
+  font-size: 46px;
+  text-align: center;
 
   strong {
     color: ${({ theme }) => theme.getColor('accent')};
   }
-`;
 
-const GermList = styled.ul`
-  display: flex;
-  justify-content: center;
-  gap: 2.96875vw;
-  color: ${({ theme }) => theme.getColor('accent')};
-  font-size: 24px;
+@media ${queries.huge} {
+  font-size: 42px;
+}
 
-  > li {
-    display: flex;
-    align-items: center;
+@media ${queries.xxl} {
+  font-size: 38px;
+}
 
-    > picture {
-      margin-right: 1.09375vw;
-    }
-  }
+@media ${queries.xs} {
+  font-size: 32px;
+}
+
+@media ${queries.xxs} {
+  font-size: 28px;
+}
 `;
 
 const Guts = styled(Image)`
   display: block;
   width: 43.177083vw;
   margin: 1.354167vw auto;
+
+  @media ${queries.xs} {
+    width: 90%;
+  }
 `;
 
 const GutsText = styled.p`
@@ -127,27 +274,22 @@ const GutsText = styled.p`
   font-size: 24px;
   line-height: 1.25;
   text-align: center;
-`;
 
-const IconsList = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 5.520833vw;
-  width: 46.5625vw;
-  margin: 3.776042vw auto 0;
-  font-size: 24px;
+  @media ${queries.huge} {
+    font-size: 22px;
+  }
 
-  > li {
-    display: flex;
-    align-items: center;
-    min-width: 40%;
+  @media ${queries.xxl} {
+    font-size: 20px;
+  }
 
-    > picture {
-      flex-shrink: 0;
-      width: 5.833333vw;
-      margin-right: 1.02vw;
-    }
+  @media ${queries.xs} {
+    padding: 0 5%;
+    font-size: 18px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 14px;
   }
 `;
 
@@ -180,6 +322,10 @@ export const Sibosgastrin = ({
   const { image: { file: no3Image } } = images.find(({ image }) => image.label === 'no3');
   const { image: { file: targetImage } } = images.find(({ image }) => image.label === 'target');
 
+  const imageRef = createRef();
+  const germLeftRef = createRef();
+  const germRightRef = createRef();
+
   const sanitizeConfig = {
     allowedTags: [
       'strong',
@@ -189,6 +335,47 @@ export const Sibosgastrin = ({
       'li',
     ],
   };
+
+  const animateItems = () => {
+    const germs = [
+      germLeftRef.current,
+      germRightRef.current,
+    ];
+
+    const allTargets = [
+      ...germs,
+      imageRef.current,
+    ];
+
+    animate(allTargets, {
+      filter: 'brightness(1.1) saturate(1.3)',
+    },
+    {
+      delay: stagger(0.5),
+      direction: 'alternate',
+      duration: 1,
+      easing: 'ease-in-out',
+      repeat: Infinity,
+    });
+
+    animate(germs, {
+      transform: [
+        'rotate(-15deg)',
+        'rotate(15deg)',
+      ],
+    },
+    {
+      delay: stagger(0.5),
+      direction: 'alternate',
+      duration: 1,
+      easing: 'linear',
+      repeat: Infinity,
+    });
+  };
+
+  useEffect(() => {
+    animateItems();
+  }, []);
 
   return (
     <Container className={cssClass}>
@@ -212,18 +399,27 @@ export const Sibosgastrin = ({
       <Wrapper>
         <GermList>
           <li>
-            <Image image={germLeftImage} />
+            <Image
+              image={germLeftImage}
+              innerRef={germLeftRef}
+            />
             <span dangerouslySetInnerHTML={{ __html: sanitize(leftGerm, sanitizeConfig) }} />
             {' '}
           </li>
           <li>
-            <Image image={germRightImage} />
+            <Image
+              image={germRightImage}
+              innerRef={germRightRef}
+            />
             <span dangerouslySetInnerHTML={{ __html: sanitize(rightGerm, sanitizeConfig) }} />
           </li>
         </GermList>
       </Wrapper>
       <Wrapper>
-        <Guts image={gutsImage} />
+        <Guts
+          image={gutsImage}
+          innerRef={imageRef}
+        />
         <GutsText dangerouslySetInnerHTML={{ __html: sanitize(guts, sanitizeConfig) }} />
       </Wrapper>
       <Wrapper>

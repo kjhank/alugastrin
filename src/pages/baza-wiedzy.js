@@ -10,7 +10,7 @@ import { ArticlesContainer } from '@containers';
 const ArticlesPage = ({
   serverData: {
     pageData: { acf }, posts,
-  },
+  }, ...props
 }) => (
   <ArticlesContainer
     articlesPerPage={Number(acf?.articlesPerPage)}
@@ -19,6 +19,7 @@ const ArticlesPage = ({
     heading={acf?.heading}
     initialPosts={posts}
     intro={acf?.intro}
+    {...props}
   />
 );
 
