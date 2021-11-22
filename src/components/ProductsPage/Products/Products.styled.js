@@ -86,6 +86,16 @@ export const Text = styled.p`
   font-size: 16px;
   line-height: 1.5;
 
+  em,
+  i {
+    font-style: italic
+  }
+
+  b,
+  strong {
+    font-weight: 600;
+  }
+
   @media ${queries.xs} {
     width: 100%;
   }

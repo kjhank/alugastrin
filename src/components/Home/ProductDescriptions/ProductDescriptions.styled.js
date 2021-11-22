@@ -25,7 +25,7 @@ export const SingleDescription = styled.section`
       bottom: 0;
     }
 
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       position: static;
       order: 2;
       margin: 2em 0;
@@ -50,7 +50,7 @@ export const Heading = styled.h2`
     font-size: 32px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
     text-align: center;
   }
@@ -95,7 +95,7 @@ export const ProductsLink = styled(Link)`
     padding: 1.5em;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     top: 100%;
     right: ${({ $isFlipped }) => !$isFlipped && '0'};
     left: ${({ $isFlipped }) => $isFlipped && '0'};
@@ -135,7 +135,7 @@ export const BackgroundImage = styled(SPImage)`
     top: 20%;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     position: relative;
     top: unset;
     right: unset;
@@ -149,7 +149,7 @@ export const ProductsLinkWrapper = styled.div`
   position: relative;
   width: 55%;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     z-index: 1;
     order: 3;
     width: 100%;
@@ -163,7 +163,7 @@ export const HeadingWrapper = styled.div`
   width: 60%;
   padding: 0 3vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
     margin: auto;
     text-align: center;
@@ -179,7 +179,7 @@ export const TextWrapper = styled.div`
   width: 100%;
   padding-top: 2.4vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     flex-direction: column;
     align-items: ${({ variant }) => (variant === 'textLeft' ? 'flex-start' : 'flex-end')};
     order: 1;
@@ -203,7 +203,7 @@ export const Intro = styled.p`
     font-size: 20px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     order: unset;
     width: 100%;
     margin: 1em 0;
@@ -226,7 +226,7 @@ export const Description = styled.p`
     font-size: 12px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 100%;
     margin-bottom: unset;
     font-size: 16px;
