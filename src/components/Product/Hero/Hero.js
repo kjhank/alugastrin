@@ -27,33 +27,36 @@ export const Hero = ({
   const staticRef = createRef();
 
   useEffect(() => {
-    const { current: staticElement } = staticRef;
-    const { current: packageElement } = packageRef;
+    const { current: staticNode } = staticRef;
+    const { current: packageNode } = packageRef;
+    const observerConfig = { rootMargin: '-200px' };
 
-    // console.log(element);
+    const keyframes = {
+      opacity: 1,
+      transform: 'translateX(0)',
+    };
 
-    if (packageElement) {
-      const packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+    const animationOptions = {
+      delay: 0.5,
+      duration: 0.5,
+      easing: 'ease-in',
+    };
+
+    let packageObserver;
+
+    if (packageNode) {
+      packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
         if (isIntersecting) {
-          animate(packageElement,
-            {
-              opacity: 1,
-              transform: 'translateX(0)',
-            },
-            {
-              delay: 0.5,
-              duration: 0.5,
-              easing: 'ease-in',
-            });
+          animate(packageNode, keyframes, animationOptions);
 
-          packageObserver.unobserve(staticElement);
+          packageObserver.unobserve(staticNode);
         }
-      });
+      }, observerConfig);
 
-      packageObserver.observe(staticElement);
+      packageObserver.observe(staticNode);
     }
 
-    // return () => packageObserver.unobserve(staticElement);
+    return () => packageObserver?.unobserve(staticNode);
   }, []);
 
   return (

@@ -91,8 +91,14 @@ ProductContainer.propTypes = {
     preparation: PropTypes.oneOfType([
       PropTypes.shape({
         heading: PropTypes.string,
-        package: PropTypes.shape({}),
-        steps: PropTypes.shape({}),
+        package: PropTypes.oneOfType([
+          PropTypes.shape({}),
+          PropTypes.bool,
+        ]),
+        steps: PropTypes.oneOfType([
+          PropTypes.shape({}),
+          PropTypes.bool,
+        ]),
       }),
       PropTypes.bool,
     ]),

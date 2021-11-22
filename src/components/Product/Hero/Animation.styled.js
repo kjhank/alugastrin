@@ -11,7 +11,7 @@ export const AnimationContainer = styled.div`
   }
 
   &.alugastrin3forte {
-    @media ${queries.xxs} {
+    @media ${queries.xxsplus} {
       margin-bottom: 4em;
     }
   }
@@ -48,7 +48,7 @@ export const Item = styled.div`
             left: 58%;
           }
 
-          @media ${queries.xxs} {
+          @media ${queries.xxsplus} {
             top: -8%;
           }
         }
@@ -71,7 +71,7 @@ export const Item = styled.div`
           top: 55%;
         }
 
-        @media ${queries.xxs} {
+        @media ${queries.xxsplus} {
           top: 48%;
         }
 
@@ -120,7 +120,7 @@ export const Item = styled.div`
           top: 34%;
         }
 
-        @media ${queries.xxs} {
+        @media ${queries.xxsplus} {
           top: 28%;
         }
 
@@ -193,7 +193,7 @@ export const Item = styled.div`
           top: 78%;
           left: 49%;
 
-          @media ${queries.xxs} {
+          @media ${queries.xxsplus} {
             width: 25%;
           }
         }

@@ -73,4 +73,9 @@ export const Background = styled(SPImage)`
   > img {
     max-width: unset;
   }
+
+  @media ${queries.xxsplus} {
+    width: 100%;
+    height: auto;
+  }
 `;

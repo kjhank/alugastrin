@@ -8,7 +8,7 @@ export const SlidesList = styled.ul`
   height: 35.677083vw;
   margin-bottom: 1.35vw;
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     height: 85vw;
     margin-bottom: 2em;
     padding-top: 2em;
@@ -36,6 +36,11 @@ export const SlidesNavigation = styled.nav`
   bottom: 0;
   left: 0;
   z-index: 2;
+
+  @media ${queries.xs} {
+    right: 0;
+    left: unset;
+  }
 `;
 
 export const NavigationButton = styled.button.attrs({ type: 'button' })`
@@ -59,6 +64,16 @@ export const NavigationButton = styled.button.attrs({ type: 'button' })`
       transform: translateX(${({ $rotation }) => ($rotation === '90deg' ? '20%' : '-20%')}) rotate(${({ $rotation }) => $rotation});
     }
   }
+
+  @media ${queries.xs} {
+    width: 3em;
+    height: 3em;
+
+    > svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 export const TextPart = styled.div`
@@ -66,7 +81,7 @@ export const TextPart = styled.div`
   padding-right: ${({ padded }) => padded === 'left' && '2vw'};
   padding-left: ${({ padded }) => padded === 'right' && '8vw'};
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     width: 60%;
   }
 `;
@@ -106,7 +121,7 @@ export const Heading = styled.h2`
     font-size: 52px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 36px;
   }
 `;
@@ -137,7 +152,7 @@ export const SmallText = styled.span`
     font-size: 24px;
   }
 
-  @media ${queries.xxs} {
+  @media ${queries.xxsplus} {
     font-size: 18px;
   }
 `;
