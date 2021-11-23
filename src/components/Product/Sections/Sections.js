@@ -9,6 +9,18 @@ import {
   Background, Heading, Section, Text,
 } from './Sections.styled';
 
+const sanitizeConfig = {
+  allowedTags: [
+    'strong',
+    'em',
+    'i',
+    'b',
+    'br',
+    'li',
+    'span',
+  ],
+};
+
 export const Sections = ({
   background, sections,
 }) => (
@@ -21,7 +33,7 @@ export const Sections = ({
           ref={section.innerRef}
         >
           <Heading>{section.heading}</Heading>
-          <Text dangerouslySetInnerHTML={{ __html: sanitize(section.text) }} />
+          <Text dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
         </Section>
       ))}
     </InnerContainer>
