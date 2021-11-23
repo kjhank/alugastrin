@@ -90,7 +90,7 @@ const List = styled.ul`
     list-style-type: none;
 
     ::before {
-      content: '▸';
+      content: '▸\uFE0E';
       margin-right: 0.25em;
       color: ${({ theme }) => theme.getColor('accent')};
       font-family: monospace;
@@ -110,7 +110,7 @@ const Left = styled.div`
     list-style-type: none;
 
     ::before {
-      content: '▸';
+      content: '▸\uFE0E';
       margin-right: 0.25em;
       font-family: monospace;
     }
@@ -159,8 +159,10 @@ const Subheading = styled.h3`
 const Image = styled(SPImage)``;
 
 const Package = styled(SPImage)`
+  opacity: 0;
   flex-shrink: 0;
   width: 17.552083vw;
+  transform: translateX(50vw);
 
   @media ${queries.s} {
     width: 80%;
@@ -222,6 +224,7 @@ export const Helicogastrin = ({
   const packageRef = createRef();
   const listRef = createRef();
   const headingRef = createRef();
+  const staticRef = createRef();
 
   const sanitizeConfig = {
     allowedTags: [
@@ -259,29 +262,55 @@ export const Helicogastrin = ({
 
   useEffect(() => {
     const { current: headingNode } = headingRef;
-    const { current: packageNode } = packageRef;
     const { current: listNode } = listRef;
+    const { current: packageNode } = packageRef;
+    const { current: staticNode } = staticRef;
+    let packageObserver;
 
-    const keyframes = {
-      transform: 'scale(1.1)',
-    };
+    if (headingNode && listNode) {
+      const keyframes = {
+        transform: 'scale(1.1)',
+      };
 
-    const animationOptions = {
-      delay: stagger(0.4),
-      direction: 'alternate',
-      duration: 1,
-      easing: 'linear',
-      repeat: Infinity,
-    };
-
-    if (headingNode && packageNode && listNode) {
+      const animationOptions = {
+        delay: stagger(0.4),
+        direction: 'alternate',
+        duration: 1,
+        easing: 'linear',
+        repeat: Infinity,
+      };
       const animationTargets = [
-        packageNode,
         headingNode,
         ...listNode.querySelectorAll('li'),
       ];
 
       animate(animationTargets, keyframes, animationOptions);
+    }
+
+    if (packageNode) {
+      const keyframes = {
+        opacity: 1,
+        transform: 'translateX(0)',
+      };
+
+      const animationOptions = {
+        duration: 1,
+        easing: 'ease-in-out',
+      };
+
+      const observerConfig = {
+        threshold: [0.9],
+      };
+
+      packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          animate(packageNode, keyframes, animationOptions);
+
+          packageObserver.unobserve(staticNode);
+        }
+      }, observerConfig);
+
+      packageObserver.observe(staticNode);
     }
   }, []);
 
@@ -304,6 +333,7 @@ export const Helicogastrin = ({
         extraPadding
         flex
         justify="space-between"
+        ref={staticRef}
       >
         <Left dangerouslySetInnerHTML={{
           __html: sanitize(leftText, {

@@ -118,8 +118,10 @@ const List = styled.ul`
 const Image = styled(SPImage)``;
 
 const Package = styled(SPImage)`
+  opacity: 0;
   width: 23.385417vw;
   margin-right: 10%;
+  transform: translateX(50vw);
 
   @media ${queries.xl} {
     width: 20vw;
@@ -373,6 +375,7 @@ export const Sibosgastrin = ({
   const packageRef = createRef();
   const listRef = createRef();
   const redRef = createRef();
+  const staticRef = createRef();
 
   const sanitizeConfig = {
     allowedTags: [
@@ -424,27 +427,53 @@ export const Sibosgastrin = ({
     const { current: redNode } = redRef;
     const { current: packageNode } = packageRef;
     const { current: listNode } = listRef;
+    const { current: staticNode } = staticRef;
+    let packageObserver;
 
-    const animationKeyframes = {
-      transform: 'scale(1.1)',
-    };
+    if (redNode && listNode) {
+      const animationKeyframes = {
+        transform: 'scale(1.1)',
+      };
 
-    const animationOptions = {
-      delay: stagger(0.5),
-      direction: 'alternate',
-      duration: 1,
-      easing: 'linear',
-      repeat: Infinity,
-    };
-
-    if (redNode && packageNode && listNode) {
+      const animationOptions = {
+        delay: stagger(0.5),
+        direction: 'alternate',
+        duration: 1,
+        easing: 'linear',
+        repeat: Infinity,
+      };
       const animationTargets = [
-        packageNode,
         // redNode,
         ...listNode.querySelectorAll('li'),
       ];
 
       animate(animationTargets, animationKeyframes, animationOptions);
+    }
+
+    if (packageNode) {
+      const packageKeyframes = {
+        opacity: 1,
+        transform: 'translateX(0)',
+      };
+
+      const animationOptions = {
+        duration: 1,
+        easing: 'ease-in-out',
+      };
+
+      const observerConfig = {
+        threshold: [0.9],
+      };
+
+      packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          animate(packageNode, packageKeyframes, animationOptions);
+
+          packageObserver.unobserve(staticNode);
+        }
+      }, observerConfig);
+
+      packageObserver.observe(staticNode);
     }
   }, []);
 
@@ -455,6 +484,7 @@ export const Sibosgastrin = ({
         className={cssClass}
         flex
         justify="space-between"
+        ref={staticRef}
         wrap
       >
         <List
