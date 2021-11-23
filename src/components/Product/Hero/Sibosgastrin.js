@@ -3,7 +3,7 @@ import React, {
   createRef, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
   animate, stagger,
@@ -50,6 +50,17 @@ const Wrapper = styled.div`
   > section {
     margin-top: 3.776042vw;
   }
+
+  @media ${queries.xxsplus} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    > section {
+      margin-top: 2em;
+    }
+  }
 `;
 
 const List = styled.ul`
@@ -70,6 +81,7 @@ const List = styled.ul`
       content: '▸';
       margin-right: 0.25em;
       color: ${({ theme }) => theme.getColor('accent')};
+      font-family: monospace;
     }
   }
 
@@ -95,7 +107,11 @@ const List = styled.ul`
 
   @media ${queries.xs} {
     width: 100%;
-    font-size: 14px;
+  }
+
+  @media ${queries.xxsPlus} {
+    margin: 2em auto;
+    font-size: 24px;
   }
 `;
 
@@ -144,7 +160,10 @@ const GermList = styled.ul`
   }
 
   @media ${queries.xxsplus} {
-    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2em auto;
+    font-size: 22px;
   }
 `;
 
@@ -184,9 +203,43 @@ const IconsList = styled.ul`
   @media ${queries.xs} {
     font-size: 14px;
   }
+
+  @media ${queries.xxsplus} {
+    width: 80%;
+  }
+`;
+
+const flow = keyframes`
+  0% {
+    transform: translateX(-100%) rotate(15deg);
+  }
+
+  25% {
+    transform: translateX(100vw) rotate(15deg);
+  }
+
+  to {
+    transform: translateX(100vw) rotate(15deg);
+  }
+`;
+
+const flowLarge = keyframes`
+  0% {
+    transform: translateX(-100%) rotate(15deg);
+  }
+
+  25% {
+    transform: translateX(33vw) rotate(15deg);
+  }
+
+  to {
+    transform: translateX(33vw) rotate(15deg);
+  }
 `;
 
 const Red = styled.ul`
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -206,6 +259,32 @@ const Red = styled.ul`
 
   > li:last-of-type {
     width: 70%;
+  }
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    bottom: 0;
+    left: 0;
+    width: 10%;
+    height: 140%;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 10%,
+      rgba(255, 255, 255, 0.6) 20%,
+      rgba(255, 255, 255, 0.65) 50%,
+      rgba(255, 255, 255, 0.6) 80%,
+      rgba(255, 255, 255, 0.2) 90%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(15deg);
+    animation: ${flowLarge} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+
+    @media ${queries.xxsplus} {
+      animation: ${flow} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+    }
   }
 
   @media ${queries.huge} {
@@ -229,6 +308,10 @@ const Red = styled.ul`
     width: 100%;
     padding: 1em;
     font-size: 10px;
+  }
+
+  @media ${queries.xxsplus} {
+    margin: 2em auto;
   }
 `;
 
@@ -259,30 +342,6 @@ const InBetween = styled.p`
 }
 `;
 
-const GutsText = styled.p`
-  padding: 0 13.28125vw;
-  font-size: 24px;
-  line-height: 1.25;
-  text-align: center;
-
-  @media ${queries.huge} {
-    font-size: 22px;
-  }
-
-  @media ${queries.xxl} {
-    font-size: 20px;
-  }
-
-  @media ${queries.xs} {
-    padding: 0 5%;
-    font-size: 18px;
-  }
-
-  @media ${queries.xxsplus} {
-    font-size: 14px;
-  }
-`;
-
 export const Sibosgastrin = ({
   copy,
   cssClass,
@@ -301,8 +360,6 @@ export const Sibosgastrin = ({
   const { image: { file: germRightImage } } = images.find(({ image }) => image.label === 'germRight');
   const { image: { file: germLeftImage } } = images.find(({ image }) => image.label === 'germLeft');
 
-  const { item: { text: guts } } = copy.find(({ item }) => item.label === 'guts');
-
   const { item: { text: frameHeading } } = copy.find(({ item }) => item.label === 'frameHeading');
   const { item: { text: frameContent } } = copy.find(({ item }) => item.label === 'frameContent');
 
@@ -313,6 +370,9 @@ export const Sibosgastrin = ({
 
   const germLeftRef = createRef();
   const germRightRef = createRef();
+  const packageRef = createRef();
+  const listRef = createRef();
+  const redRef = createRef();
 
   const sanitizeConfig = {
     allowedTags: [
@@ -343,8 +403,8 @@ export const Sibosgastrin = ({
 
     animate(germs, {
       transform: [
-        'rotate(-15deg)',
-        'rotate(15deg)',
+        'rotate(-20deg)',
+        'rotate(20deg)',
       ],
     },
     {
@@ -360,6 +420,34 @@ export const Sibosgastrin = ({
     animateItems();
   }, []);
 
+  useEffect(() => {
+    const { current: redNode } = redRef;
+    const { current: packageNode } = packageRef;
+    const { current: listNode } = listRef;
+
+    const animationKeyframes = {
+      transform: 'scale(1.1)',
+    };
+
+    const animationOptions = {
+      delay: stagger(0.5),
+      direction: 'alternate',
+      duration: 1,
+      easing: 'linear',
+      repeat: Infinity,
+    };
+
+    if (redNode && packageNode && listNode) {
+      const animationTargets = [
+        packageNode,
+        // redNode,
+        ...listNode.querySelectorAll('li'),
+      ];
+
+      animate(animationTargets, animationKeyframes, animationOptions);
+    }
+  }, []);
+
   return (
     <Container className={cssClass}>
       <Wrapper
@@ -369,9 +457,15 @@ export const Sibosgastrin = ({
         justify="space-between"
         wrap
       >
-        <List dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }} />
-        <Package image={rightImage} />
-        <Red>
+        <List
+          dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }}
+          ref={listRef}
+        />
+        <Package
+          image={rightImage}
+          innerRef={packageRef}
+        />
+        <Red ref={redRef}>
           <li dangerouslySetInnerHTML={{ __html: sanitize(redLeft, sanitizeConfig) }} />
           <li dangerouslySetInnerHTML={{ __html: sanitize(redRight, sanitizeConfig) }} />
         </Red>
@@ -397,9 +491,6 @@ export const Sibosgastrin = ({
             <span dangerouslySetInnerHTML={{ __html: sanitize(rightGerm, sanitizeConfig) }} />
           </li>
         </GermList>
-      </Wrapper>
-      <Wrapper>
-        <GutsText dangerouslySetInnerHTML={{ __html: sanitize(guts, sanitizeConfig) }} />
       </Wrapper>
       <Wrapper>
         <FramedText>
