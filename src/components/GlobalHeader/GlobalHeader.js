@@ -36,6 +36,7 @@ export const GlobalHeader = ({
       top: scrollOffset,
     };
 
+    setNavigationOpen(false);
     window.scrollTo(scrollConfig);
   };
 
@@ -95,7 +96,9 @@ GlobalHeader.propTypes = {
   isNavigationOpen: PropTypes.bool.isRequired,
   isPageScrolled: PropTypes.bool.isRequired,
   refs: PropTypes.shape({
-    header: PropTypes.shape({}),
+    header: PropTypes.shape({
+      current: PropTypes.node,
+    }),
   }).isRequired,
   setNavigationOpen: PropTypes.func.isRequired,
 };

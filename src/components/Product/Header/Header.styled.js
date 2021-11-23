@@ -14,6 +14,10 @@ export const StyledHeader = styled.header`
   @media ${queries.xs} {
     margin-top: 10vw;
   }
+
+  @media ${queries.xxsplus} {
+    margin-bottom: 2em;
+  }
 `;
 
 export const Container = styled(GenericContainer)`
@@ -26,6 +30,11 @@ export const Container = styled(GenericContainer)`
   &.alugastrin--250 {
     justify-content: flex-end;
   }
+
+  @media ${queries.xxsplus} {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 export const Image = styled(SPImage)`
@@ -34,6 +43,12 @@ export const Image = styled(SPImage)`
   &.alugastrin3forte--20 {
     width: 35%;
     margin-right: 5%;
+
+    @media ${queries.xxsplus} {
+      width: 80%;
+      max-width: unset;
+      margin: 0 auto;
+    }
   }
 
   &.alugastrin--250 {
@@ -41,13 +56,24 @@ export const Image = styled(SPImage)`
     margin-right: 10%;
 
     @media ${queries.xxsplus} {
-      width: 33%;
+      width: 25%;
+      margin: auto;
     }
+  }
+
+  @media ${queries.xxsplus} {
+    width: 80%;
+    max-width: unset;
+    margin: 0 auto;
   }
 `;
 
 export const Wrapper = styled.div`
   width: 50%;
+
+  @media ${queries.xxsplus} {
+    width: 80%;
+  }
 `;
 
 export const Name = styled.h1`
@@ -60,7 +86,8 @@ export const Name = styled.h1`
   }
 
   @media ${queries.xxsplus} {
-    font-size: 28px;
+    font-size: 40px;
+    text-align: center;
   }
 `;
 
@@ -76,6 +103,11 @@ export const Description = styled.p`
   @media ${queries.xs} {
     font-size: 16px;
   }
+
+  @media ${queries.xxsplus} {
+    font-size: 24px;
+    text-align: center;
+  }
 `;
 
 export const LinksWrapper = styled.div`
@@ -84,7 +116,7 @@ export const LinksWrapper = styled.div`
   margin-top: 2.552vw;
 
   @media ${queries.xxsplus} {
-    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 1em;
   }
 `;
@@ -135,7 +167,9 @@ const linkStyle = css`
   }
 
   @media ${queries.xxsplus} {
-    width: 100%;
+    width: calc(50% - 0.5em);
+    font-size: 20px;
+    text-align: center;
   }
 `;
 
@@ -162,6 +196,7 @@ export const Scrollers = styled.nav`
   @media ${queries.xxsplus} {
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
+    width: 80%;
     margin-top: 1em;
   }
 `;
@@ -178,5 +213,9 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
 
   :hover {
     filter: brightness(1.05);
+  }
+
+  @media ${queries.xxsplus} {
+    font-size: 20px;
   }
 `;

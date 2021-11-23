@@ -7,6 +7,10 @@ import { queries } from '@utils';
 
 export const Section = styled.section`
   margin-top: 3.8vw;
+
+  @media ${queries.xxsplus} {
+    margin-top: 2em;
+  }
 `;
 
 export const Heading = styled(LineHeading)`
@@ -18,8 +22,14 @@ export const Text = styled.div`
   font-size: 24px;
   line-height: 1.25;
 
+  b,
   strong {
     font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: italic;
   }
 
   ul {
@@ -77,5 +87,9 @@ export const Background = styled(SPImage)`
   @media ${queries.xxsplus} {
     width: 100%;
     height: auto;
+
+    > img {
+      max-width: 100%;
+    }
   }
 `;

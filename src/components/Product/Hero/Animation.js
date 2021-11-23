@@ -8,60 +8,32 @@ import {
 
 import * as SVG from './svgs';
 import {
-  AnimationContainer, Item,
+  AnimationContainer,
 } from './Animation.styled';
-import { Image } from './Hero.styled';
+import {
+  BackgroundImage, Image,
+} from './Hero.styled';
 
 export const Animation = ({
-  background, cssClass,
+  background, cssClass, images,
 }) => {
   const [variant] = cssClass?.split(' ') || [cssClass];
-  const backgroundRef = createRef();
 
   const animatedComponents = {
-    alugastrin: [
-      SVG.AluFast,
-      SVG.AluStomach,
-    ],
-    alugastrin3forte: [
-      SVG.Mucosave,
-      SVG.E170,
-      SVG.E401,
-    ],
+    alugastrin: SVG.Alu,
+    alugastrin3forte: SVG.Forte,
   };
 
-  const componentLines = {
-    alugastrin: [
-      SVG.AluLineFast,
-      SVG.AluLineStomach,
-    ],
-    alugastrin3forte: [
-      SVG.MucosLine,
-      SVG.E170Line,
-      SVG.E401Line,
-    ],
-  };
+  const childRef = createRef();
+  const backgroundRef = createRef();
+  const backgroundImageRef = createRef();
 
-  const children = animatedComponents[variant]?.map(component => {
-    const innerRef = createRef();
-
-    return {
-      component,
-      innerRef,
-    };
-  });
-
-  const lines = componentLines[variant]?.map(component => {
-    const innerRef = createRef();
-
-    return {
-      component,
-      innerRef,
-    };
-  });
+  const Child = animatedComponents[variant];
 
   const animateItems = () => {
-    const targets = children.map(element => element.innerRef.current);
+    const { current: vectorElement } = childRef;
+
+    const targets = vectorElement.querySelectorAll('.animationTarget');
 
     animate(targets, {
       transform: 'scale(1.1)',
@@ -75,13 +47,32 @@ export const Animation = ({
     });
   };
 
+  const animationBackground = images.length > 0 ? images?.find(({ image }) => image.label === 'animationBackground') : null;
+
   const animateBackground = () => {
     const { current } = backgroundRef;
-    const element = current.querySelector('img');
+    const backgroundElement = current.querySelector('img');
+    const { current: backgroundPicture } = backgroundImageRef;
+    const backgroundImageElement = backgroundPicture?.querySelector('img');
+
+    if (backgroundImageElement) {
+      animate(
+        backgroundImageElement,
+        {
+          transform: 'rotate(360deg)',
+        },
+        {
+          direction: 'normal',
+          duration: 8,
+          easing: 'linear',
+          repeat: Infinity,
+        }
+      );
+    }
 
     animate(
-      element, {
-        filter: 'brightness(1.1) saturate(1.5)',
+      backgroundElement, {
+        filter: 'saturate(1.5) contrast(1.2)',
       },
       {
         direction: 'alternate',
@@ -92,73 +83,31 @@ export const Animation = ({
     );
   };
 
-  // const draw = progress => ({
-  //   strokeDashoffset: 1 - progress,
-  //   visibility: 'visible',
-  // });
-
-  // const drawLines = () => {
-  //   const targets = lines.map(element => element.innerRef.current.querySelector('line, path'));
-
-  //   timeline([
-  //     [
-  //       targets[1],
-  //       draw(1),
-  //       { duration: 0.8 },
-  //     ],
-  //   ]);
-  // };
-
   useEffect(() => {
     animateBackground();
     animateItems();
-    // drawLines();
   }, []);
 
   return (
     <AnimationContainer className={cssClass}>
+      {animationBackground && (
+        <BackgroundImage
+          className={`background background--${variant}`}
+          image={animationBackground.image.file}
+          innerRef={backgroundImageRef}
+          isLazy={false}
+        />
+      )}
       <Image
-        className={cssClass}
+        className={`image image--${variant}`}
         image={background}
         innerRef={backgroundRef}
         isLazy={false}
       />
-      {children.map((child, index) => {
-        const {
-          component: Component, innerRef,
-        } = child;
-
-        const wrapperClass = `animated-${variant}--${index}`;
-        const componentClass = `animated-${variant}--${index}-item`;
-
-        return (
-          <Item
-            className={wrapperClass}
-            ref={innerRef}
-          >
-            <Component className={componentClass} />
-          </Item>
-        );
-      })}
-      {lines.map((child, index) => {
-        const {
-          component: Component, innerRef,
-        } = child;
-
-        const wrapperClass = `animated-${variant}--${index}-line`;
-        const componentClass = `animated-${variant}--${index}-line`;
-
-        return (
-          <Item
-            className={wrapperClass}
-            ref={innerRef}
-          >
-            <Component
-              className={componentClass}
-            />
-          </Item>
-        );
-      })}
+      <Child
+        className={`parent parent--${variant}`}
+        innerRef={childRef}
+      />
     </AnimationContainer>
   );
 };
@@ -166,4 +115,9 @@ export const Animation = ({
 Animation.propTypes = {
   background: PropTypes.shape({}).isRequired,
   cssClass: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+Animation.defaultProps = {
+  images: null,
 };

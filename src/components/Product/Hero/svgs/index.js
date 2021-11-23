@@ -8,3 +8,5 @@ export { default as AluFast } from './AluFast';
 export { default as AluLineFast } from './AluLineFast';
 export { default as AluStomach } from './AluStomach';
 export { default as AluLineStomach } from './AluLineStomach';
+export { default as Forte } from './Forte';
+export { default as Alu } from './Alu';

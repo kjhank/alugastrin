@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger, timeline,
+  animate, stagger,
 } from 'motion';
 
 import {
@@ -38,6 +38,10 @@ const Container = styled(GenericContainer)`
 
   @media ${queries.s} {
     font-size: 18px;
+  }
+
+  @media ${queries.xxsplus} {
+    font-size: 16px;
   }
 
   @media ${queries.xs} {
@@ -81,7 +85,6 @@ const List = styled.ul`
   font-size: 26px;
 
   > li {
-    opacity: 0;
     display: inline-flex;
     align-items: baseline;
     list-style-type: none;
@@ -90,15 +93,14 @@ const List = styled.ul`
       content: '▸';
       margin-right: 0.25em;
       color: ${({ theme }) => theme.getColor('accent')};
+      font-family: monospace;
     }
+  }
 
-    :first-child {
-      transform: translateX(-50vw);
-    }
-
-    :last-child {
-      transform: translateX(50vw);
-    }
+  @media ${queries.xxsplus} {
+    gap: 2em;
+    margin: 2em 0;
+    font-size: 18px;
   }
 `;
 
@@ -110,21 +112,24 @@ const Left = styled.div`
     ::before {
       content: '▸';
       margin-right: 0.25em;
+      font-family: monospace;
     }
   }
 
   @media ${queries.m} {
     font-size: 14px;
   }
+
+  @media ${queries.xxsplus} {
+    font-size: 18px;
+  }
 `;
 
 const Subheading = styled.h3`
-  opacity: 0;
   font-weight: 600;
   font-size: 46px;
   text-align: center;
   text-transform: uppercase;
-  transform: translateX(50vw);
 
   > strong {
     color: ${({ theme }) => theme.getColor('accent')};
@@ -142,6 +147,10 @@ const Subheading = styled.h3`
     font-size: 32px;
   }
 
+  @media ${queries.xxsplus} {
+    margin: 2em 0;
+  }
+
   @media ${queries.xs} {
     font-size: 26px;
   }
@@ -150,10 +159,8 @@ const Subheading = styled.h3`
 const Image = styled(SPImage)``;
 
 const Package = styled(SPImage)`
-  opacity: 0;
   flex-shrink: 0;
   width: 17.552083vw;
-  transform: translateX(50%);
 
   @media ${queries.s} {
     width: 80%;
@@ -168,6 +175,7 @@ const GermList = styled.ul`
   width: 90%;
   margin: auto;
   padding-top: 2vw;
+  font-size: 22px;
   text-align: center;
 
   > li {
@@ -181,6 +189,11 @@ const GermList = styled.ul`
     p {
       padding: 2vw 3vw 0;
     }
+  }
+
+  @media ${queries.xxsplus} {
+    margin: 2em auto;
+    font-size: 14px;
   }
 `;
 
@@ -209,7 +222,6 @@ export const Helicogastrin = ({
   const packageRef = createRef();
   const listRef = createRef();
   const headingRef = createRef();
-  const observableRef = createRef();
 
   const sanitizeConfig = {
     allowedTags: [
@@ -249,58 +261,28 @@ export const Helicogastrin = ({
     const { current: headingNode } = headingRef;
     const { current: packageNode } = packageRef;
     const { current: listNode } = listRef;
-    const { current: observableNode } = observableRef;
-    const observerConfig = { threshold: [0.8] };
 
     const keyframes = {
-      opacity: 1,
-      transform: 'translateX(0)',
+      transform: 'scale(1.1)',
     };
 
     const animationOptions = {
-      delay: 0.5,
-      duration: 0.5,
-      easing: [
-        0.22,
-        1,
-        0.36,
-        1,
-      ],
+      delay: stagger(0.4),
+      direction: 'alternate',
+      duration: 1,
+      easing: 'linear',
+      repeat: Infinity,
     };
 
-    let topObserver;
+    if (headingNode && packageNode && listNode) {
+      const animationTargets = [
+        packageNode,
+        headingNode,
+        ...listNode.querySelectorAll('li'),
+      ];
 
-    if (headingNode && packageNode && listNode && observableNode) {
-      topObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-        if (isIntersecting) {
-          const sequence = [
-            [
-              packageNode,
-              keyframes,
-              animationOptions,
-            ],
-            [
-              headingNode,
-              keyframes,
-              animationOptions,
-            ],
-            [
-              listNode.querySelectorAll('li'),
-              keyframes,
-              animationOptions,
-            ],
-          ];
-
-          timeline(sequence);
-
-          topObserver.unobserve(observableNode);
-        }
-      }, observerConfig);
-
-      topObserver.observe(observableNode);
+      animate(animationTargets, keyframes, animationOptions);
     }
-
-    return () => topObserver?.unobserve(observableNode);
   }, []);
 
   return (
@@ -311,7 +293,7 @@ export const Helicogastrin = ({
           ref={headingRef}
         />
       </Wrapper>
-      <Wrapper ref={observableRef}>
+      <Wrapper>
         <List ref={listRef}>
           <li dangerouslySetInnerHTML={{ __html: sanitize(`<span>${listLeft}</span>`, sanitizeConfig) }} />
           <li dangerouslySetInnerHTML={{ __html: sanitize(`<span>${listRight}</span>`, sanitizeConfig) }} />

@@ -90,6 +90,7 @@ export const Hero = ({
         <Animation
           background={image}
           cssClass={cssClass}
+          images={images}
         />
         )}
       </Container>
