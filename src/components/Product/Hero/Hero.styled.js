@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { SPImage } from '@components';
 
@@ -59,10 +59,62 @@ export const Heading = styled.h2`
 
   @media ${queries.xxsplus} {
     font-size: ${({ isLarger }) => (isLarger ? '32px' : '24px')};
+
+    &.alugastrin {
+      margin: 2em 0;
+    }
+  }
+`;
+
+const flow = keyframes`
+  0% {
+    transform: translateX(100%) rotate(15deg);
+  }
+
+  25% {
+    transform: translateX(-80vw) rotate(15deg);
+  }
+
+  to {
+    transform: translateX(-80vw) rotate(15deg);
+  }
+`;
+
+const flowLarge = keyframes`
+  0% {
+    transform: translateX(100%) rotate(15deg);
+  }
+
+  25% {
+    transform: translateX(-50vw) rotate(15deg);
+  }
+
+  to {
+    transform: translateX(-50vw) rotate(15deg);
+  }
+`;
+
+export const BackgroundImage = styled(SPImage)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+
+  &.background--alugastrin3forte {
+    aspect-ratio: 1/1;
+    width: 91.046386%;
+  }
+
+  > img {
+    width: 100%;
+    height: auto;
   }
 `;
 
 export const Image = styled(SPImage)`
+  position: relative;
+  z-index: 2;
   display: block;
 
   > img {
@@ -85,10 +137,38 @@ export const Image = styled(SPImage)`
   }
 
   &.alugastrin.alugastrin--250.second--static {
+    position: relative;
+    overflow: hidden;
     display: inline-block;
     width: 21.614583vw;
     margin-bottom: 10%;
     margin-left: 19%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 10%;
+      height: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 10%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0.6) 80%,
+        rgba(255, 255, 255, 0.2) 90%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(15deg);
+      animation: ${flowLarge} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+
+      @media ${queries.xxsplus} {
+        animation: ${flow} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+      }
+    }
 
     @media ${queries.xxsplus} {
       width: 40vw;
@@ -109,8 +189,39 @@ export const Image = styled(SPImage)`
   }
 
   &.alugastrin.alugastrin--20.second--static {
+    position: relative;
     width: 37.239583vw;
     margin: 5% auto 25%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 10%;
+      height: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 10%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0.6) 80%,
+        rgba(255, 255, 255, 0.2) 90%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(15deg);
+      animation: ${flowLarge} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+
+      @media ${queries.xxsplus} {
+        animation: ${flow} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+      }
+    }
+
+    @media ${queries.xxsplus} {
+      width: 50vw;
+    }
   }
 
   &.alugastrin.alugastrin--20.second--package,
@@ -129,8 +240,35 @@ export const Image = styled(SPImage)`
   }
 
   &.alugastrin.alugastrin--40.second--static {
+    position: relative;
     width: 35.859375vw;
     margin: 5% auto 25%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 10%;
+      height: 100%;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 10%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.65) 50%,
+        rgba(255, 255, 255, 0.6) 80%,
+        rgba(255, 255, 255, 0.2) 90%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(15deg);
+      animation: ${flowLarge} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+
+      @media ${queries.xxsplus} {
+        animation: ${flow} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
+      }
+    }
 
     @media ${queries.l} {
       width: 55vw;
@@ -172,7 +310,8 @@ export const FramedText = styled.section`
   }
 
   @media ${queries.xxsplus} {
-    font-size: 12px;
+    margin: 2em 0;
+    font-size: 14px;
   }
 
   > h3 {
