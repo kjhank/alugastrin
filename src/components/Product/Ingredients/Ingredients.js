@@ -33,13 +33,15 @@ export const Ingredients = ({
     const listElements = iconsElement.querySelectorAll('picture');
 
     const listKeyframes = {
-      transform: 'scale(1.1)',
+      transform: [
+        'scale(1)',
+        'scale(1.1)',
+        'scale(1)',
+      ],
     };
 
     const listOptions = {
-      direction: 'alternate',
-      duration: 0.5,
-      easing: 'ease-in-out',
+      duration: 1,
     };
 
     const sequence = Array.from(listElements).map(element => [
@@ -49,8 +51,6 @@ export const Ingredients = ({
     ]);
 
     timeline(sequence, {
-      delay: 3,
-      direction: 'alternate',
       repeat: Infinity,
     });
   };
