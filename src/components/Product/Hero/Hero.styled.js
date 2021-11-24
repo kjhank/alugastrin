@@ -228,13 +228,13 @@ export const Image = styled(SPImage)`
   &.alugastrin.alugastrin--40.second--package {
     position: absolute;
     right: 18%;
-    bottom: -40%;
+    top: 70%;
     opacity: 0;
     width: 26.041667vw;
     transform: translateX(55vw);
 
     @media ${queries.l} {
-      bottom: -30%;
+      top: 70%;
       width: 40vw;
     }
   }

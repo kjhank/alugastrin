@@ -35,11 +35,13 @@ export const Animation = ({
 
     const targets = vectorElement.querySelectorAll('.animationTarget');
 
+    console.log(targets);
+
     animate(targets, {
-      transform: 'scale(1.1)',
+      transform: 'scale(1.2)',
     },
     {
-      delay: stagger(0.4),
+      delay: stagger(3),
       direction: 'alternate',
       duration: 1,
       easing: 'linear',
@@ -115,7 +117,10 @@ export const Animation = ({
 Animation.propTypes = {
   background: PropTypes.shape({}).isRequired,
   cssClass: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({})),
+  images: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape({})),
+    PropTypes.bool,
+  ]),
 };
 
 Animation.defaultProps = {
