@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Alu({
   innerRef, ...props
@@ -16,93 +17,40 @@ export default function Alu({
       {...props}
     >
       <defs id="defs1878" />
-      {/* <sodipodi:namedview
-        bordercolor="#666666"
-        borderopacity={1.0}
-        id="namedview1876"
-        inkscape:current-layer="Component_4_1"
-        inkscape:cx="453.07429"
-        inkscape:cy={264}
-        inkscape:pagecheckerboard={0}
-        inkscape:pageopacity={0.0}
-        inkscape:pageshadow={2}
-        inkscape:window-height={969}
-        inkscape:window-maximized={0}
-        inkscape:window-width={1296}
-        inkscape:window-x={0}
-        inkscape:window-y={25}
-        inkscape:zoom="0.99431818"
-        pagecolor="#ffffff"
-        showgrid="false"
-      /> */}
       <g className="animationTarget">
         <g
           aria-label="SZYBKO"
           id="text31768"
-          style={{
-            fontSize: '24px',
-            lineHeight: '1.25',
-            fontFamily: '"Proxima Nova"',
-            InkscapeFontSpecification: '"Proxima Nova"',
-          }}
         >
           <path
             d="M -0.15999999,25.904 1.712,23.312 q 2.064,2.16 5.088,2.16 1.32,0 2.04,-0.528 0.744,-0.528 0.744,-1.272 0,-0.816 -0.792,-1.224 Q 8,22.016 6.344,21.632 5.528,21.44 5.168,21.368 4.808,21.272 4.04,21.032 3.272,20.792 2.864,20.576 2.48,20.36 1.904,19.976 1.352,19.592 1.064,19.16 0.80000001,18.728 0.58400001,18.104 q -0.216,-0.624 -0.216,-1.368 0,-2.064 1.65599999,-3.432 1.656,-1.392 4.416,-1.392 3.816,0 6.24,2.232 L 10.784,16.64 Q 8.888,14.888 6.2,14.888 q -1.128,0 -1.752,0.456 -0.6,0.432 -0.6,1.176 0,0.744 0.744,1.104 0.744,0.336 2.448,0.744 0.744,0.168 1.176,0.288 0.432,0.096 1.152,0.336 0.72,0.24 1.152,0.48 0.432,0.216 0.96,0.6 0.552,0.384 0.84,0.816 0.312,0.432 0.504,1.056 0.216,0.624 0.216,1.368 0,2.304 -1.656,3.72 -1.632,1.416 -4.752,1.416 -4.248,0 -6.79199999,-2.544 z"
             id="path45124"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="M 14.758625,28.16 V 25.4 l 7.56,-10.248 h -7.56 v -3 h 12.024 v 2.736 l -7.56,10.272 h 7.728 v 3 z"
             id="path45126"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 34.00175,28.16 v -6.552 l -6.168,-9.456 h 3.888 l 3.984,6.432 3.936,-6.432 h 3.888 l -6.12,9.456 v 6.552 z"
             id="path45128"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="M 45.0065,28.16 V 12.152 h 8.424 q 2.184,0 3.384,1.2 1.224,1.176 1.224,2.88 0,1.464 -0.792,2.448 -0.792,0.984 -1.968,1.224 1.296,0.192 2.184,1.32 0.888,1.128 0.888,2.616 0,1.872 -1.224,3.096 -1.224,1.224 -3.432,1.224 z m 3.408,-9.576 h 4.272 q 0.864,0 1.368,-0.48 0.504,-0.504 0.504,-1.296 0,-0.744 -0.528,-1.248 -0.504,-0.504 -1.344,-0.504 h -4.272 z m 0,6.672 h 4.392 q 0.96,0 1.512,-0.504 0.552,-0.528 0.552,-1.392 0,-0.792 -0.552,-1.32 -0.552,-0.552 -1.512,-0.552 h -4.392 z"
             id="path45130"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 70.401125,28.16 -4.848,-6.408 -1.248,1.488 v 4.92 h -3.408 V 12.152 h 3.408 v 7.152 l 5.664,-7.152 h 4.2 l -6.36,7.512 6.792,8.496 z"
             id="path45132"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 76.824875,26.12 q -2.352,-2.352 -2.352,-5.952 0,-3.6 2.352,-5.928 2.376,-2.352 6,-2.352 3.648,0 6,2.328 2.376,2.328 2.376,5.952 0,3.624 -2.376,5.952 -2.352,2.328 -6,2.328 -3.624,0 -6,-2.328 z m 9.528,-2.184 q 1.344,-1.488 1.344,-3.768 0,-2.28 -1.344,-3.768 -1.344,-1.488 -3.528,-1.488 -2.184,0 -3.528,1.488 -1.32,1.488 -1.32,3.768 0,2.28 1.32,3.768 1.344,1.488 3.528,1.488 2.184,0 3.528,-1.488 z"
             id="path45134"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
         </g>
         <g
           aria-label="USUWA"
           id="SZYBKO_USUWA_ZGAGĘ"
           style={{
-            fontWeight: 'bold',
-            fontSize: '46px',
-            fontFamily: '"Proxima Nova"',
-            InkscapeFontSpecification: '"Proxima Nova Bold"',
             fill: '#3b3b3b',
           }}
         >
@@ -110,7 +58,6 @@ export default function Alu({
             d="M -1.335144e-8,54.764 V 36.318 H 6.624 v 18.216 q 0,3.312 1.794,5.29 1.84,1.932 5.336,1.932 3.404,0 5.198,-1.932 1.84,-1.978 1.84,-5.29 V 36.318 h 6.624 v 18.4 q 0,5.934 -3.45,9.384 -3.45,3.45 -10.212,3.45 -6.808,0 -10.304,-3.45 Q -1.335144e-8,60.652 -1.335144e-8,54.764 Z"
             id="path45155"
             style={{
-              fontSize: '46px',
               fill: '#bb181b',
             }}
           />
@@ -118,7 +65,6 @@ export default function Alu({
             d="m 31.395719,62.676 3.588,-4.968 q 3.956,4.14 9.752,4.14 2.53,0 3.91,-1.012 1.426,-1.012 1.426,-2.438 0,-1.564 -1.518,-2.346 -1.518,-0.828 -4.692,-1.564 -1.564,-0.368 -2.254,-0.506 -0.69,-0.184 -2.162,-0.644 -1.472,-0.46 -2.254,-0.874 -0.736,-0.414 -1.84,-1.15 -1.058,-0.736 -1.61,-1.564 -0.506,-0.828 -0.92,-2.024 -0.414,-1.196 -0.414,-2.622 0,-3.956 3.174,-6.578 3.174,-2.668 8.464,-2.668 7.314,0 11.96,4.278 l -3.634,4.784 q -3.634,-3.358 -8.786,-3.358 -2.162,0 -3.358,0.874 -1.15,0.828 -1.15,2.254 0,1.426 1.426,2.116 1.426,0.644 4.692,1.426 1.426,0.322 2.254,0.552 0.828,0.184 2.208,0.644 1.38,0.46 2.208,0.92 0.828,0.414 1.84,1.15 1.058,0.736 1.61,1.564 0.598,0.828 0.966,2.024 0.414,1.196 0.414,2.622 0,4.416 -3.174,7.13 -3.128,2.714 -9.108,2.714 -8.142,0 -13.018,-4.876 z"
             id="path45157"
             style={{
-              fontSize: '46px',
               fill: '#bb181b',
             }}
           />
@@ -126,7 +72,6 @@ export default function Alu({
             d="M 61.09375,54.764 V 36.318 h 6.624 v 18.216 q 0,3.312 1.794,5.29 1.84,1.932 5.336,1.932 3.404,0 5.198,-1.932 1.84,-1.978 1.84,-5.29 V 36.318 h 6.624 v 18.4 q 0,5.934 -3.45,9.384 -3.45,3.45 -10.212,3.45 -6.808,0 -10.304,-3.45 -3.45,-3.45 -3.45,-9.338 z"
             id="path45159"
             style={{
-              fontSize: '46px',
               fill: '#bb181b',
             }}
           />
@@ -134,7 +79,6 @@ export default function Alu({
             d="m 118.06547,67 -5.382,-21.068 -5.336,21.068 h -6.946 L 91.615469,36.318 h 7.314 l 5.382001,22.172 5.842,-22.172 h 5.106 l 5.796,22.172 5.336,-22.172 h 7.36 l -8.74,30.682 z"
             id="path45161"
             style={{
-              fontSize: '46px',
               fill: '#bb181b',
             }}
           />
@@ -142,7 +86,6 @@ export default function Alu({
             d="m 156.24762,67 -1.932,-5.29 h -13.708 l -1.932,5.29 h -7.176 l 11.868,-30.682 h 8.188 L 163.37762,67 Z m -8.786,-25.024 -5.106,14.076 h 10.166 z"
             id="path45163"
             style={{
-              fontSize: '46px',
               fill: '#bb181b',
             }}
           />
@@ -150,19 +93,11 @@ export default function Alu({
         <g
           aria-label="ZGAGĘ"
           id="text27570"
-          style={{
-            fontSize: '46px',
-            lineHeight: '1.25',
-            fontFamily: '"Proxima Nova"',
-            InkscapeFontSpecification: '"Proxima Nova"',
-          }}
         >
           <path
             d="m -4.1007995e-8,105.6 v -5.29 L 14.49,80.667998 H -4.1007995e-8 v -5.75 H 23.046 v 5.244 l -14.49,19.688 H 23.368 V 105.6 Z"
             id="path45184"
             style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
               fill: '#bb181b',
             }}
           />
@@ -170,8 +105,6 @@ export default function Alu({
             d="m 26.22575,90.281998 q 0,-7.13 4.692,-11.5 4.738,-4.37 11.638,-4.37 8.372,0 12.696,6.716 l -5.428,2.944 q -1.15,-1.702 -3.082,-2.76 -1.886,-1.104 -4.186,-1.104 -4.186,0 -6.9,2.852 -2.714,2.852 -2.714,7.222 0,4.37 2.714,7.222 2.714,2.852002 6.9,2.852002 4.002,0 6.624,-2.346002 v -3.726 h -8.188 v -5.612 h 14.628 V 100.402 q -5.198,5.796 -13.064,5.796 -6.9,0 -11.638,-4.416 -4.692,-4.416002 -4.692,-11.500002 z"
             id="path45186"
             style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
               fill: '#bb181b',
             }}
           />
@@ -179,8 +112,6 @@ export default function Alu({
             d="m 81.972719,105.6 -1.932,-5.29 h -13.708 l -1.932,5.29 h -7.176 l 11.868,-30.682002 h 8.188 L 89.102719,105.6 Z m -8.786,-25.024002 -5.106,14.076 h 10.166 z"
             id="path45188"
             style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
               fill: '#bb181b',
             }}
           />
@@ -188,8 +119,6 @@ export default function Alu({
             d="m 88.936687,90.281998 q 0,-7.13 4.692,-11.5 4.738,-4.37 11.638003,-4.37 8.372,0 12.696,6.716 l -5.428,2.944 q -1.15,-1.702 -3.082,-2.76 -1.886,-1.104 -4.186,-1.104 -4.186,0 -6.900003,2.852 -2.714,2.852 -2.714,7.222 0,4.37 2.714,7.222 2.714003,2.852002 6.900003,2.852002 4.002,0 6.624,-2.346002 v -3.726 h -8.188 v -5.612 h 14.628 V 100.402 q -5.198,5.796 -13.064,5.796 -6.900003,0 -11.638003,-4.416 -4.692,-4.416002 -4.692,-11.500002 z"
             id="path45190"
             style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
               fill: '#bb181b',
             }}
           />
@@ -197,8 +126,6 @@ export default function Alu({
             d="m 145.27303,80.529998 h -15.18 v 6.67 h 14.858 v 5.612 h -14.858 v 7.13 h 15.18 V 105.6 h -0.046 q -4.048,1.196 -4.048,3.496 0,0.644 0.46,1.012 0.46,0.414 1.104,0.414 0.69,0 1.334,-0.322 l 1.104,3.128 q -1.472,0.828 -4.048,0.828 -2.116,0 -3.68,-0.92 -1.518,-0.92 -1.518,-2.76 0,-2.944 4.968,-4.876 h -17.342 V 74.917998 h 21.712 z"
             id="path45192"
             style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
               fill: '#bb181b',
             }}
           />
@@ -229,9 +156,6 @@ export default function Alu({
           aria-label="OSŁANIAŻOŁĄDEK"
           id="OSŁANIA_ŻOŁĄDEK_przed_podrażnieniami"
           style={{
-            fontWeight: 700,
-            fontSize: '46px',
-            fontFamily: 'ProximaNova-Bold, "Proxima Nova"',
             fill: '#bb181b',
           }}
           transform="translate(624.497,431)"
@@ -296,167 +220,90 @@ export default function Alu({
         <g
           aria-label="PRZED PODRAŻNIENIAMI"
           id="text37258"
-          style={{
-            fontSize: '24px',
-            lineHeight: '1.25',
-            fontFamily: '"Proxima Nova"',
-            InkscapeFontSpecification: '"Proxima Nova"',
-          }}
         >
           <path
             d="m 342.52113,526.99426 v -16.008 h 7.488 q 2.52,0 3.936,1.488 1.44,1.464 1.44,3.672 0,2.184 -1.44,3.648 -1.44,1.464 -3.936,1.464 h -4.08 v 5.736 z m 8.712,-9.264 q 0.672,-0.624 0.672,-1.608 0,-0.984 -0.672,-1.584 -0.672,-0.624 -1.68,-0.624 h -3.624 v 4.416 h 3.624 q 1.032,0 1.68,-0.6 z"
             id="path45260"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 366.52226,526.99426 -3.144,-5.736 h -2.496 v 5.736 h -3.408 v -16.008 h 7.488 q 2.472,0 3.912,1.44 1.464,1.44 1.464,3.72 0,1.968 -1.032,3.192 -1.008,1.224 -2.472,1.56 l 3.6,6.096 z m -0.36,-9.264 q 0.696,-0.624 0.696,-1.608 0,-0.984 -0.696,-1.584 -0.672,-0.624 -1.704,-0.624 h -3.576 v 4.416 h 3.576 q 1.032,0 1.704,-0.6 z"
             id="path45262"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 372.32013,526.99426 v -2.76 l 7.56,-10.248 h -7.56 v -3 h 12.024 v 2.736 l -7.56,10.272 h 7.728 v 3 z"
             id="path45264"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 387.09926,526.99426 v -16.008 h 11.328 v 2.928 h -7.92 v 3.48 h 7.752 v 2.928 h -7.752 v 3.72 h 7.92 v 2.952 z"
             id="path45266"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 401.11488,526.99426 v -16.008 h 6.312 q 3.768,0 6.12,2.208 2.376,2.208 2.376,5.808 0,3.6 -2.352,5.808 -2.352,2.184 -6.144,2.184 z m 3.408,-3 h 2.904 q 2.304,0 3.648,-1.44 1.368,-1.44 1.368,-3.552 0,-2.208 -1.32,-3.6 -1.32,-1.416 -3.696,-1.416 h -2.904 z"
             id="path45268"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 424.50551,526.99426 v -16.008 h 7.488 q 2.52,0 3.936,1.488 1.44,1.464 1.44,3.672 0,2.184 -1.44,3.648 -1.44,1.464 -3.936,1.464 h -4.08 v 5.736 z m 8.712,-9.264 q 0.672,-0.624 0.672,-1.608 0,-0.984 -0.672,-1.584 -0.672,-0.624 -1.68,-0.624 h -3.624 v 4.416 h 3.624 q 1.032,0 1.68,-0.6 z"
             id="path45270"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 441.04263,524.95426 q -2.352,-2.352 -2.352,-5.952 0,-3.6 2.352,-5.928 2.376,-2.352 6,-2.352 3.648,0 6,2.328 2.376,2.328 2.376,5.952 0,3.624 -2.376,5.952 -2.352,2.328 -6,2.328 -3.624,0 -6,-2.328 z m 9.528,-2.184 q 1.344,-1.488 1.344,-3.768 0,-2.28 -1.344,-3.768 -1.344,-1.488 -3.528,-1.488 -2.184,0 -3.528,1.488 -1.32,1.488 -1.32,3.768 0,2.28 1.32,3.768 1.344,1.488 3.528,1.488 2.184,0 3.528,-1.488 z"
             id="path45272"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 457.83363,526.99426 v -16.008 h 6.312 q 3.768,0 6.12,2.208 2.376,2.208 2.376,5.808 0,3.6 -2.352,5.808 -2.352,2.184 -6.144,2.184 z m 3.408,-3 h 2.904 q 2.304,0 3.648,-1.44 1.368,-1.44 1.368,-3.552 0,-2.208 -1.32,-3.6 -1.32,-1.416 -3.696,-1.416 h -2.904 z"
             id="path45274"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 484.13163,526.99426 -3.144,-5.736 h -2.496 v 5.736 h -3.408 v -16.008 h 7.488 q 2.472,0 3.912,1.44 1.464,1.44 1.464,3.72 0,1.968 -1.032,3.192 -1.008,1.224 -2.472,1.56 l 3.6,6.096 z m -0.36,-9.264 q 0.696,-0.624 0.696,-1.608 0,-0.984 -0.696,-1.584 -0.672,-0.624 -1.704,-0.624 h -3.576 v 4.416 h 3.576 q 1.032,0 1.704,-0.6 z"
             id="path45276"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 501.71351,526.99426 -1.008,-2.76 h -7.152 l -1.008,2.76 h -3.744 l 6.192,-16.008 h 4.272 l 6.168,16.008 z m -4.584,-13.056 -2.664,7.344 h 5.304 z"
             id="path45278"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 511.30376,509.21026 q -0.48,-0.48 -0.48,-1.152 0,-0.672 0.48,-1.152 0.48,-0.48 1.152,-0.48 0.672,0 1.128,0.48 0.48,0.48 0.48,1.152 0,0.672 -0.48,1.152 -0.456,0.48 -1.128,0.48 -0.672,0 -1.152,-0.48 z m -4.968,17.784 v -2.76 l 7.56,-10.248 h -7.56 v -3 h 12.024 v 2.736 l -7.56,10.272 h 7.728 v 3 z"
             id="path45280"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 532.15488,526.99426 -7.632,-10.752 v 10.752 h -3.408 v -16.008 h 3.504 l 7.416,10.368 v -10.368 h 3.408 v 16.008 z"
             id="path45282"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 538.59926,526.99426 v -16.008 h 3.408 v 16.008 z"
             id="path45284"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 545.16176,526.99426 v -16.008 h 11.328 v 2.928 h -7.92 v 3.48 h 7.752 v 2.928 h -7.752 v 3.72 h 7.92 v 2.952 z"
             id="path45286"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 570.21738,526.99426 -7.632,-10.752 v 10.752 h -3.408 v -16.008 h 3.504 l 7.416,10.368 v -10.368 h 3.408 v 16.008 z"
             id="path45288"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 576.66176,526.99426 v -16.008 h 3.408 v 16.008 z"
             id="path45290"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 594.43226,526.99426 -1.008,-2.76 h -7.152 l -1.008,2.76 h -3.744 l 6.192,-16.008 h 4.272 l 6.168,16.008 z m -4.584,-13.056 -2.664,7.344 h 5.304 z"
             id="path45292"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 613.55051,526.99426 v -11.52 l -4.512,11.52 h -1.488 l -4.512,-11.52 v 11.52 h -3.408 v -16.008 h 4.776 l 3.888,9.984 3.888,-9.984 h 4.8 v 16.008 z"
             id="path45294"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
           <path
             d="m 620.16176,526.99426 v -16.008 h 3.408 v 16.008 z"
             id="path45296"
-            style={{
-              fontWeight: 'bold',
-              InkscapeFontSpecification: '"Proxima Nova Bold"',
-            }}
           />
         </g>
       </g>
     </svg>
   );
 }
+
+Alu.propTypes = {
+  innerRef: PropTypes.shape({}).isRequired,
+};
+
