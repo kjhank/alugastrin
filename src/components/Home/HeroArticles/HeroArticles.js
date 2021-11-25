@@ -21,7 +21,7 @@ export const HeroArticles = ({ content }) => (
               <Image image={image} />
               <Title>{article.post_title}</Title>
               <Intro>{intro}</Intro>
-              <Link to={`/${article.post_name}`}>{linkText}</Link>
+              <Link to={`/baza-wiedzy/${article.post_name}`}>{linkText}</Link>
             </SingleArticle>
           ))}
         </List>

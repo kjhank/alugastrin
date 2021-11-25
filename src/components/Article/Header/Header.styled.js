@@ -60,6 +60,10 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 88.048151%;
   margin: auto;
+
+  @media ${queries.xxsplus} {
+    margin: 2em auto;
+  }
 `;
 
 export const Image = styled(SPImage)`
