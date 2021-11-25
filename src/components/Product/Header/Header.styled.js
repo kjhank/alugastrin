@@ -32,6 +32,7 @@ export const Container = styled(GenericContainer)`
   }
 
   @media ${queries.xxsplus} {
+    margin-top: 2em;
     flex-direction: column;
     justify-content: flex-start;
   }
@@ -72,7 +73,7 @@ export const Wrapper = styled.div`
   width: 50%;
 
   @media ${queries.xxsplus} {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -168,7 +169,7 @@ const linkStyle = css`
 
   @media ${queries.xxsplus} {
     width: calc(50% - 0.5em);
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
   }
 `;
@@ -196,7 +197,7 @@ export const Scrollers = styled.nav`
   @media ${queries.xxsplus} {
     grid-template-columns: repeat(2, 1fr);
     gap: 1em;
-    width: 80%;
+    width: 100%;
     margin-top: 1em;
   }
 `;
@@ -216,6 +217,6 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
   }
 
   @media ${queries.xxsplus} {
-    font-size: 20px;
+    font-size: 18px;
   }
 `;

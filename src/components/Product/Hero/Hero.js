@@ -46,7 +46,10 @@ export const Hero = ({
 
     if (packageNode) {
       packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        console.log('foo');
+
         if (isIntersecting) {
+          console.log('bar');
           animate(packageNode, keyframes, animationOptions);
 
           packageObserver.unobserve(staticNode);

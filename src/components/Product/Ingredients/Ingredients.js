@@ -3,7 +3,9 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
-import { timeline } from 'motion';
+import {
+  animate, stagger, timeline,
+} from 'motion';
 
 import { LineHeading } from '@components/styled';
 
@@ -11,6 +13,7 @@ import {
   Container,
   FramedText,
   Icon,
+  IconBackground,
   IconItem,
   IconsList,
   IconsWrapper,
@@ -33,13 +36,15 @@ export const Ingredients = ({
     const listElements = iconsElement.querySelectorAll('picture');
 
     const listKeyframes = {
-      transform: 'scale(1.1)',
+      transform: [
+        'scale(1)',
+        'scale(1.1)',
+        'scale(1)',
+      ],
     };
 
     const listOptions = {
-      direction: 'alternate',
-      duration: 0.5,
-      easing: 'ease-in-out',
+      duration: 1,
     };
 
     const sequence = Array.from(listElements).map(element => [
@@ -49,14 +54,30 @@ export const Ingredients = ({
     ]);
 
     timeline(sequence, {
-      delay: 3,
-      direction: 'alternate',
       repeat: Infinity,
     });
   };
 
+  const animateBackgrounds = () => {
+    const { current: iconsElement } = iconsRef;
+
+    if (iconsElement) {
+      const targets = iconsElement.querySelectorAll('.icon__background > img');
+      const keyframes = { transform: 'rotate(360deg) translateZ(1px)' };
+      const animateConfig = {
+        delay: stagger(1),
+        duration: 5,
+        easing: 'linear',
+        repeat: Infinity,
+      };
+
+      animate(targets, keyframes, animateConfig);
+    }
+  };
+
   useEffect(() => {
     animateItems();
+    animateBackgrounds();
   }, []);
 
   return (
@@ -76,7 +97,7 @@ export const Ingredients = ({
             >
               {item.descriptions.map(({
                 ingredient: {
-                  icon, text, variant,
+                  animatedBackground, icon, text, variant,
                 },
               }) => (
                 <IconItem
@@ -85,10 +106,17 @@ export const Ingredients = ({
                   key={text}
                   padding={variant === 'sideBySide' ? 'right' : 'sides'}
                 >
+                  {animatedBackground && (
+                  <IconBackground
+                    className="icon__background"
+                    image={animatedBackground}
+                  />
+                  )}
                   <Icon
                     image={icon}
                     margin={variant === 'sideBySide' ? 'right' : 'top'}
                     size={variant === 'sideBySide' ? 131 : 109}
+                    variant={variant}
                   />
                   {text}
                 </IconItem>
