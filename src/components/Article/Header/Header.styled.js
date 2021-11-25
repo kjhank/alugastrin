@@ -16,7 +16,7 @@ export const TableOfContents = styled.ol`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 50%;
+  width: calc(50% - 0.5em);
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
   font-size: 24px;
@@ -32,8 +32,8 @@ export const TableOfContents = styled.ol`
     font-size: 22px;
   }
 
-  @media ${queries.xs} {
-    font-size: 18px;
+  @media ${queries.xxsplus} {
+    font-size: 16px;
   }
 `;
 
@@ -67,16 +67,14 @@ export const Wrapper = styled.div`
 `;
 
 export const Image = styled(SPImage)`
-  max-width: 50%;
+  width: calc(45% - 0.5em);
 
   > img {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
   }
 
   @media ${queries.xs} {
-    width: auto;
-    max-width: 50%;
     height: auto;
   }
 `;
