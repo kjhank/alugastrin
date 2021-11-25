@@ -27,10 +27,6 @@ export const Heading = styled.h2`
   text-align: center;
   text-transform: uppercase;
 
-  &.sibosgastrin {
-    font-size: 46px;
-  }
-
   &.helicogastrin {
     padding-bottom: 1.510417vw;
   }
@@ -58,7 +54,7 @@ export const Heading = styled.h2`
   }
 
   @media ${queries.xxsplus} {
-    font-size: ${({ isLarger }) => (isLarger ? '32px' : '24px')};
+    font-size: ${({ isLarger }) => (isLarger ? '28px' : '22px')};
 
     &.alugastrin {
       margin: 2em 0;
@@ -228,13 +224,13 @@ export const Image = styled(SPImage)`
   &.alugastrin.alugastrin--40.second--package {
     position: absolute;
     right: 18%;
-    bottom: -40%;
+    top: 70%;
     opacity: 0;
     width: 26.041667vw;
     transform: translateX(55vw);
 
     @media ${queries.l} {
-      bottom: -30%;
+      top: 70%;
       width: 40vw;
     }
   }
@@ -318,7 +314,7 @@ export const FramedText = styled.section`
     position: absolute;
     top: -0.75em;
     left: 50%;
-    padding: 0 1em;
+    padding: 0 0.25em;
     background-color: #fff;
     color: ${({ theme }) => theme.getColor('accent')};
     font-weight: 600;

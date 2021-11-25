@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import {
-  animate, stagger,
+  animate, timeline,
 } from 'motion';
 
 import * as SVG from './svgs';
@@ -35,14 +35,21 @@ export const Animation = ({
 
     const targets = vectorElement.querySelectorAll('.animationTarget');
 
-    animate(targets, {
-      transform: 'scale(1.1)',
-    },
-    {
-      delay: stagger(0.4),
-      direction: 'alternate',
-      duration: 1,
-      easing: 'linear',
+    const sequence = Array.from(targets).map(target => [
+      target,
+      {
+        transform: [
+          'scale(1)',
+          'scale(1.2)',
+          'scale(1)',
+        ],
+      },
+      {
+        duration: 1,
+      },
+    ]);
+
+    timeline(sequence, {
       repeat: Infinity,
     });
   };
@@ -115,7 +122,10 @@ export const Animation = ({
 Animation.propTypes = {
   background: PropTypes.shape({}).isRequired,
   cssClass: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({})),
+  images: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.shape({})),
+    PropTypes.bool,
+  ]),
 };
 
 Animation.defaultProps = {

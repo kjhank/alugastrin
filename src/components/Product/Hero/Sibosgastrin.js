@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger,
+  animate, stagger, timeline,
 } from 'motion';
 
 import {
@@ -78,7 +78,7 @@ const List = styled.ul`
     list-style-type: none;
 
     ::before {
-      content: '▸';
+      content: '▸\uFE0E';
       margin-right: 0.25em;
       color: ${({ theme }) => theme.getColor('accent')};
       font-family: monospace;
@@ -127,6 +127,11 @@ const Package = styled(SPImage)`
     width: 20vw;
   }
 
+  @media ${queries.s} {
+    width: 60%;
+    margin: auto;
+  }
+
   @media ${queries.xs} {
     width: 100%;
     margin-right: 0;
@@ -155,6 +160,10 @@ const GermList = styled.ul`
 
   @media ${queries.xxl} {
     font-size: 20px;
+  }
+
+  @media ${queries.s} {
+    gap: 3em;
   }
 
   @media ${queries.xs} {
@@ -187,6 +196,10 @@ const IconsList = styled.ul`
       flex-shrink: 0;
       width: 5.833333vw;
       margin-right: 1.02vw;
+
+      @media ${queries.xxsplus} {
+        width: 4em;
+      }
     }
   }
 
@@ -284,7 +297,7 @@ const Red = styled.ul`
     transform: rotate(15deg);
     animation: ${flowLarge} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
 
-    @media ${queries.xxsplus} {
+    @media ${queries.s} {
       animation: ${flow} 6s cubic-bezier(0.83, 0, 0.17, 1) forwards infinite;
     }
   }
@@ -303,6 +316,7 @@ const Red = styled.ul`
 
   @media ${queries.s} {
     width: 70%;
+    margin: auto;
     font-size: 12px;
   }
 
@@ -424,30 +438,35 @@ export const Sibosgastrin = ({
   }, []);
 
   useEffect(() => {
-    const { current: redNode } = redRef;
     const { current: packageNode } = packageRef;
     const { current: listNode } = listRef;
     const { current: staticNode } = staticRef;
     let packageObserver;
 
-    if (redNode && listNode) {
-      const animationKeyframes = {
-        transform: 'scale(1.1)',
+    if (listNode) {
+      const animationTargets = listNode.querySelectorAll('li');
+
+      const listKeyframes = {
+        transform: [
+          'scale(1)',
+          'scale(1.1)',
+          'scale(1)',
+        ],
       };
 
-      const animationOptions = {
-        delay: stagger(0.5),
-        direction: 'alternate',
+      const listOptions = {
         duration: 1,
-        easing: 'linear',
-        repeat: Infinity,
       };
-      const animationTargets = [
-        // redNode,
-        ...listNode.querySelectorAll('li'),
-      ];
 
-      animate(animationTargets, animationKeyframes, animationOptions);
+      const sequence = Array.from(animationTargets).map(element => [
+        element,
+        listKeyframes,
+        listOptions,
+      ]);
+
+      timeline(sequence, {
+        repeat: Infinity,
+      });
     }
 
     if (packageNode) {
