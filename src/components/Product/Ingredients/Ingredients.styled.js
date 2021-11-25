@@ -113,6 +113,7 @@ export const Icon = styled(SPImage)`
   flex-grow: 0;
   flex-shrink: 0;
   height: ${({ size }) => `${size / 19.2}vw`};
+  max-height: ${({ variant }) => variant === 'sideBySide' && '120px'};
   margin: ${({ margin }) => (margin === 'right' ? '0 0.5em 0 0' : '0 0 0.5em 0')};
 
   > img {
@@ -122,6 +123,20 @@ export const Icon = styled(SPImage)`
 
   @media ${queries.xxsplus} {
     height: ${({ size }) => `${size / 10}vw`}
+  }
+`;
+
+export const IconBackground = styled(SPImage)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: auto;
+  height: 100%;
+
+  > img {
+    width: auto;
+    height: 100%;
   }
 `;
 
@@ -149,6 +164,7 @@ export const IconsList = styled.ul`
 `;
 
 export const IconItem = styled.li`
+  position: relative;
   display: flex;
   flex-direction: ${({ direction }) => direction};
   align-items: center;
