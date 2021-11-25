@@ -8,6 +8,7 @@ import {
 } from '@containers';
 
 const ProfessionalsPage = ({
+  refs,
   serverData: {
     maintenance, pageData: {
       acf, title: { rendered: title },
@@ -15,11 +16,12 @@ const ProfessionalsPage = ({
   },
   ...props
 }) => {
-  if (maintenance.isInMaintenance) {
+  if (maintenance?.isInMaintenance) {
     return (
       <MaintenanceContainer
         background={maintenance.maintenanceBackground}
         message={maintenance.maintenanceMessage}
+        refs={refs}
         title={title}
         {...props}
       />
@@ -28,13 +30,16 @@ const ProfessionalsPage = ({
 
   return (
     <ProfessionalsContainer
-      acf={acf}
+      files={acf?.downloads}
+      refs={refs}
+      title={title}
       {...props}
     />
   );
 };
 
 ProfessionalsPage.propTypes = {
+  refs: PropTypes.shape({}).isRequired,
   serverData: PropTypes.shape({
     maintenance: PropTypes.shape({
       isInMaintenance: PropTypes.bool,
@@ -46,6 +51,7 @@ ProfessionalsPage.propTypes = {
         articles: PropTypes.shape({}),
         carousel: PropTypes.arrayOf(PropTypes.shape({})),
         descriptions: PropTypes.arrayOf(PropTypes.shape({})),
+        downloads: PropTypes.arrayOf(PropTypes.shape({})),
         video: PropTypes.shape({}),
       }),
       title: PropTypes.shape({

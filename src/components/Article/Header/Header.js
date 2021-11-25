@@ -10,10 +10,13 @@ import {
 } from './Header.styled';
 
 export const Header = ({
-  image, sections, title,
+  headerRef, image, sections, title,
 }) => {
   const handleScroll = ({ current: element }) => {
-    const elementOffset = element.getBoundingClientRect().top + window.scrollY - '95'; // TODO: calculate header height instead of hardcoding
+    const { current: globalHeader } = headerRef;
+    const elementOffset = element.getBoundingClientRect().top +
+    window.scrollY -
+    globalHeader.getBoundingClientRect().height;
     const scrollConfig = {
       behavior: 'smooth',
       top: elementOffset,
@@ -44,8 +47,8 @@ export const Header = ({
 };
 
 Header.propTypes = {
+  headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
   image: PropTypes.shape({}).isRequired,
   sections: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   title: PropTypes.string.isRequired,
 };
-

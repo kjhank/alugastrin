@@ -37,13 +37,13 @@ export const AnimationContainer = styled.div`
   .parent {
     position: absolute;
     z-index: 3;
+    backface-visibility: hidden;
     overflow: visible;
     height: auto;
-    backface-visibility: hidden;
 
     .animationTarget {
-      transform-origin: center;
       transform: scale(1) translateZ(1px) rotate(0.02deg);
+      transform-origin: center;
       transform-style: preserve-3d;
       transform-box: fill-box;
       will-change: transform;
