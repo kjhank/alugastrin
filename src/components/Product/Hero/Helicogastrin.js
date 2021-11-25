@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger,
+  animate, stagger, timeline,
 } from 'motion';
 
 import {
@@ -268,23 +268,32 @@ export const Helicogastrin = ({
     let packageObserver;
 
     if (headingNode && listNode) {
-      const keyframes = {
-        transform: 'scale(1.1)',
-      };
-
-      const animationOptions = {
-        delay: stagger(0.4),
-        direction: 'alternate',
-        duration: 1,
-        easing: 'linear',
-        repeat: Infinity,
-      };
       const animationTargets = [
         headingNode,
         ...listNode.querySelectorAll('li'),
       ];
 
-      animate(animationTargets, keyframes, animationOptions);
+      const listKeyframes = {
+        transform: [
+          'scale(1)',
+          'scale(1.1)',
+          'scale(1)',
+        ],
+      };
+
+      const listOptions = {
+        duration: 1,
+      };
+
+      const sequence = Array.from(animationTargets).map(element => [
+        element,
+        listKeyframes,
+        listOptions,
+      ]);
+
+      timeline(sequence, {
+        repeat: Infinity,
+      });
     }
 
     if (packageNode) {

@@ -50,7 +50,6 @@ export const Animation = ({
     ]);
 
     timeline(sequence, {
-      // direction: 'alternate',
       repeat: Infinity,
     });
   };

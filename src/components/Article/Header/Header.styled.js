@@ -16,7 +16,7 @@ export const TableOfContents = styled.ol`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 6.328125vw;
+  max-width: 50%;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
   font-size: 24px;
@@ -55,16 +55,15 @@ export const SectionScrollButton = styled.button.attrs({ type: 'button' })`
 `;
 
 export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 88.048151%;
   margin: auto;
 `;
 
 export const Image = styled(SPImage)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  height: 100%;
+  max-width: 50%;
 
   > img {
     width: auto;

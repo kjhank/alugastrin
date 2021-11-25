@@ -36,8 +36,8 @@ export const Header = ({
               </SectionItem>
             ))}
           </TableOfContents>
+          <Image image={image} />
         </Wrapper>
-        <Image image={image} />
       </Container>
     </StyledHeader>
   );
