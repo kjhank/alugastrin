@@ -84,6 +84,7 @@ export const StyledButtonLink = styled(Link)`
 
 export const PageHeading = styled.h1`
   position: relative;
+  padding-top: 2.239583vw;
   font-weight: 600;
   font-size: 66px;
 
@@ -97,14 +98,13 @@ export const PageHeading = styled.h1`
     background-color: ${({ theme }) => theme.getColor('main')};
   }
 
-  @media ${queries.xxsplusplus} {
+  @media ${queries.xxsplus} {
     font-size: 40px;
 
     ::after {
       width: 33%;
     }
   }
-
 `;
 
 export const LineHeading = styled.h2`

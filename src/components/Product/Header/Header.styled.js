@@ -32,9 +32,9 @@ export const Container = styled(GenericContainer)`
   }
 
   @media ${queries.xxsplus} {
-    margin-top: 2em;
     flex-direction: column;
     justify-content: flex-start;
+    margin-top: 2em;
   }
 `;
 
