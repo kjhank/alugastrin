@@ -10,6 +10,7 @@ import {
 import { ArticleContainer } from '@containers';
 
 const PostPage = ({
+  refs,
   serverData: {
     error,
     post,
@@ -44,6 +45,7 @@ const PostPage = ({
       headerImage={acf.headerImage}
       intro={acf.intro}
       products={products}
+      refs={refs}
       relatedPosts={acf.relatedPosts}
       sections={sections}
       title={title.rendered}
@@ -53,6 +55,7 @@ const PostPage = ({
 };
 
 PostPage.propTypes = {
+  refs: PropTypes.shape({}).isRequired,
   serverData: PropTypes.shape({
     error: PropTypes.number,
     post: PropTypes.shape({

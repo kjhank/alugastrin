@@ -8,10 +8,14 @@ import {
 } from '@components/Article';
 
 export const ArticleContainer = ({
-  headerImage, intro, products, relatedPosts, sections, title, ...props
+  headerImage, intro, products, refs, relatedPosts, sections, title, ...props
 }) => (
-  <Main {...props}>
+  <Main
+    refs={refs}
+    {...props}
+  >
     <Header
+      headerRef={refs.header}
       image={headerImage}
       sections={sections?.filter(({
         notInNav, heading,
@@ -36,6 +40,9 @@ ArticleContainer.propTypes = {
   headerImage: PropTypes.shape({}).isRequired,
   intro: PropTypes.string.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  refs: PropTypes.shape({
+    header: PropTypes.shape({}),
+  }).isRequired,
   relatedPosts: PropTypes.shape({
     heading: PropTypes.string,
     posts: PropTypes.arrayOf(PropTypes.shape({})),

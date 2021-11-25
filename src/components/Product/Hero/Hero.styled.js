@@ -223,8 +223,8 @@ export const Image = styled(SPImage)`
   &.alugastrin.alugastrin--20.second--package,
   &.alugastrin.alugastrin--40.second--package {
     position: absolute;
-    right: 18%;
     top: 70%;
+    right: 18%;
     opacity: 0;
     width: 26.041667vw;
     transform: translateX(55vw);

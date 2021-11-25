@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -6,9 +7,10 @@ import {
 
 const theme = {
   borderRadii: {
-    default: '50px',
     large: '200px',
     larger: '100px',
+    default: '50px',
+    mediumPlus: '40px',
     medium: '33px',
     small: '25px',
     smaller: '20px',
@@ -20,6 +22,8 @@ const theme = {
     border: '#9e0e0d',
     gradientGray: '#e6e6e6',
     main: '#3b3b3b',
+    nearWhite: '#f7f7f7',
+    neutral: '#d6d6d6',
   },
   fonts: {
     default: 'Proxima Nova, sans-serif',
