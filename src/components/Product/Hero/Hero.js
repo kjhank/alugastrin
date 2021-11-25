@@ -29,7 +29,7 @@ export const Hero = ({
   useEffect(() => {
     const { current: staticNode } = staticRef;
     const { current: packageNode } = packageRef;
-    const observerConfig = { rootMargin: '-200px' };
+    const observerConfig = { threshold: [0.9] };
 
     const keyframes = {
       opacity: 1,
@@ -46,10 +46,7 @@ export const Hero = ({
 
     if (packageNode) {
       packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-        console.log('foo');
-
         if (isIntersecting) {
-          console.log('bar');
           animate(packageNode, keyframes, animationOptions);
 
           packageObserver.unobserve(staticNode);
