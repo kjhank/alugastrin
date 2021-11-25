@@ -61,6 +61,7 @@ export const Navigation = styled.nav`
     top: ${({ headerHeight }) => `${headerHeight * 1.5}px`};
     right: 0;
     flex-direction: column;
+    gap: 1em;
     border-radius: ${({ theme }) => `0 0 0 ${theme.getRadius()}`};
     padding: 2em 5em 2em 1em;
     background-image: ${({ theme }) => theme.getGradient()};
