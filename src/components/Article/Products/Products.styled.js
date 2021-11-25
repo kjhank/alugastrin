@@ -23,12 +23,19 @@ export const List = styled.ul`
 
   @media ${queries.xxsplus} {
     grid-template-columns: 1fr;
+    gap: 2em;
   }
 `;
 
 export const Product = styled.li``;
 
-export const Image = styled(SPImage)``;
+export const Image = styled(SPImage)`
+  width: 100%;
+
+  > img {
+    width: 100%;
+  }
+`;
 
 export const Name = styled.h3`
   display: flex;
