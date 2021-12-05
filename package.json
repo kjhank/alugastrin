@@ -66,8 +66,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "yarn eslint",
-      "yarn stylelint \"app/**/*.js\""
+      "yarn lint"
     ],
     "*.jsx": [
       "yarn eslint"
@@ -81,8 +80,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "dev": "gatsby develop",
-    "lint": "eslint . && stylelint \"./src/**/*.js\"",
-    "lint:css": "stylelint \"./src/**/*.js\"",
+    "lint": "eslint src && stylelint \"src/**/*.js\"",
     "nuke": "gatsby clean && rm -fr node_modules && yarn install",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
