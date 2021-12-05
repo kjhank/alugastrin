@@ -55,7 +55,7 @@ const PostPage = ({
 };
 
 PostPage.propTypes = {
-  refs: PropTypes.shape({}).isRequired,
+  refs: PropTypes.shape({}),
   serverData: PropTypes.shape({
     error: PropTypes.number,
     post: PropTypes.shape({
@@ -73,6 +73,10 @@ PostPage.propTypes = {
     products: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }).isRequired,
   uri: PropTypes.string.isRequired,
+};
+
+PostPage.defaultProps = {
+  refs: null,
 };
 
 export default PostPage;

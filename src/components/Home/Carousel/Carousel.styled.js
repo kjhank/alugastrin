@@ -1,7 +1,8 @@
+/* stylelint-disable no-descending-specificity */
 import styled from 'styled-components';
-
 import { SPImage } from '@components';
 import { queries } from '@utils';
+import { buttonLinkStyles } from '@components/styled';
 
 export const SlidesList = styled.ul`
   position: relative;
@@ -15,20 +16,37 @@ export const SlidesList = styled.ul`
   }
 `;
 
+export const MoreText = styled.p`
+  ${buttonLinkStyles};
+`;
+
 export const SingleSlideItem = styled.li`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  display: flex;
-  flex-direction: ${({ direction }) => direction};
-  justify-content: space-between;
-  align-items: center;
-  text-align: ${({ direction }) => (direction === 'row' ? 'left' : 'right')};
-  transition: ${({ theme }) => theme.getTransitions(['opacity'])};
-  pointer-events: ${({ isActive }) => (isActive ? 'all' : 'none')};
+  > a {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: ${({ isActive }) => (isActive ? 1 : 0)};
+    display: flex;
+    flex-direction: ${({ direction }) => direction};
+    justify-content: space-between;
+    align-items: center;
+    text-align: ${({ direction }) => (direction === 'row' ? 'left' : 'right')};
+    transition: ${({ theme }) => theme.getTransitions(['opacity'])};
+    pointer-events: ${({ isActive }) => (isActive ? 'all' : 'none')};
+  }
+
+  :hover {
+    ${MoreText} {
+      border-color: ${({ theme }) => theme.getColor('accent')};
+      color: ${({ theme }) => theme.getColor('accent')};
+
+      > svg {
+        transform: translateX(20%);
+      }
+    }
+  }
 `;
 
 export const SlidesNavigation = styled.nav`

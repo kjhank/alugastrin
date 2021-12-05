@@ -3,9 +3,11 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
+import { Link } from 'gatsby';
 
+import { ArrowRight } from '@icons';
 import {
-  Container, Description, Image, Link, List, Name, Pipe, Product, Text,
+  Container, Description, Image, LinkText, List, Name, Pipe, Product, Text,
 } from './Products.styled';
 
 export const renderName = name => {
@@ -53,10 +55,13 @@ export const Products = ({
   };
 
   useEffect(() => {
-    if (targetGroup) {
+    if (targetGroup && sectionRefs['zgaga-i-refluks']?.current && sectionRefs['specjalistyczna-probiotykoterapia']?.current) {
       handleScroll(targetGroup);
     }
-  }, [targetGroup]);
+  }, [
+    targetGroup,
+    sectionRefs,
+  ]);
 
   return (
     <Container>
@@ -67,14 +72,20 @@ export const Products = ({
         >
           {group.map(product => (
             <Product key={product.acf.name}>
-              <Image image={product.acf.thumbnail} />
-              {renderName(product.acf.name)}
-              <Description>{product.acf.intro}</Description>
-              <Text
-                dangerouslySetInnerHTML={{ __html: sanitize(product.acf.listingDescription) }}
-              />
               <Link to={product.slug}>
-                Zobacz produkt
+                <Image
+                  image={product.acf.thumbnail}
+                  isLazy={false}
+                />
+                {renderName(product.acf.name)}
+                <Description>{product.acf.intro}</Description>
+                <Text
+                  dangerouslySetInnerHTML={{ __html: sanitize(product.acf.listingDescription) }}
+                />
+                <LinkText>
+                  Zobacz produkt
+                  <ArrowRight />
+                </LinkText>
               </Link>
             </Product>
           ))}

@@ -21,8 +21,10 @@ export const SPImage = ({
     {/* eslint-disable jsx-a11y/img-redundant-alt */}
     <img
       alt={image?.alt}
+      height={image.height}
       loading={isLazy ? 'lazy' : 'eager'}
       src={image?.url}
+      width={image.width}
     />
     {/* eslint-enable jsx-a11y/img-redundant-alt */}
   </Picture>
@@ -31,9 +33,11 @@ export const SPImage = ({
 SPImage.propTypes = {
   image: PropTypes.shape({
     alt: PropTypes.string,
+    height: PropTypes.number,
     subtype: PropTypes.string,
     type: PropTypes.string,
     url: PropTypes.string,
+    width: PropTypes.number,
   }).isRequired,
   innerRef: PropTypes.shape({}),
   isLazy: PropTypes.bool,

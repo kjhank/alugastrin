@@ -6,6 +6,7 @@ export const AnimationContainer = styled.div`
   position: relative;
   display: grid;
   place-items: center;
+  max-height: 70vh;
   pointer-events: none;
 
   &.alugastrin {
@@ -37,8 +38,8 @@ export const AnimationContainer = styled.div`
   .parent {
     position: absolute;
     z-index: 3;
-    backface-visibility: hidden;
     overflow: visible;
+    backface-visibility: hidden;
     height: auto;
 
     .animationTarget {

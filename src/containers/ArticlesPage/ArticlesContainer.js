@@ -110,5 +110,9 @@ ArticlesContainer.propTypes = {
   heading: PropTypes.string.isRequired,
   initialPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   intro: PropTypes.string.isRequired,
+  refs: PropTypes.shape({}),
 };
 
+ArticlesContainer.defaultProps = {
+  refs: null,
+};

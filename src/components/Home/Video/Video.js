@@ -36,6 +36,7 @@ export const Video = ({ sources }) => {
     <Section>
       <Container>
         <Player
+          // controls={false}
           onPause={handlePlaying}
           onPlaying={handlePlaying}
           ref={playerRef}

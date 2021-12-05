@@ -24,7 +24,7 @@ export const PlayButton = styled.button.attrs({ type: 'button' })`
   }
 `;
 
-export const Player = styled.video.attrs({ controls: true })`
+export const Player = styled.video.attrs({ controls: false })`
   width: 100%;
   cursor: pointer;
 

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 import {
-  ButtonLink, Container as GenericContainer, SPImage,
+  Container as GenericContainer, SPImage,
 } from '@components';
+import { buttonLinkStyles } from '@components/styled';
 
 import { queries } from '@utils';
 
@@ -20,6 +21,27 @@ export const List = styled.ul`
   }
 `;
 
+export const LinkText = styled.p`
+  ${buttonLinkStyles}
+  border-color: #fff;
+  background: ${({ theme }) => theme.getGradient()};
+  color: #fff;
+  transition: ${({ theme }) => theme.getTransitions(['filter'])};
+
+  > svg {
+    fill: currentColor;
+  }
+
+  @media ${queries.xs} {
+    margin-left: auto;
+    padding: 0.5em 1em;
+
+    > svg {
+      height: 1em;
+    }
+  }
+`;
+
 export const Product = styled.li`
   @media ${queries.xs} {
     display: flex;
@@ -29,6 +51,18 @@ export const Product = styled.li`
 
   @media ${queries.xxsplus} {
     display: block;
+  }
+
+  :hover {
+    ${LinkText} {
+      filter: brightness(1.2);
+      border-color: #fff;
+      color: #fff;
+
+      > svg {
+        transform: translateX(20%);
+      }
+    }
   }
 `;
 
@@ -98,32 +132,6 @@ export const Text = styled.p`
 
   @media ${queries.xs} {
     width: 100%;
-  }
-`;
-
-export const Link = styled(ButtonLink)`
-  border-color: #fff;
-  background: ${({ theme }) => theme.getGradient()};
-  color: #fff;
-  transition: ${({ theme }) => theme.getTransitions(['filter'])};
-
-  :hover {
-    filter: brightness(1.2);
-    border-color: #fff;
-    color: #fff;
-  }
-
-  > svg {
-    fill: currentColor;
-  }
-
-  @media ${queries.xs} {
-    margin-left: auto;
-    padding: 0.5em 1em;
-
-    > svg {
-      height: 1em;
-    }
   }
 `;
 

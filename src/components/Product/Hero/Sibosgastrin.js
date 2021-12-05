@@ -33,7 +33,7 @@ const Container = styled(GenericContainer)`
 
 const Wrapper = styled.div`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
-  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'no-wrap')};
+  flex-wrap: ${({ $wrap }) => ($wrap ? 'wrap' : 'no-wrap')};
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
 
@@ -499,12 +499,12 @@ export const Sibosgastrin = ({
   return (
     <Container className={cssClass}>
       <Wrapper
+        $wrap
         align="center"
         className={cssClass}
         flex
         justify="space-between"
         ref={staticRef}
-        wrap
       >
         <List
           dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }}

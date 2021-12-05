@@ -3,5 +3,6 @@
 /public
 /scripts
 /src/registerServiceWorker.js
+/designs
 next.config.js
 postcss.config.js

@@ -62,6 +62,7 @@ export const LeftPart = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   width: 60%;
+  border-right: 1px solid #fff;
   padding: 1.5vw 0;
 
   @media ${queries.xxl} {
@@ -83,13 +84,13 @@ export const RightPart = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 1.2vw;
-  border-left: 1px solid #fff;
+  width: 40%;
   padding: 1.5vw 0 1.5vw 2vw;
   font-weight: 700;
-  font-size: 27px;
+  /* font-size: 27px; */
 
   strong {
-    font-size: 30px;
+    /* font-size: larger; */
     line-height: 1.066667;
   }
 
@@ -99,7 +100,7 @@ export const RightPart = styled.div`
   }
 
   @media ${queries.huge} {
-    font-size: 23px;
+    /* font-size: 23px; */
 
     strong {
       font-size: 26px;
@@ -107,7 +108,7 @@ export const RightPart = styled.div`
   }
 
   @media ${queries.xxl} {
-    font-size: 21px;
+    /* font-size: 21px; */
 
     strong {
       font-size: 24px;
@@ -115,7 +116,7 @@ export const RightPart = styled.div`
   }
 
   @media ${queries.m} {
-    font-size: 19px;
+    /* font-size: 19px; */
 
     strong {
       font-size: 22px;
@@ -124,7 +125,7 @@ export const RightPart = styled.div`
 
   @media ${queries.xs} {
     width: 100%;
-    font-size: 21px;
+    /* font-size: 21px; */
 
     strong {
       font-size: 24px;

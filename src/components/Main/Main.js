@@ -39,10 +39,11 @@ Main.propTypes = {
     header: PropTypes.shape({
       current: PropTypes.node,
     }),
-  }).isRequired,
+  }),
 };
 
 Main.defaultProps = {
   hasNoMargin: false,
+  refs: { header: { current: null } },
 };
 

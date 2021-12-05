@@ -14,13 +14,13 @@ const ProductsPage = ({
   },
   ...props
 }) => {
-  const url = new URL(location.href);
-  const params = new URLSearchParams(url.search);
+  const url = location?.href ? new URL(location.href) : null;
+  const params = url ? new URLSearchParams(url.search) : null;
 
   return (
     <ProductsContainer
       products={products}
-      targetGroup={params.get('typ')}
+      targetGroup={params?.get('typ')}
       title={renderedTitle}
       {...props}
     />

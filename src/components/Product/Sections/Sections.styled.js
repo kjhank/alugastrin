@@ -81,7 +81,9 @@ export const Background = styled(SPImage)`
   transform: translateX(-50%);
 
   > img {
+    width: auto;
     max-width: unset;
+    height: 100%;
   }
 
   @media ${queries.xxsplus} {

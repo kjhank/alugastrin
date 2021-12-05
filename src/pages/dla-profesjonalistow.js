@@ -39,7 +39,7 @@ const ProfessionalsPage = ({
 };
 
 ProfessionalsPage.propTypes = {
-  refs: PropTypes.shape({}).isRequired,
+  refs: PropTypes.shape({}),
   serverData: PropTypes.shape({
     maintenance: PropTypes.shape({
       isInMaintenance: PropTypes.bool,
@@ -61,6 +61,10 @@ ProfessionalsPage.propTypes = {
   }).isRequired,
 };
 
+ProfessionalsPage.defaultProps = {
+  refs: null,
+};
+
 export default ProfessionalsPage;
 
 export const getServerData = async () => {
@@ -70,7 +74,7 @@ export const getServerData = async () => {
   const {
     pageData: {
       acf: {
-        isInMaintenance, maintenanceBackground, maintenanceMessage,
+        hasLegalInFooter, isInMaintenance, maintenanceBackground, maintenanceMessage,
       },
     },
   } = pageData;
@@ -92,6 +96,7 @@ export const getServerData = async () => {
   return {
     props: {
       ...pageData,
+      hasLegalInFooter,
     },
     status: 200,
   };

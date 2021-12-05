@@ -17,7 +17,9 @@ const sanitizeConfig = {
     'b',
     'br',
     'li',
+    'p',
     'span',
+    'ul',
   ],
 };
 

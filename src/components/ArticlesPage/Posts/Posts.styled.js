@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link as GenericLink } from 'gatsby';
 
 import { SPImage } from '@components';
 
@@ -23,9 +22,7 @@ export const PostsList = styled.ul`
   }
 `;
 
-export const Post = styled.li``;
-
-export const Link = styled(GenericLink)`
+export const MoreText = styled.span`
   display: inline-flex;
   align-items: center;
   font-weight: 600;
@@ -44,12 +41,16 @@ export const Link = styled(GenericLink)`
       width: 3em;
     }
   }
+`;
 
+export const Post = styled.li`
   :hover {
-    color: ${({ theme }) => theme.getColor('accent')};
+    ${MoreText} {
+      color: ${({ theme }) => theme.getColor('accent')};
 
-    ::before {
-      background-color: ${({ theme }) => theme.getColor('accent')};
+      ::before {
+        background-color: ${({ theme }) => theme.getColor('accent')};
+      }
     }
   }
 `;

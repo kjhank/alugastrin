@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
+import { Link } from 'gatsby';
 
-import { ButtonLink } from '@components';
+import { ArrowRight } from '@icons';
 
 import {
-  BackgroundImage, Heading, ImagePart, ProductImage, SingleSlideItem, SmallText, TextPart,
+  BackgroundImage, Heading, ImagePart, MoreText, ProductImage, SingleSlideItem, SmallText, TextPart,
 } from './Carousel.styled';
 
 export const SingleSlide = ({
@@ -14,27 +16,34 @@ export const SingleSlide = ({
     direction={slide.variant === 'textRight' ? 'row' : 'row-reverse'}
     isActive={isActive}
   >
-    <BackgroundImage
-      alignment={slide.variant === 'textRight' ? 'right' : 'left'}
-      image={slide.background}
-      isLazy={false}
-    />
-    <ImagePart isOffset={slide.variant === 'textLeft'}>
-      <ProductImage
-        image={slide.image}
+    <Link to={`/produkty/${slide.link.post.post_name}`}>
+      <BackgroundImage
+        alignment={slide.variant === 'textRight' ? 'right' : 'left'}
+        image={slide.background}
         isLazy={false}
       />
-    </ImagePart>
-    <TextPart padded={slide.variant === 'textRight' ? 'right' : 'left'}>
-      <Heading>
-        {slide.heading}
-        <br />
-        <SmallText isReversed={slide.variant === 'textLeft'}>
-          {slide.text}
-        </SmallText>
-      </Heading>
-      <ButtonLink to={`/produkty/${slide.link.post.post_name}`}>{slide.link.text}</ButtonLink>
-    </TextPart>
+      <ImagePart isOffset={slide.variant === 'textLeft'}>
+        <ProductImage
+          image={slide.image}
+          isLazy={false}
+        />
+      </ImagePart>
+      <TextPart padded={slide.variant === 'textRight' ? 'right' : 'left'}>
+        <Heading>
+          {slide.heading}
+          <br />
+          <SmallText
+            dangerouslySetInnerHTML={{ __html: sanitize(slide.text) }}
+            isReversed={slide.variant === 'textLeft'}
+          />
+        </Heading>
+        <MoreText>
+          {slide.link.text}
+          {' '}
+          <ArrowRight />
+        </MoreText>
+      </TextPart>
+    </Link>
   </SingleSlideItem>
 );
 

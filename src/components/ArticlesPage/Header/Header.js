@@ -6,7 +6,7 @@ import { Container } from '@components';
 import { PageHeading } from '@components/styled';
 
 import {
-  Background, Heading, Intro, StyledHeader,
+  Background, Intro, StyledHeader,
 } from './Header.styled';
 
 import { FilterSearch } from './FilterSearch';
