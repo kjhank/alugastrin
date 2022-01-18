@@ -33,9 +33,12 @@ export const WhereToBuy = ({
           <LineHeading>{heading}</LineHeading>
           <Wrapper>
             <WidgetButton
-              as="button"
+              as="a"
+              href="https://ktomalek.pl"
               isActive={openSection === 'offline'}
-              onClick={() => toggleSection('offline')}
+              // onClick={() => toggleSection('offline')}
+              rel="noreferrer, noopener"
+              target="_blank"
             >
               {offline}
               <ArrowRight />

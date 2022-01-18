@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import { ButtonLink } from '@components';
 
 import {
   BackgroundImage, Heading, ImagePart, ProductImage, SingleSlideItem, SmallText, TextPart,
 } from './Carousel.styled';
+
+const sanitizeConfig = {
+  allowedTags: [
+    'a',
+    'br',
+    'strong',
+  ],
+};
 
 export const SingleSlide = ({
   isActive, slide,
@@ -29,9 +38,10 @@ export const SingleSlide = ({
       <Heading>
         {slide.heading}
         <br />
-        <SmallText isReversed={slide.variant === 'textLeft'}>
-          {slide.text}
-        </SmallText>
+        <SmallText
+          dangerouslySetInnerHTML={{ __html: sanitize(slide.text, sanitizeConfig) }}
+          isReversed={slide.variant === 'textLeft'}
+        />
       </Heading>
       <ButtonLink to={`/produkty/${slide.link.post.post_name}`}>{slide.link.text}</ButtonLink>
     </TextPart>
