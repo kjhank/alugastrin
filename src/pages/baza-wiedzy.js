@@ -28,6 +28,7 @@ const ArticlesPage = ({
 
 ArticlesPage.propTypes = {
   serverData: PropTypes.shape({
+    hasLegalInFooter: PropTypes.bool,
     pageData: PropTypes.shape({
       acf: PropTypes.shape({
         articlesPerPage: PropTypes.string,

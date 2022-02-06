@@ -59,7 +59,7 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 2.760417vw;
+  gap: min(2.7vw, 1em);
   margin-left: auto;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
 
@@ -85,19 +85,25 @@ export const Navigation = styled.nav`
 const linkStyle = css`
   ${({ theme }) => theme.getLinkStyles()};
   color: #fff;
-  font-size: 18px;
+  font-size: clamp(14px, 0.9375vw, 18px);
   font-family: ${({ theme }) => theme.getFont('heading')};
-
-  @media ${queries.m} {
-    font-size: 16px;
-  }
 `;
 
 export const Link = styled(GenericLink)`
   ${linkStyle}
 
+  > svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &.header__link--logo {
+    width: 12.5vw;
+  }
+
   @media ${queries.s} {
     &.header__link--logo {
+      width: 50vw;
       display: block;
       margin: auto;
     }
@@ -145,6 +151,7 @@ export const NavToggle = styled.button.attrs({ type: 'button' })`
 `;
 
 export const Brag = styled(BragSvg)`
+  width: 12.5vw;
   height: auto;
 
   @media ${queries.s} {

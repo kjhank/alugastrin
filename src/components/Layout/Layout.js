@@ -121,6 +121,7 @@ const Layout = ({
       />
       {cloneElement(children, { refs })}
       <GlobalFooter
+        bragFootnote={globals?.bragFootnote}
         contactRef={refs.contact}
         data={globals}
         globalFootnote={hasGlobalFootnote ? globalFootnote : null}

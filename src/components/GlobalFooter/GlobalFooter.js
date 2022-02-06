@@ -31,6 +31,7 @@ const sanitizeConfig = {
 };
 
 export const GlobalFooter = ({
+  bragFootnote,
   contactRef,
   data,
   globalFootnote,
@@ -74,6 +75,9 @@ export const GlobalFooter = ({
         />
       </Container>
       <GlobalContainer>
+        <GlobalFooterText>
+          {bragFootnote}
+        </GlobalFooterText>
         {globalFootnote && (
         <GlobalFooterText dangerouslySetInnerHTML={{
           __html: sanitize(globalFootnote, {
@@ -109,6 +113,7 @@ export const GlobalFooter = ({
 };
 
 GlobalFooter.propTypes = {
+  bragFootnote: PropTypes.string.isRequired,
   contactRef: PropTypes.shape({}).isRequired,
   data: PropTypes.shape({
     address: PropTypes.string,

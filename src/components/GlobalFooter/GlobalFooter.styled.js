@@ -13,7 +13,7 @@ export const Wrapper = styled.footer`
 export const Container = styled(GenericContainer)`
   display: flex;
   align-items: flex-end;
-  padding: 1.5vw 0 1.5vw 5vw;
+  padding: 1.5vw 0 1.5vw 7vw;
   color: #fff;
   font-size: 16px;
   line-height: 1.5;
