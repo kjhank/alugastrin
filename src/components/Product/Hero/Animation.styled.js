@@ -14,6 +14,11 @@ export const AnimationContainer = styled.div`
   &.alugastrin {
     top: -20vh;
     margin-bottom: -20vh;
+
+    @media ${queries.xs} {
+      top: -10vh;
+      margin-bottom: -10vh;
+    }
   }
 
   &.alugastrin3forte {
@@ -40,7 +45,7 @@ export const AnimationContainer = styled.div`
 
     &--alugastrin {
       > img {
-        width: auto;
+        width: 100%;
         height: 100%;
       }
     }
