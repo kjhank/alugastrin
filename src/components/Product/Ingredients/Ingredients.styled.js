@@ -132,10 +132,6 @@ export const IconsList = styled.ul`
   @media ${queries.s} {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  @media ${queries.xs} {
-    /* font-size: 16px; */
-  }
 `;
 
 export const IconItem = styled.li`
