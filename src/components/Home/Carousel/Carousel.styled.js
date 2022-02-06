@@ -98,32 +98,8 @@ export const ImagePart = styled.div`
 export const Heading = styled.h2`
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: bold;
-  font-size: 80px;
+  font-size: clamp(40px, 2.864583vw, 55px);
   line-height: 1.0625;
-
-  @media ${queries.xhuge} {
-    font-size: 72px;
-  }
-
-  @media ${queries.huge} {
-    font-size: 68px;
-  }
-
-  @media ${queries.xxl} {
-    font-size: 64px;
-  }
-
-  @media ${queries.m} {
-    font-size: 58px;
-  }
-
-  @media ${queries.s} {
-    font-size: 52px;
-  }
-
-  @media ${queries.xxsplus} {
-    font-size: 36px;
-  }
 `;
 
 export const SmallText = styled.span`
@@ -139,10 +115,6 @@ export const SmallText = styled.span`
   @media ${queries.huge} {
     font-size: 16px;
   }
-
-  /* @media ${queries.xxl} {
-    font-size: 32px;
-  } */
 
   @media ${queries.m} {
     font-size: 28px;

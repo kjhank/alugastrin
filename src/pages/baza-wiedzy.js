@@ -9,12 +9,14 @@ import { ArticlesContainer } from '@containers';
 
 const ArticlesPage = ({
   serverData: {
+    hasLegalInFooter,
     pageData: { acf }, posts,
   }, ...props
 }) => (
   <ArticlesContainer
     articlesPerPage={Number(acf?.articlesPerPage)}
     filters={acf?.filters}
+    hasLegalInFooter={hasLegalInFooter}
     headerImage={acf?.backgroundImage}
     headerImagePortrait={acf?.backgroundImagePortrait}
     heading={acf?.heading}
@@ -46,13 +48,12 @@ export const getServerData = async () => {
   const slug = 'baza-wiedzy';
   const pageData = await getPageData(slug);
 
-  // const { pageData: { acf: { articlesPerPage } } } = pageData;
-
   const posts = await getPosts();
 
   return {
     props: {
       ...pageData,
+      hasLegalInFooter: pageData.pageData.acf.hasLegalInFooter,
       posts,
     },
     status: 200,

@@ -72,8 +72,8 @@ export const AnimationContainer = styled.div`
 
     &--alugastrin3forte {
       inset: 0;
-      top: 3%;
-      left: 16%;
+      top: 2%;
+      left: 8%;
       width: auto;
       height: 90%;
 

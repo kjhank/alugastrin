@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import { Container } from '@components';
 
 import {
   Description, Image, InnerContainer, Intro, Link, List, Name, Product, Section,
 } from './Products.styled';
+
+const sanitizeConfig = {
+  allowedTags: [
+    'b',
+    'em',
+    'i',
+    'strong',
+  ],
+};
 
 export const Products = ({ products }) => (
   <Section>
@@ -22,7 +32,9 @@ export const Products = ({ products }) => (
               <Image image={articleThumb} />
               <Name>{name.split('|').map(part => <span key={part}>{part}</span>)}</Name>
               <Intro>{intro}</Intro>
-              <Description>{description}</Description>
+              <Description
+                dangerouslySetInnerHTML={{ __html: sanitize(description, sanitizeConfig) }}
+              />
               <Link to={`/produkty/${slug}`}>Zobacz produkty</Link>
             </Product>
           ))}

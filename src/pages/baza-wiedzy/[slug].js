@@ -94,10 +94,10 @@ export const getServerData = async ({ params: { slug } }) => {
       };
     }
 
-    const productsGroups = post.acf.products ?
+    const productsGroups = post.acf.products.length ?
       await getProducts(post.acf.products.map(({ product }) => product)) :
       [null];
-    const [products] = productsGroups;
+    const [products] = productsGroups.filter(group => !!group.length);
 
     return {
       props: {
