@@ -2,10 +2,21 @@ import React, {
   createRef, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import sanitize from 'sanitize-html';
 
+import { ArrowRight } from '@icons';
 import {
-  Container, Description, Image, Link, List, Name, Pipe, Product, Text,
+  ArrowWrapper,
+  Container,
+  Description,
+  Image,
+  List,
+  Name,
+  Pipe,
+  Product,
+  SectionHeading,
+  Text,
 } from './Products.styled';
 
 export const renderName = name => {
@@ -26,7 +37,7 @@ export const renderName = name => {
 };
 
 export const Products = ({
-  headerRef, products, targetGroup,
+  headerRef, products, sectionNames, targetGroup,
 }) => {
   /* eslint-disable sort-keys */
   const sectionRefs = {
@@ -61,24 +72,32 @@ export const Products = ({
   return (
     <Container>
       {products.map((group, index) => (
-        <List
+        <section
           key={JSON.stringify(group)}
           ref={Object.keys(sectionRefs).map(key => sectionRefs[key])[index]}
         >
-          {group.map(product => (
-            <Product key={product.acf.name}>
-              <Image image={product.acf.thumbnail} />
-              {renderName(product.acf.name)}
-              <Description>{product.acf.intro}</Description>
-              <Text
-                dangerouslySetInnerHTML={{ __html: sanitize(product.acf.listingDescription) }}
-              />
-              <Link to={product.slug}>
-                Zobacz produkt
-              </Link>
-            </Product>
-          ))}
-        </List>
+          <SectionHeading>
+            {sectionNames[index]}
+          </SectionHeading>
+          <List>
+            {group.map(product => (
+              <Product key={product.acf.name}>
+                <Link to={product.slug}>
+                  <Image image={product.acf.thumbnail} />
+                  {renderName(product.acf.name)}
+                  <Description>{product.acf.intro}</Description>
+                  <Text
+                    dangerouslySetInnerHTML={{ __html: sanitize(product.acf.listingDescription) }}
+                  />
+                  <ArrowWrapper>
+                    Zobacz produkt
+                    <ArrowRight />
+                  </ArrowWrapper>
+                </Link>
+              </Product>
+            ))}
+          </List>
+        </section>
       ))}
     </Container>
   );
@@ -87,6 +106,7 @@ export const Products = ({
 Products.propTypes = {
   headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
   products: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))).isRequired,
+  sectionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   targetGroup: PropTypes.string,
 };
 

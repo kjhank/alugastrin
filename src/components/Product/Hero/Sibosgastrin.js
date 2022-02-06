@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, {
-  createRef, useEffect,
+  createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
@@ -401,6 +401,11 @@ export const Sibosgastrin = ({
     ],
   };
 
+  const [
+    animationHasFired,
+    setAnimationHasFired,
+  ] = useState(false);
+
   const animateItems = () => {
     const germs = [
       germLeftRef.current,
@@ -429,7 +434,6 @@ export const Sibosgastrin = ({
       direction: 'alternate',
       duration: 1,
       easing: 'linear',
-      repeat: Infinity,
     });
   };
 
@@ -464,9 +468,7 @@ export const Sibosgastrin = ({
         listOptions,
       ]);
 
-      timeline(sequence, {
-        repeat: Infinity,
-      });
+      timeline(sequence);
     }
 
     if (packageNode) {
@@ -485,9 +487,9 @@ export const Sibosgastrin = ({
       };
 
       packageObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-        if (isIntersecting) {
+        if (isIntersecting && !animationHasFired) {
           animate(packageNode, packageKeyframes, animationOptions);
-
+          setAnimationHasFired(true);
           packageObserver.unobserve(staticNode);
         }
       }, observerConfig);

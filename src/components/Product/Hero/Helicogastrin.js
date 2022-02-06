@@ -1,12 +1,12 @@
 /* eslint-disable react/no-danger */
 import React, {
-  createRef, useEffect,
+  createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger, timeline,
+  animate, stagger,
 } from 'motion';
 
 import {
@@ -18,26 +18,24 @@ import { queries } from '@utils';
 import { FramedText } from './Hero.styled';
 
 const Container = styled(GenericContainer)`
-  width: 65.364583vw;
-  max-width: 1255px;
   margin: auto;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.25;
 
+  &.helicogastrin:not(.sibosgastrin) {
+    padding: 0;
+  }
+
   @media ${queries.huge} {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   @media ${queries.xxl} {
-    font-size: 20px;
-  }
-
-  @media ${queries.l} {
-    width: 75vw;
+    font-size: 16px;
   }
 
   @media ${queries.s} {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   @media ${queries.xxsplus} {
@@ -45,7 +43,6 @@ const Container = styled(GenericContainer)`
   }
 
   @media ${queries.xs} {
-    width: 95vw;
     font-size: 14px;
   }
 `;
@@ -82,7 +79,7 @@ const List = styled.ul`
   align-items: center;
   gap: 1.3vw;
   margin: 1.510417vw 2.34375vw;
-  font-size: 26px;
+  font-size: 18px;
 
   > li {
     display: inline-flex;
@@ -100,11 +97,13 @@ const List = styled.ul`
   @media ${queries.xxsplus} {
     gap: 2em;
     margin: 2em 0;
-    font-size: 18px;
+    font-size: 14px;
   }
 `;
 
 const Left = styled.div`
+  padding-right: 20%;
+
   li {
     margin: 1em 0;
     list-style-type: none;
@@ -127,7 +126,7 @@ const Left = styled.div`
 
 const Subheading = styled.h3`
   font-weight: 600;
-  font-size: 46px;
+  font-size: 36px;
   text-align: center;
   text-transform: uppercase;
 
@@ -136,15 +135,15 @@ const Subheading = styled.h3`
   }
 
   @media ${queries.xxl} {
-    font-size: 44px;
+    font-size: 34px;
   }
 
   @media ${queries.l} {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   @media ${queries.s} {
-    font-size: 32px;
+    font-size: 22px;
   }
 
   @media ${queries.xxsplus} {
@@ -152,7 +151,7 @@ const Subheading = styled.h3`
   }
 
   @media ${queries.xs} {
-    font-size: 26px;
+    font-size: 16px;
   }
 `;
 
@@ -238,6 +237,11 @@ export const Helicogastrin = ({
     ],
   };
 
+  const [
+    animationHasFired,
+    setAnimationHasFired,
+  ] = useState(false);
+
   const animateItems = () => {
     const germs = [
       germLeftRef.current,
@@ -261,40 +265,9 @@ export const Helicogastrin = ({
   }, []);
 
   useEffect(() => {
-    const { current: headingNode } = headingRef;
-    const { current: listNode } = listRef;
     const { current: packageNode } = packageRef;
     const { current: staticNode } = staticRef;
     let packageObserver;
-
-    if (headingNode && listNode) {
-      const animationTargets = [
-        headingNode,
-        ...listNode.querySelectorAll('li'),
-      ];
-
-      const listKeyframes = {
-        transform: [
-          'scale(1)',
-          'scale(1.1)',
-          'scale(1)',
-        ],
-      };
-
-      const listOptions = {
-        duration: 1,
-      };
-
-      const sequence = Array.from(animationTargets).map(element => [
-        element,
-        listKeyframes,
-        listOptions,
-      ]);
-
-      timeline(sequence, {
-        repeat: Infinity,
-      });
-    }
 
     if (packageNode) {
       const keyframes = {
@@ -322,6 +295,53 @@ export const Helicogastrin = ({
       packageObserver.observe(staticNode);
     }
   }, []);
+
+  const animateText = () => {
+    const { current: headingNode } = headingRef;
+    const { current: listNode } = listRef;
+
+    const animationTargets = [
+      headingNode,
+      ...listNode.querySelectorAll('li'),
+    ];
+
+    const listKeyframes = {
+      transform: [
+        'scale(1)',
+        'scale(1.1)',
+        'scale(1)',
+      ],
+    };
+
+    const animateConfig = {
+      delay: stagger(1),
+      duration: 1,
+      easing: 'ease-in-out',
+    };
+
+    animate(animationTargets, listKeyframes, animateConfig);
+    setAnimationHasFired(true);
+  };
+
+  useEffect(() => {
+    const observerConfig = { threshold: [0.75] };
+    let textObserver;
+
+    if (headingRef.current && !animationHasFired) {
+      const { current: headingNode } = headingRef;
+
+      textObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          animateText();
+          textObserver.unobserve(headingNode);
+        }
+      }, observerConfig);
+
+      textObserver.observe(headingNode);
+    }
+
+    return () => textObserver?.disconnect();
+  }, [headingRef]);
 
   return (
     <Container className={cssClass}>

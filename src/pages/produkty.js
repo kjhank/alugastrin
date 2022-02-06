@@ -10,17 +10,25 @@ import { ProductsContainer } from '@containers';
 const ProductsPage = ({
   location,
   serverData: {
-    pageData: { title: { rendered: renderedTitle } }, products,
+    pageData: {
+      acf: {
+        firstGroupName, secondGroupName,
+      }, title: { rendered: renderedTitle },
+    }, products,
   },
   ...props
 }) => {
-  const url = new URL(location.href);
-  const params = new URLSearchParams(url.search);
+  const url = new URL(location?.href);
+  const params = new URLSearchParams(url?.search);
 
   return (
     <ProductsContainer
       products={products}
-      targetGroup={params.get('typ')}
+      sectionNames={[
+        firstGroupName,
+        secondGroupName,
+      ]}
+      targetGroup={params?.get('typ')}
       title={renderedTitle}
       {...props}
     />
@@ -33,6 +41,10 @@ ProductsPage.propTypes = {
   }).isRequired,
   serverData: PropTypes.shape({
     pageData: PropTypes.shape({
+      acf: PropTypes.shape({
+        firstGroupName: PropTypes.string,
+        secondGroupName: PropTypes.string,
+      }),
       title: PropTypes.shape({
         rendered: PropTypes.string,
       }),
@@ -54,6 +66,7 @@ export const getServerData = async () => {
       ...pageData,
       products,
     },
+    status: 200,
   };
 };
 

@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
 
 export const List = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3.333333vw;
 
   @media ${queries.xxsplus} {
@@ -45,14 +45,29 @@ export const List = styled.ul`
 `;
 
 export const SingleArticle = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 export const Image = styled(SPImage)`
   > img {
     width: 100%;
+  }
+
+  @media ${queries.xs} {
+    display: block;
+    aspect-ratio: 294/192;
+
+    > img {
+      width: 100%;
+      max-width: unset;
+      height: 100%;
+      max-height: unset;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -76,7 +91,7 @@ export const Intro = styled.p`
   }
 `;
 
-export const Link = styled(GenericLink)`
+export const MoreText = styled.p`
   display: flex;
   align-items: center;
   margin-top: 1.05vw;
@@ -98,6 +113,10 @@ export const Link = styled(GenericLink)`
     ::before {
       background-color: ${({ theme }) => theme.getColor('accent')};
     }
+  }
+
+  @media ${queries.xs} {
+    display: none;
   }
 `;
 
@@ -129,5 +148,39 @@ export const AllArticlesLink = styled(GenericLink)`
 
   @media ${queries.huge} {
     font-size: 14px;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+
+  ${MoreText} {
+    display: none;
+
+    @media ${queries.xs} {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      border-top-left-radius: ${({ theme }) => theme.borderRadii.small};
+      padding: 1.25em 1em 1.25em 2em;
+      background-color: ${({ theme }) => theme.getColor('accent')};
+      mix-blend-mode: multiply;
+      color: #fff;
+      font-weight: 300;
+      font-size: 12px;
+
+      > svg {
+        width: auto;
+        height: 1em;
+        fill: currentColor;
+      }
+
+      ::before {
+        content: unset;
+      }
+    }
   }
 `;

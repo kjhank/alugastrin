@@ -9,7 +9,7 @@ import {
   AlignRight, ProductLogo, X,
 } from '@icons';
 import {
-  Container, Link, Navigation, NavToggle, ScrollButton, Wrapper,
+  Brag, Container, Link, Navigation, NavToggle, ScrollButton, Wrapper,
 } from './GlobalHeader.styled';
 
 export const GlobalHeader = ({
@@ -53,6 +53,7 @@ export const GlobalHeader = ({
         >
           <ProductLogo />
         </Link>
+        <Brag />
         <Navigation
           headerHeight={headerHeight}
           isVisible={isNavigationOpen}

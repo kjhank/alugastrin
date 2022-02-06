@@ -3,6 +3,8 @@ import { Link as GenericLink } from 'gatsby';
 
 import { Container as GenericContainer } from '@components';
 
+import { Brag as BragSvg } from '@icons';
+
 import { queries } from '@utils';
 
 export const Wrapper = styled.header`
@@ -20,14 +22,14 @@ export const Wrapper = styled.header`
     left: 0;
     z-index: 2;
     opacity: ${({ isOpaque }) => (isOpaque ? 1 : 0)};
-    width: calc(100% - 21vw + 5.46875vw);
+    width: calc(100% - 12.5vw + 5.46875vw);
     height: ${({ headerHeight }) => `${headerHeight}px`};
     border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     background-image: ${({ theme }) => theme.getGradient()};
     transition: ${({ theme }) => theme.getTransitions(['opacity'])};
 
     @media ${queries.xl} {
-      width: calc(100% - 12.2vw);
+      width: calc(100% - 10vw);
     }
 
     @media ${queries.l} {
@@ -44,9 +46,13 @@ export const Container = styled(GenericContainer)`
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1.5vw;
   padding: 1.4vw 0;
+
+  @media ${queries.s} {
+    flex-direction: column;
+  }
 `;
 
 export const Navigation = styled.nav`
@@ -54,6 +60,7 @@ export const Navigation = styled.nav`
   justify-content: flex-end;
   align-items: center;
   gap: 2.760417vw;
+  margin-left: auto;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
 
   @media ${queries.s} {
@@ -134,5 +141,13 @@ export const NavToggle = styled.button.attrs({ type: 'button' })`
         transform: translate(-50%, -50%) rotateY(180deg);
       }
     }
+  }
+`;
+
+export const Brag = styled(BragSvg)`
+  height: auto;
+
+  @media ${queries.s} {
+    width: 25%;
   }
 `;

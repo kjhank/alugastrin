@@ -16,6 +16,7 @@ const ArticlesPage = ({
     articlesPerPage={Number(acf?.articlesPerPage)}
     filters={acf?.filters}
     headerImage={acf?.backgroundImage}
+    headerImagePortrait={acf?.backgroundImagePortrait}
     heading={acf?.heading}
     initialPosts={posts}
     intro={acf?.intro}
@@ -29,6 +30,7 @@ ArticlesPage.propTypes = {
       acf: PropTypes.shape({
         articlesPerPage: PropTypes.string,
         backgroundImage: PropTypes.shape({}),
+        backgroundImagePortrait: PropTypes.shape({}),
         filters: PropTypes.shape({}),
         heading: PropTypes.string,
         intro: PropTypes.string,
@@ -53,6 +55,7 @@ export const getServerData = async () => {
       ...pageData,
       posts,
     },
+    status: 200,
   };
 };
 

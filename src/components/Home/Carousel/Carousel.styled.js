@@ -128,21 +128,21 @@ export const Heading = styled.h2`
 
 export const SmallText = styled.span`
   display: inline-block;
-  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 10%' : '1.5vw 40% 2vw 0')};
+  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 10%' : '1.5vw 20% 2vw 0')};
   color: ${({ theme }) => theme.getColor('main')};
-  font-size: 45px;
+  font-size: 24px;
 
   @media ${queries.xhuge} {
-    font-size: 40px;
+    font-size: 20px;
   }
 
   @media ${queries.huge} {
-    font-size: 36px;
+    font-size: 16px;
   }
 
-  @media ${queries.xxl} {
+  /* @media ${queries.xxl} {
     font-size: 32px;
-  }
+  } */
 
   @media ${queries.m} {
     font-size: 28px;

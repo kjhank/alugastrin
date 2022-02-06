@@ -1,9 +1,9 @@
 import React, {
-  createRef, useEffect,
+  createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
-  animate, timeline,
+  animate, stagger,
 } from 'motion';
 
 import * as SVG from './svgs';
@@ -19,11 +19,17 @@ export const Animation = ({
 }) => {
   const [variant] = cssClass?.split(' ') || [cssClass];
 
+  const [
+    animationHasFired,
+    setAnimationHasFired,
+  ] = useState(false);
+
   const animatedComponents = {
     alugastrin: SVG.Alu,
     alugastrin3forte: SVG.Forte,
   };
 
+  const containerRef = createRef();
   const childRef = createRef();
   const backgroundRef = createRef();
   const backgroundImageRef = createRef();
@@ -31,27 +37,28 @@ export const Animation = ({
   const Child = animatedComponents[variant];
 
   const animateItems = () => {
-    const { current: vectorElement } = childRef;
+    const { current: vectorNode } = childRef;
 
-    const targets = vectorElement.querySelectorAll('.animationTarget');
+    if (vectorNode) {
+      const animationTargets = vectorNode.querySelectorAll('.animationTarget');
 
-    const sequence = Array.from(targets).map(target => [
-      target,
-      {
-        transform: [
-          'scale(1)',
-          'scale(1.2)',
-          'scale(1)',
-        ],
-      },
-      {
-        duration: 1,
-      },
-    ]);
+      animate(
+        animationTargets,
+        {
+          transform: [
+            'scale(1)',
+            'scale(1.2)',
+            'scale(1)',
+          ],
+        },
+        {
+          delay: stagger(0.5),
+          duration: 1,
+        }
+      );
 
-    timeline(sequence, {
-      repeat: Infinity,
-    });
+      setAnimationHasFired(true);
+    }
   };
 
   const animationBackground = images.length > 0 ? images?.find(({ image }) => image.label === 'animationBackground') : null;
@@ -92,11 +99,32 @@ export const Animation = ({
 
   useEffect(() => {
     animateBackground();
-    animateItems();
-  }, []);
+
+    const { current: vectorNode } = childRef;
+    const { current: containerNode } = containerRef;
+    const observerConfig = { threshold: [0.75] };
+    let containerObserver;
+
+    if (containerNode && vectorNode && !animationHasFired) {
+      containerObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          animateItems();
+          containerObserver.unobserve(containerNode);
+        }
+      }, observerConfig);
+
+      containerObserver.observe(containerNode);
+    }
+  }, [
+    childRef,
+    containerRef,
+  ]);
 
   return (
-    <AnimationContainer className={cssClass}>
+    <AnimationContainer
+      className={cssClass}
+      ref={containerRef}
+    >
       {animationBackground && (
         <BackgroundImage
           className={`background background--${variant}`}

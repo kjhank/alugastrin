@@ -1,5 +1,6 @@
 export { Main } from './Main/Main';
 export { Container } from './Container/Container';
+export { Modal } from './Modal/Modal';
 export { ExternalLink } from './ExternalLink/ExternalLink';
 export { GlobalHeader } from './GlobalHeader/GlobalHeader';
 export { GlobalFooter } from './GlobalFooter/GlobalFooter';

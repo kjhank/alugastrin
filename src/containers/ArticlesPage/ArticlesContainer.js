@@ -13,6 +13,7 @@ export const ArticlesContainer = ({
   articlesPerPage,
   filters,
   headerImage,
+  headerImagePortrait,
   heading,
   initialPosts,
   intro,
@@ -86,6 +87,7 @@ export const ArticlesContainer = ({
         filtersRef={filtersRef}
         heading={heading}
         image={headerImage}
+        imagePortrait={headerImagePortrait}
         initialPosts={initialPosts}
         intro={intro}
         setCurrentFilter={setCurrentFilter}
@@ -107,8 +109,10 @@ ArticlesContainer.propTypes = {
   articlesPerPage: PropTypes.number.isRequired,
   filters: PropTypes.shape({}).isRequired,
   headerImage: PropTypes.shape({}).isRequired,
+  headerImagePortrait: PropTypes.shape({}).isRequired,
   heading: PropTypes.string.isRequired,
   initialPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   intro: PropTypes.string.isRequired,
+  refs: PropTypes.shape({}).isRequired,
 };
 

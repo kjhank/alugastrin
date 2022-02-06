@@ -16,14 +16,14 @@ export const Main = styled.main`
     bottom: 0;
     left: 0;
     z-index: 2;
-    width: calc(100% - 21vw + 5.46875vw);
+    width: calc(100% - 12.5vw + 5.46875vw);
     height: ${({ headerHeight }) => `${headerHeight}px`};
     border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     background-image: ${({ theme }) => theme.getGradient()};
     mix-blend-mode: multiply;
 
     @media ${queries.xl} {
-      width: calc(100% - 12.2vw);
+      width: calc(100% - 10vw);
     }
 
     @media ${queries.l} {
@@ -46,10 +46,12 @@ export const buttonLinkStyles = css`
   border: 1px solid ${({ theme }) => theme.getColor('main')};
   border-radius: ${({ theme }) => theme.getRadius()};
   padding: 0.83vw 1.6vw;
+  background-color: transparent;
   transition: ${({ theme }) => theme.getTransitions([
     'color',
     'border-color',
   ])};
+  cursor: pointer;
 
   > svg {
     margin-right: ${({ $isFlipped }) => $isFlipped && '1.05vw'};
@@ -86,12 +88,12 @@ export const PageHeading = styled.h1`
   position: relative;
   padding-top: 2.239583vw;
   font-weight: 600;
-  font-size: 66px;
+  font-size: clamp( 24px, 2.395833vw, 46px);
 
   ::after {
     content: '';
     position: absolute;
-    bottom: -1.2vw;
+    bottom: -0.25em;
     left: 0;
     width: 10.73vw;
     height: 2px;
@@ -99,7 +101,7 @@ export const PageHeading = styled.h1`
   }
 
   @media ${queries.xxsplus} {
-    font-size: 40px;
+    font-size: 28px;
 
     ::after {
       width: 33%;
@@ -136,7 +138,7 @@ export const LineHeading = styled.h2`
 `;
 
 export const InnerContainer = styled.div`
-  width: 93.637145%;
+  /* width: 93.637145%; */
   margin: auto;
-  padding: 0 1.064%;
+  /* padding: 0 1.064%; */
 `;
