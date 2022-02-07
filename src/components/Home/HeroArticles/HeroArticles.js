@@ -1,11 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 
 import { Container } from '@components';
 import { ArrowRight } from '@icons';
 
 import {
-  AllArticlesLink, Heading, Image, Intro, Link, List, Section, SingleArticle, Title, Wrapper,
+  AllArticlesLink,
+  Heading,
+  Image,
+  ImageWrapper,
+  Intro,
+  List,
+  MoreText,
+  Section,
+  SingleArticle,
+  Title,
+  Wrapper,
 } from './HeroArticles.styled';
 
 export const HeroArticles = ({ content }) => (
@@ -18,10 +29,19 @@ export const HeroArticles = ({ content }) => (
             article, image, intro, linkText,
           }) => (
             <SingleArticle key={article.ID}>
-              <Image image={image} />
-              <Title>{article.post_title}</Title>
-              <Intro>{intro}</Intro>
-              <Link to={`/baza-wiedzy/${article.post_name}`}>{linkText}</Link>
+              <Link to={`/baza-wiedzy/${article.post_name}`}>
+                <ImageWrapper>
+                  <Image image={image} />
+                  <MoreText>
+                    {linkText}
+                    {' '}
+                    <ArrowRight />
+                  </MoreText>
+                </ImageWrapper>
+                <Title>{article.post_title}</Title>
+                <Intro>{intro}</Intro>
+                <MoreText>{linkText}</MoreText>
+              </Link>
             </SingleArticle>
           ))}
         </List>

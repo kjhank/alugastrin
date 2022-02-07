@@ -7,7 +7,7 @@ import {
 
 const theme = {
   borderRadii: {
-    large: '200px',
+    large: '120px',
     larger: '100px',
     default: '50px',
     mediumPlus: '40px',

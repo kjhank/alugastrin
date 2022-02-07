@@ -10,6 +10,7 @@ import {
 const ProfessionalsPage = ({
   refs,
   serverData: {
+    hasLegalInFooter,
     maintenance, pageData: {
       acf, title: { rendered: title },
     },
@@ -31,6 +32,8 @@ const ProfessionalsPage = ({
   return (
     <ProfessionalsContainer
       files={acf?.downloads}
+      hasLegalInFooter={hasLegalInFooter}
+      modal={acf.modal}
       refs={refs}
       title={title}
       {...props}
@@ -41,6 +44,7 @@ const ProfessionalsPage = ({
 ProfessionalsPage.propTypes = {
   refs: PropTypes.shape({}).isRequired,
   serverData: PropTypes.shape({
+    hasLegalInFooter: PropTypes.bool,
     maintenance: PropTypes.shape({
       isInMaintenance: PropTypes.bool,
       maintenanceBackground: PropTypes.shape({}),
@@ -52,6 +56,7 @@ ProfessionalsPage.propTypes = {
         carousel: PropTypes.arrayOf(PropTypes.shape({})),
         descriptions: PropTypes.arrayOf(PropTypes.shape({})),
         downloads: PropTypes.arrayOf(PropTypes.shape({})),
+        modal: PropTypes.shape({}),
         video: PropTypes.shape({}),
       }),
       title: PropTypes.shape({
@@ -70,7 +75,7 @@ export const getServerData = async () => {
   const {
     pageData: {
       acf: {
-        isInMaintenance, maintenanceBackground, maintenanceMessage,
+        hasLegalInFooter, isInMaintenance, maintenanceBackground, maintenanceMessage,
       },
     },
   } = pageData;
@@ -92,6 +97,7 @@ export const getServerData = async () => {
   return {
     props: {
       ...pageData,
+      hasLegalInFooter,
     },
     status: 200,
   };

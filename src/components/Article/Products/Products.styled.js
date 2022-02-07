@@ -60,6 +60,16 @@ export const Description = styled.p`
   font-size: 16px;
   line-height: 1.5;
 
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
   @media ${queries.xxl} {
     font-size: 14px;
   }

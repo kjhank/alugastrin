@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 import {
-  animate, stagger, timeline,
+  animate, stagger,
 } from 'motion';
 
 import { LineHeading } from '@components/styled';
@@ -32,53 +32,75 @@ export const Ingredients = ({
   const stepsRef = createRef();
 
   const animateItems = () => {
-    const { current: iconsElement } = stepsRef;
-    const listElements = iconsElement.querySelectorAll('picture');
+    const { current: stepsNode } = stepsRef;
 
-    const listKeyframes = {
-      transform: [
-        'scale(1)',
-        'scale(1.1)',
-        'scale(1)',
-      ],
-    };
+    if (stepsNode) {
+      const stepNodes = stepsNode.querySelectorAll('picture');
 
-    const listOptions = {
-      duration: 1,
-    };
+      const keyframes = {
+        transform: [
+          'scale(1)',
+          'scale(1.2)',
+          'scale(1)',
+        ],
+      };
 
-    const sequence = Array.from(listElements).map(element => [
-      element,
-      listKeyframes,
-      listOptions,
-    ]);
+      const animateConfig = {
+        delay: stagger(1),
+        duration: 1,
+        easing: 'ease-in-out',
+      };
 
-    timeline(sequence, {
-      repeat: Infinity,
-    });
+      const stepsObserver = new IntersectionObserver(([
+        {
+          isIntersecting,
+        },
+      ]) => {
+        if (isIntersecting) {
+          animate(stepNodes, keyframes, animateConfig);
+
+          stepsObserver.disconnect();
+        }
+      });
+
+      stepNodes.forEach(node => stepsObserver.observe(node));
+    }
   };
 
   const animateBackgrounds = () => {
-    const { current: iconsElement } = iconsRef;
+    const { current: iconsNode } = iconsRef;
 
-    if (iconsElement) {
-      const targets = iconsElement.querySelectorAll('.icon__background > img');
+    if (iconsNode) {
+      const observerConfig = { threshold: [0.9] };
+      const targets = iconsNode.querySelectorAll('.icon__background > img');
       const keyframes = { transform: 'rotate(360deg) translateZ(1px)' };
       const animateConfig = {
-        delay: stagger(1),
-        duration: 5,
+        duration: 3,
         easing: 'linear',
-        repeat: Infinity,
       };
 
-      animate(targets, keyframes, animateConfig);
+      const iconsObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+        if (isIntersecting) {
+          animate(targets, keyframes, animateConfig);
+          iconsObserver.disconnect();
+        }
+      }, observerConfig);
+
+      targets.forEach(node => iconsObserver.observe(node));
     }
   };
 
   useEffect(() => {
-    animateItems();
-    animateBackgrounds();
-  }, []);
+    if (stepsRef.current) {
+      animateItems();
+    }
+  }, [stepsRef]);
+
+  useEffect(() => {
+    if (iconsRef.current) {
+      animateBackgrounds();
+    }
+  }, [iconsRef]);
 
   return (
     <Section>
@@ -93,6 +115,7 @@ export const Ingredients = ({
             />
             ) }
             <IconsList
+              columns={item.descriptions.length === 2 ? 2 : 3}
               ref={index === 0 ? iconsRef : null}
             >
               {item.descriptions.map(({
@@ -105,6 +128,7 @@ export const Ingredients = ({
                   direction={variant === 'sideBySide' ? 'row' : 'column'}
                   key={text}
                   padding={variant === 'sideBySide' ? 'right' : 'sides'}
+                  weight={variant === 'sideBySide' ? 700 : 400}
                 >
                   {animatedBackground && (
                   <IconBackground

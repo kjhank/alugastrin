@@ -23,7 +23,7 @@ export const Heading = styled.h2`
   padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 5vw 0' : '1.615vw 5vw 4.5vw')};
   color: ${({ theme }) => theme.getColor('main')};
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
-  font-size: ${({ isLarger }) => (isLarger ? '64px' : '46px')};
+  font-size: ${({ isLarger }) => (isLarger ? '52px' : '46px')};
   text-align: center;
   text-transform: uppercase;
 
@@ -38,23 +38,23 @@ export const Heading = styled.h2`
 
   @media ${queries.huge} {
     padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 2vw 0' : '1.615vw 2vw 4.5vw')};
-    font-size: ${({ isLarger }) => (isLarger ? '58px' : '42px')};
+    font-size: ${({ isLarger }) => (isLarger ? '48px' : '32px')};
   }
 
   @media ${queries.xxl} {
-    font-size: ${({ isLarger }) => (isLarger ? '52px' : '38px')};
+    font-size: ${({ isLarger }) => (isLarger ? '42px' : '28px')};
   }
 
   @media ${queries.l} {
-    font-size: ${({ isLarger }) => (isLarger ? '48px' : '34px')};
+    font-size: ${({ isLarger }) => (isLarger ? '38px' : '24px')};
   }
 
   @media ${queries.xs} {
-    font-size: ${({ isLarger }) => (isLarger ? '38px' : '28px')};
+    font-size: ${({ isLarger }) => (isLarger ? '28px' : '18px')};
   }
 
   @media ${queries.xxsplus} {
-    font-size: ${({ isLarger }) => (isLarger ? '28px' : '22px')};
+    font-size: ${({ isLarger }) => (isLarger ? '18px' : '12px')};
 
     &.alugastrin {
       margin: 2em 0;
@@ -98,13 +98,16 @@ export const BackgroundImage = styled(SPImage)`
   transform: translate(-50%, -50%);
 
   &.background--alugastrin3forte {
+    /* aspect-ratio: 1/1;
+    width: 91.046386%; */
     aspect-ratio: 1/1;
-    width: 91.046386%;
+    width: auto;
+    height: 100%;
   }
 
   > img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 `;
 
@@ -275,7 +278,7 @@ export const Image = styled(SPImage)`
 
 export const FramedText = styled.section`
   position: relative;
-  width: 46.5625vw;
+  width: 100%;
   margin: auto;
   border: 4px solid ${({ theme }) => theme.getColor('main')};
   border-radius: ${({ theme }) => theme.getRadius('smaller')};
@@ -289,7 +292,6 @@ export const FramedText = styled.section`
   }
 
   @media ${queries.xxl} {
-    width: 55vw;
     font-size: 20px;
   }
 

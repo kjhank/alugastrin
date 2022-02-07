@@ -25,11 +25,15 @@ export const SingleDescription = styled.section`
       bottom: 0;
     }
 
-    @media ${queries.xxsplus} {
+    @media ${queries.s} {
+      display: none;
+    }
+
+    /* @media ${queries.xxsplus} {
       position: static;
       order: 2;
       margin: 2em 0;
-    }
+    } */
   }
 `;
 
@@ -164,8 +168,9 @@ export const HeadingWrapper = styled.div`
   padding: 0 3vw;
 
   @media ${queries.xxsplus} {
+    order: 2;
     width: 100%;
-    margin: auto;
+    margin: 0 auto 1em;
     text-align: center;
   }
 `;
@@ -178,6 +183,10 @@ export const TextWrapper = styled.div`
   align-items: flex-start;
   width: 100%;
   padding-top: 2.4vw;
+
+  @media ${queries.s} {
+    margin-bottom: 1em;
+  }
 
   @media ${queries.xxsplus} {
     flex-direction: column;
@@ -204,7 +213,7 @@ export const Intro = styled.p`
   }
 
   @media ${queries.xxsplus} {
-    order: unset;
+    order: 1;
     width: 100%;
     margin: 1em 0;
     text-align: center;
@@ -227,6 +236,7 @@ export const Description = styled.p`
   }
 
   @media ${queries.xxsplus} {
+    order: 3;
     width: 100%;
     margin-bottom: unset;
     font-size: 16px;

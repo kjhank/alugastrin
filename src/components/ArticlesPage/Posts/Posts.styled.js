@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link as GenericLink } from 'gatsby';
 
 import { SPImage } from '@components';
 
@@ -7,10 +6,10 @@ import { queries } from '@utils';
 
 export const PostsList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 3.39vw;
   margin-top: 2.6vw;
-  padding-left: 12.726%;
+  padding-left: 5%;
 
   @media ${queries.xs} {
     grid-template-columns: repeat(2, 1fr);
@@ -23,9 +22,26 @@ export const PostsList = styled.ul`
   }
 `;
 
-export const Post = styled.li``;
+export const Post = styled.li`
+  > a {
+    :hover {
 
-export const Link = styled(GenericLink)`
+    > p:last-child {
+        color: ${({ theme }) => theme.getColor('accent')};
+
+        ::before {
+          background-color: ${({ theme }) => theme.getColor('accent')};
+        }
+      }
+    }
+  }
+
+  @media ${queries.xs} {
+    padding: 0 10%;
+  }
+`;
+
+export const MoreText = styled.p`
   display: inline-flex;
   align-items: center;
   font-weight: 600;
@@ -45,12 +61,8 @@ export const Link = styled(GenericLink)`
     }
   }
 
-  :hover {
-    color: ${({ theme }) => theme.getColor('accent')};
-
-    ::before {
-      background-color: ${({ theme }) => theme.getColor('accent')};
-    }
+  @media ${queries.xs} {
+    display: none;
   }
 `;
 
@@ -59,6 +71,19 @@ export const Image = styled(SPImage)`
 
   > img {
     width: 100%;
+  }
+
+  @media ${queries.xs} {
+    display: block;
+    aspect-ratio: 294/192;
+
+    > img {
+      width: 100%;
+      max-width: unset;
+      height: 100%;
+      max-height: unset;
+      object-fit: cover;
+    }
   }
 `;
 
@@ -74,4 +99,38 @@ export const Intro = styled.p`
   margin-bottom: 1.042vw;
   font-size: 16px;
   line-height: 1.25;
+`;
+
+export const ImageWrapper = styled.div`
+  position: relative;
+
+  ${MoreText} {
+    display: none;
+
+    @media ${queries.xs} {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      border-top-left-radius: ${({ theme }) => theme.borderRadii.small};
+      padding: 1.25em 1em 1.25em 2em;
+      background-color: ${({ theme }) => theme.getColor('accent')};
+      mix-blend-mode: multiply;
+      color: #fff;
+      font-weight: 300;
+      font-size: 12px;
+
+      > svg {
+        width: auto;
+        height: 1em;
+        fill: currentColor;
+      }
+
+      ::before {
+        content: unset;
+      }
+    }
+  }
 `;

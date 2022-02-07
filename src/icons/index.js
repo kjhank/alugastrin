@@ -9,3 +9,4 @@ export { default as Page } from './Page';
 export { default as AlignRight } from './AlignRight';
 export { default as X } from './X';
 export { default as DoubleDashDown } from './DoubleDashDown';
+export { default as Brag } from './Brag';

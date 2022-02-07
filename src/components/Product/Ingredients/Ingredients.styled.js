@@ -8,9 +8,7 @@ import { queries } from '@utils';
 
 export const Section = styled.section``;
 
-export const Container = styled(GenericContainer)`
-  padding: 0 6%;
-`;
+export const Container = styled(GenericContainer)``;
 
 export const Image = styled(SPImage)`
   width: 100%;
@@ -77,24 +75,9 @@ export const TextWrapper = styled.div`
   > p {
     color: ${({ theme }) => theme.getColor('accent')};
     font-weight: 600;
-    font-size: 24px;
+    font-size: clamp(32px, 2.395833vw, 46px);
     line-height: 1.21;
-
-    @media ${queries.huge} {
-      font-size: 22px;
-    }
-
-    @media ${queries.xxl} {
-      font-size: 20px;
-    }
-
-    @media ${queries.xs} {
-      font-size: 18px;
-    }
-
-    @media ${queries.xxsplus} {
-      font-size: 16px;
-    }
+    text-align: center;
   }
 `;
 
@@ -102,7 +85,6 @@ export const SmallHeading = styled.h3``;
 
 export const IconsWrapper = styled.div`
   margin-top: 3.03vw;
-  padding-left: 7.14vw;
 
   @media ${queries.xxsplus} {
     padding-left: 0;
@@ -142,24 +124,13 @@ export const IconBackground = styled(SPImage)`
 
 export const IconsList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
   gap: 2vw;
-  font-size: 24px;
+  padding-left: ${({ columns }) => columns === 2 && '7.135417vw'};
+  font-size: clamp(14px, 1.25vw, 24px);
 
-  @media ${queries.huge} {
-    font-size: 22px;
-  }
-
-  @media ${queries.xxl} {
-    font-size: 20px;
-  }
-
-  @media ${queries.xs} {
-    font-size: 18px;
-  }
-
-  @media ${queries.xxsplus} {
-    font-size: 14px;
+  @media ${queries.s} {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 
@@ -168,9 +139,17 @@ export const IconItem = styled.li`
   display: flex;
   flex-direction: ${({ direction }) => direction};
   align-items: center;
-  padding: ${({ padding }) => (padding === 'right' ? '0 2em 0 0' : '0 2em')};
-  font-weight: 600;
+  padding: ${({ padding }) => (padding === 'right' ? '0 2em 0 0' : '0 3em')};
+  font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
+
+  @media ${queries.s} {
+    padding: ${({ padding }) => (padding === 'right' ? '0 2em 0 0' : '0 2em')};
+  }
+
+  @media ${queries.xs} {
+    padding: ${({ padding }) => (padding === 'right' ? '0 2em 0 0' : '0 1em')};
+  }
 `;
 
 export const FramedText = styled.h3`

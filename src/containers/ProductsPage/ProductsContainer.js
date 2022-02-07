@@ -8,7 +8,7 @@ import {
 } from '@components/ProductsPage';
 
 export const ProductsContainer = ({
-  targetGroup, products, refs, title, ...props
+  targetGroup, products, refs, sectionNames, title, ...props
 }) => (
   <Main
     refs={refs}
@@ -18,6 +18,7 @@ export const ProductsContainer = ({
     <Products
       headerRef={refs.header}
       products={products}
+      sectionNames={sectionNames}
       targetGroup={targetGroup}
     />
   </Main>
@@ -28,6 +29,7 @@ ProductsContainer.propTypes = {
   refs: PropTypes.shape({
     header: PropTypes.shape({}),
   }).isRequired,
+  sectionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
   targetGroup: PropTypes.string,
   title: PropTypes.string.isRequired,
 };

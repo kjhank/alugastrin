@@ -12,24 +12,23 @@ export const Wrapper = styled.footer`
 
 export const Container = styled(GenericContainer)`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 2.6vw 0 2.6vw 6.14vw;
+  align-items: flex-end;
+  padding: 1.5vw 0 1.5vw 7vw;
   color: #fff;
   font-size: 16px;
   line-height: 1.5;
 
   ::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      width: calc(100% + 21vw);
-      border-radius: ${({ theme }) => `${theme.getRadius('large')} 0 0 0`};
-      background-image: ${({ theme }) => theme.getGradient('left')};
-    }
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: calc(100% + 21vw);
+    border-radius: ${({ theme }) => `${theme.getRadius('large')} 0 0 0`};
+    background-image: ${({ theme }) => theme.getGradient('left')};
+  }
 
   @media ${queries.huge} {
     font-size: 14px;
@@ -61,8 +60,8 @@ export const LeftPart = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  width: 60%;
-  padding: 1.5vw 0;
+  width: 65%;
+  padding: 1.5vw 0 0;
 
   @media ${queries.xxl} {
     width: 65%;
@@ -80,16 +79,15 @@ export const LeftPart = styled.div`
 export const RightPart = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
   gap: 1.2vw;
+  padding: 1.5vw 0 0 6vw;
   border-left: 1px solid #fff;
-  padding: 1.5vw 0 1.5vw 2vw;
   font-weight: 700;
-  font-size: 27px;
+  font-size: 16px;
 
   strong {
-    font-size: 30px;
     line-height: 1.066667;
   }
 
@@ -98,37 +96,8 @@ export const RightPart = styled.div`
     font-weight: 400;
   }
 
-  @media ${queries.huge} {
-    font-size: 23px;
-
-    strong {
-      font-size: 26px;
-    }
-  }
-
-  @media ${queries.xxl} {
-    font-size: 21px;
-
-    strong {
-      font-size: 24px;
-    }
-  }
-
-  @media ${queries.m} {
-    font-size: 19px;
-
-    strong {
-      font-size: 22px;
-    }
-  }
-
   @media ${queries.xs} {
     width: 100%;
-    font-size: 21px;
-
-    strong {
-      font-size: 24px;
-    }
   }
 
   @media ${queries.xs} {

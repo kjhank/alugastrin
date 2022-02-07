@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
+import { Link } from 'gatsby';
 
+import { ArrowRight } from '@icons';
 import { Container } from '@components';
 
 import {
-  Image, Intro, Link, Post, PostsList, Title,
+  Image, ImageWrapper, Intro, MoreText, Post, PostsList, Title,
 } from './Posts.styled';
 
 export const Posts = ({ posts }) => (
@@ -17,10 +19,19 @@ export const Posts = ({ posts }) => (
         }, slug, title: { rendered: renderedTitle },
       }) => (
         <Post key={slug}>
-          <Image image={thumbnail} />
-          <Title dangerouslySetInnerHTML={{ __html: sanitize(renderedTitle) }} />
-          <Intro>{description}</Intro>
-          <Link to={slug}>czytaj więcej</Link>
+          <Link to={slug}>
+            <ImageWrapper>
+              <Image image={thumbnail} />
+              <MoreText>
+                Czytaj więcej
+                {' '}
+                <ArrowRight />
+              </MoreText>
+            </ImageWrapper>
+            <Title dangerouslySetInnerHTML={{ __html: sanitize(renderedTitle) }} />
+            <Intro>{description}</Intro>
+            <MoreText>czytaj więcej</MoreText>
+          </Link>
         </Post>
       ))}
     </PostsList>

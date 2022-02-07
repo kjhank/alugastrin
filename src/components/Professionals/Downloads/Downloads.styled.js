@@ -8,8 +8,8 @@ export const Section = styled.article``;
 
 export const FilesList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  gap: min(2vw, 3.84vw);
 
   @media ${queries.xxsplus} {
     grid-template-columns: 1fr;
@@ -21,7 +21,6 @@ export const SingleFile = styled.li`
   flex-direction: column;
   align-items: center;
   margin-bottom: 3em;
-  padding: 0 1em;
   line-height: 1.227273;
   text-align: center;
 `;
@@ -50,13 +49,14 @@ export const Title = styled.h2`
   margin: 1em 0;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
-  font-size: 22px;
+  font-size: clamp(16px, 1.145833vw, 22px);
   text-transform: uppercase;
 `;
 
 export const Description = styled.p`
   margin-bottom: 0.75em;
   padding: 0 2em;
+  font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
 
@@ -81,7 +81,6 @@ export const Description = styled.p`
 
 export const AuthorsList = styled.ul`
   margin-top: auto;
-  font-weight: 600;
 `;
 
 export const Author = styled.li`

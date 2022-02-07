@@ -3,6 +3,8 @@ import { Link as GenericLink } from 'gatsby';
 
 import { Container as GenericContainer } from '@components';
 
+import { Brag as BragSvg } from '@icons';
+
 import { queries } from '@utils';
 
 export const Wrapper = styled.header`
@@ -20,14 +22,14 @@ export const Wrapper = styled.header`
     left: 0;
     z-index: 2;
     opacity: ${({ isOpaque }) => (isOpaque ? 1 : 0)};
-    width: calc(100% - 21vw + 5.46875vw);
+    width: calc(100% - 12.5vw + 5.46875vw);
     height: ${({ headerHeight }) => `${headerHeight}px`};
     border-radius: ${({ theme }) => `0 0 ${theme.getRadius()} 0`};
     background-image: ${({ theme }) => theme.getGradient()};
     transition: ${({ theme }) => theme.getTransitions(['opacity'])};
 
     @media ${queries.xl} {
-      width: calc(100% - 12.2vw);
+      width: calc(100% - 10vw);
     }
 
     @media ${queries.l} {
@@ -44,16 +46,21 @@ export const Container = styled(GenericContainer)`
   position: relative;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1.5vw;
   padding: 1.4vw 0;
+
+  @media ${queries.s} {
+    flex-direction: column;
+  }
 `;
 
 export const Navigation = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 2.760417vw;
+  gap: min(2.7vw, 1em);
+  margin-left: auto;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
 
   @media ${queries.s} {
@@ -78,19 +85,25 @@ export const Navigation = styled.nav`
 const linkStyle = css`
   ${({ theme }) => theme.getLinkStyles()};
   color: #fff;
-  font-size: 18px;
+  font-size: clamp(14px, 0.9375vw, 18px);
   font-family: ${({ theme }) => theme.getFont('heading')};
-
-  @media ${queries.m} {
-    font-size: 16px;
-  }
 `;
 
 export const Link = styled(GenericLink)`
   ${linkStyle}
 
+  > svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &.header__link--logo {
+    width: 12.5vw;
+  }
+
   @media ${queries.s} {
     &.header__link--logo {
+      width: 50vw;
       display: block;
       margin: auto;
     }
@@ -134,5 +147,14 @@ export const NavToggle = styled.button.attrs({ type: 'button' })`
         transform: translate(-50%, -50%) rotateY(180deg);
       }
     }
+  }
+`;
+
+export const Brag = styled(BragSvg)`
+  width: 12.5vw;
+  height: auto;
+
+  @media ${queries.s} {
+    width: 25%;
   }
 `;

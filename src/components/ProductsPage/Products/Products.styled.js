@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
+import { buttonLinkStyles } from '@components/styled';
 import {
-  ButtonLink, Container as GenericContainer, SPImage,
+  Container as GenericContainer, SPImage,
 } from '@components';
 
 import { queries } from '@utils';
 
 export const List = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4.53125vw;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.71875vw;
 
   & + & {
     margin-top: 4.9vw;
@@ -21,14 +22,24 @@ export const List = styled.ul`
 `;
 
 export const Product = styled.li`
-  @media ${queries.xs} {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+  > a {
+    :hover {
+      div:last-child {
+        filter: brightness(1.2);
+        border-color: #fff;
+        color: #fff;
+      }
+    }
 
-  @media ${queries.xxsplus} {
-    display: block;
+    @media ${queries.xs} {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    @media ${queries.xxsplus} {
+      display: block;
+    }
   }
 `;
 
@@ -48,11 +59,11 @@ export const Pipe = styled.span`
   color: ${({ theme }) => theme.getColor('main')};
 `;
 
-export const Name = styled.h2`
+export const Name = styled.h3`
   padding: 0.78125vw 0 0.68vw;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
-  font-size: 24px;
+  font-size: clamp(16px, 1.25vw, 24px);
   line-height: 1.208333;
 
   @media ${queries.huge} {
@@ -101,17 +112,12 @@ export const Text = styled.p`
   }
 `;
 
-export const Link = styled(ButtonLink)`
+export const ArrowWrapper = styled.div`
+  ${buttonLinkStyles};
   border-color: #fff;
   background: ${({ theme }) => theme.getGradient()};
   color: #fff;
   transition: ${({ theme }) => theme.getTransitions(['filter'])};
-
-  :hover {
-    filter: brightness(1.2);
-    border-color: #fff;
-    color: #fff;
-  }
 
   > svg {
     fill: currentColor;
@@ -128,9 +134,40 @@ export const Link = styled(ButtonLink)`
 `;
 
 export const Container = styled(GenericContainer)`
-  padding-left: 12.726%;
 
   @media ${queries.xxsplus} {
     padding: 0;
+  }
+`;
+
+export const SectionHeading = styled.h2`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  padding: 2vw 0;
+  color: ${({ theme }) => theme.getColor('accent')};
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.208333;
+
+  ::before {
+    content: '';
+    width: 0.55em;
+    height: 2px;
+    background-color: ${({ theme }) => theme.getColor('accent')};
+  }
+
+  @media ${queries.huge} {
+    font-size: 28px;
+  }
+
+  @media ${queries.xs} {
+    width: 60%;
+    padding-left: 2.5%;
+  }
+
+  @media ${queries.xxsplus} {
+    width: 100%;
+    padding-left: 0;
   }
 `;

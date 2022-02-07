@@ -6,7 +6,7 @@ import { Container } from '@components';
 import { PageHeading } from '@components/styled';
 
 import {
-  Background, Heading, Intro, StyledHeader,
+  Background, Intro, PortraitBackground, StyledHeader,
 } from './Header.styled';
 
 import { FilterSearch } from './FilterSearch';
@@ -18,6 +18,7 @@ export const Header = ({
   filtersRef,
   heading,
   image,
+  imagePortrait,
   initialPosts,
   intro,
   setCurrentFilter,
@@ -26,7 +27,14 @@ export const Header = ({
 }) => (
   <StyledHeader>
     <Container>
-      <Background image={image} />
+      <Background
+        image={image}
+        isLazy={false}
+      />
+      <PortraitBackground
+        image={imagePortrait}
+        isLazy={false}
+      />
       <PageHeading>{heading}</PageHeading>
       <Intro>{intro}</Intro>
       <FilterSearch
@@ -50,6 +58,7 @@ Header.propTypes = {
   filtersRef: PropTypes.shape({}).isRequired,
   heading: PropTypes.string.isRequired,
   image: PropTypes.shape({}).isRequired,
+  imagePortrait: PropTypes.shape({}).isRequired,
   initialPosts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   intro: PropTypes.string.isRequired,
   setCurrentFilter: PropTypes.func.isRequired,

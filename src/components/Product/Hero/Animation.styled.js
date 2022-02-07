@@ -4,41 +4,82 @@ import { queries } from '@utils';
 
 export const AnimationContainer = styled.div`
   position: relative;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
+  height: min(75vh, 56.25vw);
+
+  @media ${queries.s} {
+    width: 100%;
+    height: unset;
+  }
 
   &.alugastrin {
-    margin-top: -31%;
+    top: -20vh;
+    margin-bottom: -20vh;
+
+    @media ${queries.xs} {
+      top: -10vh;
+      margin-bottom: -10vh;
+    }
   }
 
   &.alugastrin3forte {
-    margin: 10% 0;
+    top: -10vh;
 
-    @media ${queries.huge} {
-      margin: 10% 0 15%;
+    @media ${queries.xxl} {
+      top: -5vh;
+    }
+
+    @media ${queries.xs} {
+      top: 0;
     }
   }
 
   .image {
-    position: relative;
+    width: auto;
+    height: 100%;
+
+    > img {
+      width: auto;
+      height: 100%;
+    }
 
     &--alugastrin3forte {
-      top: -10%;
-      left: -10%;
-      width: 65%;
+      height: 80%;
+      margin: auto;
+
+      @media ${queries.xs} {
+        width: 100%;
+        height: auto;
+
+        > img {
+          width: auto;
+          height: auto;
+        }
+      }
     }
 
     &--alugastrin {
-      width: 120%;
+      > img {
+        width: auto;
+        height: 100%;
+      }
+
+      @media ${queries.xs} {
+        width: 100%;
+        height: auto;
+
+        > img {
+          width: auto;
+          height: auto;
+        }
+      }
     }
   }
 
   .parent {
     position: absolute;
     z-index: 3;
-    backface-visibility: hidden;
     overflow: visible;
+    backface-visibility: hidden;
     height: auto;
 
     .animationTarget {
@@ -50,20 +91,26 @@ export const AnimationContainer = styled.div`
     }
 
     &--alugastrin {
-      top: 34%;
-      left: 15%;
-      width: 72%;
+      inset: 0;
+      top: 33%;
+      left: 50%;
+      width: auto;
+      height: 60%;
+      transform: translateX(-50%);
     }
 
     &--alugastrin3forte {
-      top: -10%;
-      left: -10%;
-      width: 110%;
+      inset: 0;
+      top: 0;
+      left: 5%;
+      width: 100%;
+      height: auto;
 
-      @media ${queries.xxsplus} {
-        top: -5%;
-        left: -5%;
+      @media ${queries.s} {
+        top: 20%;
+        left: 10%;
         width: 100%;
+        height: auto;
       }
     }
   }
