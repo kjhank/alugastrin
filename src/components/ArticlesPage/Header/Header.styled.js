@@ -80,13 +80,12 @@ export const Background = styled(SPImage)`
 
 export const PortraitBackground = styled(SPImage)`
   position: absolute;
-  top: 0;
+  top: -3em;
   right: -5vw;
   z-index: -2;
   display: none;
   width: 60%;
   height: 100%;
-  mask-image: linear-gradient(to bottom, #fff, #fff 25%, transparent 50%);
 
   > img {
     width: 100%;
@@ -96,6 +95,10 @@ export const PortraitBackground = styled(SPImage)`
 
   @media ${queries.xs} {
     display: block;
+  }
+
+  @media ${queries.xxs} {
+    top: -2em;
   }
 `;
 

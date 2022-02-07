@@ -45,12 +45,32 @@ export const AnimationContainer = styled.div`
     &--alugastrin3forte {
       height: 80%;
       margin: auto;
+
+      @media ${queries.xs} {
+        width: 100%;
+        height: auto;
+
+        > img {
+          width: auto;
+          height: auto;
+        }
+      }
     }
 
     &--alugastrin {
       > img {
         width: auto;
         height: 100%;
+      }
+
+      @media ${queries.xs} {
+        width: 100%;
+        height: auto;
+
+        > img {
+          width: auto;
+          height: auto;
+        }
       }
     }
   }
