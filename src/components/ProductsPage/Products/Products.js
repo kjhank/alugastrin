@@ -1,5 +1,5 @@
 import React, {
-  createRef, useEffect,
+  createRef, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
@@ -46,28 +46,41 @@ export const Products = ({
   };
   /* eslint-enable sort-keys */
 
+  const [
+    hasScrolled,
+    setHasScrolled,
+  ] = useState(false);
+
   const handleScroll = target => {
-    const { current: element } = sectionRefs[target];
+    const timeoutId = setTimeout(() => {
+      const { current: element } = sectionRefs[target];
 
-    const { current: globalHeader } = headerRef;
+      const { current: globalHeader } = headerRef;
 
-    const scrollOffset = element.getBoundingClientRect().top +
+      const scrollOffset = element?.getBoundingClientRect()?.top +
         window.scrollY -
-        globalHeader.getBoundingClientRect().height;
+        globalHeader?.getBoundingClientRect()?.height;
 
-    const scrollConfig = {
-      behavior: 'smooth',
-      top: scrollOffset,
-    };
+      const scrollConfig = {
+        behavior: 'smooth',
+        top: scrollOffset,
+      };
 
-    window.scrollTo(scrollConfig);
+      window.scrollTo(scrollConfig);
+      setHasScrolled(true);
+      clearTimeout(timeoutId);
+    }, 300);
   };
 
   useEffect(() => {
-    if (targetGroup) {
+    if (targetGroup && sectionRefs[targetGroup].current && headerRef.current && !hasScrolled) {
       handleScroll(targetGroup);
     }
-  }, [targetGroup]);
+  }, [
+    headerRef,
+    sectionRefs,
+    targetGroup,
+  ]);
 
   return (
     <Container>
