@@ -33,7 +33,7 @@ const Container = styled(GenericContainer)`
 
 const Wrapper = styled.div`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
-  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'no-wrap')};
+  flex-wrap: ${({ $wrap }) => ($wrap ? 'wrap' : 'no-wrap')};
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
 
@@ -334,28 +334,28 @@ const Red = styled.ul`
 const InBetween = styled.p`
   margin: 4.6875vw 0 4.166667vw;
   font-weight: 600;
-  font-size: 46px;
+  font-size: 42px;
   text-align: center;
 
   strong {
     color: ${({ theme }) => theme.getColor('accent')};
   }
 
-@media ${queries.huge} {
-  font-size: 42px;
-}
+  @media ${queries.huge} {
+    font-size: 38px;
+  }
 
-@media ${queries.xxl} {
-  font-size: 38px;
-}
+  @media ${queries.xxl} {
+    font-size: 34px;
+  }
 
-@media ${queries.xs} {
-  font-size: 32px;
-}
+  @media ${queries.xs} {
+    font-size: 28px;
+  }
 
-@media ${queries.xxsplus} {
-  font-size: 28px;
-}
+  @media ${queries.xxsplus} {
+    font-size: 24px;
+  }
 `;
 
 export const Sibosgastrin = ({
@@ -501,12 +501,12 @@ export const Sibosgastrin = ({
   return (
     <Container className={cssClass}>
       <Wrapper
+        $wrap
         align="center"
         className={cssClass}
         flex
         justify="space-between"
         ref={staticRef}
-        wrap
       >
         <List
           dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }}

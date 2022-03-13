@@ -31,7 +31,7 @@ export const renderName = name => {
       <Pipe>
         |
       </Pipe>
-      {second}
+      <span>{second}</span>
     </Name>
   );
 };

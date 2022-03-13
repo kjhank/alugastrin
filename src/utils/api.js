@@ -36,6 +36,7 @@ export const getPageData = async pageSlug => {
 
   if (pageSlug) {
     const data = await getApiData(endpoints.pages, `slug=${pageSlug}`);
+
     const [pageData] = data;
 
     return {
