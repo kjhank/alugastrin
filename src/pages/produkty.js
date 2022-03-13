@@ -18,8 +18,7 @@ const ProductsPage = ({
   },
   ...props
 }) => {
-  const url = new URL(location?.href);
-  const params = new URLSearchParams(url?.search);
+  const params = new URLSearchParams(location?.search);
 
   return (
     <ProductsContainer
@@ -28,7 +27,7 @@ const ProductsPage = ({
         firstGroupName,
         secondGroupName,
       ]}
-      targetGroup={params?.get('typ')}
+      targetGroup={params?.get('typ') ?? ''}
       title={renderedTitle}
       {...props}
     />
@@ -37,7 +36,7 @@ const ProductsPage = ({
 
 ProductsPage.propTypes = {
   location: PropTypes.shape({
-    href: PropTypes.string,
+    search: PropTypes.string,
   }).isRequired,
   serverData: PropTypes.shape({
     pageData: PropTypes.shape({
