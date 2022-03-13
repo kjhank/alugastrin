@@ -126,11 +126,11 @@ const Layout = ({
         hasLegal={hasLegalInFooter}
       />
       <CookiesBar
-        accept={globals.cookies.accept}
+        accept={globals?.cookies?.accept}
         confirmCookies={confirmCookies}
-        copy={globals.cookies.copy}
+        copy={globals?.cookies.copy}
         isOpen={isCookiesBarOpen}
-        reject={globals.cookies.reject}
+        reject={globals?.cookies?.reject}
       />
     </Theme>
   );
