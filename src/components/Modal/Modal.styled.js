@@ -16,14 +16,12 @@ export const Backdrop = styled.div`
   align-items: ${({ alignment }) => (alignment === 'top' ? 'flex-start' : 'flex-end')};
   min-height: 100vh;
   padding: 10vh 0;
-  background-color: ${({ isBlurred }) => (isBlurred ? 'rgb(255 255 255 / 0.95)' : 'transparent')};
+  background-color: ${({ isBlurred }) => (isBlurred ? 'rgb(255 255 255 / 0.98)' : 'transparent')};
 
   @supports (backdrop-filter: blur(2rem)) {
     background-color: ${({ isBlurred }) => (isBlurred ? 'rgb(255 255 255 / 0.25)' : 'transparent')};
     backdrop-filter: ${({ isBlurred }) => (isBlurred ? 'blur(2rem)' : 'none')};
   }
-
-
 `;
 
 export const Wrapper = styled.aside`

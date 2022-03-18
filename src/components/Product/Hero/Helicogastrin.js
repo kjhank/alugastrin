@@ -187,7 +187,19 @@ const GermList = styled.ul`
     width: calc(50% - 1vw);
 
     p {
-      padding: 2vw 3vw 0;
+      padding: 2vw 1vw 0;
+
+      > strong {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @media ${queries.m} {
+    font-size: 18px;
+
+    > li > p > strong {
+      white-space: normal;
     }
   }
 

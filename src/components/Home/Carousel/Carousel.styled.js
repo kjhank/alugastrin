@@ -97,16 +97,20 @@ export const ImagePart = styled.div`
 `;
 
 export const Heading = styled.h2`
-  padding-left: 25%;
+  padding-left: ${({ padded }) => padded === 'right' && '25%'};
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: bold;
   font-size: clamp(40px, 2.864583vw, 55px);
   line-height: 1.0625;
+
+  @media ${queries.xxsplus} {
+    padding-left: 0;
+  }
 `;
 
 export const SmallText = styled.span`
   display: inline-block;
-  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 25%' : '1.5vw 20% 2vw 0')};
+  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 0' : '1.5vw 20% 2vw 0')};
   color: ${({ theme }) => theme.getColor('main')};
   font-size: 24px;
 
