@@ -101,7 +101,10 @@ export const Products = ({
             {group.map(product => (
               <Product key={product.acf.name}>
                 <Link to={product.slug}>
-                  <Image image={product.acf.thumbnail} />
+                  <Image
+                    image={product.acf.thumbnail}
+                    loading="eager"
+                  />
                   {renderName(product.acf.name)}
                   <Description>{product.acf.intro}</Description>
                   <Text
