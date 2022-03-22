@@ -7,6 +7,8 @@ import {
 import { queries } from '@utils';
 
 export const Wrapper = styled.footer`
+  position: relative;
+  z-index: 1;
   margin: 4vw 0 2vw;
 `;
 

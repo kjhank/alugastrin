@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import { useLocation } from '@reach/router';
 import sanitize from 'sanitize-html';
 
 import { ArrowRight } from '@icons';
@@ -37,8 +38,9 @@ export const renderName = name => {
 };
 
 export const Products = ({
-  headerRef, products, sectionNames, targetGroup,
+  headerRef, products, sectionNames,
 }) => {
+  const location = useLocation();
   /* eslint-disable sort-keys */
   const sectionRefs = {
     'zgaga-i-refluks': createRef(),
@@ -52,7 +54,7 @@ export const Products = ({
   ] = useState(false);
 
   const handleScroll = target => {
-    const timeoutId = setTimeout(() => {
+    if (!hasScrolled) {
       const { current: element } = sectionRefs[target];
 
       const { current: globalHeader } = headerRef;
@@ -68,19 +70,22 @@ export const Products = ({
 
       window.scrollTo(scrollConfig);
       setHasScrolled(true);
-      clearTimeout(timeoutId);
-    }, 300);
+    }
   };
 
   useEffect(() => {
-    if (targetGroup && sectionRefs[targetGroup].current && headerRef.current && !hasScrolled) {
-      handleScroll(targetGroup);
+    // if (!hasScrolled) {
+    const params = new URLSearchParams(location?.search);
+    const type = params.get('typ');
+
+    if (type && headerRef?.current) {
+      handleScroll(type);
+      setHasScrolled(true);
     }
-  }, [
-    headerRef,
-    sectionRefs,
-    targetGroup,
-  ]);
+    // }
+
+    return () => setHasScrolled(false);
+  }, [headerRef]);
 
   return (
     <Container>
@@ -118,11 +123,7 @@ export const Products = ({
 
 Products.propTypes = {
   headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
+  location: PropTypes.shape({}).isRequired,
   products: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))).isRequired,
   sectionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
-  targetGroup: PropTypes.string,
-};
-
-Products.defaultProps = {
-  targetGroup: null,
 };

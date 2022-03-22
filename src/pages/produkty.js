@@ -8,7 +8,6 @@ import {
 import { ProductsContainer } from '@containers';
 
 const ProductsPage = ({
-  location,
   serverData: {
     pageData: {
       acf: {
@@ -17,27 +16,19 @@ const ProductsPage = ({
     }, products,
   },
   ...props
-}) => {
-  const params = new URLSearchParams(location?.search);
-
-  return (
-    <ProductsContainer
-      products={products}
-      sectionNames={[
-        firstGroupName,
-        secondGroupName,
-      ]}
-      targetGroup={params?.get('typ') ?? ''}
-      title={renderedTitle}
-      {...props}
-    />
-  );
-};
+}) => (
+  <ProductsContainer
+    products={products}
+    sectionNames={[
+      firstGroupName,
+      secondGroupName,
+    ]}
+    title={renderedTitle}
+    {...props}
+  />
+);
 
 ProductsPage.propTypes = {
-  location: PropTypes.shape({
-    search: PropTypes.string,
-  }).isRequired,
   serverData: PropTypes.shape({
     pageData: PropTypes.shape({
       acf: PropTypes.shape({
