@@ -6,6 +6,8 @@ import { LineHeading } from '@components/styled';
 import { queries } from '@utils';
 
 export const Section = styled.section`
+  position: relative;
+  z-index: 1;
   margin-top: 3.8vw;
 
   @media ${queries.xxsplus} {
@@ -75,10 +77,11 @@ export const Background = styled(SPImage)`
   position: absolute;
   top: 0;
   left: 50%;
-  z-index: -1;
+  z-index: 0;
   width: auto;
   height: 100%;
   transform: translateX(-50%);
+  /* pointer-events: none; */
 
   > img {
     max-width: unset;

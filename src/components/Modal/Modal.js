@@ -13,9 +13,12 @@ import {
 } from './Modal.styled';
 
 export const Modal = ({
-  isClosable,
   children,
   close,
+  isBlurred,
+  isClosable,
+  isOnBottom,
+  ...props
 }) => {
   const backdropRef = createRef();
   const modalRef = createRef();
@@ -82,8 +85,11 @@ export const Modal = ({
 
   return (
     <Backdrop
+      alignment={isOnBottom ? 'bottom' : 'top'}
+      isBlurred={isBlurred}
       onClick={handleBackdropClick}
       ref={backdropRef}
+      {...props}
     >
       <Wrapper ref={modalRef}>
         {isClosable && (
@@ -103,10 +109,14 @@ Modal.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
   ]).isRequired,
   close: PropTypes.func.isRequired,
+  isBlurred: PropTypes.bool,
   isClosable: PropTypes.bool,
+  isOnBottom: PropTypes.bool,
 };
 
 Modal.defaultProps = {
+  isBlurred: true,
   isClosable: true,
+  isOnBottom: false,
 };
 
