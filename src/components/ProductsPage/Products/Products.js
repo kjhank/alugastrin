@@ -126,7 +126,6 @@ export const Products = ({
 
 Products.propTypes = {
   headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
-  location: PropTypes.shape({}).isRequired,
   products: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.shape({}))).isRequired,
   sectionNames: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
