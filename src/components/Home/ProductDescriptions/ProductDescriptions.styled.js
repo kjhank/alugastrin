@@ -21,19 +21,13 @@ export const SingleDescription = styled.section`
     bottom: 3.28125vw;
     left: ${({ variant }) => (variant === 'textRight' && '7.34375vw')};
 
-    @media ${queries.l} {
+    @media ${queries.huge} {
       bottom: 0;
     }
 
     @media ${queries.s} {
       display: none;
     }
-
-    /* @media ${queries.xxsplus} {
-      position: static;
-      order: 2;
-      margin: 2em 0;
-    } */
   }
 `;
 

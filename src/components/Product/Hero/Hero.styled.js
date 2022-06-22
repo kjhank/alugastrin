@@ -20,7 +20,7 @@ export const Wrapper = styled.section`
 `;
 
 export const Heading = styled.h2`
-  padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 5vw 0' : '1.615vw 5vw 4.5vw')};
+  padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 1vw 0' : '1.615vw 1vw 5.5vw')};
   color: ${({ theme }) => theme.getColor('main')};
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
   font-size: ${({ isLarger }) => (isLarger ? '52px' : '46px')};
@@ -37,7 +37,7 @@ export const Heading = styled.h2`
   }
 
   @media ${queries.huge} {
-    padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 2vw 0' : '1.615vw 2vw 4.5vw')};
+    padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 1vw 0' : '1.615vw 1vw 6.5vw')};
     font-size: ${({ isLarger }) => (isLarger ? '48px' : '32px')};
   }
 

@@ -28,6 +28,11 @@ export const SingleFile = styled.li`
 export const Thumbnail = styled(SPImage)`
   width: 14.947917vw;
 
+  > img {
+    width: 100%;
+    height: auto;
+  }
+
   @media ${queries.xxsplus} {
     width: 50%;
   }

@@ -77,6 +77,7 @@ export const NavigationButton = styled.button.attrs({ type: 'button' })`
 `;
 
 export const TextPart = styled.div`
+  position: relative;
   width: 50%;
   padding-right: ${({ padded }) => padded === 'left' && '2vw'};
   padding-left: ${({ padded }) => padded === 'right' && '8vw'};
@@ -96,15 +97,20 @@ export const ImagePart = styled.div`
 `;
 
 export const Heading = styled.h2`
+  padding-left: ${({ padded }) => padded === 'right' && '25%'};
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: bold;
   font-size: clamp(40px, 2.864583vw, 55px);
   line-height: 1.0625;
+
+  @media ${queries.xxsplus} {
+    padding-left: 0;
+  }
 `;
 
 export const SmallText = styled.span`
   display: inline-block;
-  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 10%' : '1.5vw 20% 2vw 0')};
+  padding: ${({ isReversed }) => (isReversed ? '1.5vw 0 2vw 0' : '1.5vw 20% 2vw 0')};
   color: ${({ theme }) => theme.getColor('main')};
   font-size: 24px;
 
@@ -136,6 +142,6 @@ export const BackgroundImage = styled(SPImage)`
   top: 50%;
   right: ${({ alignment }) => alignment === 'right' && 0};
   left: ${({ alignment }) => alignment === 'left' && 0};
-  z-index: -1;
+  z-index: 0;
   transform: translateY(-50%);
 `;

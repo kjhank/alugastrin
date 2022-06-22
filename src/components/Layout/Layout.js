@@ -1,28 +1,25 @@
 import React, {
   cloneElement, createRef, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 
 import { Theme } from '@theme/main';
 import {
-  GlobalFooter, GlobalHeader, Modal,
+  GlobalFooter, GlobalHeader,
 } from '@components';
 import {
   debounceFunction,
   GlobalStyle,
-  isBrowser,
 } from '@utils';
 
 import { Seo } from './Seo';
 
 import '@theme/fonts.css';
-import { CookiesModal } from './CookiesModal';
+import { CookiesBar } from './CookiesBar';
 
 const DEBOUNCE_TIMEOUT = 300;
 const COOKIES_LS_KEY = 'cookies-agreed';
-const BODY = isBrowser ? document.body : null;
 
 const Layout = ({
   children, serverData, path,
@@ -43,8 +40,8 @@ const Layout = ({
   ] = useState(false);
 
   const [
-    isCookiesModalOpen,
-    setCookiesModalOpen,
+    isCookiesBarOpen,
+    setCookiesBarOpen,
   ] = useState(false);
 
   useEffect(() => {
@@ -52,13 +49,13 @@ const Layout = ({
 
     cookieRef.current = !!hasUserAgreed;
 
-    setCookiesModalOpen(!hasUserAgreed);
+    setCookiesBarOpen(!hasUserAgreed);
   }, []);
 
-  const handleModal = () => {
+  const handleCookies = () => {
     const hasUserAgreed = localStorage.getItem(COOKIES_LS_KEY);
 
-    setCookiesModalOpen(!hasUserAgreed);
+    setCookiesBarOpen(!hasUserAgreed);
   };
 
   const refs = {
@@ -68,6 +65,7 @@ const Layout = ({
 
   useEffect(() => {
     smoothscroll.polyfill();
+    handleCookies();
   }, []);
 
   const scrollEventHandler = ({ type }, headerHeight) => {
@@ -102,7 +100,7 @@ const Layout = ({
 
   const confirmCookies = () => {
     localStorage.setItem(COOKIES_LS_KEY, true);
-    setCookiesModalOpen(false);
+    setCookiesBarOpen(false);
   };
 
   return (
@@ -127,21 +125,13 @@ const Layout = ({
         globalFootnote={hasGlobalFootnote ? globalFootnote : null}
         hasLegal={hasLegalInFooter}
       />
-      {isCookiesModalOpen ?
-        createPortal(
-          <Modal
-            close={handleModal}
-            isClosable={false}
-          >
-            <CookiesModal
-              accept={globals.cookies.accept}
-              confirmCookies={confirmCookies}
-              copy={globals.cookies.copy}
-              reject={globals.cookies.reject}
-            />
-          </Modal>, BODY
-        ) :
-        null}
+      <CookiesBar
+        accept={globals?.cookies?.accept}
+        confirmCookies={confirmCookies}
+        copy={globals?.cookies.copy}
+        isOpen={isCookiesBarOpen}
+        reject={globals?.cookies?.reject}
+      />
     </Theme>
   );
 };

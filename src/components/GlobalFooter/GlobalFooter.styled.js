@@ -7,6 +7,8 @@ import {
 import { queries } from '@utils';
 
 export const Wrapper = styled.footer`
+  position: relative;
+  z-index: 1;
   margin: 4vw 0 2vw;
 `;
 
@@ -82,8 +84,8 @@ export const RightPart = styled.div`
   justify-content: flex-end;
   align-items: flex-start;
   gap: 1.2vw;
-  padding: 1.5vw 0 0 6vw;
   border-left: 1px solid #fff;
+  padding: 1.5vw 0 0 6vw;
   font-weight: 700;
   font-size: 16px;
 

@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -22,6 +26,12 @@ module.exports = {
         },
       },
       resolve: 'gatsby-plugin-react-svg',
+    },
+    {
+      options: {
+        id: process.env.GATSBY_GTM_ID,
+      },
+      resolve: 'gatsby-plugin-google-tagmanager',
     },
     {
       options: {

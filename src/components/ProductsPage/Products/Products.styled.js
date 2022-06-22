@@ -63,11 +63,11 @@ export const Name = styled.h3`
   padding: 0.78125vw 0 0.68vw;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
-  font-size: clamp(16px, 1.25vw, 24px);
+  font-size: clamp(16px, 1.2vw, 24px);
   line-height: 1.208333;
 
-  @media ${queries.huge} {
-    font-size: 22px;
+  > span:last-child {
+    white-space: nowrap;
   }
 
   @media ${queries.xs} {
@@ -134,6 +134,10 @@ export const ArrowWrapper = styled.div`
 `;
 
 export const Container = styled(GenericContainer)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2em;
 
   @media ${queries.xxsplus} {
     padding: 0;
