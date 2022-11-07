@@ -11,14 +11,12 @@ export const Home = ({
   articles,
   carousel,
   descriptions,
-  // video,
   ...props
 }) => (
   <Main {...props}>
     <Carousel slides={carousel} />
     <ProductDescriptions items={descriptions} />
     <HeroArticles content={articles} />
-  { /*<Video sources={video} />*/ }
   </Main>
 );
 
@@ -26,6 +24,5 @@ Home.propTypes = {
   articles: PropTypes.shape({}).isRequired,
   carousel: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   descriptions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  // video: PropTypes.shape({}).isRequired,
 };
 

@@ -81,7 +81,16 @@ export const Background = styled(SPImage)`
   width: auto;
   height: 100%;
   transform: translateX(-50%);
-  /* pointer-events: none; */
+
+  &.esomeprazol {
+    top: 30vw;
+    width: 100%;
+    height: auto;
+
+    > img {
+      max-width: 100%;
+    }
+  }
 
   > img {
     max-width: unset;

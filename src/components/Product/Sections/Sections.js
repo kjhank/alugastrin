@@ -22,11 +22,16 @@ const sanitizeConfig = {
 };
 
 export const Sections = ({
-  background, sections,
+  background, className, sections,
 }) => (
   <Container>
     <InnerContainer>
-      <Background image={background} />
+      {background && (
+      <Background
+        className={className}
+        image={background}
+      />
+      )}
       {sections.map(section => (
         <Section
           key={section.heading}
@@ -42,6 +47,11 @@ export const Sections = ({
 
 Sections.propTypes = {
   background: PropTypes.shape({}).isRequired,
+  className: PropTypes.string,
   sections: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+Sections.defaultProps = {
+  className: null,
 };
 
