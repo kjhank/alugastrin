@@ -35,7 +35,7 @@ export const SingleSlide = ({
       />
     </ImagePart>
     <TextPart padded={slide.variant === 'textRight' ? 'right' : 'left'}>
-      <Heading>
+      <Heading padded={slide.variant === 'textRight' ? 'left' : 'right'}>
         {slide.heading}
         <br />
         <SmallText

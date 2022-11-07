@@ -8,8 +8,8 @@ export const Section = styled.section``;
 
 export const Container = styled(GenericContainer)`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 2em;
   padding: 0 3%;
 `;
 

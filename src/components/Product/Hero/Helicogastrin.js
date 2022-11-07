@@ -49,7 +49,6 @@ const Container = styled(GenericContainer)`
 
 const Wrapper = styled.div`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
-  flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'no-wrap')};
   justify-content: ${({ justify }) => justify};
   align-items: ${({ align }) => align};
   padding: ${({ extraPadding }) => extraPadding && '0 10%'};
@@ -78,7 +77,7 @@ const List = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 1.3vw;
-  margin: 1.510417vw 2.34375vw;
+  margin: 1.510417vw 0;
   font-size: 18px;
 
   > li {
@@ -188,7 +187,19 @@ const GermList = styled.ul`
     width: calc(50% - 1vw);
 
     p {
-      padding: 2vw 3vw 0;
+      padding: 2vw 1vw 0;
+
+      > strong {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @media ${queries.m} {
+    font-size: 18px;
+
+    > li > p > strong {
+      white-space: normal;
     }
   }
 

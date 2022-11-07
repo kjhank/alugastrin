@@ -8,6 +8,7 @@ export const Main = styled.main`
   margin-top: ${({
     hasNoMargin, headerHeight,
   }) => !hasNoMargin && `${headerHeight}px`};
+  background-color: #fff;
 
   ::before {
     content: '';
@@ -114,7 +115,7 @@ export const LineHeading = styled.h2`
   align-items: center;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
-  font-size: 46px;
+  font-size: 42px;
 
   ::before {
     content: '';
@@ -125,20 +126,18 @@ export const LineHeading = styled.h2`
   }
 
   @media ${queries.huge} {
-    font-size: 42px;
-  }
-
-  @media ${queries.xxl} {
     font-size: 38px;
   }
 
+  @media ${queries.xxl} {
+    font-size: 34px;
+  }
+
   @media ${queries.xxsplus} {
-    font-size: 32px;
+    font-size: 28px;
   }
 `;
 
 export const InnerContainer = styled.div`
-  /* width: 93.637145%; */
   margin: auto;
-  /* padding: 0 1.064%; */
 `;
