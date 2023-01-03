@@ -158,6 +158,7 @@ export const SIL = styled.p`
   padding-bottom: 1.8vw;
   font-size: 11px;
   line-height: 1.272727;
+  white-space: pre-line;
 
   strong {
     font-weight: 700;

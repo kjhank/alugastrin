@@ -25,7 +25,7 @@ export const Hero = ({
 }) => {
   const packageRef = createRef();
   const staticRef = createRef();
-  const backgrounds = images?.filter(item => item.image.label.includes('squares-'));
+  const backgrounds = images ? images?.filter(item => item.image.label.includes('squares-')) : null;
 
   useEffect(() => {
     const { current: staticNode } = staticRef;
