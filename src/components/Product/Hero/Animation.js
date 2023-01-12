@@ -86,7 +86,8 @@ export const Animation = ({
     }
 
     animate(
-      backgroundElement, {
+      backgroundElement,
+      {
         filter: 'saturate(1.5) contrast(1.2)',
       },
       {

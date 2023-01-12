@@ -88,6 +88,7 @@ export const TextPart = styled.div`
 `;
 
 export const ImagePart = styled.div`
+  position: relative;
   width: 50%;
   padding-left: ${({ isOffset }) => isOffset && '2vw'};
 
@@ -144,4 +145,10 @@ export const BackgroundImage = styled(SPImage)`
   left: ${({ alignment }) => alignment === 'left' && 0};
   z-index: 0;
   transform: translateY(-50%);
+
+  &.esomeprazol {
+    right: unset;
+    left: auto;
+    width: 60%;
+  }
 `;
