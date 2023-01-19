@@ -18,6 +18,7 @@ const sanitizeConfig = {
     'br',
     'li',
     'span',
+    'ul',
   ],
 };
 
@@ -34,11 +35,12 @@ export const Sections = ({
       )}
       {sections.map(section => (
         <Section
+          className={className}
           key={section.heading}
           ref={section.innerRef}
         >
           <Heading>{section.heading}</Heading>
-          <Text dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
+          <Text className={className} dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
         </Section>
       ))}
     </InnerContainer>

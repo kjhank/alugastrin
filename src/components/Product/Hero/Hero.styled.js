@@ -31,6 +31,10 @@ export const Heading = styled.h2`
     padding-bottom: 1.510417vw;
   }
 
+  &.esomeprazol {
+    text-transform: none;
+  }
+
   > strong {
     color: ${({ theme }) => theme.getColor('accent')};
     font-weight: 600;

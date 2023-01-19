@@ -48,6 +48,18 @@ export const Text = styled.div`
     }
   }
 
+  &.esomeprazol {
+    ul > li {
+      ::before {
+        content: '·';
+        position: relative;
+        top: 0.1em;
+        color: ${({ theme }) => theme.colors.accent};
+        font-size: 2em;
+      }
+    }
+  }
+
   ul + p,
   ol + p,
   p + p,

@@ -75,9 +75,11 @@ export const GlobalFooter = ({
         />
       </Container>
       <GlobalContainer>
+        {hasLegal && (
         <GlobalFooterText>
           {bragFootnote}
         </GlobalFooterText>
+        )}
         {globalFootnote && (
         <GlobalFooterText dangerouslySetInnerHTML={{
           __html: sanitize(globalFootnote, {
