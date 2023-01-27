@@ -66,7 +66,16 @@ export const Hero = ({
         {heading && (
         <Heading
           className={cssClass}
-          dangerouslySetInnerHTML={{ __html: sanitize(heading, { allowedTags: ['strong'] }) }}
+          dangerouslySetInnerHTML={{
+            __html: sanitize(heading, {
+              allowedTags: [
+                'br',
+                'span',
+                'strong',
+                'sup',
+              ],
+            }),
+          }}
           isBold={!heading.includes('<strong>') || heading.includes('<br />')}
           isLarger={heading.includes('<strong>')}
           lessPadding={isSecond}

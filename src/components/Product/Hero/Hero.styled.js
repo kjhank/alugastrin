@@ -47,7 +47,14 @@ export const Heading = styled.h2`
 
     &.second-hero {
       font-weight: 700;
-      line-height: 1.26;
+      line-height: 0.9;
+      text-transform: none;
+
+      sup {
+        position: relative;
+        top: -0.5em;
+        font-size: 25%;
+      }
     }
 
     strong {
