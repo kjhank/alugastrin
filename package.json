@@ -39,7 +39,7 @@
     "@babel/eslint-plugin": "^7.19.1",
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/runtime": "^7.20.13",
-    "@netlify/plugin-gatsby": "^2.1.4",
+    "@netlify/plugin-gatsby": "^3.5.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^18.2.1",
