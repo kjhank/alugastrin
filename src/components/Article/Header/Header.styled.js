@@ -52,6 +52,11 @@ export const SectionScrollButton = styled.button.attrs({ type: 'button' })`
   text-align: left;
   white-space: normal;
   cursor: pointer;
+
+  em,
+  i {
+    font-style: italic;
+  }
 `;
 
 export const Wrapper = styled.div`

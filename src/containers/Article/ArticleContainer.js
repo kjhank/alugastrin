@@ -29,10 +29,12 @@ export const ArticleContainer = ({
     />
     )}
     <Products products={products} />
+    {relatedPosts?.posts?.length > 0 && (
     <RelatedArticles
       articles={relatedPosts.posts}
       heading={relatedPosts.heading}
     />
+    )}
   </Main>
 );
 
