@@ -17,6 +17,7 @@ export const TableOfContents = styled.ol`
   flex-direction: column;
   align-items: flex-start;
   width: calc(50% - 0.5em);
+  padding-block: 1em;
   color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
   font-size: 24px;

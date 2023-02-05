@@ -99,6 +99,11 @@ export const Intro = styled.p`
   margin-bottom: 1.042vw;
   font-size: 16px;
   line-height: 1.25;
+
+  em,
+  i {
+    font-style: italic;
+  }
 `;
 
 export const ImageWrapper = styled.div`
