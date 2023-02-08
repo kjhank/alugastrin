@@ -26,6 +26,7 @@ export const SingleSlide = (
   return (
     (
       <SingleSlideItem
+        className={className}
         direction={slide.variant === 'textRight' ? 'row' : 'row-reverse'}
         isActive={isActive}
       >

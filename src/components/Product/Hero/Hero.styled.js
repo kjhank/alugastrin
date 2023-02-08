@@ -43,6 +43,12 @@ export const Heading = styled.h2`
       align-items: center;
       padding-bottom: 0;
       font-weight: 700;
+
+      sup {
+        position: relative;
+        top: -0.4em;
+        font-size: 30%;
+      }
     }
 
     &.second-hero {

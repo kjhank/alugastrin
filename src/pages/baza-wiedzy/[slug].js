@@ -85,7 +85,6 @@ export const getServerData = async ({ params: { slug } }) => {
 
     if (Object.keys(post).length < 1) {
 
-      console.log('xzy');
       return {
         props: {
           ...pageData,
@@ -112,7 +111,6 @@ export const getServerData = async ({ params: { slug } }) => {
       },
     };
   } catch (error) {
-    console.log({ error });
     return {
       props: { error },
     };

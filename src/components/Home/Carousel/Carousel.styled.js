@@ -15,6 +15,17 @@ export const SlidesList = styled.ul`
   }
 `;
 
+export const TextPart = styled.div`
+  position: relative;
+  width: 50%;
+  padding-right: ${({ padded }) => padded === 'left' && '2vw'};
+  padding-left: ${({ padded }) => padded === 'right' && '8vw'};
+
+  @media ${queries.xxsplus} {
+    width: 60%;
+  }
+`;
+
 export const SingleSlideItem = styled.li`
   position: absolute;
   top: 0;
@@ -29,6 +40,28 @@ export const SingleSlideItem = styled.li`
   text-align: ${({ direction }) => (direction === 'row' ? 'left' : 'right')};
   transition: ${({ theme }) => theme.getTransitions(['opacity'])};
   pointer-events: ${({ isActive }) => (isActive ? 'all' : 'none')};
+
+  &.esomeprazol {
+    h2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      line-height: 1;
+      text-transform: uppercase;
+
+      span {
+        padding: 0;
+        font-size: 70%;
+      }
+    }
+
+    ${TextPart} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 export const SlidesNavigation = styled.nav`
@@ -52,9 +85,9 @@ export const NavigationButton = styled.button.attrs({ type: 'button' })`
   > svg {
     fill: currentColor;
     transition: ${({ theme }) => theme.getTransitions([
-    'transform',
-    'filter',
-  ])};
+  'transform',
+  'filter',
+])};
     transform: rotate(${({ $rotation }) => $rotation});
   }
 
@@ -73,17 +106,6 @@ export const NavigationButton = styled.button.attrs({ type: 'button' })`
       width: 100%;
       height: 100%;
     }
-  }
-`;
-
-export const TextPart = styled.div`
-  position: relative;
-  width: 50%;
-  padding-right: ${({ padded }) => padded === 'left' && '2vw'};
-  padding-left: ${({ padded }) => padded === 'right' && '8vw'};
-
-  @media ${queries.xxsplus} {
-    width: 60%;
   }
 `;
 
