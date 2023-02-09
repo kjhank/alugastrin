@@ -60,6 +60,7 @@ export const SingleSlideItem = styled.li`
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 1em;
     }
   }
 `;
