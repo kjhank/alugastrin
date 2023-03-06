@@ -13,6 +13,7 @@ const sanitizeConfig = {
     'a',
     'br',
     'strong',
+    'sup',
   ],
 };
 

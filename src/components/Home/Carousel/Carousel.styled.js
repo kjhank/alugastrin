@@ -157,6 +157,13 @@ export const SmallText = styled.span`
   @media ${queries.xxsplus} {
     font-size: 18px;
   }
+
+  sup {
+    position: relative;
+    bottom: 1em;
+    font-size: 40%;
+    vertical-align: unset;
+  }
 `;
 
 export const ProductImage = styled(SPImage)``;
