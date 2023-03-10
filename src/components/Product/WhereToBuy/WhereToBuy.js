@@ -51,7 +51,7 @@ export const WhereToBuy = ({
               {online}
               <ArrowRight />
             </WidgetButton>
-            {openSection === 'online' && (
+            {openSection === 'online' && links.length > 0 && (
             <Links>
               {links.map(link => (
                 <Item key={link.link}>

@@ -25,6 +25,7 @@ export const Hero = ({
 }) => {
   const packageRef = createRef();
   const staticRef = createRef();
+  const backgrounds = images ? images?.filter(item => item.image.label.includes('squares-')) : null;
 
   useEffect(() => {
     const { current: staticNode } = staticRef;
@@ -65,7 +66,16 @@ export const Hero = ({
         {heading && (
         <Heading
           className={cssClass}
-          dangerouslySetInnerHTML={{ __html: sanitize(heading) }}
+          dangerouslySetInnerHTML={{
+            __html: sanitize(heading, {
+              allowedTags: [
+                'br',
+                'span',
+                'strong',
+                'sup',
+              ],
+            }),
+          }}
           isBold={!heading.includes('<strong>') || heading.includes('<br />')}
           isLarger={heading.includes('<strong>')}
           lessPadding={isSecond}
@@ -108,6 +118,14 @@ export const Hero = ({
         images={images}
       />
       )}
+      {backgrounds?.length > 0 && backgrounds.map(item => (
+        <Image
+          className={item.image.label}
+          image={item.image.file}
+          isLazy={false}
+          key={item.image.label}
+        />
+      ))}
     </Wrapper>
   );
 };

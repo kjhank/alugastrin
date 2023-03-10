@@ -38,6 +38,7 @@ export const Video = ({ sources }) => {
         <Player
           onPause={handlePlaying}
           onPlaying={handlePlaying}
+          poster={sources.poster.url}
           ref={playerRef}
         >
           {Object.keys(sources).map(source => (

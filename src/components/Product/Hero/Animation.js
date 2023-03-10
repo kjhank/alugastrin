@@ -34,7 +34,7 @@ export const Animation = ({
   const backgroundRef = createRef();
   const backgroundImageRef = createRef();
 
-  const Child = animatedComponents[variant];
+  const Child = variant ? animatedComponents[variant] : null;
 
   const animateItems = () => {
     const { current: vectorNode } = childRef;
@@ -62,6 +62,7 @@ export const Animation = ({
   };
 
   const animationBackground = images.length > 0 ? images?.find(({ image }) => image.label === 'animationBackground') : null;
+  // const backgrounds = images?.filter(({ image }) => image.label.includes('squares-'));
 
   const animateBackground = () => {
     const { current } = backgroundRef;
@@ -84,17 +85,20 @@ export const Animation = ({
       );
     }
 
-    animate(
-      backgroundElement, {
-        filter: 'saturate(1.5) contrast(1.2)',
-      },
-      {
-        direction: 'alternate',
-        duration: 2,
-        easing: 'ease-in-out',
-        repeat: Infinity,
-      }
-    );
+    if (variant !== 'esomeprazol') {
+      animate(
+        backgroundElement,
+        {
+          filter: 'saturate(1.5) contrast(1.2)',
+        },
+        {
+          direction: 'alternate',
+          duration: 2,
+          easing: 'ease-in-out',
+          repeat: Infinity,
+        }
+      );
+    }
   };
 
   useEffect(() => {
@@ -133,16 +137,20 @@ export const Animation = ({
           isLazy={false}
         />
       )}
-      <Image
-        className={`image image--${variant}`}
-        image={background}
-        innerRef={backgroundRef}
-        isLazy={false}
-      />
-      <Child
-        className={`parent parent--${variant}`}
-        innerRef={childRef}
-      />
+      {background && (
+        <Image
+          className={`image image--${variant}`}
+          image={background}
+          innerRef={backgroundRef}
+          isLazy={false}
+        />
+      )}
+      {Child && (
+        <Child
+          className={`parent parent--${variant}`}
+          innerRef={childRef}
+        />
+      )}
     </AnimationContainer>
   );
 };

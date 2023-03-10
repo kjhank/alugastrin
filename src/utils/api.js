@@ -76,9 +76,9 @@ export const getProducts = async (products = null) => {
       firstGroup,
       secondGroup,
     ] = [
-      data.filter(item => !item.acf.isInSecondGroup),
-      data.filter(item => item.acf.isInSecondGroup),
-    ];
+        data.filter(item => !item.acf.isInSecondGroup),
+        data.filter(item => item.acf.isInSecondGroup),
+      ];
 
     return [
       firstGroup,

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import sanitize from 'sanitize-html';
 
 import { Container } from '@components';
 
@@ -13,7 +14,7 @@ export const Body = ({
   <ArticleBody>
     <Container>
       <InnerContainer>
-        <Intro>{intro}</Intro>
+        <Intro dangerouslySetInnerHTML={{ __html: sanitize(intro, { allowedTags: ['i'] }) }} />
         {sections.map(section => {
           const {
             heading, image, text, type,
@@ -26,9 +27,10 @@ export const Body = ({
               key={heading}
               ref={section.innerRef}
             >
-              {heading && <Heading isSmall={type === 'footnotes'}>{heading}</Heading>}
+              {heading && <Heading
+                isSmall={type === 'footnotes'} dangerouslySetInnerHTML={{ __html: sanitize(heading, { allowedTags: ['i'] }) }} />}
               <Text
-                dangerouslySetInnerHTML={{ __html: text }}
+                dangerouslySetInnerHTML={{ __html: sanitize(text, { allowedTags: ['i', 'ul', 'li', 'ol'] }) }}
                 isNarrow={!!image}
               />
               {image && <Image image={image} />}

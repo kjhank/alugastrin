@@ -42,14 +42,19 @@ export const Section = styled.section`
     flex-direction: column;
     align-items: flex-start;
   }
+
+  em,
+  i {
+    font-style: italic;
+  }
 `;
 
 export const Heading = styled.h2`
   width: 100%;
   margin-bottom: 1.5em;
   color: ${({
-    isSmall, theme,
-  }) => theme.getColor(isSmall ? 'main' : 'accent')};
+  isSmall, theme,
+}) => theme.getColor(isSmall ? 'main' : 'accent')};
   font-weight: 600;
   font-size: inherit;
   line-height: 1.25;

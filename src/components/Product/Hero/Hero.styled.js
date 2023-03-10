@@ -36,6 +36,39 @@ export const Heading = styled.h2`
     font-weight: 600;
   }
 
+  &.esomeprazol {
+    &:not(.second-hero) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 0;
+      font-weight: 700;
+
+      sup {
+        position: relative;
+        top: -0.4em;
+        font-size: 30%;
+      }
+    }
+
+    &.second-hero {
+      font-weight: 700;
+      line-height: 0.9;
+      text-transform: none;
+
+      sup {
+        position: relative;
+        top: -0.5em;
+        font-size: 25%;
+      }
+    }
+
+    strong {
+      font-weight: 700;
+      font-size: 1.52em;
+    }
+  }
+
   @media ${queries.huge} {
     padding: ${({ lessPadding }) => (lessPadding ? '1.615vw 1vw 0' : '1.615vw 1vw 6.5vw')};
     font-size: ${({ isLarger }) => (isLarger ? '48px' : '32px')};
@@ -98,8 +131,6 @@ export const BackgroundImage = styled(SPImage)`
   transform: translate(-50%, -50%);
 
   &.background--alugastrin3forte {
-    /* aspect-ratio: 1/1;
-    width: 91.046386%; */
     aspect-ratio: 1/1;
     width: auto;
     height: 100%;
@@ -119,6 +150,25 @@ export const Image = styled(SPImage)`
   > img {
     width: 100%;
     margin: auto;
+  }
+
+  &[class*="square"] {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.3;
+    width: 80.9vw;
+    pointer-events: none;
+  }
+
+  &.squares-first {
+    left: 0;
+    translate: -30vw -34vw 0;
+  }
+
+  &.squares-second {
+    right: 0;
+    bottom: 0;
+    translate: 30vw 25.15625vw 0;
   }
 
   &.alugastrin {

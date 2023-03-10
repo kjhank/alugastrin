@@ -18,22 +18,29 @@ const sanitizeConfig = {
     'br',
     'li',
     'span',
+    'ul',
   ],
 };
 
 export const Sections = ({
-  background, sections,
+  background, className, sections,
 }) => (
   <Container>
     <InnerContainer>
-      <Background image={background} />
+      {background && (
+      <Background
+        className={className}
+        image={background}
+      />
+      )}
       {sections.map(section => (
         <Section
+          className={className}
           key={section.heading}
           ref={section.innerRef}
         >
           <Heading>{section.heading}</Heading>
-          <Text dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
+          <Text className={className} dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
         </Section>
       ))}
     </InnerContainer>
@@ -42,6 +49,11 @@ export const Sections = ({
 
 Sections.propTypes = {
   background: PropTypes.shape({}).isRequired,
+  className: PropTypes.string,
   sections: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+Sections.defaultProps = {
+  className: null,
 };
 

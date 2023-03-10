@@ -42,13 +42,13 @@ const PostPage = ({
 
   return (
     <ArticleContainer
-      headerImage={acf.headerImage}
-      intro={acf.intro}
+      headerImage={acf?.headerImage}
+      intro={acf?.intro}
       products={products}
       refs={refs}
-      relatedPosts={acf.relatedPosts}
+      relatedPosts={acf?.relatedPosts}
       sections={sections}
-      title={title.rendered}
+      title={title?.rendered}
       {...props}
     />
   );
@@ -84,6 +84,7 @@ export const getServerData = async ({ params: { slug } }) => {
     const post = await getPost(slug);
 
     if (Object.keys(post).length < 1) {
+
       return {
         props: {
           ...pageData,
@@ -97,7 +98,7 @@ export const getServerData = async ({ params: { slug } }) => {
     const productsGroups = post.acf.products.length ?
       await getProducts(post.acf.products.map(({ product }) => product)) :
       [null];
-    const [products] = productsGroups.filter(group => !!group.length);
+    const [products] = productsGroups?.filter(group => !!group?.length);
 
     return {
       props: {

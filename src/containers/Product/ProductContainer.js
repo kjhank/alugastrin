@@ -47,7 +47,7 @@ export const ProductContainer = ({
         )}
         {product?.secondHero?.heading && (
         <Hero
-          cssClass={product.cssClass}
+          cssClass={`${product.cssClass} second-hero`}
           data={product.secondHero}
           isSecond
         />
@@ -62,7 +62,8 @@ export const ProductContainer = ({
         )}
         {sections.length > 0 && (
           <Sections
-            background={product.sectionsBackground}
+            background={product?.sectionsBackground}
+            className={product.cssClass}
             sections={sections}
           />
         )}

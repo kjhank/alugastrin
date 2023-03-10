@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
 
 export const Links = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1.875vw;
   width: 100%;

@@ -33,6 +33,10 @@ export const AnimationContainer = styled.div`
     }
   }
 
+  &.esomeprazol {
+    height: auto;
+  }
+
   .image {
     width: auto;
     height: 100%;
@@ -71,6 +75,16 @@ export const AnimationContainer = styled.div`
           width: auto;
           height: auto;
         }
+      }
+    }
+
+    &--esomeprazol {
+      width: 65%;
+      height: auto;
+      margin-inline: 20% auto;
+
+      > img {
+        height: auto;
       }
     }
   }
