@@ -37,13 +37,17 @@ export const Downloads = ({ files }) => (
           {files.map(file => (
             <SingleFile key={file.name}>
               {file.thumbnail ? <Thumbnail image={file.thumbnail} /> : <Placeholder />}
-              <Title>{file.name}</Title>
+              {file.name && <Title>{file.name}</Title>}
+              {file.description && (
               <Description
                 dangerouslySetInnerHTML={{ __html: sanitize(file.description, sanitizeConfig).replace(/^\s+|\s+$/g, '') }}
               />
+              )}
+              {file.authors?.length > 0 && (
               <AuthorsList>
                 {file.authors.map(({ author }) => <Author key={author}>{author}</Author>)}
               </AuthorsList>
+              )}
               <DownloadLink
                 download
                 href={file.file.url}
