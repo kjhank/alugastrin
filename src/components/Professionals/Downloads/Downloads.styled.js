@@ -101,11 +101,13 @@ export const DownloadLink = styled.a`
   border: 1px solid ${({ theme }) => theme.getColor('main')};
   border-radius: ${({ theme }) => theme.getRadius()};
   padding: 1vw 1.510417vw;
+  background-color: #fff;
   transition: ${({ theme }) => theme.getTransitions([
     'color',
     'border-color',
     'background-color',
   ])};
+  cursor: pointer;
 
   > svg {
     margin-left: 0.5em;
@@ -114,6 +116,7 @@ export const DownloadLink = styled.a`
     'color',
     'transform',
   ])};
+  rotate: ${({ as }) => as === 'button' && '-90deg'};
   }
 
   :hover {

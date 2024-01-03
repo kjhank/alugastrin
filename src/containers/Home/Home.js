@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Main } from '@components';
 
 import {
-  Carousel, HeroArticles, ProductDescriptions, // Video,
+  Carousel, HeroArticles, ProductDescriptions,
 } from '@components/Home';
 
 export const Home = ({

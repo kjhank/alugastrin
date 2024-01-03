@@ -24,9 +24,10 @@ export const Backdrop = styled.div`
   }
 `;
 
-export const Wrapper = styled.aside`
+export const Wrapper = styled.dialog`
   filter: drop-shadow(10px 0px 10px rgb(0 0 0 / 0.29));
   width: 70vw;
+  border: none;
   border-radius: ${({ theme }) => theme.getRadius()};
   padding: 2.5%;
   background-color: #fff;
@@ -67,7 +68,7 @@ export const CloseButton = styled.button`
   > svg {
     width: 40%;
     height: auto;
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
     fill: currentColor;
   }
 
