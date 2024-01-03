@@ -47,6 +47,9 @@ export const GlobalHeader = ({
       ref={refs.header}
     >
       <Container>
+        x
+        {process.env.GATSBY_BACKEND_URL}
+        y
         <Link
           className="header__link header__link--logo"
           to="/"
