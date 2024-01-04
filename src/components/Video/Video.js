@@ -39,6 +39,7 @@ export const Video = ({
         onPause={handlePlaying}
         onPlaying={handlePlaying}
         poster={poster}
+        preload="metadata"
         ref={playerRef}
       >
         {Object.keys(sources).map(source => (

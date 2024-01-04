@@ -17,9 +17,11 @@ export const FilesList = styled.ul`
 `;
 
 export const SingleFile = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-column: ${({ $isFullWidth }) => $isFullWidth && '-1/1'};
   margin-bottom: 3em;
   line-height: 1.227273;
   text-align: center;
