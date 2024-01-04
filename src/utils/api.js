@@ -3,8 +3,6 @@ import endpoints from '@static/endpoints';
 export const getApiData = async (endpoint, params = 'per_page=100') => {
   const url = `${process.env.GATSBY_BACKEND_URL}/${endpoint}?${params}`;
 
-  console.log(url);
-
   try {
     const response = await fetch(url);
     const data = await response.json();
