@@ -91,7 +91,10 @@ export const Modal = ({
       ref={backdropRef}
       {...props}
     >
-      <Wrapper ref={modalRef}>
+      <Wrapper
+        open
+        ref={modalRef}
+      >
         {isClosable && (
         <CloseButton onClick={close}>
           <X />
