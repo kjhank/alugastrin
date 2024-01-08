@@ -42,14 +42,29 @@ export const Heading = styled.h2`
       flex-direction: column;
       align-items: center;
       padding-bottom: 0;
+      font-weight: 700;
+
+      sup {
+        position: relative;
+        top: -0.4em;
+        font-size: 30%;
+      }
     }
 
     &.second-hero {
-      font-weight: bold;
-      line-height: 1.26;
+      font-weight: 700;
+      line-height: 0.9;
+      text-transform: none;
+
+      sup {
+        position: relative;
+        top: -0.5em;
+        font-size: 25%;
+      }
     }
 
     strong {
+      font-weight: 700;
       font-size: 1.52em;
     }
   }

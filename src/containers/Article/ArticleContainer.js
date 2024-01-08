@@ -23,16 +23,18 @@ export const ArticleContainer = ({
       title={title}
     />
     {sections?.length > 0 && (
-    <Body
-      intro={intro}
-      sections={sections}
-    />
+      <Body
+        intro={intro}
+        sections={sections}
+      />
     )}
-    <Products products={products} />
-    <RelatedArticles
-      articles={relatedPosts.posts}
-      heading={relatedPosts.heading}
-    />
+    {products?.length > 0 && <Products products={products} />}
+    {relatedPosts?.posts?.length > 0 && (
+      <RelatedArticles
+        articles={relatedPosts.posts}
+        heading={relatedPosts.heading}
+      />
+    )}
   </Main>
 );
 

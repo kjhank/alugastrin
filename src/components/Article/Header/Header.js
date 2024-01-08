@@ -33,9 +33,7 @@ export const Header = ({
           <TableOfContents>
             {sections?.map(section => (
               <SectionItem key={section.heading}>
-                <SectionScrollButton onClick={() => handleScroll(section.innerRef)}>
-                  {section.heading}
-                </SectionScrollButton>
+                <SectionScrollButton onClick={() => handleScroll(section.innerRef)} dangerouslySetInnerHTML={{ __html: sanitize(section.heading, {allowedTags: ['i']})}} />
               </SectionItem>
             ))}
           </TableOfContents>

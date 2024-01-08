@@ -85,18 +85,20 @@ export const Animation = ({
       );
     }
 
-    animate(
-      backgroundElement,
-      {
-        filter: 'saturate(1.5) contrast(1.2)',
-      },
-      {
-        direction: 'alternate',
-        duration: 2,
-        easing: 'ease-in-out',
-        repeat: Infinity,
-      }
-    );
+    if (variant !== 'esomeprazol') {
+      animate(
+        backgroundElement,
+        {
+          filter: 'saturate(1.5) contrast(1.2)',
+        },
+        {
+          direction: 'alternate',
+          duration: 2,
+          easing: 'ease-in-out',
+          repeat: Infinity,
+        }
+      );
+    }
   };
 
   useEffect(() => {
