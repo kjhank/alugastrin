@@ -40,6 +40,19 @@ export const Heading = styled.h2`
     color: ${({ theme }) => theme.getColor('fibe')};
     font-weight: 700;
     font-size: 64px;
+
+    @media ${queries.xxl} {
+      padding: 50px 0;
+      font-size: 52px;
+    }
+
+    @media ${queries.xl} {
+      font-size: 48px;
+    }
+
+    @media ${queries.m} {
+      font-size: 36px;
+    }
   }
 
   &.helicogastrin {
@@ -346,6 +359,20 @@ export const Image = styled(SPImage)`
     height: auto;
     inset-inline-start: -93%;
     margin-block-start: -35%;
+
+    @media ${queries.xl} {
+      inset-inline-start: -70%;
+    }
+
+    @media ${queries.l} {
+      margin-block-start: -28%;
+      inset-inline-start: -52%;
+    }
+
+    @media ${queries.s} {
+      inset-inline-start: -65%;
+      width: 180vw;
+    }
   }
 `;
 

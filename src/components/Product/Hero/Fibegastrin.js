@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { queries } from '@utils';
 
 import { Container as GenericContainer } from '@components';
 import styled from 'styled-components';
@@ -14,6 +15,19 @@ const Container = styled(GenericContainer)`
     font-weight: 700;
     font-size: 64px;
     text-align: center;
+    text-transform: uppercase;
+
+    @media ${queries.xxl} {
+        font-size: 52px;
+      }
+
+    @media ${queries.xl} {
+        font-size: 48px;
+      }
+
+    @media ${queries.m} {
+      font-size: 36px;
+    }
   }
 
   ul {
@@ -38,6 +52,10 @@ const Container = styled(GenericContainer)`
       background-size: contain;
       background-repeat: no-repeat;
     }
+
+    @media ${queries.xl} {
+      margin-block-end: 1em;
+    }
   }
 
   b,
@@ -57,15 +75,33 @@ const Container = styled(GenericContainer)`
     max-width: unset;
     height: auto;
     margin-block-end: max(-150px, -7.8125vw);
+
+    @media ${queries.huge} {
+      inset-inline-start: -17vw;
+    }
+
+    @media ${queries.xl} {
+      inset-inline-start: -13vw;
+    }
+
+    @media ${queries.l} {
+      inset-inline-start: -5vw;
+    }
+
+    @media ${queries.s} {
+      inset-inline-start: -23vw;
+      width: 150vw;
+    }
   }
 
   .fibe-highlight {
-      display: block;
-      color: ${({ theme }) => theme.colors.accent};
-      font-weight: bold;
-      font-size: 36px;
-      text-align: center;
-    }
+    display: block;
+    padding-inline: 5%;
+    color: ${({ theme }) => theme.colors.accent};
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+  }
 `;
 
 export const Fibegastrin = ({

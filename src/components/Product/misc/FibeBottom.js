@@ -1,21 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
+import { queries } from '@utils';
 
 import { Container as GenericContainer } from '@components';
 
-const Container = styled(GenericContainer)``;
+const Container = styled(GenericContainer)`
+  img.list {
+    width: 80%;
+    margin-inline: auto;
+
+    @media ${queries.xxl} {
+      width: 90%;
+    }
+  }
+`;
 
 export const Heading = styled.h2`
-  margin-block-start: ${({ $isGreen}) => $isGreen && 'min(115px, 6vw)'};
+  margin-block-start: ${({ $isGreen }) => $isGreen && 'min(115px, 6vw)'};
   margin-block-end: min(60px, 3.125vw);
-  padding-inline: 15%;
+  padding-inline: ${({ $isGreen }) => ($isGreen ? '0' : '15%')};
   color: ${({
     $isGreen, theme,
   }) => ($isGreen ? theme.colors.fibe : theme.colors.accent)};
   font-weight: bold;
-  font-size: 46px;
+  font-size: ${({ $isGreen }) => ($isGreen ? '64px' : '46px')};
   text-align: center;
   text-transform: ${({ $isGreen }) => $isGreen && 'uppercase'};
+
+
+  @media ${queries.huge} {
+    font-size: ${({ $isGreen }) => ($isGreen ? '58px' : '46px')};
+  }
+
+  @media ${queries.xl} {
+    padding-inline: 8%;
+    font-size: 46px;
+  }
+
+  @media ${queries.l} {
+    padding-inline: 4%;
+  }
+
+  @media ${queries.m} {
+    font-size: 32px;
+  }
 `;
 
 export const List = styled.ul`
@@ -24,6 +52,11 @@ export const List = styled.ul`
   margin-inline: auto;
   font-size: 24px;
   white-space: pre-wrap;
+
+  strong,
+  b {
+    font-weight: bold;
+  }
 
   > li {
     position: relative;
@@ -42,6 +75,14 @@ export const List = styled.ul`
       background-size: contain;
       background-repeat: no-repeat;
     }
+  }
+
+  @media ${queries.xl} {
+    width: 84%;
+  }
+
+  @media ${queries.l} {
+    width: 92%;
   }
 `;
 
@@ -84,6 +125,7 @@ export const FibeBottom = () => (
       <List>
         <li>
           <strong>Rozpuszcza się niezależnie od temperatury żywności –</strong>
+          {' '}
           bez utraty swoich cennych właściwości
         </li>
         <li>
@@ -103,9 +145,9 @@ export const FibeBottom = () => (
         ZALECANY DO CODZIENNEGO
         STOSOWANIA u OSÓB:
       </Heading>
-
       <img
         alt="zmagających się ze wzdęciami; mających trudności z wypróżnieniem; borykających się ze zbyt częstym wypróżnianiem; z niską aktywnością fizyczną; na diecie FODMAP; z dietą ubogą w błonnik"
+        className="list"
         src="/images/fibe-list.png"
       />
     </section>

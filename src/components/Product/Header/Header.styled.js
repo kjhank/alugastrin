@@ -60,6 +60,7 @@ export const LinksWrapper = styled.div`
   ${({ $isGrid }) => $isGrid && css`
     grid-template-columns: repeat(3, 1fr);
     justify-content: unset;
+    gap: min(34px, 1.8vw) min(25px, 1.3vw);
 
     ::before {
       content: '';
@@ -116,7 +117,7 @@ export const StyledHeader = styled.header`
       ${LinksWrapper} {
         justify-content: flex-end;
         width: 75%;
-        margin-block: min(132px, 6.875vw) min(34px, 1.8vw);
+        margin-block: min(150px, 7.8125vw) min(34px, 1.8vw);
         margin-inline-end: min(34px, 1.8vw);
 
         > a:has(svg), > button:has(svg) {
@@ -132,6 +133,20 @@ export const StyledHeader = styled.header`
             translate: 0 -50%;
           }
         }
+
+        @media ${queries.huge} {
+          margin-block: min(132px, 6.875vw) min(34px, 1.8vw);
+        }
+
+
+        @media ${queries.xs} {
+          width: 100%;
+
+          > button,
+          > a {
+            font-size: 9px;
+          }
+        }
       }
     }
 
@@ -145,6 +160,16 @@ export const StyledHeader = styled.header`
       padding-left: 50%;
       font-size: 75px;
       text-align: left;
+
+      @media ${queries.xxl} {
+        font-size: 64px;
+      }
+
+      @media ${queries.xxsplus} {
+        padding-left: unset;
+        font-size: 48px;
+        text-align: center;
+      }
     }
 
     ${Description} {
@@ -153,6 +178,12 @@ export const StyledHeader = styled.header`
       font-weight: 700;
       font-size: 41px;
       text-align: left;
+
+      @media ${queries.xxsplus} {
+        padding-left: unset;
+        font-size: 32px;
+        text-align: center;
+      }
     }
   }
 `;
@@ -171,6 +202,14 @@ export const Container = styled(GenericContainer)`
   &.fibegastrin {
     position: relative;
     align-items: stretch;
+
+    @media ${queries.m} {
+      margin-block-start: 8em;
+    }
+
+    @media ${queries.xs} {
+      margin-block-start: 2em;
+    }
   }
 
   @media ${queries.xxsplus} {
@@ -186,7 +225,13 @@ export const Image = styled(SPImage)`
   &.fibegastrin {
     position: absolute;
     inset: 0 auto 0 0;
+    max-width: 47%;
     margin-inline-start: -3%;
+
+    @media ${queries.xxsplus} {
+      position: static;
+      margin-inline: auto;
+    }
   }
 
   &.alugastrin3forte--20 {
@@ -247,9 +292,9 @@ const linkStyle = css`
   @media ${queries.xxl} {
     font-size: 16px;
 
-    > svg {
+    /* > svg {
       height: 2em;
-    }
+    } */
   }
 
   @media ${queries.xl} {
@@ -259,7 +304,7 @@ const linkStyle = css`
   @media ${queries.l} {
     width: auto;
     height: auto;
-    padding: 0.5em;
+    padding: 1em;
     font-size: 14px;
   }
 
