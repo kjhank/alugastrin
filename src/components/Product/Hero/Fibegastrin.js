@@ -111,7 +111,7 @@ export const Fibegastrin = ({
 
   return (
     <Container className={className}>
-      <h2>{item.label}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: sanitize(item.label, { allowedTags: ['br'] }) }} />
       <div
       // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
