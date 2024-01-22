@@ -83,6 +83,7 @@ export const ProductContainer = ({
           />
         )}
         <WhereToBuy
+          className={product.cssClass}
           data={product.whereToBuy}
           innerRef={buyRef}
         />

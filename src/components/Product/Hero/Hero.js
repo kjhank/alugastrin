@@ -65,7 +65,7 @@ export const Hero = ({
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper className={`hero-wrapper-${cssClass}`}>
       <Container className={cssClass}>
         {video && <Video {...video} />}
         {heading && (

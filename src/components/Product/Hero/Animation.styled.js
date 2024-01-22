@@ -96,6 +96,10 @@ export const AnimationContainer = styled.div`
       width: 90%;
       height: auto;
       margin-inline: auto;
+
+      > img {
+        height: auto;
+      }
     }
   }
 

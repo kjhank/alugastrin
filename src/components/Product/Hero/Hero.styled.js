@@ -7,6 +7,10 @@ import { queries } from '@utils';
 export const Wrapper = styled.section`
   margin-top: 1.615vw;
 
+  &.hero-wrapper-fibegastrin {
+    margin-top: unset;
+  }
+
   > div:not(.sibosgastrin, .fibegastrin) {
     padding: 0 6%;
   }
