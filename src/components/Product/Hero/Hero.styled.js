@@ -7,8 +7,18 @@ import { queries } from '@utils';
 export const Wrapper = styled.section`
   margin-top: 1.615vw;
 
-  > div:not(.sibosgastrin) {
+  &.hero-wrapper-fibegastrin {
+    margin-top: unset;
+  }
+
+  > div:not(.sibosgastrin, .fibegastrin) {
     padding: 0 6%;
+  }
+
+  > div.fibegastrin {
+    video {
+      margin-block-start: min(115px, 6vw);
+    }
   }
 
   :first-of-type {
@@ -26,6 +36,28 @@ export const Heading = styled.h2`
   font-size: ${({ isLarger }) => (isLarger ? '52px' : '46px')};
   text-align: center;
   text-transform: uppercase;
+
+  &.fibegastrin {
+    position: relative;
+    z-index: 1;
+    padding: 65px 6%;
+    color: ${({ theme }) => theme.getColor('fibe')};
+    font-weight: 700;
+    font-size: 64px;
+
+    @media ${queries.xxl} {
+      padding: 50px 0;
+      font-size: 52px;
+    }
+
+    @media ${queries.xl} {
+      font-size: 48px;
+    }
+
+    @media ${queries.m} {
+      font-size: 36px;
+    }
+  }
 
   &.helicogastrin {
     padding-bottom: 1.510417vw;
@@ -322,6 +354,28 @@ export const Image = styled(SPImage)`
     @media ${queries.l} {
       width: 55vw;
       margin: 5% auto 15%;
+    }
+  }
+
+  &.fibegastrin {
+    z-index: 0;
+    width: min(140vw, 2688px);
+    height: auto;
+    inset-inline-start: -93%;
+    margin-block-start: -35%;
+
+    @media ${queries.xl} {
+      inset-inline-start: -70%;
+    }
+
+    @media ${queries.l} {
+      margin-block-start: -28%;
+      inset-inline-start: -52%;
+    }
+
+    @media ${queries.s} {
+      inset-inline-start: -65%;
+      width: 180vw;
     }
   }
 `;

@@ -20,6 +20,7 @@ const theme = {
     accent: '#bb181b',
     background: '#eeeeec',
     border: '#9e0e0d',
+    fibe: '#99C05A',
     gradientGray: '#e6e6e6',
     main: '#3b3b3b',
     nearWhite: '#f7f7f7',

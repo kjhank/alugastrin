@@ -5,6 +5,10 @@ export const Section = styled.section`
   margin-top: 4.73vw;
 `;
 
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
 export const PlayButton = styled.button.attrs({ type: 'button' })`
   position: absolute;
   top: 50%;

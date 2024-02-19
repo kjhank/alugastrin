@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { PlaySymbol } from '@icons';
 
 import {
-  PlayButton, Player,
+  PlayButton, Player, Wrapper,
 } from './Video.styled';
 
 export const Video = ({
@@ -34,7 +34,7 @@ export const Video = ({
   };
 
   return (
-    <>
+    <Wrapper>
       <Player
         onPause={handlePlaying}
         onPlaying={handlePlaying}
@@ -57,7 +57,7 @@ export const Video = ({
       >
         <PlaySymbol />
       </PlayButton>
-    </>
+    </Wrapper>
   );
 };
 

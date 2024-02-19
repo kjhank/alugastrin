@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 import { animate } from 'motion';
 
-import { Container } from '@components';
+import {
+  Container, Video,
+} from '@components';
 
 import {
   Heading, Image, Wrapper,
@@ -13,6 +15,7 @@ import {
 
 import { Sibosgastrin } from './Sibosgastrin';
 import { Helicogastrin } from './Helicogastrin';
+import { Fibegastrin } from './Fibegastrin';
 
 import { Animation } from './Animation';
 
@@ -22,6 +25,7 @@ export const Hero = ({
     copy, heading, image, images, package: packageImage,
   },
   isSecond,
+  video,
 }) => {
   const packageRef = createRef();
   const staticRef = createRef();
@@ -61,8 +65,9 @@ export const Hero = ({
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper className={`hero-wrapper-${cssClass}`}>
       <Container className={cssClass}>
+        {video && <Video {...video} />}
         {heading && (
         <Heading
           className={cssClass}
@@ -104,6 +109,13 @@ export const Hero = ({
         />
         )}
       </Container>
+      {cssClass === 'fibegastrin' && (
+      <Fibegastrin
+        className={cssClass}
+        copy={copy}
+        images={images}
+      />
+      )}
       {cssClass === 'sibosgastrin' && (
       <Sibosgastrin
         copy={copy}
