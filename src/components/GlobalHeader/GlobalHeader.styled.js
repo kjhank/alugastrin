@@ -7,6 +7,25 @@ import { Brag as BragSvg } from '@icons';
 
 import { queries } from '@utils';
 
+export const Submenu = styled.ul`
+  position: absolute;
+  inset: 100% auto auto 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1em 1em;
+  translate: -50% -600%;
+  transition:
+    opacity 400ms,
+    translate 400ms;
+  opacity: 0;
+
+  a {
+    white-space: nowrap;
+  }
+`;
+
 export const Wrapper = styled.header`
   position: fixed;
   top: 0;
@@ -59,7 +78,7 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: min(2.7vw, 1em);
+  gap: min(3.2vw, 1.5em);
   margin-left: auto;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
 
@@ -72,7 +91,8 @@ export const Navigation = styled.nav`
     border-radius: ${({ theme }) => `0 0 0 ${theme.getRadius()}`};
     padding: 2em 5em 2em 1em;
     background-image: ${({ theme }) => theme.getGradient()};
-    transform: ${({ isVisible }) => (isVisible ? 'none' : 'translateX(calc(100% + 3em))')};
+    transform: ${({ isVisible }) =>
+      isVisible ? 'none' : 'translateX(calc(100% + 3em))'};
 
     > a,
     button {
@@ -87,6 +107,13 @@ const linkStyle = css`
   color: #fff;
   font-size: clamp(14px, 0.9375vw, 18px);
   font-family: ${({ theme }) => theme.getFont('heading')};
+
+  &:hover {
+    ${Submenu} {
+      opacity: 1;
+      translate: -50% 0;
+    }
+  }
 `;
 
 export const Link = styled(GenericLink)`
@@ -129,7 +156,8 @@ export const NavToggle = styled.button.attrs({ type: 'button' })`
   background-color: transparent;
   color: #fff;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
-  transform: ${({ isFlipped }) => (isFlipped ? 'rotateY(180deg) translateY(-50%)' : 'translateY(-50%)')};
+  transform: ${({ isFlipped }) =>
+    isFlipped ? 'rotateY(180deg) translateY(-50%)' : 'translateY(-50%)'};
   transform-style: preserve-3d;
 
   @media ${queries.s} {

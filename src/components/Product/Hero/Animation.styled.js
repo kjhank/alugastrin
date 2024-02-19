@@ -11,6 +11,10 @@ export const AnimationContainer = styled.div`
     height: unset;
   }
 
+  &.fibegastrin {
+    height: unset;
+  }
+
   &.alugastrin {
     top: -20vh;
     margin-bottom: -20vh;

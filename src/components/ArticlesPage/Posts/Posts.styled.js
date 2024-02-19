@@ -6,7 +6,7 @@ import { queries } from '@utils';
 
 export const PostsList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 3.39vw;
   margin-top: 2.6vw;
   padding-left: 5%;
@@ -25,8 +25,7 @@ export const PostsList = styled.ul`
 export const Post = styled.li`
   > a {
     :hover {
-
-    > p:last-child {
+      > p:last-child {
         color: ${({ theme }) => theme.getColor('accent')};
 
         ::before {
@@ -54,7 +53,8 @@ export const MoreText = styled.p`
     height: 2px;
     margin-right: 0.52vw;
     background-color: ${({ theme }) => theme.getColor('main')};
-    transition: ${({ theme }) => theme.getTransitions(['background-color'], 'fastDuration')};
+    transition: ${({ theme }) =>
+      theme.getTransitions(['background-color'], 'fastDuration')};
 
     @media ${queries.xxsplus} {
       width: 3em;

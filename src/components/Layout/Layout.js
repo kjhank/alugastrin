@@ -1,17 +1,17 @@
 import React, {
-  cloneElement, createRef, useCallback, useEffect, useRef, useState,
+  cloneElement,
+  createRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
 
 import { Theme } from '@theme/main';
-import {
-  GlobalFooter, GlobalHeader,
-} from '@components';
-import {
-  debounceFunction,
-  GlobalStyle,
-} from '@utils';
+import { GlobalFooter, GlobalHeader } from '@components';
+import { debounceFunction, GlobalStyle } from '@utils';
 
 import { Seo } from './Seo';
 
@@ -21,28 +21,21 @@ import { CookiesBar } from './CookiesBar';
 const DEBOUNCE_TIMEOUT = 300;
 const COOKIES_LS_KEY = 'cookies-agreed';
 
-const Layout = ({
-  children, serverData, path,
-}) => {
+const Layout = ({ children, serverData, path }) => {
   const cookieRef = useRef();
   const {
-    globals, globalFootnote, hasGlobalFootnote, hasLegalInFooter, pageData,
+    globals,
+    globalFootnote,
+    hasGlobalFootnote,
+    hasLegalInFooter,
+    pageData,
   } = serverData || { pageData: {} };
 
-  const [
-    isNavigationOpen,
-    setNavigationOpen,
-  ] = useState(false);
+  const [isNavigationOpen, setNavigationOpen] = useState(false);
 
-  const [
-    isPageScrolled,
-    setPageScrolled,
-  ] = useState(false);
+  const [isPageScrolled, setPageScrolled] = useState(false);
 
-  const [
-    isCookiesBarOpen,
-    setCookiesBarOpen,
-  ] = useState(false);
+  const [isCookiesBarOpen, setCookiesBarOpen] = useState(false);
 
   useEffect(() => {
     const hasUserAgreed = localStorage.getItem(COOKIES_LS_KEY);
@@ -75,12 +68,17 @@ const Layout = ({
   };
 
   const debounceEvent = useCallback(
-    debounceFunction((event, height) => scrollEventHandler(event, height), DEBOUNCE_TIMEOUT), []
+    debounceFunction(
+      (event, height) => scrollEventHandler(event, height),
+      DEBOUNCE_TIMEOUT,
+    ),
+    [],
   );
 
   useEffect(() => {
-    const { height: headerHeight } = refs.header.current.getBoundingClientRect();
-    const onScroll = event => debounceEvent(event, headerHeight);
+    const { height: headerHeight } =
+      refs.header.current.getBoundingClientRect();
+    const onScroll = (event) => debounceEvent(event, headerHeight);
 
     window.addEventListener('scroll', onScroll);
 
@@ -105,10 +103,11 @@ const Layout = ({
 
   return (
     <Theme>
-      <Seo data={{
-        ...pageData?.yoast_head_json,
-        path,
-      }}
+      <Seo
+        data={{
+          ...pageData?.yoast_head_json,
+          path,
+        }}
       />
       <GlobalStyle />
       <GlobalHeader
@@ -119,11 +118,13 @@ const Layout = ({
       />
       {cloneElement(children, { refs })}
       <GlobalFooter
-        bragFootnote={globals?.bragFootnote}
+        // bragFootnote={globals?.bragFootnote}
         contactRef={refs.contact}
         data={globals}
-        globalFootnote={hasGlobalFootnote ? globalFootnote : null}
-        hasLegal={hasLegalInFooter}
+        // globalFootnote={hasGlobalFootnote ? globalFootnote : null}
+        footnotes={pageData.acf?.footnotes}
+        hasLegal={pageData.acf?.hasLegalInFooter}
+        legal={pageData.acf?.legal}
       />
       <CookiesBar
         accept={globals?.cookies?.accept}
@@ -146,6 +147,11 @@ Layout.propTypes = {
     globals: PropTypes.shape({}),
     hasLegalInFooter: PropTypes.bool,
     pageData: PropTypes.shape({
+      acf: PropTypes.shape({
+        footnotes: PropTypes.string,
+        hasLegalInFooter: PropTypes.bool,
+        legal: PropTypes.string,
+      }),
       yoast_head_json: PropTypes.shape({}),
     }),
   }),

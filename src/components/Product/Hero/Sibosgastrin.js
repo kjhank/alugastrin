@@ -1,17 +1,11 @@
 /* eslint-disable react/no-danger */
-import React, {
-  createRef, useEffect, useState,
-} from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import sanitize from 'sanitize-html';
-import {
-  animate, stagger, timeline,
-} from 'motion';
+import { animate, stagger, timeline } from 'motion';
 
-import {
-  Container as GenericContainer, SPImage,
-} from '@components';
+import { Container as GenericContainer, SPImage } from '@components';
 
 import { queries } from '@utils';
 
@@ -115,7 +109,13 @@ const List = styled.ul`
   }
 `;
 
-const Image = styled(SPImage)``;
+const Image = styled(SPImage)`
+  &.sibos-image {
+    display: block;
+    width: 80%;
+    margin-inline: auto;
+  }
+`;
 
 const Package = styled(SPImage)`
   opacity: 0;
@@ -261,7 +261,8 @@ const Red = styled.ul`
   width: 48.12749%;
   margin-top: -2.5%;
   margin-left: 15%;
-  border-radius: ${({ theme }) => `0 ${theme.getRadius('smaller')} 0 ${theme.getRadius('smaller')}`};
+  border-radius: ${({ theme }) =>
+    `0 ${theme.getRadius('smaller')} 0 ${theme.getRadius('smaller')}`};
   padding: 0.416667vw 1.71875vw;
   background-image: ${({ theme }) => theme.getGradient()};
   color: #fff;
@@ -358,31 +359,61 @@ const InBetween = styled.p`
   }
 `;
 
-export const Sibosgastrin = ({
-  copy,
-  cssClass,
-  images,
-}) => {
-  const { item: { text: list } } = copy.find(({ item }) => item.label === 'list');
-  const { image: { file: rightImage } } = images.find(({ image }) => image.label === 'list');
+export const Sibosgastrin = ({ copy, cssClass, images }) => {
+  const {
+    item: { text: list },
+  } = copy.find(({ item }) => item.label === 'list');
+  const {
+    image: { file: rightImage },
+  } = images.find(({ image }) => image.label === 'list');
 
-  const { item: { text: redLeft } } = copy.find(({ item }) => item.label === 'redLeft');
-  const { item: { text: redRight } } = copy.find(({ item }) => item.label === 'redRight');
+  const {
+    item: { text: redLeft },
+  } = copy.find(({ item }) => item.label === 'redLeft');
+  const {
+    item: { text: redRight },
+  } = copy.find(({ item }) => item.label === 'redRight');
 
-  const { item: { text: inBetween } } = copy.find(({ item }) => item.label === 'inBetween');
+  const {
+    item: { text: inBetween },
+  } = copy.find(({ item }) => item.label === 'inBetween');
 
-  const { item: { text: leftGerm } } = copy.find(({ item }) => item.label === 'leftGerm');
-  const { item: { text: rightGerm } } = copy.find(({ item }) => item.label === 'rightGerm');
-  const { image: { file: germRightImage } } = images.find(({ image }) => image.label === 'germRight');
-  const { image: { file: germLeftImage } } = images.find(({ image }) => image.label === 'germLeft');
+  const {
+    item: { text: leftGerm },
+  } = copy.find(({ item }) => item.label === 'leftGerm');
+  const {
+    item: { text: rightGerm },
+  } = copy.find(({ item }) => item.label === 'rightGerm');
+  const {
+    image: { file: germRightImage },
+  } = images.find(({ image }) => image.label === 'germRight');
+  const {
+    image: { file: germLeftImage },
+  } = images.find(({ image }) => image.label === 'germLeft');
 
-  const { item: { text: frameHeading } } = copy.find(({ item }) => item.label === 'frameHeading');
-  const { item: { text: frameContent } } = copy.find(({ item }) => item.label === 'frameContent');
+  const {
+    image: { file: sibosImage },
+  } = images.find(({ image }) => image.label === 'sibosDrawing');
 
-  const { item: { text: no3 } } = copy.find(({ item }) => item.label === 'no3');
-  const { item: { text: target } } = copy.find(({ item }) => item.label === 'target');
-  const { image: { file: no3Image } } = images.find(({ image }) => image.label === 'no3');
-  const { image: { file: targetImage } } = images.find(({ image }) => image.label === 'target');
+  const {
+    item: { text: frameHeading },
+  } = copy.find(({ item }) => item.label === 'frameHeading');
+  const {
+    item: { text: frameContent },
+  } = copy.find(({ item }) => item.label === 'frameContent');
+
+  const {
+    item: { text: no3 },
+  } = copy.find(({ item }) => item.label === 'no3');
+  const {
+    item: { text: target },
+  } = copy.find(({ item }) => item.label === 'target');
+  const {
+    image: { file: no3Image },
+  } = images.find(({ image }) => image.label === 'no3');
+  const {
+    image: { file: targetImage },
+  } = images.find(({ image }) => image.label === 'target');
 
   const germLeftRef = createRef();
   const germRightRef = createRef();
@@ -392,49 +423,40 @@ export const Sibosgastrin = ({
   const staticRef = createRef();
 
   const sanitizeConfig = {
-    allowedTags: [
-      'strong',
-      'em',
-      'i',
-      'b',
-      'li',
-    ],
+    allowedTags: ['strong', 'em', 'i', 'b', 'li'],
   };
 
-  const [
-    animationHasFired,
-    setAnimationHasFired,
-  ] = useState(false);
+  const [animationHasFired, setAnimationHasFired] = useState(false);
 
   const animateItems = () => {
-    const germs = [
-      germLeftRef.current,
-      germRightRef.current,
-    ];
+    const germs = [germLeftRef.current, germRightRef.current];
 
-    animate(germs, {
-      filter: 'brightness(1.1) saturate(1.3)',
-    },
-    {
-      delay: stagger(0.5),
-      direction: 'alternate',
-      duration: 1,
-      easing: 'ease-in-out',
-      repeat: Infinity,
-    });
+    animate(
+      germs,
+      {
+        filter: 'brightness(1.1) saturate(1.3)',
+      },
+      {
+        delay: stagger(0.5),
+        direction: 'alternate',
+        duration: 1,
+        easing: 'ease-in-out',
+        repeat: Infinity,
+      },
+    );
 
-    animate(germs, {
-      transform: [
-        'rotate(-20deg)',
-        'rotate(20deg)',
-      ],
-    },
-    {
-      delay: stagger(0.5),
-      direction: 'alternate',
-      duration: 1,
-      easing: 'linear',
-    });
+    animate(
+      germs,
+      {
+        transform: ['rotate(-20deg)', 'rotate(20deg)'],
+      },
+      {
+        delay: stagger(0.5),
+        direction: 'alternate',
+        duration: 1,
+        easing: 'linear',
+      },
+    );
   };
 
   useEffect(() => {
@@ -451,18 +473,14 @@ export const Sibosgastrin = ({
       const animationTargets = listNode.querySelectorAll('li');
 
       const listKeyframes = {
-        transform: [
-          'scale(1)',
-          'scale(1.1)',
-          'scale(1)',
-        ],
+        transform: ['scale(1)', 'scale(1.1)', 'scale(1)'],
       };
 
       const listOptions = {
         duration: 1,
       };
 
-      const sequence = Array.from(animationTargets).map(element => [
+      const sequence = Array.from(animationTargets).map((element) => [
         element,
         listKeyframes,
         listOptions,
@@ -512,54 +530,77 @@ export const Sibosgastrin = ({
           dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }}
           ref={listRef}
         />
-        <Package
-          image={rightImage}
-          innerRef={packageRef}
-        />
+        <Package image={rightImage} innerRef={packageRef} />
         <Red ref={redRef}>
-          <li dangerouslySetInnerHTML={{ __html: sanitize(redLeft, sanitizeConfig) }} />
-          <li dangerouslySetInnerHTML={{ __html: sanitize(redRight, sanitizeConfig) }} />
+          <li
+            dangerouslySetInnerHTML={{
+              __html: sanitize(redLeft, sanitizeConfig),
+            }}
+          />
+          <li
+            dangerouslySetInnerHTML={{
+              __html: sanitize(redRight, sanitizeConfig),
+            }}
+          />
         </Red>
       </Wrapper>
       <Wrapper>
-        <InBetween dangerouslySetInnerHTML={{ __html: sanitize(inBetween, sanitizeConfig) }} />
+        <InBetween
+          dangerouslySetInnerHTML={{
+            __html: sanitize(inBetween, sanitizeConfig),
+          }}
+        />
       </Wrapper>
       <Wrapper>
         <GermList>
           <li>
-            <Image
-              image={germLeftImage}
-              innerRef={germLeftRef}
-            />
-            <span dangerouslySetInnerHTML={{ __html: sanitize(leftGerm, sanitizeConfig) }} />
-            {' '}
+            <Image image={germLeftImage} innerRef={germLeftRef} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: sanitize(leftGerm, sanitizeConfig),
+              }}
+            />{' '}
           </li>
           <li>
-            <Image
-              image={germRightImage}
-              innerRef={germRightRef}
+            <Image image={germRightImage} innerRef={germRightRef} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: sanitize(rightGerm, sanitizeConfig),
+              }}
             />
-            <span dangerouslySetInnerHTML={{ __html: sanitize(rightGerm, sanitizeConfig) }} />
           </li>
         </GermList>
       </Wrapper>
       <Wrapper>
+        <Image className="sibos-image" image={sibosImage} />
+      </Wrapper>
+      <Wrapper>
         <FramedText>
-          <h3>
-            {sanitize(frameHeading, sanitizeConfig)}
-          </h3>
-          <p dangerouslySetInnerHTML={{ __html: sanitize(frameContent, sanitizeConfig) }} />
+          <h3>{sanitize(frameHeading, sanitizeConfig)}</h3>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: sanitize(frameContent, sanitizeConfig),
+            }}
+          />
         </FramedText>
       </Wrapper>
       <Wrapper>
         <IconsList>
           <li>
             <Image image={no3Image} />
-            <span dangerouslySetInnerHTML={{ __html: sanitize(no3, sanitizeConfig) }} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: sanitize(no3, sanitizeConfig),
+              }}
+            />
           </li>
           <li>
             <Image image={targetImage} />
-            <span dangerouslySetInnerHTML={{ __html: sanitize(target, sanitizeConfig) }} />
+            <span
+              dangerouslySetInnerHTML={{
+                __html: sanitize(target, sanitizeConfig),
+              }}
+            />
           </li>
         </IconsList>
       </Wrapper>
@@ -572,4 +613,3 @@ Sibosgastrin.propTypes = {
   cssClass: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
-

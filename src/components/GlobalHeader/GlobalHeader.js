@@ -1,15 +1,18 @@
-import React, {
-  useEffect, useState,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { mainNav } from '@static/main-nav';
 
+import { AlignRight, ProductLogo, X } from '@icons';
 import {
-  AlignRight, ProductLogo, X,
-} from '@icons';
-import {
-  Brag, Container, Link, Navigation, NavToggle, ScrollButton, Wrapper,
+  Brag,
+  Container,
+  Link,
+  Navigation,
+  NavToggle,
+  ScrollButton,
+  Submenu,
+  Wrapper,
 } from './GlobalHeader.styled';
 
 export const GlobalHeader = ({
@@ -18,10 +21,7 @@ export const GlobalHeader = ({
   refs,
   setNavigationOpen,
 }) => {
-  const [
-    headerHeight,
-    setHeaderHeight,
-  ] = useState(95);
+  const [headerHeight, setHeaderHeight] = useState(95);
 
   useEffect(() => {
     const { height } = refs?.header?.current?.getBoundingClientRect();
@@ -30,7 +30,8 @@ export const GlobalHeader = ({
   }, [refs]);
 
   const handleScroll = ({ current: targetElement }) => {
-    const scrollOffset = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+    const scrollOffset =
+      targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
     const scrollConfig = {
       behavior: 'smooth',
       top: scrollOffset,
@@ -47,43 +48,37 @@ export const GlobalHeader = ({
       ref={refs.header}
     >
       <Container>
-        <Link
-          className="header__link header__link--logo"
-          to="/"
-        >
+        <Link className="header__link header__link--logo" to="/">
           <ProductLogo />
         </Link>
-        <Brag />
-        <Navigation
-          headerHeight={headerHeight}
-          isVisible={isNavigationOpen}
-        >
-          {mainNav.map(({
-            target,
-            text,
-            to,
-            type,
-          }) => (type === 'link' ?
-            (
-              <Link
-                key={text}
-                to={to}
-              >
+        <Navigation headerHeight={headerHeight} isVisible={isNavigationOpen}>
+          {mainNav.map(({ subItems, target, text, to, type }) =>
+            type === 'link' || type === 'parent' ? (
+              <Link as={type === 'parent' && 'div'} key={text} to={to ?? null}>
                 {text}
+                {subItems?.length > 0 && (
+                  <Submenu>
+                    {subItems.map((subitem) => (
+                      <Link key={subitem.text} to={subitem.to}>
+                        {subitem.text}
+                      </Link>
+                    ))}
+                  </Submenu>
+                )}
               </Link>
-            ) :
-            (
+            ) : (
               <ScrollButton
                 key={text}
                 onClick={() => handleScroll(refs[target])}
               >
                 {text}
               </ScrollButton>
-            )))}
+            ),
+          )}
         </Navigation>
         <NavToggle
           isFlipped={isNavigationOpen}
-          onClick={() => setNavigationOpen(current => !current)}
+          onClick={() => setNavigationOpen((current) => !current)}
         >
           <AlignRight className="icon icon--align-right" />
           <X className="icon icon--x" />

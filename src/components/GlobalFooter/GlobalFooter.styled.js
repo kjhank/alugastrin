@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  Container as GenericContainer,
-} from '@components';
+import { Container as GenericContainer } from '@components';
 
 import { queries } from '@utils';
 
@@ -42,7 +40,7 @@ export const Container = styled(GenericContainer)`
 
   @media ${queries.s} {
     ::after {
-      border-radius: ${({ theme }) => `${theme.getRadius('larger')} 0 0 0`}
+      border-radius: ${({ theme }) => `${theme.getRadius('larger')} 0 0 0`};
     }
   }
 
@@ -173,6 +171,11 @@ export const GlobalFooterText = styled(SIL)`
   margin: 1.8vw 0 0;
   border-bottom: none;
   padding-bottom: 0;
+
+  ol,
+  ul {
+    list-style-position: inside;
+  }
 `;
 
 export const LeafletLegal = styled.p`
@@ -240,5 +243,19 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
 
   @media ${queries.l} {
     font-size: 14px;
+  }
+`;
+
+export const Warning = styled.div`
+  background-image: ${({ theme }) => theme.getGradient('right')};
+  margin-block-start: 2vw;
+  font-size: 95px;
+  text-align: center;
+  color: #fff;
+
+  > p {
+    width: min(90vw, 1700px);
+    margin-inline: auto;
+    text-flow: balance;
   }
 `;

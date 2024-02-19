@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 import { buttonLinkStyles } from '@components/styled';
-import {
-  Container as GenericContainer, SPImage,
-} from '@components';
+import { Container as GenericContainer, SPImage } from '@components';
 
 import { queries } from '@utils';
 
@@ -23,6 +21,11 @@ export const List = styled.ul`
 
 export const Product = styled.li`
   > a {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+
     :hover {
       div:last-child {
         filter: brightness(1.2);
@@ -45,6 +48,7 @@ export const Product = styled.li`
 
 export const Image = styled(SPImage)`
   width: 100%;
+  aspect-ratio: 324/177;
 
   > img {
     width: 100%;
@@ -99,7 +103,7 @@ export const Text = styled.p`
 
   em,
   i {
-    font-style: italic
+    font-style: italic;
   }
 
   b,
@@ -114,6 +118,8 @@ export const Text = styled.p`
 
 export const ArrowWrapper = styled.div`
   ${buttonLinkStyles};
+  display: flex;
+  margin-block-start: auto;
   border-color: #fff;
   background: ${({ theme }) => theme.getGradient()};
   color: #fff;

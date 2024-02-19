@@ -52,9 +52,7 @@ export const Section = styled.section`
 export const Heading = styled.h2`
   width: 100%;
   margin-bottom: 1.5em;
-  color: ${({
-  isSmall, theme,
-}) => theme.getColor(isSmall ? 'main' : 'accent')};
+  color: ${({ isSmall, theme }) => theme.getColor(isSmall ? 'main' : 'accent')};
   font-weight: 600;
   font-size: inherit;
   line-height: 1.25;
@@ -79,16 +77,8 @@ export const Text = styled.div`
     }
   }
 
-  p + p,
-  p + ol,
-  p + ul,
-  ol + p,
-  ol + ol,
-  ol + ul,
-  ul + p,
-  ul + ol,
-  ul + ul {
-    margin-top: 1.5em;
+  *:not(li) {
+    margin-block: 1.5em;
   }
 
   @media ${queries.xs} {

@@ -2,44 +2,46 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
-import {
-  DashUp, ManufacturerLogo,
-} from '@icons';
-import {
-  ExternalLink, Container as GlobalContainer,
-} from '@components';
+import { DashUp, ManufacturerLogo } from '@icons';
+import { ExternalLink, Container as GlobalContainer } from '@components';
 import {
   ContactData,
   Container,
   Copyright,
   GlobalFooterText,
   LeafletLegal,
-  LeftPart, Links,
+  LeftPart,
+  Links,
   LogoWrapper,
   RightPart,
   ScrollButton,
-  SIL,
+  Warning,
   Wrapper,
 } from './GlobalFooter.styled';
 
 const sanitizeConfig = {
-  allowedTags: [
-    'a',
-    'br',
-    'strong',
-  ],
+  allowedTags: ['a', 'br', 'strong'],
 };
 
 export const GlobalFooter = ({
-  bragFootnote,
   contactRef,
   data,
-  globalFootnote,
+  footnotes,
+  legal,
   hasLegal,
 }) => {
-  const handleScrollUp = () => window.scrollTo({
-    behavior: 'smooth',
-    top: 0,
+  const handleScrollUp = () =>
+    window.scrollTo({
+      behavior: 'smooth',
+      top: 0,
+    });
+
+  const sanitizedFootnotes = sanitize(footnotes, {
+    allowedTags: ['br', 'i', 'b', 'i', 'strong', 'em', 'ul', 'li', 'ol'],
+  });
+
+  const sanitizedContact = sanitize(data?.contact, {
+    allowedTags: ['a', 'br', 'p', 'strong'],
   });
 
   return (
@@ -51,36 +53,34 @@ export const GlobalFooter = ({
           </LogoWrapper>
           <Links>
             {data?.links.map(({ link }) => (
-              <ExternalLink
-                href={link.url}
-                key={link.title}
-              >
+              <ExternalLink href={link.url} key={link.title}>
                 {link.title}
-
               </ExternalLink>
             ))}
           </Links>
-          <ContactData dangerouslySetInnerHTML={{ __html: sanitize(data?.address) }} />
+          <ContactData
+            dangerouslySetInnerHTML={{ __html: sanitize(data?.address) }}
+          />
         </LeftPart>
-        <RightPart dangerouslySetInnerHTML={{
-          __html: sanitize(data?.contact, {
-            allowedTags: [
-              'a',
-              'br',
-              'p',
-              'strong',
-            ],
-          }),
-        }}
+        <RightPart
+          dangerouslySetInnerHTML={{
+            __html: sanitizedContact,
+          }}
         />
       </Container>
       <GlobalContainer>
         {hasLegal && (
+          <GlobalFooterText
+            as="aside"
+            dangerouslySetInnerHTML={{ __html: sanitizedFootnotes }}
+          />
+        )}
+        {/* {hasLegal && (
         <GlobalFooterText>
           {bragFootnote}
         </GlobalFooterText>
-        )}
-        {globalFootnote && (
+        )} */}
+        {/* {globalFootnote && (
         <GlobalFooterText dangerouslySetInnerHTML={{
           __html: sanitize(globalFootnote, {
             allowedTags: [
@@ -93,18 +93,23 @@ export const GlobalFooter = ({
           }),
         }}
         />
-        )}
-        {hasLegal && (
+        )} */}
+        {/* {hasLegal && (
         <>
           <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
           <LeafletLegal
             dangerouslySetInnerHTML={{ __html: sanitize(data?.leafletLegal, sanitizeConfig) }}
           />
         </>
-        )}
-        <Copyright>
-          {data?.copyright}
-        </Copyright>
+        )} */}
+      </GlobalContainer>
+      {hasLegal && (
+        <Warning>
+          <p>{legal}</p>
+        </Warning>
+      )}
+      <GlobalContainer>
+        <Copyright>{data?.copyright}</Copyright>
         <ScrollButton onClick={handleScrollUp}>
           <DashUp />
           Do góry
@@ -115,7 +120,6 @@ export const GlobalFooter = ({
 };
 
 GlobalFooter.propTypes = {
-  bragFootnote: PropTypes.string.isRequired,
   contactRef: PropTypes.shape({}).isRequired,
   data: PropTypes.shape({
     address: PropTypes.string,
@@ -125,8 +129,9 @@ GlobalFooter.propTypes = {
     links: PropTypes.arrayOf(PropTypes.shape({})),
     sil: PropTypes.string,
   }).isRequired,
-  globalFootnote: PropTypes.string,
+  footnotes: PropTypes.string,
   hasLegal: PropTypes.bool,
+  legal: PropTypes.string,
 };
 
 GlobalFooter.defaultProps = {

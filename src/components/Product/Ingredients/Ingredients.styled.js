@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  Container as GenericContainer, SPImage,
-} from '@components';
+import { Container as GenericContainer, SPImage } from '@components';
 
 import { queries } from '@utils';
 
@@ -64,8 +62,8 @@ export const ListWrapper = styled.div`
   }
 
   @media ${queries.xxsplus} {
-      font-size: 16px;
-    }
+    font-size: 16px;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -96,7 +94,8 @@ export const Icon = styled(SPImage)`
   flex-shrink: 0;
   height: ${({ size }) => `${size / 19.2}vw`};
   max-height: ${({ variant }) => variant === 'sideBySide' && '120px'};
-  margin: ${({ margin }) => (margin === 'right' ? '0 0.5em 0 0' : '0 0 0.5em 0')};
+  margin: ${({ margin }) =>
+    margin === 'right' ? '0 0.5em 0 0' : '0 0 0.5em 0'};
 
   > img {
     width: auto;
@@ -104,7 +103,7 @@ export const Icon = styled(SPImage)`
   }
 
   @media ${queries.xxsplus} {
-    height: ${({ size }) => `${size / 10}vw`}
+    height: ${({ size }) => `${size / 10}vw`};
   }
 `;
 
@@ -182,9 +181,12 @@ export const FramedText = styled.h3`
 
 export const StepsList = styled(IconsList)`
   grid-template-columns: repeat(3, 1fr);
+  width: 80%;
+  margin: auto;
 
   > ${IconItem} {
     padding: 1vw;
     text-align: center;
+    font-weight: 700;
   }
 `;
