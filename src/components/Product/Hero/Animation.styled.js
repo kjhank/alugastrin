@@ -6,6 +6,10 @@ export const AnimationContainer = styled.div`
   position: relative;
   height: min(75vh, 56.25vw);
 
+  &.fibegastrin {
+    height: unset;
+  }
+
   @media ${queries.s} {
     width: 100%;
     height: unset;
@@ -82,6 +86,16 @@ export const AnimationContainer = styled.div`
       width: 65%;
       height: auto;
       margin-inline: 20% auto;
+
+      > img {
+        height: auto;
+      }
+    }
+
+    &--fibegastrin {
+      width: 90%;
+      height: auto;
+      margin-inline: auto;
 
       > img {
         height: auto;

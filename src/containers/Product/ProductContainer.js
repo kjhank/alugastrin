@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Main } from '@components';
 
+import { FibeBottom } from '@components/Product/misc';
+
 import {
   Header, Hero, Ingredients, Preparation, Sections, WhereToBuy,
 } from '@components/Product';
@@ -21,6 +23,16 @@ export const ProductContainer = ({
 
   const buyRef = createRef();
 
+  const videoProps = product?.video?.hasVideo ?
+    {
+      poster: product.video.videoPoster.url,
+      sources: {
+        [product.video.video.subtype]: product.video.video,
+        [product.video.videoAlt?.subtype]: product.video.videoAlt,
+      },
+    } :
+    null;
+
   return (
     <>
       <Header
@@ -29,6 +41,7 @@ export const ProductContainer = ({
         description={product.description}
         headerRef={refs.header}
         image={product.package}
+        isGrid={product.isGrid ?? false}
         links={product.links}
         name={product.fullName}
         sections={sections}
@@ -43,6 +56,7 @@ export const ProductContainer = ({
           <Hero
             cssClass={product.cssClass}
             data={product.hero}
+            video={videoProps}
           />
         )}
         {product?.secondHero?.heading && (
@@ -60,6 +74,7 @@ export const ProductContainer = ({
             steps={product.preparation.steps}
           />
         )}
+        {product?.cssClass === 'fibegastrin' && <FibeBottom />}
         {sections.length > 0 && (
           <Sections
             background={product?.sectionsBackground}
@@ -68,6 +83,7 @@ export const ProductContainer = ({
           />
         )}
         <WhereToBuy
+          className={product.cssClass}
           data={product.whereToBuy}
           innerRef={buyRef}
         />
@@ -87,6 +103,7 @@ ProductContainer.propTypes = {
     ingredients: PropTypes.shape({
       heading: PropTypes.string,
     }),
+    isGrid: PropTypes.bool,
     links: PropTypes.shape({}),
     package: PropTypes.shape({}),
     preparation: PropTypes.oneOfType([
@@ -108,6 +125,18 @@ ProductContainer.propTypes = {
     }),
     sections: PropTypes.arrayOf(PropTypes.shape({})),
     sectionsBackground: PropTypes.shape({}),
+    video: PropTypes.shape({
+      hasVideo: PropTypes.bool,
+      video: PropTypes.shape({
+        subtype: PropTypes.string,
+      }),
+      videoAlt: PropTypes.shape({
+        subtype: PropTypes.string,
+      }),
+      videoPoster: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    }),
     whereToBuy: PropTypes.shape({}),
   }).isRequired,
   refs: PropTypes.shape({

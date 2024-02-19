@@ -77,9 +77,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Links = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.875vw;
   width: 100%;
 `;
