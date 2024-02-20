@@ -27,7 +27,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5em;
+  margin-block-start: 1.5em;
   font-size: ${({ hasSmallerText }) => (hasSmallerText ? '12px' : '24px')};
 
   @media ${queries.huge} {
@@ -52,7 +52,9 @@ export const Section = styled.section`
 export const Heading = styled.h2`
   width: 100%;
   margin-bottom: 1.5em;
-  color: ${({ isSmall, theme }) => theme.getColor(isSmall ? 'main' : 'accent')};
+  color: ${({
+    isSmall, theme,
+  }) => theme.getColor(isSmall ? 'main' : 'accent')};
   font-weight: 600;
   font-size: inherit;
   line-height: 1.25;

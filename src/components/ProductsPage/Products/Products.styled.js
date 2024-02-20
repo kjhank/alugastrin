@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 import { buttonLinkStyles } from '@components/styled';
-import { Container as GenericContainer, SPImage } from '@components';
+import {
+  Container as GenericContainer, SPImage,
+} from '@components';
 
 import { queries } from '@utils';
 
@@ -22,8 +24,8 @@ export const List = styled.ul`
 export const Product = styled.li`
   > a {
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
+    align-items: flex-start;
     height: 100%;
 
     :hover {
@@ -38,10 +40,6 @@ export const Product = styled.li`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-    }
-
-    @media ${queries.xxsplus} {
-      display: block;
     }
   }
 `;
@@ -172,7 +170,7 @@ export const SectionHeading = styled.h2`
   }
 
   @media ${queries.xs} {
-    width: 60%;
+    width: 100%;
     padding-left: 2.5%;
   }
 

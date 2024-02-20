@@ -10,6 +10,7 @@ import { queries } from '@utils';
 export const Submenu = styled.ul`
   position: absolute;
   inset: 100% auto auto 50%;
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,10 +20,16 @@ export const Submenu = styled.ul`
   transition:
     opacity 400ms,
     translate 400ms;
-  opacity: 0;
 
   a {
     white-space: nowrap;
+  }
+
+  @media ${queries.s} {
+    position: static;
+    opacity: 1;
+    flex-direction: column;
+    translate: 0;
   }
 `;
 
@@ -89,15 +96,20 @@ export const Navigation = styled.nav`
     flex-direction: column;
     gap: 1em;
     border-radius: ${({ theme }) => `0 0 0 ${theme.getRadius()}`};
-    padding: 2em 5em 2em 1em;
+    padding: 2em 2em 1em;
     background-image: ${({ theme }) => theme.getGradient()};
-    transform: ${({ isVisible }) =>
-      isVisible ? 'none' : 'translateX(calc(100% + 3em))'};
+    transform: ${({ isVisible }) => (isVisible ? 'none' : 'translateX(calc(100% + 3em))')};
 
     > a,
-    button {
+    button,
+    > div {
       color: #fff;
       font-size: 24px;
+      text-align: center;
+    }
+
+    > div::after {
+      content: unset;
     }
   }
 `;
@@ -112,6 +124,10 @@ const linkStyle = css`
     ${Submenu} {
       opacity: 1;
       translate: -50% 0;
+
+      @media ${queries.s} {
+        translate: unset;
+      }
     }
   }
 `;
@@ -130,8 +146,8 @@ export const Link = styled(GenericLink)`
 
   @media ${queries.s} {
     &.header__link--logo {
-      width: 50vw;
       display: block;
+      width: 50vw;
       margin: auto;
     }
   }
@@ -156,8 +172,7 @@ export const NavToggle = styled.button.attrs({ type: 'button' })`
   background-color: transparent;
   color: #fff;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
-  transform: ${({ isFlipped }) =>
-    isFlipped ? 'rotateY(180deg) translateY(-50%)' : 'translateY(-50%)'};
+  transform: ${({ isFlipped }) => (isFlipped ? 'rotateY(180deg) translateY(-50%)' : 'translateY(-50%)')};
   transform-style: preserve-3d;
 
   @media ${queries.s} {

@@ -35,8 +35,8 @@ export const DecorationContainer = styled(Container)`
   & > .decoration {
     position: relative;
     z-index: -1;
-    pointer-events: none;
     display: block;
+    pointer-events: none;
   }
 
   & > .decoration-products-otc {
@@ -44,9 +44,26 @@ export const DecorationContainer = styled(Container)`
     width: 54.8vw;
     margin-block-start: -35vw;
     inset-inline-end: -15%;
+
+    @media ${queries.l} {
+      margin-block-start: -45vw;
+      inset-inline-end: 0;
+    }
+
+    @media ${queries.xs} {
+      position: static;
+      margin-block-start: unset;
+      margin-inline: auto;
+      width: 80vw;
+    }
   }
 
   & > .decoration-med {
     width: 50.8vw;
+
+    @media ${queries.s} {
+      margin-inline: auto;
+      width: 80vw;
+    }
   }
 `;

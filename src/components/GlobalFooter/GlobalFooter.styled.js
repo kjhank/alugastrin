@@ -175,6 +175,8 @@ export const GlobalFooterText = styled(SIL)`
   ol,
   ul {
     list-style-position: inside;
+    line-height: 1.2;
+    white-space: normal;
   }
 `;
 
@@ -249,7 +251,7 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
 export const Warning = styled.div`
   background-image: ${({ theme }) => theme.getGradient('right')};
   margin-block-start: 2vw;
-  font-size: 95px;
+  font-size: 85px;
   text-align: center;
   color: #fff;
 
@@ -257,5 +259,17 @@ export const Warning = styled.div`
     width: min(90vw, 1700px);
     margin-inline: auto;
     text-flow: balance;
+  }
+
+  @media ${queries.xhuge} {
+    font-size: 80px;
+  }
+
+  @media ${queries.huge} {
+    font-size: 76px;
+
+
+  @media ${queries.xxl} {
+    font-size: 64px;
   }
 `;
