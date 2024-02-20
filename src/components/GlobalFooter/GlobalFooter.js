@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import sanitize from 'sanitize-html';
 
-import { DashUp, ManufacturerLogo } from '@icons';
-import { ExternalLink, Container as GlobalContainer } from '@components';
+import {
+  DashUp, ManufacturerLogo,
+} from '@icons';
+import {
+  ExternalLink, Container as GlobalContainer,
+} from '@components';
 import {
   ContactData,
   Container,
   Copyright,
   GlobalFooterText,
-  LeafletLegal,
   LeftPart,
   Links,
   LogoWrapper,
@@ -19,10 +22,6 @@ import {
   Wrapper,
 } from './GlobalFooter.styled';
 
-const sanitizeConfig = {
-  allowedTags: ['a', 'br', 'strong'],
-};
-
 export const GlobalFooter = ({
   contactRef,
   data,
@@ -30,18 +29,32 @@ export const GlobalFooter = ({
   legal,
   hasLegal,
 }) => {
-  const handleScrollUp = () =>
-    window.scrollTo({
-      behavior: 'smooth',
-      top: 0,
-    });
+  const handleScrollUp = () => window.scrollTo({
+    behavior: 'smooth',
+    top: 0,
+  });
 
   const sanitizedFootnotes = sanitize(footnotes, {
-    allowedTags: ['br', 'i', 'b', 'i', 'strong', 'em', 'ul', 'li', 'ol'],
+    allowedTags: [
+      'br',
+      'i',
+      'b',
+      'i',
+      'strong',
+      'em',
+      'ul',
+      'li',
+      'ol',
+    ],
   });
 
   const sanitizedContact = sanitize(data?.contact, {
-    allowedTags: ['a', 'br', 'p', 'strong'],
+    allowedTags: [
+      'a',
+      'br',
+      'p',
+      'strong',
+    ],
   });
 
   return (
@@ -53,7 +66,10 @@ export const GlobalFooter = ({
           </LogoWrapper>
           <Links>
             {data?.links.map(({ link }) => (
-              <ExternalLink href={link.url} key={link.title}>
+              <ExternalLink
+                href={link.url}
+                key={link.title}
+              >
                 {link.title}
               </ExternalLink>
             ))}
@@ -75,33 +91,6 @@ export const GlobalFooter = ({
             dangerouslySetInnerHTML={{ __html: sanitizedFootnotes }}
           />
         )}
-        {/* {hasLegal && (
-        <GlobalFooterText>
-          {bragFootnote}
-        </GlobalFooterText>
-        )} */}
-        {/* {globalFootnote && (
-        <GlobalFooterText dangerouslySetInnerHTML={{
-          __html: sanitize(globalFootnote, {
-            allowedTags: [
-              'br',
-              'i',
-              'strong',
-              'em',
-              'b',
-            ],
-          }),
-        }}
-        />
-        )} */}
-        {/* {hasLegal && (
-        <>
-          <SIL dangerouslySetInnerHTML={{ __html: sanitize(data?.sil, sanitizeConfig) }} />
-          <LeafletLegal
-            dangerouslySetInnerHTML={{ __html: sanitize(data?.leafletLegal, sanitizeConfig) }}
-          />
-        </>
-        )} */}
       </GlobalContainer>
       {hasLegal && (
         <Warning>
@@ -135,6 +124,7 @@ GlobalFooter.propTypes = {
 };
 
 GlobalFooter.defaultProps = {
-  globalFootnote: null,
+  footnotes: null,
   hasLegal: true,
+  legal: null,
 };

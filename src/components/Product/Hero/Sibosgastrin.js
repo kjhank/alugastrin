@@ -1,11 +1,17 @@
 /* eslint-disable react/no-danger */
-import React, { createRef, useEffect, useState } from 'react';
+import React, {
+  createRef, useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'styled-components';
 import sanitize from 'sanitize-html';
-import { animate, stagger, timeline } from 'motion';
+import {
+  animate, stagger, timeline,
+} from 'motion';
 
-import { Container as GenericContainer, SPImage } from '@components';
+import {
+  Container as GenericContainer, SPImage,
+} from '@components';
 
 import { queries } from '@utils';
 
@@ -261,8 +267,7 @@ const Red = styled.ul`
   width: 48.12749%;
   margin-top: -2.5%;
   margin-left: 15%;
-  border-radius: ${({ theme }) =>
-    `0 ${theme.getRadius('smaller')} 0 ${theme.getRadius('smaller')}`};
+  border-radius: ${({ theme }) => `0 ${theme.getRadius('smaller')} 0 ${theme.getRadius('smaller')}`};
   padding: 0.416667vw 1.71875vw;
   background-image: ${({ theme }) => theme.getGradient()};
   color: #fff;
@@ -359,7 +364,9 @@ const InBetween = styled.p`
   }
 `;
 
-export const Sibosgastrin = ({ copy, cssClass, images }) => {
+export const Sibosgastrin = ({
+  copy, cssClass, images,
+}) => {
   const {
     item: { text: list },
   } = copy.find(({ item }) => item.label === 'list');
@@ -423,13 +430,25 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
   const staticRef = createRef();
 
   const sanitizeConfig = {
-    allowedTags: ['strong', 'em', 'i', 'b', 'li'],
+    allowedTags: [
+      'strong',
+      'em',
+      'i',
+      'b',
+      'li',
+    ],
   };
 
-  const [animationHasFired, setAnimationHasFired] = useState(false);
+  const [
+    animationHasFired,
+    setAnimationHasFired,
+  ] = useState(false);
 
   const animateItems = () => {
-    const germs = [germLeftRef.current, germRightRef.current];
+    const germs = [
+      germLeftRef.current,
+      germRightRef.current,
+    ];
 
     animate(
       germs,
@@ -442,20 +461,23 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
         duration: 1,
         easing: 'ease-in-out',
         repeat: Infinity,
-      },
+      }
     );
 
     animate(
       germs,
       {
-        transform: ['rotate(-20deg)', 'rotate(20deg)'],
+        transform: [
+          'rotate(-20deg)',
+          'rotate(20deg)',
+        ],
       },
       {
         delay: stagger(0.5),
         direction: 'alternate',
         duration: 1,
         easing: 'linear',
-      },
+      }
     );
   };
 
@@ -473,14 +495,18 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
       const animationTargets = listNode.querySelectorAll('li');
 
       const listKeyframes = {
-        transform: ['scale(1)', 'scale(1.1)', 'scale(1)'],
+        transform: [
+          'scale(1)',
+          'scale(1.1)',
+          'scale(1)',
+        ],
       };
 
       const listOptions = {
         duration: 1,
       };
 
-      const sequence = Array.from(animationTargets).map((element) => [
+      const sequence = Array.from(animationTargets).map(element => [
         element,
         listKeyframes,
         listOptions,
@@ -530,7 +556,10 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
           dangerouslySetInnerHTML={{ __html: sanitize(list, sanitizeConfig) }}
           ref={listRef}
         />
-        <Package image={rightImage} innerRef={packageRef} />
+        <Package
+          image={rightImage}
+          innerRef={packageRef}
+        />
         <Red ref={redRef}>
           <li
             dangerouslySetInnerHTML={{
@@ -554,15 +583,22 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
       <Wrapper>
         <GermList>
           <li>
-            <Image image={germLeftImage} innerRef={germLeftRef} />
+            <Image
+              image={germLeftImage}
+              innerRef={germLeftRef}
+            />
             <span
               dangerouslySetInnerHTML={{
                 __html: sanitize(leftGerm, sanitizeConfig),
               }}
-            />{' '}
+            />
+            {' '}
           </li>
           <li>
-            <Image image={germRightImage} innerRef={germRightRef} />
+            <Image
+              image={germRightImage}
+              innerRef={germRightRef}
+            />
             <span
               dangerouslySetInnerHTML={{
                 __html: sanitize(rightGerm, sanitizeConfig),
@@ -572,7 +608,10 @@ export const Sibosgastrin = ({ copy, cssClass, images }) => {
         </GermList>
       </Wrapper>
       <Wrapper>
-        <Image className="sibos-image" image={sibosImage} />
+        <Image
+          className="sibos-image"
+          image={sibosImage}
+        />
       </Wrapper>
       <Wrapper>
         <FramedText>

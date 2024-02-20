@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-import { Container as GenericContainer, SPImage } from '@components';
+import {
+  Container as GenericContainer, SPImage,
+} from '@components';
 
 import { queries } from '@utils';
 
@@ -94,8 +96,7 @@ export const Icon = styled(SPImage)`
   flex-shrink: 0;
   height: ${({ size }) => `${size / 19.2}vw`};
   max-height: ${({ variant }) => variant === 'sideBySide' && '120px'};
-  margin: ${({ margin }) =>
-    margin === 'right' ? '0 0.5em 0 0' : '0 0 0.5em 0'};
+  margin: ${({ margin }) => (margin === 'right' ? '0 0.5em 0 0' : '0 0 0.5em 0')};
 
   > img {
     width: auto;

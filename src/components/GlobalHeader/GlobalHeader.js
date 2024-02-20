@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import { mainNav } from '@static/main-nav';
 
-import { AlignRight, ProductLogo, X } from '@icons';
 import {
-  Brag,
+  AlignRight, ProductLogo, X,
+} from '@icons';
+import {
   Container,
   Link,
   Navigation,
@@ -21,7 +24,10 @@ export const GlobalHeader = ({
   refs,
   setNavigationOpen,
 }) => {
-  const [headerHeight, setHeaderHeight] = useState(95);
+  const [
+    headerHeight,
+    setHeaderHeight,
+  ] = useState(95);
 
   useEffect(() => {
     const { height } = refs?.header?.current?.getBoundingClientRect();
@@ -48,37 +54,52 @@ export const GlobalHeader = ({
       ref={refs.header}
     >
       <Container>
-        <Link className="header__link header__link--logo" to="/">
+        <Link
+          className="header__link header__link--logo"
+          to="/"
+        >
           <ProductLogo />
         </Link>
-        <Navigation headerHeight={headerHeight} isVisible={isNavigationOpen}>
-          {mainNav.map(({ subItems, target, text, to, type }) =>
-            type === 'link' || type === 'parent' ? (
-              <Link as={type === 'parent' && 'div'} key={text} to={to ?? null}>
+        <Navigation
+          headerHeight={headerHeight}
+          isVisible={isNavigationOpen}
+        >
+          {mainNav.map(({
+            subItems, target, text, to, type,
+          }) => (type === 'link' || type === 'parent' ?
+            (
+              <Link
+                as={type === 'parent' && 'div'}
+                key={text}
+                to={to ?? null}
+              >
                 {text}
                 {subItems?.length > 0 && (
-                  <Submenu>
-                    {subItems.map((subitem) => (
-                      <Link key={subitem.text} to={subitem.to}>
-                        {subitem.text}
-                      </Link>
-                    ))}
-                  </Submenu>
+                <Submenu>
+                  {subItems.map(subitem => (
+                    <Link
+                      key={subitem.text}
+                      to={subitem.to}
+                    >
+                      {subitem.text}
+                    </Link>
+                  ))}
+                </Submenu>
                 )}
               </Link>
-            ) : (
+            ) :
+            (
               <ScrollButton
                 key={text}
                 onClick={() => handleScroll(refs[target])}
               >
                 {text}
               </ScrollButton>
-            ),
-          )}
+            )))}
         </Navigation>
         <NavToggle
           isFlipped={isNavigationOpen}
-          onClick={() => setNavigationOpen((current) => !current)}
+          onClick={() => setNavigationOpen(current => !current)}
         >
           <AlignRight className="icon icon--align-right" />
           <X className="icon icon--x" />

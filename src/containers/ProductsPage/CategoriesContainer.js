@@ -24,8 +24,11 @@ import {
 } from '@components/ProductsPage/Categories/Categories.styled';
 import sanitize from 'sanitize-html';
 
-export const renderName = (name) => {
-  const [first, second] = name.split('|');
+export const renderName = name => {
+  const [
+    first,
+    second,
+  ] = name.split('|');
 
   return (
     <Name>
@@ -43,7 +46,10 @@ export const ProductCategoryContainer = ({
   title,
 }) => {
   const parsedDescription = sanitize(description, {
-    allowedTags: ['strong', 'em'],
+    allowedTags: [
+      'strong',
+      'em',
+    ],
   });
 
   return (
@@ -54,15 +60,18 @@ export const ProductCategoryContainer = ({
           dangerouslySetInnerHTML={{ __html: parsedDescription }}
         />
       </CategoryContainer>
-      {groups.map((group) => (
+      {groups.map(group => (
         <section key={group.groupName}>
           <CategoryContainer>
             <SectionHeading>{group.groupName}</SectionHeading>
             <List>
-              {group.products.map((product) => (
+              {group.products.map(product => (
                 <Product key={product.acf.name}>
                   <Link to={`/produkty/${product.post_name}`}>
-                    <Image image={product.acf.thumbnail} loading="eager" />
+                    <Image
+                      image={product.acf.thumbnail}
+                      loading="eager"
+                    />
                     {renderName(product.acf.name)}
                     <Description>{product.acf.intro}</Description>
                     <Text
@@ -103,7 +112,7 @@ ProductCategoryContainer.propTypes = {
       groupName: PropTypes.string,
       hasDecoration: PropTypes.bool,
       products: PropTypes.arrayOf(PropTypes.shape({})),
-    }),
+    })
   ).isRequired,
   refs: PropTypes.shape({}).isRequired, //
   title: PropTypes.string.isRequired,

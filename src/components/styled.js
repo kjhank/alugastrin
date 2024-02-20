@@ -1,12 +1,13 @@
-import styled, { css } from "styled-components";
-import { Link } from "gatsby";
+import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
 
-import { queries } from "@utils";
+import { queries } from '@utils';
 
 export const Main = styled.main`
   position: relative;
-  margin-top: ${({ hasNoMargin, headerHeight }) =>
-    !hasNoMargin && `${headerHeight}px`};
+  margin-top: ${({
+    hasNoMargin, headerHeight,
+  }) => !hasNoMargin && `${headerHeight}px`};
   background-color: #fff;
 
   ::before {
@@ -40,31 +41,33 @@ export const buttonLinkStyles = css`
   display: inline-flex;
   flex-grow: 0;
   flex-shrink: 0;
-  flex-direction: ${({ $isFlipped }) => ($isFlipped ? "row-reverse" : "row")};
+  flex-direction: ${({ $isFlipped }) => ($isFlipped ? 'row-reverse' : 'row')};
   justify-content: space-between;
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.getColor("main")};
+  border: 1px solid ${({ theme }) => theme.getColor('main')};
   border-radius: ${({ theme }) => theme.getRadius()};
   padding: 0.83vw 1.6vw;
   background-color: transparent;
-  transition: ${({ theme }) => theme.getTransitions(["color", "border-color"])};
+  transition: ${({ theme }) => theme.getTransitions([
+    'color',
+    'border-color',
+  ])};
   cursor: pointer;
 
   > svg {
-    margin-right: ${({ $isFlipped }) => $isFlipped && "1.05vw"};
-    margin-left: ${({ $isFlipped }) => !$isFlipped && "1.05vw"};
+    margin-right: ${({ $isFlipped }) => $isFlipped && '1.05vw'};
+    margin-left: ${({ $isFlipped }) => !$isFlipped && '1.05vw'};
     fill: currentColor;
-    transition: ${({ theme }) => theme.getTransitions(["transform"])};
-    transform: ${({ $isFlipped }) => $isFlipped && "rotateY(180deg)"};
+    transition: ${({ theme }) => theme.getTransitions(['transform'])};
+    transform: ${({ $isFlipped }) => $isFlipped && 'rotateY(180deg)'};
   }
 
   :hover {
-    border-color: ${({ theme }) => theme.getColor("accent")};
-    color: ${({ theme }) => theme.getColor("accent")};
+    border-color: ${({ theme }) => theme.getColor('accent')};
+    color: ${({ theme }) => theme.getColor('accent')};
 
     > svg {
-      transform: ${({ $isFlipped }) =>
-        $isFlipped ? "translateX(-20%) rotateY(180deg)" : "translateX(20%);"};
+      transform: ${({ $isFlipped }) => ($isFlipped ? 'translateX(-20%) rotateY(180deg)' : 'translateX(20%);')};
     }
   }
 
@@ -84,7 +87,7 @@ export const StyledButtonLink = styled(Link)`
 
 export const PageHeading = styled.h1`
   position: relative;
-  display: ${({ $isInlineBlock }) => $isInlineBlock && "inline-block"};
+  display: ${({ $isInlineBlock }) => $isInlineBlock && 'inline-block'};
   padding-top: 2.239583vw;
   font-weight: 600;
   font-size: clamp(24px, 2.395833vw, 46px);
@@ -94,9 +97,9 @@ export const PageHeading = styled.h1`
     position: absolute;
     bottom: -0.25em;
     left: 0;
-    width: ${({ $isInlineBlock }) => ($isInlineBlock ? "100%" : "10.73vw")};
+    width: ${({ $isInlineBlock }) => ($isInlineBlock ? '100%' : '10.73vw')};
     height: 2px;
-    background-color: ${({ theme }) => theme.getColor("main")};
+    background-color: ${({ theme }) => theme.getColor('main')};
   }
 
   @media ${queries.xxsplus} {
@@ -111,7 +114,7 @@ export const PageHeading = styled.h1`
 export const LineHeading = styled.h2`
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.getColor("accent")};
+  color: ${({ theme }) => theme.getColor('accent')};
   font-weight: 600;
   font-size: 42px;
 
@@ -120,7 +123,7 @@ export const LineHeading = styled.h2`
     width: 5.58vw;
     height: 2px;
     margin-right: 1.51vw;
-    background-color: ${({ theme }) => theme.getColor("accent")};
+    background-color: ${({ theme }) => theme.getColor('accent')};
   }
 
   @media ${queries.huge} {

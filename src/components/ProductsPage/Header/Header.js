@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { Container } from "@components";
-import { PageHeading } from "@components/styled";
+import { Container } from '@components';
+import { PageHeading } from '@components/styled';
 
-import { StyledHeader } from "./Header.styled";
+import { StyledHeader } from './Header.styled';
 
 export const Header = ({ title }) => {
-  const parsedTitle = title.replace("&#8211;", "-");
+  const parsedTitle = title.replace('&#8211;', '-');
 
   return (
     <StyledHeader>

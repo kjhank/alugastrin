@@ -164,6 +164,13 @@ Hero.propTypes = {
     ]),
   }).isRequired,
   isSecond: PropTypes.bool,
+  video: PropTypes.shape({
+    mp4: PropTypes.shape({}),
+    poster: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+    webm: PropTypes.shape({}),
+  }).isRequired,
 };
 
 Hero.defaultProps = {

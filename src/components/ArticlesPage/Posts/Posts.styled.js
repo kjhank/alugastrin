@@ -53,8 +53,7 @@ export const MoreText = styled.p`
     height: 2px;
     margin-right: 0.52vw;
     background-color: ${({ theme }) => theme.getColor('main')};
-    transition: ${({ theme }) =>
-      theme.getTransitions(['background-color'], 'fastDuration')};
+    transition: ${({ theme }) => theme.getTransitions(['background-color'], 'fastDuration')};
 
     @media ${queries.xxsplus} {
       width: 3em;
