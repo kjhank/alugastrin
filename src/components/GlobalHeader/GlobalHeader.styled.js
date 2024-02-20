@@ -76,6 +76,10 @@ export const Container = styled(GenericContainer)`
   gap: 1.5vw;
   padding: 1.4vw 0;
 
+  @media ${queries.xl} {
+    padding-block: 1.5em;
+  }
+
   @media ${queries.s} {
     flex-direction: column;
   }
