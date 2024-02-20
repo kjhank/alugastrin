@@ -5,7 +5,7 @@ import { SPImage } from '@components';
 import { queries } from '@utils';
 
 export const Section = styled.section`
-  margin-top: 6vw;
+  margin-block: 6vw;
 `;
 
 export const Heading = styled.h2`

@@ -58,10 +58,10 @@ export const WhereToBuy = ({
             </WidgetButton>
             {openSection === 'online' && links.length > 0 && (
               <Links>
-                {links.map(link => (
-                  <Item key={link.link}>
-                    <Link href={link.link}>
-                      <Image image={link.image} />
+                {links.map(item => (
+                  <Item key={item.link}>
+                    <Link href={item.link}>
+                      <Image image={item.image} />
                     </Link>
                   </Item>
                 ))}

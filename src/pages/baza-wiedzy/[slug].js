@@ -84,7 +84,6 @@ export const getServerData = async ({ params: { slug } }) => {
     const post = await getPost(slug);
 
     if (Object.keys(post).length < 1) {
-
       return {
         props: {
           ...pageData,

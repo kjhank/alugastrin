@@ -29,7 +29,15 @@ export const Posts = ({ posts }) => (
               </MoreText>
             </ImageWrapper>
             <Title dangerouslySetInnerHTML={{ __html: sanitize(renderedTitle) }} />
-            <Intro dangerouslySetInnerHTML={{ __html: sanitize(description, { allowedTags: ['i', 'em']}) }} />
+            <Intro dangerouslySetInnerHTML={{
+              __html: sanitize(description, {
+                allowedTags: [
+                  'i',
+                  'em',
+                ],
+              }),
+            }}
+            />
             <MoreText>czytaj więcej</MoreText>
           </Link>
         </Post>

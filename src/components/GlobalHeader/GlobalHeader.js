@@ -9,7 +9,13 @@ import {
   AlignRight, ProductLogo, X,
 } from '@icons';
 import {
-  Brag, Container, Link, Navigation, NavToggle, ScrollButton, Wrapper,
+  Container,
+  Link,
+  Navigation,
+  NavToggle,
+  ScrollButton,
+  Submenu,
+  Wrapper,
 } from './GlobalHeader.styled';
 
 export const GlobalHeader = ({
@@ -30,7 +36,8 @@ export const GlobalHeader = ({
   }, [refs]);
 
   const handleScroll = ({ current: targetElement }) => {
-    const scrollOffset = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+    const scrollOffset =
+      targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
     const scrollConfig = {
       behavior: 'smooth',
       top: scrollOffset,
@@ -53,23 +60,32 @@ export const GlobalHeader = ({
         >
           <ProductLogo />
         </Link>
-        <Brag />
         <Navigation
           headerHeight={headerHeight}
           isVisible={isNavigationOpen}
         >
           {mainNav.map(({
-            target,
-            text,
-            to,
-            type,
-          }) => (type === 'link' ?
+            subItems, target, text, to, type,
+          }) => (type === 'link' || type === 'parent' ?
             (
               <Link
+                as={type === 'parent' && 'div'}
                 key={text}
-                to={to}
+                to={to ?? null}
               >
                 {text}
+                {subItems?.length > 0 && (
+                <Submenu>
+                  {subItems.map(subitem => (
+                    <Link
+                      key={subitem.text}
+                      to={subitem.to}
+                    >
+                      {subitem.text}
+                    </Link>
+                  ))}
+                </Submenu>
+                )}
               </Link>
             ) :
             (

@@ -64,8 +64,8 @@ export const ListWrapper = styled.div`
   }
 
   @media ${queries.xxsplus} {
-      font-size: 16px;
-    }
+    font-size: 16px;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -104,7 +104,7 @@ export const Icon = styled(SPImage)`
   }
 
   @media ${queries.xxsplus} {
-    height: ${({ size }) => `${size / 10}vw`}
+    height: ${({ size }) => `${size / 10}vw`};
   }
 `;
 
@@ -182,9 +182,12 @@ export const FramedText = styled.h3`
 
 export const StepsList = styled(IconsList)`
   grid-template-columns: repeat(3, 1fr);
+  width: 80%;
+  margin: auto;
 
   > ${IconItem} {
     padding: 1vw;
     text-align: center;
+    font-weight: 700;
   }
 `;
