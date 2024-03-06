@@ -62,10 +62,26 @@ export const Heading = styled.h2`
 
 export const Text = styled.div`
   width: ${({ isNarrow }) => (isNarrow ? '45.703125%' : '100%')};
+  white-space: pre-line;
 
-  ol,
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  ol {
+    list-style-position: inside;
+    white-space: normal;
+  }
+
   ul {
     list-style-type: none;
+    white-space: normal;
 
     > li {
       position: inline-flex;

@@ -23,6 +23,7 @@ export const Text = styled.div`
   padding-left: 7.135417vw;
   font-size: 24px;
   line-height: 1.25;
+  white-space: pre-line;
 
   b,
   strong {
@@ -36,6 +37,7 @@ export const Text = styled.div`
 
   ul {
     list-style-type: none;
+    white-space: normal;
 
     > li {
       display: flex;

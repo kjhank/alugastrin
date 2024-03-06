@@ -37,10 +37,13 @@ export const Body = ({
                 dangerouslySetInnerHTML={{
                   __html: sanitize(text, {
                     allowedTags: [
+                      'em',
                       'i',
                       'ul',
                       'li',
                       'ol',
+                      'strong',
+                      'b',
                     ],
                   }),
                 }}
