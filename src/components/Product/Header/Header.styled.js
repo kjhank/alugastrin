@@ -6,6 +6,87 @@ import {
 
 import { queries } from '@utils';
 
+export const Name = styled.h1`
+  color: ${({ theme }) => theme.getColor('accent')};
+  font-weight: 600;
+  font-size: 46px;
+
+  @media ${queries.xs} {
+    font-size: 32px;
+  }
+
+  @media ${queries.xxsplus} {
+    font-size: 40px;
+    text-align: center;
+  }
+`;
+
+export const Wrapper = styled.div`
+  width: 50%;
+
+  @media ${queries.xxsplus} {
+    width: 100%;
+  }
+`;
+
+export const Description = styled.p`
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 1.8;
+
+  @media ${queries.m} {
+    font-size: 20px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 16px;
+  }
+
+  @media ${queries.xxsplus} {
+    font-size: 24px;
+    text-align: center;
+  }
+`;
+
+export const LinksWrapper = styled.div`
+  display: ${({ $isGrid }) => ($isGrid ? 'grid' : 'flex')};
+  gap: 1.15vw;
+  margin-top: 2.552vw;
+
+  @media ${queries.xxsplus} {
+    justify-content: space-between;
+    gap: 1em;
+  }
+  ${({ $isGrid }) => $isGrid && css`
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: unset;
+    gap: min(34px, 1.8vw) min(25px, 1.3vw);
+
+    ::before {
+      content: '';
+    }
+  `}
+`;
+
+export const Scrollers = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2vw;
+  width: 37.34375vw;
+  margin: auto;
+
+  @media ${queries.xs} {
+    width: 100%;
+  }
+
+  @media ${queries.xxsplus} {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    width: 100%;
+    margin-top: 1em;
+  }
+`;
+
 export const StyledHeader = styled.header`
   margin-top: 4.95vw;
   padding-top: 4vw;
@@ -17,6 +98,93 @@ export const StyledHeader = styled.header`
 
   @media ${queries.xxsplus} {
     margin-bottom: 2em;
+  }
+
+  &.fibegastrin {
+    background-image: url('/backgrounds/fibe-header.png');
+    background-position: 35% 60%;
+    background-size: 110%;
+
+    ${Wrapper} {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      padding-inline-start: 5%;
+
+      ${LinksWrapper} {
+        justify-content: flex-end;
+        width: 75%;
+        margin-block: min(150px, 7.8125vw) min(34px, 1.8vw);
+        margin-inline-end: min(34px, 1.8vw);
+
+        > a:has(svg), > button:has(svg) {
+          position: relative;
+          justify-content: center;
+          width: unset;
+          text-align: center;
+          padding-inline-end: 20%;
+
+          > svg {
+            position: absolute;
+            inset: 50% 10% auto auto;
+            translate: 0 -50%;
+          }
+        }
+
+        @media ${queries.huge} {
+          margin-block: min(132px, 6.875vw) min(34px, 1.8vw);
+        }
+
+
+        @media ${queries.xs} {
+          width: 100%;
+
+          > button,
+          > a {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+
+    ${Scrollers} {
+      grid-template-columns: repeat(3, 1fr);
+      margin-inline-end: min(34px, 1.8vw);
+    }
+
+    ${Name} {
+      width: 100%;
+      padding-left: 50%;
+      font-size: 75px;
+      text-align: left;
+
+      @media ${queries.xxl} {
+        font-size: 64px;
+      }
+
+      @media ${queries.xxsplus} {
+        padding-left: unset;
+        font-size: 48px;
+        text-align: center;
+      }
+    }
+
+    ${Description} {
+      width: 100%;
+      padding-left: 50%;
+      font-weight: 700;
+      font-size: 41px;
+      text-align: left;
+
+      @media ${queries.xxsplus} {
+        padding-left: unset;
+        font-size: 32px;
+        text-align: center;
+      }
+    }
   }
 `;
 
@@ -31,6 +199,19 @@ export const Container = styled(GenericContainer)`
     justify-content: flex-end;
   }
 
+  &.fibegastrin {
+    position: relative;
+    align-items: stretch;
+
+    @media ${queries.m} {
+      margin-block-start: 8em;
+    }
+
+    @media ${queries.xs} {
+      margin-block-start: 2em;
+    }
+  }
+
   @media ${queries.xxsplus} {
     flex-direction: column;
     justify-content: flex-start;
@@ -40,6 +221,18 @@ export const Container = styled(GenericContainer)`
 
 export const Image = styled(SPImage)`
   max-width: 50%;
+
+  &.fibegastrin {
+    position: absolute;
+    inset: 0 auto 0 0;
+    max-width: 47%;
+    margin-inline-start: -3%;
+
+    @media ${queries.xxsplus} {
+      position: static;
+      margin-inline: auto;
+    }
+  }
 
   &.alugastrin3forte--20 {
     width: 35%;
@@ -69,59 +262,6 @@ export const Image = styled(SPImage)`
   }
 `;
 
-export const Wrapper = styled.div`
-  width: 50%;
-
-  @media ${queries.xxsplus} {
-    width: 100%;
-  }
-`;
-
-export const Name = styled.h1`
-  color: ${({ theme }) => theme.getColor('accent')};
-  font-weight: 600;
-  font-size: 46px;
-
-  @media ${queries.xs} {
-    font-size: 32px;
-  }
-
-  @media ${queries.xxsplus} {
-    font-size: 40px;
-    text-align: center;
-  }
-`;
-
-export const Description = styled.p`
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 1.8;
-
-  @media ${queries.m} {
-    font-size: 20px;
-  }
-
-  @media ${queries.xs} {
-    font-size: 16px;
-  }
-
-  @media ${queries.xxsplus} {
-    font-size: 24px;
-    text-align: center;
-  }
-`;
-
-export const LinksWrapper = styled.div`
-  display: flex;
-  gap: 1.15vw;
-  margin-top: 2.552vw;
-
-  @media ${queries.xxsplus} {
-    justify-content: space-between;
-    gap: 1em;
-  }
-`;
-
 const linkStyle = css`
   display: inline-flex;
   justify-content: space-between;
@@ -136,6 +276,11 @@ const linkStyle = css`
   text-transform: uppercase;
   transition: ${({ theme }) => theme.getTransitions(['filter'])};
 
+  > svg {
+    width: auto;
+    height: 1.25em;
+  }
+
   :hover {
     filter: brightness(1.2);
   }
@@ -147,9 +292,9 @@ const linkStyle = css`
   @media ${queries.xxl} {
     font-size: 16px;
 
-    > svg {
+    /* > svg {
       height: 2em;
-    }
+    } */
   }
 
   @media ${queries.xl} {
@@ -159,7 +304,7 @@ const linkStyle = css`
   @media ${queries.l} {
     width: auto;
     height: auto;
-    padding: 0.5em;
+    padding: 1em;
     font-size: 14px;
   }
 
@@ -181,25 +326,6 @@ export const Link = styled.a`
 export const ScrollToBuyButton = styled.button`
   ${linkStyle}
   cursor: pointer;
-`;
-
-export const Scrollers = styled.nav`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2vw;
-  width: 37.34375vw;
-  margin: auto;
-
-  @media ${queries.xs} {
-    width: 100%;
-  }
-
-  @media ${queries.xxsplus} {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
-    width: 100%;
-    margin-top: 1em;
-  }
 `;
 
 export const ScrollButton = styled.button.attrs({ type: 'button' })`

@@ -86,9 +86,9 @@ export const NavigationButton = styled.button.attrs({ type: 'button' })`
   > svg {
     fill: currentColor;
     transition: ${({ theme }) => theme.getTransitions([
-  'transform',
-  'filter',
-])};
+    'transform',
+    'filter',
+  ])};
     transform: rotate(${({ $rotation }) => $rotation});
   }
 

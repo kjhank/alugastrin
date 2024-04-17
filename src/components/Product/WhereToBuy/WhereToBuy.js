@@ -13,9 +13,10 @@ import {
 
 export const WhereToBuy = ({
   data: {
-    heading, links, offline, online,
+    heading, links, offline, offlineLink, online,
   },
   innerRef,
+  ...props
 }) => {
   const [
     openSection,
@@ -26,17 +27,21 @@ export const WhereToBuy = ({
     setOpenSection(openSection === section ? null : section);
   };
 
+  const link = offlineLink ?? 'https://ktomalek.pl';
+
   return (
-    <Section ref={innerRef}>
+    <Section
+      ref={innerRef}
+      {...props}
+    >
       <Container>
         <InnerContainer>
           <LineHeading>{heading}</LineHeading>
           <Wrapper>
             <WidgetButton
               as="a"
-              href="https://ktomalek.pl"
+              href={link}
               isActive={openSection === 'offline'}
-              // onClick={() => toggleSection('offline')}
               rel="noreferrer, noopener"
               target="_blank"
             >
@@ -52,15 +57,15 @@ export const WhereToBuy = ({
               <ArrowRight />
             </WidgetButton>
             {openSection === 'online' && links.length > 0 && (
-            <Links>
-              {links.map(link => (
-                <Item key={link.link}>
-                  <Link href={link.link}>
-                    <Image image={link.image} />
-                  </Link>
-                </Item>
-              ))}
-            </Links>
+              <Links>
+                {links.map(item => (
+                  <Item key={item.link}>
+                    <Link href={item.link}>
+                      <Image image={item.image} />
+                    </Link>
+                  </Item>
+                ))}
+              </Links>
             )}
             {openSection === 'offline' && 'tu będzie ktomalek'}
           </Wrapper>
@@ -75,8 +80,14 @@ WhereToBuy.propTypes = {
     heading: PropTypes.string,
     links: PropTypes.arrayOf(PropTypes.shape({})),
     offline: PropTypes.string,
+    offlineLink: PropTypes.string,
     online: PropTypes.string,
-  }).isRequired,
+  }),
   innerRef: PropTypes.shape({}).isRequired,
 };
 
+WhereToBuy.defaultProps = {
+  data: {
+    offlineLink: 'https://ktomalek.pl',
+  },
+};

@@ -27,7 +27,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5em;
+  margin-block-start: 1.5em;
   font-size: ${({ hasSmallerText }) => (hasSmallerText ? '12px' : '24px')};
 
   @media ${queries.huge} {
@@ -53,8 +53,8 @@ export const Heading = styled.h2`
   width: 100%;
   margin-bottom: 1.5em;
   color: ${({
-  isSmall, theme,
-}) => theme.getColor(isSmall ? 'main' : 'accent')};
+    isSmall, theme,
+  }) => theme.getColor(isSmall ? 'main' : 'accent')};
   font-weight: 600;
   font-size: inherit;
   line-height: 1.25;
@@ -62,10 +62,26 @@ export const Heading = styled.h2`
 
 export const Text = styled.div`
   width: ${({ isNarrow }) => (isNarrow ? '45.703125%' : '100%')};
+  white-space: pre-line;
 
-  ol,
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  ol {
+    list-style-position: inside;
+    white-space: normal;
+  }
+
   ul {
     list-style-type: none;
+    white-space: normal;
 
     > li {
       position: inline-flex;
@@ -79,16 +95,8 @@ export const Text = styled.div`
     }
   }
 
-  p + p,
-  p + ol,
-  p + ul,
-  ol + p,
-  ol + ol,
-  ol + ul,
-  ul + p,
-  ul + ol,
-  ul + ul {
-    margin-top: 1.5em;
+  *:not(li) {
+    margin-block: 1.5em;
   }
 
   @media ${queries.xs} {

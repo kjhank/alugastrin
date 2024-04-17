@@ -27,10 +27,26 @@ export const Body = ({
               key={heading}
               ref={section.innerRef}
             >
-              {heading && <Heading
-                isSmall={type === 'footnotes'} dangerouslySetInnerHTML={{ __html: sanitize(heading, { allowedTags: ['i'] }) }} />}
+              {heading && (
+              <Heading
+                dangerouslySetInnerHTML={{ __html: sanitize(heading, { allowedTags: ['i'] }) }}
+                isSmall={type === 'footnotes'}
+              />
+              )}
               <Text
-                dangerouslySetInnerHTML={{ __html: sanitize(text, { allowedTags: ['i', 'ul', 'li', 'ol'] }) }}
+                dangerouslySetInnerHTML={{
+                  __html: sanitize(text, {
+                    allowedTags: [
+                      'em',
+                      'i',
+                      'ul',
+                      'li',
+                      'ol',
+                      'strong',
+                      'b',
+                    ],
+                  }),
+                }}
                 isNarrow={!!image}
               />
               {image && <Image image={image} />}

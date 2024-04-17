@@ -23,6 +23,11 @@ export const List = styled.ul`
 
 export const Product = styled.li`
   > a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+
     :hover {
       div:last-child {
         filter: brightness(1.2);
@@ -36,15 +41,12 @@ export const Product = styled.li`
       flex-wrap: wrap;
       align-items: center;
     }
-
-    @media ${queries.xxsplus} {
-      display: block;
-    }
   }
 `;
 
 export const Image = styled(SPImage)`
   width: 100%;
+  aspect-ratio: 324/177;
 
   > img {
     width: 100%;
@@ -99,7 +101,7 @@ export const Text = styled.p`
 
   em,
   i {
-    font-style: italic
+    font-style: italic;
   }
 
   b,
@@ -114,6 +116,8 @@ export const Text = styled.p`
 
 export const ArrowWrapper = styled.div`
   ${buttonLinkStyles};
+  display: flex;
+  margin-block-start: auto;
   border-color: #fff;
   background: ${({ theme }) => theme.getGradient()};
   color: #fff;
@@ -166,7 +170,7 @@ export const SectionHeading = styled.h2`
   }
 
   @media ${queries.xs} {
-    width: 60%;
+    width: 100%;
     padding-left: 2.5%;
   }
 
