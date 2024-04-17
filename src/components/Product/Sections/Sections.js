@@ -40,7 +40,10 @@ export const Sections = ({
           ref={section.innerRef}
         >
           <Heading>{section.heading}</Heading>
-          <Text className={className} dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }} />
+          <Text
+            className={className}
+            dangerouslySetInnerHTML={{ __html: sanitize(section.text, sanitizeConfig) }}
+          />
         </Section>
       ))}
     </InnerContainer>

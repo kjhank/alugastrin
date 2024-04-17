@@ -7,6 +7,32 @@ import { Brag as BragSvg } from '@icons';
 
 import { queries } from '@utils';
 
+export const Submenu = styled.ul`
+  position: absolute;
+  inset: 100% auto auto 50%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 0.5em 1em 1em;
+  translate: -50% -600%;
+  transition:
+    opacity 400ms,
+    translate 400ms;
+
+  a {
+    white-space: nowrap;
+  }
+
+  @media ${queries.s} {
+    position: static;
+    opacity: 1;
+    flex-direction: column;
+    translate: 0;
+  }
+`;
+
 export const Wrapper = styled.header`
   position: fixed;
   top: 0;
@@ -50,6 +76,10 @@ export const Container = styled(GenericContainer)`
   gap: 1.5vw;
   padding: 1.4vw 0;
 
+  @media ${queries.xl} {
+    padding-block: 1.5em;
+  }
+
   @media ${queries.s} {
     flex-direction: column;
   }
@@ -59,7 +89,7 @@ export const Navigation = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: min(2.7vw, 1em);
+  gap: min(3.2vw, 1.5em);
   margin-left: auto;
   transition: ${({ theme }) => theme.getTransitions(['transform'])};
 
@@ -70,14 +100,20 @@ export const Navigation = styled.nav`
     flex-direction: column;
     gap: 1em;
     border-radius: ${({ theme }) => `0 0 0 ${theme.getRadius()}`};
-    padding: 2em 5em 2em 1em;
+    padding: 2em 2em 1em;
     background-image: ${({ theme }) => theme.getGradient()};
     transform: ${({ isVisible }) => (isVisible ? 'none' : 'translateX(calc(100% + 3em))')};
 
     > a,
-    button {
+    button,
+    > div {
       color: #fff;
       font-size: 24px;
+      text-align: center;
+    }
+
+    > div::after {
+      content: unset;
     }
   }
 `;
@@ -87,6 +123,17 @@ const linkStyle = css`
   color: #fff;
   font-size: clamp(14px, 0.9375vw, 18px);
   font-family: ${({ theme }) => theme.getFont('heading')};
+
+  &:hover {
+    ${Submenu} {
+      opacity: 1;
+      translate: -50% 0;
+
+      @media ${queries.s} {
+        translate: unset;
+      }
+    }
+  }
 `;
 
 export const Link = styled(GenericLink)`
@@ -103,8 +150,8 @@ export const Link = styled(GenericLink)`
 
   @media ${queries.s} {
     &.header__link--logo {
-      width: 50vw;
       display: block;
+      width: 50vw;
       margin: auto;
     }
   }

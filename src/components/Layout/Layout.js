@@ -1,5 +1,10 @@
 import React, {
-  cloneElement, createRef, useCallback, useEffect, useRef, useState,
+  cloneElement,
+  createRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import smoothscroll from 'smoothscroll-polyfill';
@@ -9,8 +14,7 @@ import {
   GlobalFooter, GlobalHeader,
 } from '@components';
 import {
-  debounceFunction,
-  GlobalStyle,
+  debounceFunction, GlobalStyle,
 } from '@utils';
 
 import { Seo } from './Seo';
@@ -26,8 +30,12 @@ const Layout = ({
 }) => {
   const cookieRef = useRef();
   const {
-    globals, globalFootnote, hasGlobalFootnote, hasLegalInFooter, pageData,
-  } = serverData || { pageData: {} };
+    globals, pageData, product, post,
+  } = serverData ?? {
+    pageData: {},
+    post: {},
+    product: {},
+  };
 
   const [
     isNavigationOpen,
@@ -75,11 +83,16 @@ const Layout = ({
   };
 
   const debounceEvent = useCallback(
-    debounceFunction((event, height) => scrollEventHandler(event, height), DEBOUNCE_TIMEOUT), []
+    debounceFunction(
+      (event, height) => scrollEventHandler(event, height),
+      DEBOUNCE_TIMEOUT
+    ),
+    []
   );
 
   useEffect(() => {
-    const { height: headerHeight } = refs.header.current.getBoundingClientRect();
+    const { height: headerHeight } =
+      refs.header.current.getBoundingClientRect();
     const onScroll = event => debounceEvent(event, headerHeight);
 
     window.addEventListener('scroll', onScroll);
@@ -105,10 +118,11 @@ const Layout = ({
 
   return (
     <Theme>
-      <Seo data={{
-        ...pageData?.yoast_head_json,
-        path,
-      }}
+      <Seo
+        data={{
+          ...pageData?.yoast_head_json,
+          path,
+        }}
       />
       <GlobalStyle />
       <GlobalHeader
@@ -119,11 +133,12 @@ const Layout = ({
       />
       {cloneElement(children, { refs })}
       <GlobalFooter
-        bragFootnote={globals?.bragFootnote}
         contactRef={refs.contact}
         data={globals}
-        globalFootnote={hasGlobalFootnote ? globalFootnote : null}
-        hasLegal={hasLegalInFooter}
+        footnotes={pageData?.acf?.footnotes ?? product?.acf?.footnotes ?? post?.acf?.footnotes}
+        hasLegal={pageData?.acf?.hasLegalInFooter ?? product?.acf?.hasLegalInFooter ??
+          post?.acf?.hasLegalInFooter}
+        legal={pageData?.acf?.legal ?? product?.acf?.legal ?? post?.acf?.legal}
       />
       <CookiesBar
         accept={globals?.cookies?.accept}
@@ -146,6 +161,11 @@ Layout.propTypes = {
     globals: PropTypes.shape({}),
     hasLegalInFooter: PropTypes.bool,
     pageData: PropTypes.shape({
+      acf: PropTypes.shape({
+        footnotes: PropTypes.string,
+        hasLegalInFooter: PropTypes.bool,
+        legal: PropTypes.string,
+      }),
       yoast_head_json: PropTypes.shape({}),
     }),
   }),

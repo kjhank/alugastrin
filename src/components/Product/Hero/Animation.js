@@ -85,7 +85,7 @@ export const Animation = ({
       );
     }
 
-    if (variant !== 'esomeprazol') {
+    if (variant !== 'esomeprazol' && variant !== 'fibegastrin') {
       animate(
         backgroundElement,
         {

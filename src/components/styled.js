@@ -11,7 +11,7 @@ export const Main = styled.main`
   background-color: #fff;
 
   ::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     bottom: 0;
@@ -87,16 +87,17 @@ export const StyledButtonLink = styled(Link)`
 
 export const PageHeading = styled.h1`
   position: relative;
+  display: ${({ $isInlineBlock }) => $isInlineBlock && 'inline-block'};
   padding-top: 2.239583vw;
   font-weight: 600;
-  font-size: clamp( 24px, 2.395833vw, 46px);
+  font-size: clamp(24px, 2.395833vw, 46px);
 
   ::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -0.25em;
     left: 0;
-    width: 10.73vw;
+    width: ${({ $isInlineBlock }) => ($isInlineBlock ? '100%' : '10.73vw')};
     height: 2px;
     background-color: ${({ theme }) => theme.getColor('main')};
   }
@@ -118,7 +119,7 @@ export const LineHeading = styled.h2`
   font-size: 42px;
 
   ::before {
-    content: '';
+    content: "";
     width: 5.58vw;
     height: 2px;
     margin-right: 1.51vw;

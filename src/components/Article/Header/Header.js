@@ -33,7 +33,10 @@ export const Header = ({
           <TableOfContents>
             {sections?.map(section => (
               <SectionItem key={section.heading}>
-                <SectionScrollButton onClick={() => handleScroll(section.innerRef)} dangerouslySetInnerHTML={{ __html: sanitize(section.heading, {allowedTags: ['i']})}} />
+                <SectionScrollButton
+                  dangerouslySetInnerHTML={{ __html: sanitize(section.heading, { allowedTags: ['i'] }) }}
+                  onClick={() => handleScroll(section.innerRef)}
+                />
               </SectionItem>
             ))}
           </TableOfContents>
@@ -45,7 +48,11 @@ export const Header = ({
 };
 
 Header.propTypes = {
-  headerRef: PropTypes.shape({ current: PropTypes.shape({}) }).isRequired,
+  headerRef: PropTypes.shape({
+    current: PropTypes.shape({
+      getBoundingClientRect: PropTypes.func,
+    }),
+  }).isRequired,
   image: PropTypes.shape({}).isRequired,
   sections: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   title: PropTypes.string.isRequired,
