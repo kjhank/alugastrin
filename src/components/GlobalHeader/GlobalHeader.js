@@ -9,6 +9,7 @@ import {
   AlignRight, ProductLogo, X,
 } from '@icons';
 import {
+  Brag,
   Container,
   Link,
   Navigation,
@@ -60,6 +61,7 @@ export const GlobalHeader = ({
         >
           <ProductLogo />
         </Link>
+        <Brag />
         <Navigation
           headerHeight={headerHeight}
           isVisible={isNavigationOpen}
