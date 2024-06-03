@@ -105,6 +105,67 @@ export const StyledHeader = styled.header`
     background-position: 35% 60%;
     background-size: 110%;
 
+    ${LinksWrapper} {
+      width: 75%;
+      margin-block: min(150px, 7.8125vw) min(34px, 1.8vw);
+    }
+  }
+
+  &.max-protect {
+    ${LinksWrapper} {
+      width: 65%;
+      margin-block: min(100px, 5.21vw) min(34px, 1.8vw);
+    }
+
+    ${Wrapper} {
+      ${Name} {
+        padding-left: 55%;
+        font-weight: 700;
+        font-size: 46px;
+        line-height: 1;
+
+        @media ${queries.xhuge} {
+          font-size: 40px;
+        }
+
+        @media ${queries.huge} {
+          font-size: 36px;
+        }
+
+        @media ${queries.xxl} {
+          font-size: 32px;
+        }
+
+        @media ${queries.xxsplus} {
+          padding-left: unset;
+          text-align: center;
+        }
+      }
+
+      ${Description} {
+        padding-left: 55%;
+        font-weight: 700;
+        font-size: 25px;
+
+        @media ${queries.m} {
+          font-size: 20px;
+        }
+
+        @media ${queries.xs} {
+          font-size: 16px;
+        }
+
+        @media ${queries.xxsplus} {
+          padding-left: unset;
+          font-size: 24px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &.fibegastrin,
+  &.max-protect {
     ${Wrapper} {
       position: relative;
       z-index: 1;
@@ -116,8 +177,6 @@ export const StyledHeader = styled.header`
 
       ${LinksWrapper} {
         justify-content: flex-end;
-        width: 75%;
-        margin-block: min(150px, 7.8125vw) min(34px, 1.8vw);
         margin-inline-end: min(34px, 1.8vw);
 
         > a:has(svg), > button:has(svg) {
@@ -199,7 +258,8 @@ export const Container = styled(GenericContainer)`
     justify-content: flex-end;
   }
 
-  &.fibegastrin {
+  &.fibegastrin,
+  &.max-protect {
     position: relative;
     align-items: stretch;
 
@@ -223,10 +283,25 @@ export const Image = styled(SPImage)`
   max-width: 50%;
 
   &.fibegastrin {
-    position: absolute;
-    inset: 0 auto 0 0;
     max-width: 47%;
     margin-inline-start: -3%;
+  }
+
+  &.max-protect {
+    max-width: 43.4375vw;
+    margin-block-start: -4vw;
+    margin-inline-start: -5%;
+
+    @media ${queries.xxsplus} {
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+
+  &.fibegastrin,
+  &.max-protect {
+    position: absolute;
+    inset: 0 auto 0 0;
 
     @media ${queries.xxsplus} {
       position: static;

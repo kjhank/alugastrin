@@ -16,6 +16,7 @@ import {
 import { Sibosgastrin } from './Sibosgastrin';
 import { Helicogastrin } from './Helicogastrin';
 import { Fibegastrin } from './Fibegastrin';
+import { MaxProtect } from './MaxProtect';
 
 import { Animation } from './Animation';
 
@@ -69,22 +70,22 @@ export const Hero = ({
       <Container className={cssClass}>
         {video && <Video {...video} />}
         {heading && (
-        <Heading
-          className={cssClass}
-          dangerouslySetInnerHTML={{
-            __html: sanitize(heading, {
-              allowedTags: [
-                'br',
-                'span',
-                'strong',
-                'sup',
-              ],
-            }),
-          }}
-          isBold={!heading.includes('<strong>') || heading.includes('<br />')}
-          isLarger={heading.includes('<strong>')}
-          lessPadding={isSecond}
-        />
+          <Heading
+            className={cssClass}
+            dangerouslySetInnerHTML={{
+              __html: sanitize(heading, {
+                allowedTags: [
+                  'br',
+                  'span',
+                  'strong',
+                  'sup',
+                ],
+              }),
+            }}
+            isBold={!heading.includes('<strong>') || heading.includes('<br />')}
+            isLarger={heading.includes('<strong>') || cssClass === 'max-protect'}
+            lessPadding={isSecond}
+          />
         )}
         {isSecond && image && (
           <Image
@@ -101,34 +102,45 @@ export const Hero = ({
             innerRef={packageRef}
           />
         )}
-        {!isSecond && cssClass !== 'sibosgastrin' && cssClass !== 'helicogastrin' && (
-        <Animation
-          background={image}
+        {!isSecond && cssClass !== 'sibosgastrin' && cssClass !== 'helicogastrin' && cssClass !== 'max-protect' ?
+          (
+            <Animation
+              background={image}
+              cssClass={cssClass}
+              images={images}
+            />
+          ) :
+          null}
+      </Container>
+      {cssClass === 'max-protect' ?
+        (
+          <MaxProtect
+            className={cssClass}
+            copy={copy}
+            images={images}
+          />
+        ) :
+        null}
+      {cssClass === 'fibegastrin' && (
+        <Fibegastrin
+          className={cssClass}
+          copy={copy}
+          images={images}
+        />
+      )}
+      {cssClass === 'sibosgastrin' && (
+        <Sibosgastrin
+          copy={copy}
           cssClass={cssClass}
           images={images}
         />
-        )}
-      </Container>
-      {cssClass === 'fibegastrin' && (
-      <Fibegastrin
-        className={cssClass}
-        copy={copy}
-        images={images}
-      />
-      )}
-      {cssClass === 'sibosgastrin' && (
-      <Sibosgastrin
-        copy={copy}
-        cssClass={cssClass}
-        images={images}
-      />
       )}
       {cssClass === 'helicogastrin' && (
-      <Helicogastrin
-        copy={copy}
-        cssClass={cssClass}
-        images={images}
-      />
+        <Helicogastrin
+          copy={copy}
+          cssClass={cssClass}
+          images={images}
+        />
       )}
       {backgrounds?.length > 0 && backgrounds.map(item => (
         <Image

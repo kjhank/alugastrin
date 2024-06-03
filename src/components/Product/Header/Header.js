@@ -5,6 +5,7 @@ import {
   Page, ShoppingCart,
 } from '@icons';
 
+import sanitize from 'sanitize-html';
 import {
   Container,
   Description,
@@ -48,7 +49,7 @@ export const Header = ({
           image={image}
         />
         <Wrapper>
-          <Name>{name}</Name>
+          <Name dangerouslySetInnerHTML={{ __html: sanitize(name, { allowedTags: ['br'] }) }} />
           <Description>{description}</Description>
           <LinksWrapper $isGrid={isGrid}>
             <ScrollToBuyButton onClick={() => handleScroll(buyRef)}>
@@ -62,30 +63,30 @@ export const Header = ({
               <Page />
             </Link>
             {isGrid && (
-            <>
-              {sections.map(section => (
-                <ScrollButton
-                  key={section.heading}
-                  onClick={() => handleScroll(section.innerRef)}
-                >
-                  {section.heading}
-                </ScrollButton>
-              ))}
-            </>
+              <>
+                {sections.map(section => (
+                  <ScrollButton
+                    key={section.heading}
+                    onClick={() => handleScroll(section.innerRef)}
+                  >
+                    {section.heading}
+                  </ScrollButton>
+                ))}
+              </>
             )}
           </LinksWrapper>
         </Wrapper>
         {!isGrid && (
-        <Scrollers>
-          {sections.map(section => (
-            <ScrollButton
-              key={section.heading}
-              onClick={() => handleScroll(section.innerRef)}
-            >
-              {section.heading}
-            </ScrollButton>
-          ))}
-        </Scrollers>
+          <Scrollers>
+            {sections.map(section => (
+              <ScrollButton
+                key={section.heading}
+                onClick={() => handleScroll(section.innerRef)}
+              >
+                {section.heading}
+              </ScrollButton>
+            ))}
+          </Scrollers>
         )}
       </Container>
     </StyledHeader>

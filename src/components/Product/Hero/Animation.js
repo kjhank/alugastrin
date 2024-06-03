@@ -66,6 +66,9 @@ export const Animation = ({
 
   const animateBackground = () => {
     const { current } = backgroundRef;
+
+    if (!current) return;
+
     const backgroundElement = current.querySelector('img');
     const { current: backgroundPicture } = backgroundImageRef;
     const backgroundImageElement = backgroundPicture?.querySelector('img');

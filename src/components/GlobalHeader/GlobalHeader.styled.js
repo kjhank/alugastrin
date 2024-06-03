@@ -9,7 +9,7 @@ import { queries } from '@utils';
 
 export const Submenu = styled.ul`
   position: absolute;
-  inset: 100% auto auto 50%;
+  inset: 150% auto auto 50%;
   opacity: 0;
   display: flex;
   justify-content: center;

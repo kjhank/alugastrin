@@ -11,7 +11,7 @@ export const Wrapper = styled.section`
     margin-top: unset;
   }
 
-  > div:not(.sibosgastrin, .fibegastrin) {
+  > div:not(.sibosgastrin, .fibegastrin, .max-protect) {
     padding: 0 6%;
   }
 
@@ -36,6 +36,16 @@ export const Heading = styled.h2`
   font-size: ${({ isLarger }) => (isLarger ? '52px' : '46px')};
   text-align: center;
   text-transform: uppercase;
+
+  &.max-protect {
+    padding: 65px 0;
+    color: ${({ theme }) => theme.getColor('max')};
+    font-weight: 700;
+
+    @media ${queries.s} {
+      padding-block: 24px;
+    }
+  }
 
   &.fibegastrin {
     position: relative;
