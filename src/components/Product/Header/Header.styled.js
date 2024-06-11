@@ -57,13 +57,15 @@ export const LinksWrapper = styled.div`
     justify-content: space-between;
     gap: 1em;
   }
-  ${({ $isGrid }) => $isGrid && css`
-    grid-template-columns: repeat(3, 1fr);
+  ${({
+    $isGrid, $columns = 3,
+  }) => $isGrid && css`
+    grid-template-columns: repeat(${$columns}, 1fr);
     justify-content: unset;
     gap: min(34px, 1.8vw) min(25px, 1.3vw);
 
     ::before {
-      content: '';
+      content: ${$columns % 2 === 0 ? 'none' : ''};
     }
   `}
 `;
@@ -113,7 +115,7 @@ export const StyledHeader = styled.header`
 
   &.max-protect {
     ${LinksWrapper} {
-      width: 65%;
+      width: 42%;
       margin-block: min(100px, 5.21vw) min(34px, 1.8vw);
     }
 

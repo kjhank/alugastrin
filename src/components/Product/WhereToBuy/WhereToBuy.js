@@ -37,17 +37,21 @@ export const WhereToBuy = ({
       <Container>
         <InnerContainer>
           <LineHeading>{heading}</LineHeading>
-          <Wrapper>
-            <WidgetButton
-              as="a"
-              href={link}
-              isActive={openSection === 'offline'}
-              rel="noreferrer, noopener"
-              target="_blank"
-            >
-              {offline}
-              <ArrowRight />
-            </WidgetButton>
+          <Wrapper $flex={offline && online}>
+            {offline ?
+              (
+                <WidgetButton
+                  as="a"
+                  href={link}
+                  isActive={openSection === 'offline'}
+                  rel="noreferrer, noopener"
+                  target="_blank"
+                >
+                  {offline}
+                  <ArrowRight />
+                </WidgetButton>
+              ) :
+              null}
             <WidgetButton
               as="button"
               isActive={openSection === 'online'}

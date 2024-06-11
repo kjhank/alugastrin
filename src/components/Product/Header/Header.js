@@ -51,7 +51,10 @@ export const Header = ({
         <Wrapper>
           <Name dangerouslySetInnerHTML={{ __html: sanitize(name, { allowedTags: ['br'] }) }} />
           <Description>{description}</Description>
-          <LinksWrapper $isGrid={isGrid}>
+          <LinksWrapper
+            $columns={sections.length}
+            $isGrid={isGrid}
+          >
             <ScrollToBuyButton onClick={() => handleScroll(buyRef)}>
               {buyLink}
               {' '}

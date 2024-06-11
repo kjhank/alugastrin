@@ -9,14 +9,15 @@ import { queries } from '@utils';
 
 export const Submenu = styled.ul`
   position: absolute;
-  inset: 150% auto auto 50%;
+  inset: 100% auto auto 0;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1em;
-  padding: 0.5em 1em 1em;
-  translate: -50% -600%;
+  margin-inline-start: -1em;
+  padding: 1em 1em 2em;
+  translate: 0 -600%;
   transition:
     opacity 400ms,
     translate 400ms;
@@ -127,7 +128,7 @@ const linkStyle = css`
   &:hover {
     ${Submenu} {
       opacity: 1;
-      translate: -50% 0;
+      translate: 0;
 
       @media ${queries.s} {
         translate: unset;
