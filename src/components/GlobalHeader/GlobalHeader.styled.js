@@ -30,6 +30,8 @@ export const Submenu = styled.ul`
     position: static;
     opacity: 1;
     flex-direction: column;
+    margin: none;
+    padding: 1em 0;
     translate: 0;
   }
 `;
