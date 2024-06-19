@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import {
   ExternalLink, SPImage,
@@ -64,12 +64,15 @@ export const WidgetButton = styled.button.attrs({ type: 'button' })`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
+  display: ${({ $flex }) => $flex && 'flex'};
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 2.083vw;
   margin-top: 1vw;
+  ${({ $flex }) => !$flex && css`
+    padding-inline-start: 7.09vw;
+  `};
 
   @media ${queries.xs} {
     flex-direction: column;
