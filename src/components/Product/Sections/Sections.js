@@ -10,6 +10,9 @@ import {
 } from './Sections.styled';
 
 const sanitizeConfig = {
+  allowedClasses: {
+    span: ['text-underline'],
+  },
   allowedTags: [
     'strong',
     'em',

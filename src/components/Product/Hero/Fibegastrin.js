@@ -18,12 +18,12 @@ const Container = styled(GenericContainer)`
     text-transform: uppercase;
 
     @media ${queries.xxl} {
-        font-size: 52px;
-      }
+      font-size: 52px;
+    }
 
     @media ${queries.xl} {
-        font-size: 48px;
-      }
+      font-size: 48px;
+    }
 
     @media ${queries.m} {
       font-size: 36px;

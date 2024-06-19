@@ -23,6 +23,7 @@ const theme = {
     fibe: '#99C05A',
     gradientGray: '#e6e6e6',
     main: '#3b3b3b',
+    max: '#189D93',
     nearWhite: '#f7f7f7',
     neutral: '#d6d6d6',
   },

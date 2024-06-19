@@ -10,6 +10,10 @@ export const Section = styled.section`
   z-index: 1;
   margin-top: 3.8vw;
 
+  :has(div:empty) {
+    display: none;
+  }
+
   @media ${queries.xxsplus} {
     margin-top: 2em;
   }
@@ -28,6 +32,10 @@ export const Text = styled.div`
   b,
   strong {
     font-weight: 600;
+  }
+
+  .text-underline {
+    text-decoration: underline;
   }
 
   em,
