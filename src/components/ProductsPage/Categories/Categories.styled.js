@@ -42,18 +42,18 @@ export const DecorationContainer = styled(Container)`
   & > .decoration-products-otc {
     position: absolute;
     width: 54.8vw;
-    inset-inline-end: -30%;
-    margin-block-start: -32vw;
+    inset-inline-end: -18%;
+    margin-block-start: -36vw;
 
-    @media ${queries.xhuge} {
+    @media ${queries.l} {
       margin-block-start: -35vw;
       inset-inline-end: -10%;
     }
 
     @media ${queries.l} {
-      margin-block-start: -55vw;
+      margin-block-start: -40vw;
       inset-inline-end: 0;
-      width: 70vw;
+      width: 60vw;
     }
 
     @media ${queries.xs} {
