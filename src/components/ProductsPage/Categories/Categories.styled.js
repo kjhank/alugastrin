@@ -29,7 +29,7 @@ export const DecorationContainer = styled(Container)`
   isolation: isolate;
 
   &.container-products-otc {
-    margin-bottom: 10vw;
+    margin-bottom: 15vw;
   }
 
   & > .decoration {
@@ -42,12 +42,18 @@ export const DecorationContainer = styled(Container)`
   & > .decoration-products-otc {
     position: absolute;
     width: 54.8vw;
-    margin-block-start: -35vw;
-    inset-inline-end: -15%;
+    inset-inline-end: -30%;
+    margin-block-start: -32vw;
+
+    @media ${queries.xhuge} {
+      margin-block-start: -35vw;
+      inset-inline-end: -10%;
+    }
 
     @media ${queries.l} {
-      margin-block-start: -45vw;
+      margin-block-start: -55vw;
       inset-inline-end: 0;
+      width: 70vw;
     }
 
     @media ${queries.xs} {
