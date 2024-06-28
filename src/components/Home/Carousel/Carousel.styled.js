@@ -129,6 +129,7 @@ export const Heading = styled.h2`
 
   @media ${queries.xxsplus} {
     padding-left: 0;
+    font-size: clamp(32px, 2.3vw, 44px);
   }
 `;
 
