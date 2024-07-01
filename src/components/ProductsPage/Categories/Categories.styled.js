@@ -41,9 +41,9 @@ export const DecorationContainer = styled(Container)`
 
   & > .decoration-products-otc {
     position: absolute;
-    width: 54.8vw;
-    inset-inline-end: -18%;
-    margin-block-start: -36vw;
+    width: min(54.8vw, 1200px);
+    inset-inline-end: max(-18%, -190px);
+    margin-block-start: max(-36vw, -800px);
 
     @media ${queries.l} {
       margin-block-start: -35vw;
