@@ -5,7 +5,7 @@ import { SPImage } from '@components';
 import { queries } from '@utils';
 
 export const Wrapper = styled.section`
-  margin-top: 1.615vw;
+  margin-top: min(1.615vw, 31px);
 
   &.hero-wrapper-fibegastrin {
     margin-top: unset;
@@ -24,7 +24,7 @@ export const Wrapper = styled.section`
   :first-of-type {
     background-image: ${({ theme }) => `linear-gradient(to bottom, ${theme.getColor('gradientGray')}, #fff)`};
     background-position: top;
-    background-size: 100% 38.90625vw;
+    background-size: 100% min(38.90625vw, 747px);
     background-repeat: no-repeat;
   }
 `;
@@ -231,7 +231,7 @@ export const Image = styled(SPImage)`
     position: relative;
     overflow: hidden;
     display: inline-block;
-    width: 21.614583vw;
+    width: min(21.614583vw, 415px);
     margin-bottom: 10%;
     margin-left: 19%;
 
@@ -270,7 +270,7 @@ export const Image = styled(SPImage)`
   &.alugastrin.alugastrin--250.second--package {
     opacity: 0;
     display: inline-block;
-    width: 11.927083vw;
+    width: min(11.927083vw, 229px);
     margin-left: unset;
     transform: translateX(50vw);
 
