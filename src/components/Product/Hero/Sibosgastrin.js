@@ -400,7 +400,7 @@ export const Sibosgastrin = ({
 
   const {
     image: { file: sibosImage },
-  } = images.find(({ image }) => image.label === 'sibosDrawing');
+  } = images.find(({ image }) => image.label === 'sibosDrawing') ?? { image: {} };
 
   const {
     item: { text: frameHeading },
