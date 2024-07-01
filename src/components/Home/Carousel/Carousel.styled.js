@@ -131,6 +131,10 @@ export const Heading = styled.h2`
     padding-left: 0;
     font-size: clamp(32px, 2.3vw, 44px);
   }
+
+  @media ${queries.xxs} {
+    font-size: clamp(18px, 1rem + 4vw, 32px);
+  }
 `;
 
 export const SmallText = styled.span`
