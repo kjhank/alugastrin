@@ -126,7 +126,6 @@ export const IconsList = styled.ul`
   display: grid;
   grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`};
   gap: 2vw;
-  padding-left: ${({ columns }) => columns === 2 && '7.135417vw'};
   font-size: clamp(14px, 1.25vw, 24px);
 
   @media ${queries.s} {
