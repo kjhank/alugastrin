@@ -127,8 +127,21 @@ export const Heading = styled.h2`
   font-size: clamp(40px, 2.864583vw, 55px);
   line-height: 1.0625;
 
+  @media ${queries.xs} {
+    font-size: clamp(32px, 1rem + 3.7vw, 42px);
+  }
+
   @media ${queries.xxsplus} {
     padding-left: 0;
+    font-size: clamp(24px, 1rem + 3.9vw, 36px);
+  }
+
+  @media ${queries.xxs} {
+    font-size: clamp(18px, 1rem + 4vw, 32px);
+  }
+
+  @media ${queries.tiny} {
+    font-size: clamp(14px, 1rem + 2.8vw, 26px)
   }
 `;
 

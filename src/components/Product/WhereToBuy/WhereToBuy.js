@@ -37,8 +37,8 @@ export const WhereToBuy = ({
       <Container>
         <InnerContainer>
           <LineHeading>{heading}</LineHeading>
-          <Wrapper $flex={offline && online}>
-            {offline ?
+          <Wrapper $flex={offline && online && offlineLink}>
+            {(offline && offlineLink) ?
               (
                 <WidgetButton
                   as="a"

@@ -50,8 +50,8 @@ export const Description = styled.p`
 
 export const LinksWrapper = styled.div`
   display: ${({ $isGrid }) => ($isGrid ? 'grid' : 'flex')};
-  gap: 1.15vw;
-  margin-top: 2.552vw;
+  gap: min(1.15vw, 22px);
+  margin-top: min(2.552vw, 49px);
 
   @media ${queries.xxsplus} {
     justify-content: space-between;
@@ -73,8 +73,8 @@ export const LinksWrapper = styled.div`
 export const Scrollers = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.2vw;
-  width: 37.34375vw;
+  gap: min(1.2vw, 23px);
+  width: min(37.34375vw, 736px);
   margin: auto;
 
   @media ${queries.xs} {
@@ -90,8 +90,8 @@ export const Scrollers = styled.div`
 `;
 
 export const StyledHeader = styled.header`
-  margin-top: 4.95vw;
-  padding-top: 4vw;
+  margin-top: min(4.95vw, 95px);
+  padding-top: min(4vw, 77px);
   background-color: #fff;
 
   @media ${queries.xs} {
@@ -290,8 +290,8 @@ export const Image = styled(SPImage)`
   }
 
   &.max-protect {
-    max-width: 43.4375vw;
-    margin-block-start: -4vw;
+    max-width: min(43.4375vw, 834px);
+    margin-block-start: max(-4vw, -77px);
     margin-inline-start: -5%;
 
     @media ${queries.xxsplus} {
@@ -323,7 +323,7 @@ export const Image = styled(SPImage)`
   }
 
   &.alugastrin--250 {
-    width: 7.4vw;
+    width: min(7.4vw, 142px);
     margin-right: 10%;
 
     @media ${queries.xxsplus} {
@@ -343,10 +343,10 @@ const linkStyle = css`
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  width: 10.21vw;
-  height: 3.23vw;
+  width: min(10.21vw, 196px);
+  height: min(3.23vw, 62px);
   border-radius: ${({ theme }) => theme.getRadius('tiny')};
-  padding: 0.2em 1.042vw;
+  padding: 0.2em min(1.042vw, 20px);
   background: ${({ theme }) => theme.getGradient('radial')};
   color: #fff;
   font-size: 20px;
@@ -368,10 +368,6 @@ const linkStyle = css`
 
   @media ${queries.xxl} {
     font-size: 16px;
-
-    /* > svg {
-      height: 2em;
-    } */
   }
 
   @media ${queries.xl} {
@@ -407,7 +403,7 @@ export const ScrollToBuyButton = styled.button`
 
 export const ScrollButton = styled.button.attrs({ type: 'button' })`
   border-radius: ${({ theme }) => theme.getRadius('tiny')};
-  padding: 0.9375vw;
+  padding: min(0.9375vw, 18px);
   background: radial-gradient(circle closest-side, #f2f2f2 50%, #d5d5d5 200%);
   color: ${({ theme }) => theme.getColor('accent')};
   font-size: 16px;

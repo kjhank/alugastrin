@@ -251,9 +251,9 @@ export const ScrollButton = styled.button.attrs({ type: 'button' })`
 export const Warning = styled.div`
   background-image: ${({ theme }) => theme.getGradient('right')};
   margin-block-start: 2vw;
+  color: #fff;
   font-size: 85px;
   text-align: center;
-  color: #fff;
 
   > p {
     width: min(90vw, 1700px);
@@ -267,9 +267,21 @@ export const Warning = styled.div`
 
   @media ${queries.huge} {
     font-size: 76px;
-
+  }
 
   @media ${queries.xxl} {
     font-size: 64px;
+  }
+
+  @media ${queries.xs} {
+    font-size: 52px;
+  }
+
+  @media ${queries.xxsplus} {
+    font-size: 48px;
+  }
+
+  @media ${queries.xxs} {
+    font-size: 42px;
   }
 `;
